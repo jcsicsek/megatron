@@ -1,5 +1,5 @@
 module.exports.create = function(pgClient) {
-  var usersModel = require('./app/models/users').create(pgClient);
+  var usersModel = require('../models/users').create(pgClient);
   var self = {   
     loginPage: function(req, res) {
       res.render('login.html', {});

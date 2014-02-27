@@ -7,7 +7,7 @@ var port = process.env.PORT || 5000;
 var pgClient = new pg.Client(pgConnString);
 pgClient.connect();
 
-var usersController = require('./app/controllers/users').create(pgClient);
+var usersController = require('./controllers/users').create(pgClient);
 
 var app = express();
 

@@ -1,7 +1,7 @@
 var express = require('express');
 var pg = require('pg');
 var passport = require('passport');
-var localStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var swig = require('swig');
 
 var pgConnString = process.env.DATABASE_URL;
@@ -31,7 +31,7 @@ passport.use(new LocalStrategy(
         done(error);
       } else if (!user) {
         done(null, false, { message: 'Unknown user ' + email });
-      } else if (!passwordHash.verify(password, user.password) {
+      } else if (!passwordHash.verify(password, user.password)) {
         done(null, false, { message: 'Invalid password' });
       } else{
         done(null, user);    

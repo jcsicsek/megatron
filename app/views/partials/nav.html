@@ -1,0 +1,59 @@
+<div class="navbar navbar-inverse navbar-fixed-top affix-top" id="navbar" role="navigation">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+          <a href="#" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="fa fa-bars"></span>
+            <span class="btn-navbar-text">Menu</span>
+          </a>
+          <a class="brand" href="/"><span class="logo"></span>tabb.io</a>
+          <div class="navbar-collapse collapse">
+            <div class="nav-menu pull-left">
+              <ul class="nav nav-pills">
+                <li><a href="/about">About</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Use tabb.io <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-header">Who are you?</li>
+                    <li><a href="/merchants">I'm a Merchant</a></li>
+                    <li><a href="/consumers">I'm a Consumer</a></li>
+                  </ul>
+                </li>
+                <li><a href="/credit-lab">Credit Lab</a></li>
+                <li><a href="/support">Support</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div><!-- end nav-menu -->
+            <div class="nav-menu pull-right">
+              <ul class="nav nav-pills">
+                <ul class="nav nav-user-options">
+                  {% if user.is_authenticated() %}
+                  <img src="{{g.user.avatar(32)}}" style="margin-right:-15px;">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Email <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Account Settings</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Admin Portal</a></li>
+                      <li><a href="#">Merchant Portal</a></li>
+                      <li><a href="#">Consumer Portal</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#">Logout</a></li>
+                    </ul>
+                  </li>
+                  {% else %}
+                    <li class="signup"><a href="#" class="btn btn-purple">Register</a></li>
+                    <li class="login"><a href="#" class="btn btn-light">Login</a></li>
+                  {% endif %}
+                </ul>
+              </ul>
+            </div><!-- end nav-menu -->          
+          </div><!-- end navbar-collapse -->
+        </div><!-- end col-md-12 -->
+      </div>
+    </div>
+  </div>
+</div>
+

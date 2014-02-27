@@ -41,6 +41,7 @@ passport.use(new LocalStrategy(
 ));
 
 var app = express();
+var path = require('path');
 
 //Setup Swig template engine
 app.engine('html', swig.renderFile);
@@ -53,11 +54,52 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.cookieParser());
 app.use(express.session({ secret: 'poop' }));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.get('/', function (req, res) {
+  res.render('front-end/index', { title: "tabb.io | Plug and Play Private Label Credit" });
+});
+
+app.get('/about', function (req, res) {
+  res.render('front-end/about', { title: "About the Team | tabb.io" });
+});
+
+app.get('/merchants', function (req, res) {
+  res.render('front-end/merchants', { title: "Merchants Guide to Private Label Credit | tabb.io" });
+});
+
+app.get('/consumers', function (req, res) {
+  res.render('front-end/consumers', { title: "Consumers Guide to Store Credit | tabb.io" });
+});
+
+app.get('/credit-lab', function (req, res) {
+  res.render('front-end/credit-lab', { title: "Private Label Credit Lab | tabb.io" });
+});
+
+app.get('/support', function (req, res) {
+  res.render('front-end/support', { title: "Support | tabb.io" });
+});
+
+app.get('/contact', function (req, res) {
+  res.render('front-end/contact', { title: "Contact Our Team | tabb.io" });
+});
+
 app.get('/users/login', usersController.loginPage);
 app.post('/users/login', usersController.login);
+
+app.use(function(req, res, next){
+    res.status(404).render('error-pages/404', {title: "Sorry, page not found | tabb.io" });
+});
+
+app.use(function(req, res, next){
+    res.status(500).render('error-pages/500', {title: "Sorry, page not found | tabb.io" });
+});
 
 app.listen(port);
 console.log("app listening on port " + port);

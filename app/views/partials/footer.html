@@ -1,0 +1,29 @@
+  <div class="clear"></div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="unstyled center list-circle-icons list-circle-icons-small">
+              <li><a href="#" title="" data-rel="tooltip" data-toggle="tooltip" data-original-title="Like us on Facebook"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="#" title="" data-rel="tooltip" data-toggle="tooltip" data-original-title="Follow us on Twitter"><span class="fa fa-twitter"></span></a></li>
+              <li><a href="#" title="" data-rel="tooltip" data-toggle="tooltip" data-original-title="Follow us on Google Plus"><span class="fa fa-google-plus"></span></a></li>
+            </ul>
+            <ul class="list-inline">
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/merchants">Merchants</a></li>
+              <li><a href="/consumers">Consumers</a></li>
+              <li><a href="/support">Support</a></li>
+              <li><a href="/contact">Contact</a></li>
+              {% if g.user.is_authenticated() %}
+              <li><a href="#">Logout</a></li>
+              {% else %}
+              <li><a href="#">Register</a></li>
+              <li><a href="#">Login</a></li>
+              {% endif %}
+            </ul>
+            <p>© Copyright 2014. tabb.io.</p>
+          </div><!-- end col -->
+        </div><!-- end row fluid -->
+      </div><!-- end container -->
+    </footer>

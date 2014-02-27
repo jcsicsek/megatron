@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="clear"></div>
+<div class="container-wrapper container-top container-wrapper-winter">
+  <div class="container container-top">
+    <div class="row">
+      <div class="col-md-12 center">
+        <h1>Contact</h1>
+      </div>
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+<div class="container-wrapper">
+  <div class="google-map"><iframe width="770" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.br/maps?ie=UTF8&amp;q=Higienópolis+São+Paulo&amp;gl=BR&amp;hl=pt-BR&amp;t=m&amp;z=13&amp;iwloc=near&amp;output=embed"></iframe></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <h2>Send us a message</h2>
+      <form class="form-horizontal form-contact">
+        <div class="form-group">
+          <label class="control-label" for="inputName">Name</label>
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" id="inputName" placeholder="Name" class="form-control">
+              </div><!-- end col -->
+            </div><!-- end row -->
+          </div><!-- end controls -->
+        </div><!-- end form-group -->
+        <div class="form-group">
+          <label class="control-label" for="inputEmail">Email Address</label>
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" id="inputEmail" placeholder="Email Address" class="form-control">
+              </div><!-- end col -->
+            </div><!-- end row -->
+          </div><!-- end controls -->
+        </div><!-- end form-group -->
+        <div class="form-group">
+          <label class="control-label" for="inputMessage">Message</label>
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-10">
+                <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10"></textarea>
+              </div><!-- end col -->
+            </div><!-- end row -->
+          </div><!-- end controls -->
+        </div><!-- end form-group -->
+        <div class="form-actions form-actions-no-bg">
+          <button type="submit" class="btn btn-lg btn-purple">Send Message</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-3 sidebar">
+      <div class="widget">
+        <h2>Contact Details</h2>
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-map-marker"></i> <a href="#">123 Name Street, Sao Paulo, SP, Brasil</a></li>
+          <li><i class="fa-li fa fa-phone"></i> +55 (11) 3080-9172</li>
+          <li><i class="fa-li fa fa-mobile-phone"></i> +55 (11) 3080-9172</li>
+          <li><i class="fa-li fa fa-facebook"></i> <a href="http://www.facebook.com/pagora" target="_blank">facebook.com/pagora</a></li>
+          <li><i class="fa-li fa fa-twitter"></i> <a href="http://www.twitter.com/pagora" target="_blank">@pagora</a></li>
+        </ul>
+      </div><!-- end widget -->
+    </div>
+  </div><!-- end row -->
+</div>
+<div class="clear"></div>
+{% endblock %}

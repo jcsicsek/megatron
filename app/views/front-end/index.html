@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="clear"></div>
+<div id="myCarousel" class="container-wrapper container-top container-wrapper-home carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item">
+      <div class="container">
+        <div class="carousel-caption">
+          <div class="row">
+            <div class="col-md-6 text-left">
+              <h1>Pagora does the job</h1>
+              <p class="lead">Pagora is the simplest way to reach new users, increase sales, and lower friction.</p>
+              <p><a class="btn btn-lg btn-success" href="#">Try Now</a> <a class="btn btn-lg" href="#">View Features</a></p>
+            </div><!-- end col -->
+            <div class="col-md-6">
+              <img src="images/womanlaying.png" style="margin-top:-100px;" alt="">
+            </div><!-- end col -->
+          </div><!-- end row -->
+        </div><!-- end carousel-caption -->
+      </div><!-- end container -->
+    </div><!-- end item -->
+    <div class="item">
+      <div class="container">
+        <div class="carousel-caption">
+          <ul class="unstyled center list-circle-icons">
+            <li class=""><span class="fa fa-comments"></span></li>
+            <li class="red"><span class="fa fa-columns"></span></li>
+            <li class="green"><span class="fa fa-user"></span></li>
+            <li class="purple"><span class="fa fa-envelope-o"></span></li>
+          </ul>
+          <h1>Wide range of use cases</h1>
+          <p>Pagora is suitable for many types of businesses &amp; individuals with a wide range of use cases.</p>
+          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+        </div><!-- end carousel-caption -->
+      </div><!-- end container -->
+    </div><!-- end item -->
+    <div class="item active">
+      <div class="container">
+        <div class="carousel-caption">
+          <div class="row">
+            <div class="col-md-4 text-left">
+              <h1>Mobile Optimized</h1>
+              <p>Consumers are increasingly shopping on mobile, capture their sales. </p>
+              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+            </div><!-- end col -->
+            <div class="col-md-8">
+              <img src="images/mobile.png" alt="">
+            </div><!-- end col -->
+          </div><!-- end row -->
+        </div><!-- end carousel-caption -->
+      </div><!-- end container -->
+    </div><!-- end item -->
+  </div><!-- end carousel-inner -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+</div>
+<div class="clear"></div>
+<div class="container-wrapper">
+  <div class="container">
+    <div class="row margin-bottom-20">
+      <div class="col-md-12 center">
+        <h2>Features</h2>
+      </div><!-- end col -->
+    </div><!-- end row -->
+    <div class="row">
+      <div class="col-md-4 center">
+        <span class="fa fa-building-o fa-5x blue"></span>
+        <h3 class="margin-top-10">Simple implementation</h3>
+        <p>Using our simple API and widgets, implementation is as easy as 1-2-3!</p>
+        <p><a href="#" class="btn btn-lg btn-purple">Learn More</a></p>
+      </div><!-- end col -->
+      <div class="col-md-4 center">
+        <span class="fa fa-lock fa-5x"></span>
+        <h3 class="margin-top-10">Risk free</h3>
+        <p>Pagora assumes the risk of all invoice transactions so you always get paid.</p>
+        <p><a href="#" class="btn btn-lg btn-primary">Take Tour</a></p>
+      </div><!-- end col -->
+      <div class="col-md-4 center">
+        <span class="fa fa-bar-chart-o fa-5x red"></span>
+        <h3 class="margin-top-10">Increase sales</h3>
+        <p>Using Pagora you will reach consumers who prefer paying by invoice.</p>
+        <p><a href="#" class="btn btn-lg btn-success">Contact Us</a></p>
+      </div><!-- end col -->
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+<div class="clear"></div>
+<div class="container-wrapper container-wrapper-bridge">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 center">
+        <h2>For Merchants</h2>
+        <p>Pagora is suitable for many types of businesses. Find out more reasons why below:</p>
+        <div class="space-20"></div>
+        <ul class="features-icon-list">
+          <li>
+            <span class="fa fa-bar-chart-o"></span>
+            <h3>Increase Sales</h3>
+            <p>Using Pagora you will reach the many consumers who prefer paying by invoice.</p>
+          </li>
+          <li>
+            <span class="fa fa-building-o"></span>
+            <h3>Simple Implementation</h3>
+            <p>Using our simple API and embeddable widgets, implementation is as easy as 1-2-3!</p>
+          </li>
+          <li>
+            <span class="fa fa-lock"></span>
+            <h3>Risk Free Payments</h3>
+            <p>Pagora assumes the risk of all invoice transactions so you always get paid.</p>
+          </li>
+          <li>
+            <span class="fa fa-check-square-o"></span>
+            <h3>Trustworthy Payments</h3>
+            <p>Pagora is increasingly becoming synonymous with trust, increasing conversion.</p>
+          </li>
+        </ul>
+      </div><!-- end col -->
+      <div class="col-md-5 col-md-offset-2 center">
+        <h2>For Consumers</h2>
+        <p>Why are your consumers choosing Pagora more and more? Because the choice is simple.</p>
+        <div class="space-20"></div>
+        <ul class="features-icon-list">
+          <li>
+            <span class="fa fa-credit-card"></span>
+            <h3>Buy First, Pay Later</h3>
+            <p>To pay with Boleto or to pay with Credit Card? This can be decided later. Buying can happen now.</p>
+          </li>
+          <li>
+            <span class="fa fa-user"></span>
+            <h3>No Account Needed</h3>
+            <p>Tired of signing up for accounts? Perfect. We don't require you to, just check out like normal.</p>
+          </li>
+          <li>
+            <span class="fa fa-shield"></span>
+            <h3>No Risk Purchases</h3>
+            <p>New to ecommerce? Ensure you receive your products before paying. Our logo indicates trust!</p>
+          </li>
+          <li>
+            <span class="fa fa-smile-o"></span>
+            <h3>Great Experience</h3>
+            <p>With one click checkouts across the web and great customer service, shopping has never been easier.</p>
+          </li>
+        </ul>
+      </div><!-- end col -->
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+<div class="clear"></div>
+{% endblock %}
+

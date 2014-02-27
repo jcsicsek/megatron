@@ -19,6 +19,6 @@ module.exports.create = function(pgClient) {
           callback(error, result.rows[0]);
         });
       }
-    }
+    };
   return self;
 }

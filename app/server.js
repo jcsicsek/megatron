@@ -51,6 +51,7 @@ swig.setDefaults({ cache: false });
 
 app.use(express.json());
 app.use(express.urlencoded());
+app.use(express.cookieParser());
 app.use(express.session({ secret: 'poop' }));
 app.use(passport.initialize());
 app.use(passport.session());

@@ -14,9 +14,13 @@
    "devDependencies": {
      "supertest": "0.8.1",
      "mocha": "1.14.0"
-   }
-   ,
+   },
    "engines": {
      "node": "0.10.x"
+   },
+   "scripts": {
+     "start": "app/server.js",
+     "predeploy": "echo Pre deploy",
+     "postdeploy": "echo Post deploy"
    }
 }

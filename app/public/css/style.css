@@ -3658,6 +3658,176 @@ body.search-results h1 em {
   color: #fff;
   text-shadow: none;
 }
+.container-wrapper-orange,
+.docs-bg-image-orange {
+  background: #ffd65e;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(-45deg, #ff9900 0%, #ff7400 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #ff7400), color-stop(100%, #ff7400));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(-45deg, #ff9900 0%, #ff7400 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(-45deg, #ff9900 0%, #ff7400 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(-45deg, #ff9900 0%, #ff7400 100%);
+  /* IE10+ */
+
+  background: linear-gradient(135deg, #ff9900 0%, #ff7400 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9900', endColorstr='#ff7400', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+.container-wrapper-orange h1,
+.docs-bg-image-orange h1,
+.container-wrapper-orange p,
+.docs-bg-image-orange p {
+  color: #fff;
+  text-shadow: none;
+}
+.container-wrapper-dark-blue,
+.docs-bg-image-dark-blue {
+  background: #3b6bd3;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(-45deg, #3b6bd3 0%, #2c539e 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #3b6bd3), color-stop(100%, #2c539e));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(-45deg, #3b6bd3 0%, #2c539e 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(-45deg, #3b6bd3 0%, #2c539e 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(-45deg, #3b6bd3 0%, #2c539e 100%);
+  /* IE10+ */
+
+  background: linear-gradient(135deg, #3b6bd3 0%, #2c539e 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3b6bd3', endColorstr='#2c539e', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+.container-wrapper-dark-blue h1,
+.docs-bg-image-dark-blue h1,
+.container-wrapper-dark-blue p,
+.docs-bg-image-dark-blue p {
+  color: #fff;
+  text-shadow: none;
+}
+.container-wrapper-red,
+.docs-bg-image-red {
+  background: #c40000;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(-45deg, #c40000 0%, #840000 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #c40000), color-stop(100%, #840000));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(-45deg, #c40000 0%, #840000 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(-45deg, #c40000 0%, #840000 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(-45deg, #c40000 0%, #840000 100%);
+  /* IE10+ */
+
+  background: linear-gradient(135deg, #c40000 0%, #840000 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9900', endColorstr='#ff7400', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+.container-wrapper-red h1,
+.docs-bg-image-red h1,
+.container-wrapper-red p,
+.docs-bg-image-red p {
+  color: #fff;
+  text-shadow: none;
+}
+.container-wrapper-dark-green,
+.docs-bg-image-dark-green {
+  background: #627d4d;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(-45deg, #627d4d 0%, #1f3b08 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #627d4d), color-stop(100%, #1f3b08));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(-45deg, #627d4d 0%, #1f3b08 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(-45deg, #627d4d 0%, #1f3b08 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(-45deg, #627d4d 0%, #1f3b08 100%);
+  /* IE10+ */
+
+  background: linear-gradient(135deg, #627d4d 0%, #1f3b08 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#627d4d', endColorstr='#1f3b08', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+.container-wrapper-dark-green h1,
+.docs-bg-image-dark-green h1,
+.container-wrapper-dark-green p,
+.docs-bg-image-dark-green p {
+  color: #fff;
+  text-shadow: none;
+}
+.container-wrapper-grey-blue,
+.docs-bg-image-grey-blue {
+  background: #606c88;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(-45deg, #606c88 0%, #3f4c6b 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #606c88), color-stop(100%, #3f4c6b));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(-45deg, #606c88 0%, #3f4c6b 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(-45deg, #606c88 0%, #3f4c6b 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(-45deg, #606c88 0%, #3f4c6b 100%);
+  /* IE10+ */
+
+  background: linear-gradient(135deg, #606c88 0%, #3f4c6b 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#606c88', endColorstr='#3f4c6b', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+
+}
+.container-wrapper-grey-blue h1,
+.docs-bg-image-grey-blue h1,
+.container-wrapper-grey-blue p,
+.docs-bg-image-grey-blue p {
+  color: #fff;
+  text-shadow: none;
+}
 .container-wrapper-sky,
 .docs-bg-image-sky {
   background: url(../images/bg-3.jpg) top center no-repeat #ffffff;

@@ -17,10 +17,5 @@
    },
    "engines": {
      "node": "0.10.x"
-   },
-   "scripts": {
-     "start": "app/server.js",
-     "predeploy": "echo Pre deploy",
-     "postdeploy": "echo Post deploy"
    }
 }

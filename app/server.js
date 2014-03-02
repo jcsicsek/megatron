@@ -58,7 +58,7 @@ app.use(express.session({ secret: 'poop' }));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -93,6 +93,8 @@ app.get(urls.static.contact, staticController.contact);
 //users routes
 app.get(urls.users.login, usersController.loginPage);
 app.post(urls.users.login, usersController.login);
+app.get(urls.users.register, usersController.loginPage);
+app.post(urls.users.register, usersController.login);
 
 //error handlers
 app.use(function(req, res, next){

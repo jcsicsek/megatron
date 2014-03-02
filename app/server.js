@@ -11,6 +11,7 @@ var pgClient = new pg.Client(pgConnString);
 pgClient.connect();
 
 var usersController = require('./controllers/users').create(pgClient);
+var staticController = require('./controllers/static').create();
 var usersModel = require('./models/users').create(pgClient);
 var passwordHash = require('password-hash');
 
@@ -61,38 +62,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+//staticy-pages
+app.get('/', staticController.root);
+app.get('/about', staticController.about);
+app.get('/merchants', staticController.merchants);
+app.get('/consumers', staticController.consumers);
+app.get('/credit-lab', staticController.creditLab);
+app.get('/support', staticController.support);
+app.get('/contact', staticController.contact);
 
-app.get('/', function (req, res) {
-  res.render('front-end/index', { title: "tabb.io | Plug and Play Private Label Credit" });
-});
-
-app.get('/about', function (req, res) {
-  res.render('front-end/about', { title: "About the Team | tabb.io" });
-});
-
-app.get('/merchants', function (req, res) {
-  res.render('front-end/merchants', { title: "Merchants Guide to Private Label Credit | tabb.io" });
-});
-
-app.get('/consumers', function (req, res) {
-  res.render('front-end/consumers', { title: "Consumers Guide to Store Credit | tabb.io" });
-});
-
-app.get('/credit-lab', function (req, res) {
-  res.render('front-end/credit-lab', { title: "Private Label Credit Lab | tabb.io" });
-});
-
-app.get('/support', function (req, res) {
-  res.render('front-end/support', { title: "Support | tabb.io" });
-});
-
-app.get('/contact', function (req, res) {
-  res.render('front-end/contact', { title: "Contact Our Team | tabb.io" });
-});
-
+//users routes
 app.get('/users/login', usersController.loginPage);
 app.post('/users/login', usersController.login);
 
+//error handlers
 app.use(function(req, res, next){
     res.status(404).render('error-pages/404', {title: "Sorry, page not found | tabb.io" });
 });

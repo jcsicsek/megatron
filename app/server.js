@@ -62,18 +62,35 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 
+var urls = {
+  users: {
+    login: '/users/login',
+  },
+  static: {
+    root: '/',
+    about: '/about',
+    merchants: '/merchants',
+    consumers: '/consumers',
+    creditLab: '/credit-lab',
+    support: '/support',
+    contact: '/contact'
+  }
+}
+
+app.locals.urls = urls;
+
 //staticy-pages
-app.get('/', staticController.root);
-app.get('/about', staticController.about);
-app.get('/merchants', staticController.merchants);
-app.get('/consumers', staticController.consumers);
-app.get('/credit-lab', staticController.creditLab);
-app.get('/support', staticController.support);
-app.get('/contact', staticController.contact);
+app.get(urls.static.root, staticController.root);
+app.get(urls.static.about, staticController.about);
+app.get(urls.static.merchants, staticController.merchants);
+app.get(urls.static.consumers, staticController.consumers);
+app.get(urls.static.creditLab, staticController.creditLab);
+app.get(urls.static.support, staticController.support);
+app.get(urls.static.contact, staticController.contact);
 
 //users routes
-app.get('/users/login', usersController.loginPage);
-app.post('/users/login', usersController.login);
+app.get(urls.users.login, usersController.loginPage);
+app.post(urls.users.login, usersController.login);
 
 //error handlers
 app.use(function(req, res, next){

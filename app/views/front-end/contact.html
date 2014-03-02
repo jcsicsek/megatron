@@ -8,13 +8,13 @@
 
 {% block content %}
 <div class="container-wrapper">
-  <div class="google-map"><iframe width="770" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=13&amp;iwloc=near&amp;output=embed"></iframe></div>
+  <div class="google-map"><iframe width="770" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=15&amp;iwloc=near&amp;output=embed"></iframe></div>
 </div>
 <div class="container">
   <div class="row">
     <div class="col-md-8">
       <h2>Send us a message</h2>
-      <form class="form-horizontal form-contact">
+      <form class="form-horizontal form-contact" action="/contact-submit" method="post">
         <div class="form-group">
           <label class="control-label" for="inputName">Name</label>
           <div class="controls">
@@ -46,7 +46,7 @@
           </div><!-- end controls -->
         </div><!-- end form-group -->
         <div class="form-actions form-actions-no-bg">
-          <button type="submit" class="btn btn-lg btn-purple">Send Message</button>
+          <button type="submit" value="send" class="btn btn-lg btn-purple">Send Message</button>
         </div>
       </form>
     </div>

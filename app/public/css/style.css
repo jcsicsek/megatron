@@ -2850,6 +2850,28 @@ body.login-form .form-login .form-group-text {
 /******************************************************
   FOOTER
 ********************************************************/
+.container-wrapper-sub-footer {
+    margin-bottom: 0;
+    background: url(http://subtlepatterns.com/patterns/wavegrid.png) 0 0 repeat #f3f3f3;
+    text-shadow: none;
+}
+.container-wrapper-sub-footer h1,
+.container-wrapper-sub-footer h2,
+.container-wrapper-sub-footer h3,
+.container-wrapper-sub-footer h4,
+.container-wrapper-sub-footer h5,
+.container-wrapper-sub-footer p {
+    color: #333;
+}
+.container-wrapper-sub-footer h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+}
+.container-wrapper-sub-footer .row {
+    margin-bottom: 0;
+}
 footer {
   margin-bottom: 0;
   padding: 0;
@@ -3810,6 +3832,9 @@ footer .col-md-12 ul.list-inline li:last-child:after {
   }
   .container-wrapper-sub-footer h4 {
     font-size: 18px;
+    font-weight:600;
+    color:#888;
+    text-transform:uppercase;
   }
   body.login-form .container-login {
     margin-top: 50px;

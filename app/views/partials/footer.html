@@ -17,10 +17,10 @@
               <li><a href="/support">Support</a></li>
               <li><a href="/contact">Contact</a></li>
               {% if g.user.is_authenticated() %}
-              <li><a href="#">Logout</a></li>
+              <li><a href="/logout">Logout</a></li>
               {% else %}
-              <li><a href="#">Register</a></li>
-              <li><a href="#">Login</a></li>
+              <li><a href="/register">Register</a></li>
+              <li><a href="/login">Login</a></li>
               {% endif %}
             </ul>
             <p>© Copyright 2014. tabb.io.</p>

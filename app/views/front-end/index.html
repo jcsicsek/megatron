@@ -154,4 +154,44 @@
     </div><!-- end row -->
   </div><!-- end container -->
 </div>
+<div class="container-wrapper container-wrapper-sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="header">View Your Bill</h4>
+        <p>See statement, schedule payments, and other activities.</p>
+        <form class="form-horizontal form-contact" action="/contact-submit" method="post">
+        <div class="form-group">
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-7">
+                <input type="text" id="invoiceNumber" placeholder="Invoice Number" class="form-control">
+              </div><!-- end col -->
+            </div><!-- end row -->
+          </div><!-- end controls -->
+        </div><!-- end form-group -->
+        <div class="form-group">
+          <div class="controls">
+            <div class="row">
+              <div class="col-md-4">
+                <input type="text" id="ssnLastFour" placeholder="Last 4 of SSN" class="form-control">
+              </div><!-- end col -->
+              <div class="col-md-3 form-actions form-actions-no-bg">
+                <button type="submit" value="send" class="btn btn-success">View Invoice</button>
+              </div>
+            </div><!-- end row -->
+          </div><!-- end controls -->
+        </div><!-- end form-group -->
+        
+      </div>
+      <div class="col-md-6">
+        <h4 class="header">Create a tabb.io Account</h4>
+        <p>If you are a merchant or consumer who would like to view your complete transaction history, set up security criteria, pre-apply for transaction financing, and more, register for an account.</p>
+        <div class="form-actions form-actions-no-bg pull-right">
+          <button type="submit" value="send" class="btn btn-purple">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

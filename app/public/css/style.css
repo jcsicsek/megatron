@@ -58,6 +58,12 @@ body {
   UTILITIES
 ********************************************************/
 /* WIDTH */
+.width-200 {
+    width: 200px !important;
+}
+.width-300 {
+    width: 300px !important;
+}
 /* MARGIN */
 .margin-top-10 {
   margin-top: 10px !important;

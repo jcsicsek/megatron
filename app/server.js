@@ -65,6 +65,8 @@ app.use(passport.session());
 var urls = {
   users: {
     login: '/users/login',
+    logout: '/users/logout',
+    register: '/users/register'
   },
   static: {
     root: '/',

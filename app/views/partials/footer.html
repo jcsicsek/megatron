@@ -10,17 +10,17 @@
               <li><a href="https://www.linkedin.com/company/tabb-io" target="_blank" title="" data-rel="tooltip" data-toggle="tooltip" data-original-title="Follow us on Linked In"><span class="fa fa-linkedin"></span></a></li>
             </ul>
             <ul class="list-inline">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/merchants">Merchants</a></li>
-              <li><a href="/consumers">Consumers</a></li>
-              <li><a href="/support">Support</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href={{urls.static.root}}>Home</a></li>
+              <li><a href={{urls.static.about}}>About</a></li>
+              <li><a href={{urls.static.merchants}}>Merchants</a></li>
+              <li><a href={{urls.static.consumers}}>Consumers</a></li>
+              <li><a href={{urls.static.support}}>Support</a></li>
+              <li><a href={{urls.static.contact}}>Contact</a></li>
               {% if g.user.is_authenticated() %}
-              <li><a href="/logout">Logout</a></li>
+              <li><a href={{urls.users.logout}}>Logout</a></li>
               {% else %}
-              <li><a href="/register">Register</a></li>
-              <li><a href="/login">Login</a></li>
+              <li><a href={{urls.users.register}}>Register</a></li>
+              <li><a href={{urls.users.login}}>Login</a></li>
               {% endif %}
             </ul>
             <p>© Copyright 2014. tabb.io.</p>

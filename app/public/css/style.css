@@ -2698,6 +2698,12 @@ ul.popover-examples li {
   height: 580px;
   background: url(../images/hero-bg-3.jpg) 25% center no-repeat #ffffff;
 }
+.container-top.container-wrapper-consumer.carousel {
+  padding: 73px 0 0;
+  height: 580px;
+  background: url(https://klarna.com/sites/all/themes/klarna/images/custom/home-header.png) 25% center no-repeat #ffffff;
+}
+
 .container-top.container-wrapper-home.carousel .container {
   padding: 80px 0;
 }

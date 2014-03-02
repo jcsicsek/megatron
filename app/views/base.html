@@ -4,53 +4,58 @@
 {%- block html %}
   <head>
     {%- block head %}
-    <title>
-	    {% block title %}
-			{% if title %}
-				{{title}}
-			{% else %}
-				tabb.io | Private Label Credit
-			{% endif %}
-		{% endblock title %}
-	</title>
 
-    {%- block metas %}
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {%- endblock metas %}
+        <title>
+    	    {%- block title %}
+    			{% if title %}
+    				{{title}}
+    			{% else %}
+    				tabb.io | Private Label Credit
+    			{% endif %}
+    		{%- endblock title %}
+    	</title>
 
-    {%- block styles %}
-	    <!-- Bootstrap & Font Awesome-->
-	    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-	    <link rel="stylesheet" href="css/font-awesome.css">
-	    <!-- Custom Styles -->
-	    <link rel="stylesheet" href="css/style.css">
-	    <!--[if lt IE 9]>
-			<script src="js/html5shiv.js"></script>
-			<script src="js/respond.min.js"></script>
-		<![endif]-->
-    {%- endblock styles %}
+        {%- block metas %}
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {%- endblock metas %}
+
+        {%- block styles %}
+    	    <!-- Bootstrap & Font Awesome-->
+    	    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    	    <link rel="stylesheet" href="css/font-awesome.css">
+    	    <!-- Custom Styles -->
+    	    <link rel="stylesheet" href="css/style.css">
+    	    <!--[if lt IE 9]>
+    			<script src="js/html5shiv.js"></script>
+    			<script src="js/respond.min.js"></script>
+    		<![endif]-->
+        {%- endblock styles %}
 
     {%- endblock head %}
   </head>
 
   <body{% block body_attribs %}{% endblock body_attribs %}>
-    {% block body -%}
+    {%- block body -%}
         
-        {% block navbar %}
+        {%- block navbar %}
         	{% include "partials/nav.html" %}
         {%- endblock navbar %}
 
-        {% block flash_messages %}
+        {%- block flash_messages %}
         {%- endblock flash_messages %}
-        
-        {% block content -%}
-        {%- endblock content %}
 
-	    {% block footer %}
+        {%- block masthead -%}
+        {%- endblock masthead %}
+
+        {%- block content -%}
+        {%- endblock content %}
+        <div class="clear"></div>
+
+	    {%- block footer %}
         	{% include "partials/footer.html" %}
         {%- endblock footer %}
 
-        {% block scripts %}
+        {%- block scripts %}
         	<!-- Custom JS -->
 	        <script src="js/jquery.js"></script>
         	<!-- Bootstrap JS -->
@@ -62,4 +67,4 @@
 
 {%- endblock html %}
 </html>
-{% endblock doc -%}
+{%- endblock doc -%}

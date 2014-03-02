@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 
+{% block mast_attribs %}grey-blue{% endblock mast_attribs %}
+
+{%- block masttitle -%}
+    <h1>About</h1>
+{%- endblock masttitle %}
+
 {% block content %}
-<div class="clear"></div>
-<div class="container-wrapper container-top container-wrapper-grey-blue">
-  <div class="container container-top">
-    <div class="row">
-      <div class="col-md-12 center">
-        <h1>About</h1>
-      </div>
-    </div><!-- end row -->
-  </div><!-- end container -->
-</div>
 <div class="container">
   <div class="row">
     <div class="col-md-5">
@@ -98,23 +94,6 @@
         <a href="http://www.twitter.com/ricardoparro" target="_blank" class="btn btn-sm btn-default"><span class="fa fa-twitter"></span> @ricardoparro</a>
       </p>
     </div> <!-- end col --> 
-<!--    <div class="col-md-2 center">
-      <p><img class="width-150" src="images/people/adrian.png" alt=""></p>
-      <h3>Adrian Talapan</h3>
-      <p>Adrian is a Philadelphia resident from Romania and is the former CTO and Co-Founder of <a href="https://www.clarixinformatics.com/" target="_blank">Clarix</a>, a provider of clinical trial software which sold to Phase Forward.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success"><span class="fa fa-envelope"></span> Email Adrian</a>
-      </p>
-    </div> --> <!-- end col --> 
-<!--    <div class="col-md-2 center">
-      <p><img class="width-150" src="images/people/vik.png" alt=""></p>
-      <h3>Vik Paruchuri</h3>
-      <p>Vik is a Cambridge resident and a <a href="http://www.kaggle.com/users/19518/vik-paruchuri" target="_blank">Kaggle "Master"</a> (top 1% of users) and consults for EdX, VCP, and more. Formerly, Vik was a Foreign Services Officer in Guyana.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success margin-bottom-5"><span class="fa fa-envelope"></span> Email Vik</a>
-        <a href="http://www.twitter.com/vikparuchuri" target="_blank" class="btn btn-sm btn-default margin-bottom-5"><span class="fa fa-twitter"></span> @vikparuchuri</a>
-      </p>
-    </div> --> <!-- end col -->
     <div class="col-md-3 center">
       <p><img class="width-200" src="images/people/josh.png" alt=""></p>
       <h3>Josh Kuzon</h3>
@@ -126,5 +105,4 @@
     </div><!-- end col -->
   </div><!-- end row -->
 </div>
-<div class="clear"></div>
 {% endblock %}

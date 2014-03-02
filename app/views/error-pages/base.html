@@ -1,3 +1,27 @@
 {% extends "../base.html" %}
 
-	    
+{% block content %}
+<div class="clear"></div>
+<section class="slice bg-2" style="padding:90px 0;">
+  <div class="w-section inverse">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <div class="text-center">
+              	{% block top_error %}
+                {% endblock content %}
+                <span class="clearfix"></span>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</section>
+<section class="slice bg-3 margin-top-40 margin-bottom-40">
+  <div class="text-center p-15">
+  	{% block bottom_error %}
+    {% endblock bottom_error %}
+  </div>
+</section>
+<div class="clear"></div>
+{% endblock content %}

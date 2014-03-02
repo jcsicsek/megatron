@@ -1,16 +1,12 @@
 {% extends "base.html" %}
 
+{% block mast_attribs %}winter{% endblock mast_attribs %}
+
+{% block masttitle %}
+    <h1>Contact</h1>
+{% endblock masttitle %}
+
 {% block content %}
-<div class="clear"></div>
-<div class="container-wrapper container-top container-wrapper-winter">
-  <div class="container container-top">
-    <div class="row">
-      <div class="col-md-12 center">
-        <h1>Contact</h1>
-      </div>
-    </div><!-- end row -->
-  </div><!-- end container -->
-</div>
 <div class="container-wrapper">
   <div class="google-map"><iframe width="770" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=13&amp;iwloc=near&amp;output=embed"></iframe></div>
 </div>
@@ -70,5 +66,4 @@
     </div>
   </div><!-- end row -->
 </div>
-<div class="clear"></div>
 {% endblock %}

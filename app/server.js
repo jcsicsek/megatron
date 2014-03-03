@@ -93,8 +93,8 @@ app.get(urls.static.contact, staticController.contact);
 //users routes
 app.get(urls.users.login, usersController.loginPage);
 app.post(urls.users.login, usersController.login);
-app.get(urls.users.register, usersController.loginPage);
-app.post(urls.users.register, usersController.login);
+app.get(urls.users.register, usersController.registerPage);
+app.post(urls.users.register, usersController.register);
 
 //error handlers
 app.use(function(req, res, next){

@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container container-login">
       <div class="row">
-        <form class="form-login">
+        <form class="form-login" method="POST" action="{{urls.users.register}}">
           <a href={{urls.static.root}}><div class="logo"></div></a>
           <h1>Register</h1>
           <div class="form-group">
@@ -15,10 +15,10 @@
                 <div class="col-md-10">
                   <div class="btn-group col-md-12" data-toggle="buttons">
                     <label class="btn btn-grey col-md-6">
-                      <input type="radio" name="merchant" id="merchant"><span class="fa fa-building-o"></span> Merchant
+                      <input type="radio" name="role" id="merchant" value="merchant"><span class="fa fa-building-o"></span> Merchant
                     </label>
                     <label class="btn btn-grey col-md-6">
-                      <input type="radio" name="consumer" id="consumer"><span class="fa fa-users"></span> Consumer
+                      <input type="radio" name="role" id="consumer" value="consumer"><span class="fa fa-users"></span> Consumer
                     </label>
                   </div>
                 </div><!-- end col -->

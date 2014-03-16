@@ -14,13 +14,17 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Send us a message</h2>
+<<<<<<< HEAD
       <form class="form-horizontal form-contact" method="POST" action="{{urls.static.contact-form}}">
+=======
+      <form class="form-horizontal form-contact" action="/contact" method="post">
+>>>>>>> bd0a97906b094578933765d677249348c4647aef
         <div class="form-group">
           <label class="control-label" for="inputName">Name</label>
           <div class="controls">
             <div class="row">
               <div class="col-md-6">
-                <input type="text" id="inputName" placeholder="Name" class="form-control">
+                <input type="text" id="inputName" placeholder="Name" class="form-control" name="name">
               </div><!-- end col -->
             </div><!-- end row -->
           </div><!-- end controls -->
@@ -30,7 +34,7 @@
           <div class="controls">
             <div class="row">
               <div class="col-md-6">
-                <input type="text" id="inputEmail" placeholder="Email Address" class="form-control">
+                <input type="text" id="inputEmail" placeholder="Email Address" class="form-control" name="email">
               </div><!-- end col -->
             </div><!-- end row -->
           </div><!-- end controls -->
@@ -40,7 +44,7 @@
           <div class="controls">
             <div class="row">
               <div class="col-md-10">
-                <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10"></textarea>
+                <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message"></textarea>
               </div><!-- end col -->
             </div><!-- end row -->
           </div><!-- end controls -->

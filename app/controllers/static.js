@@ -1,3 +1,5 @@
+var mailer = require('../lib/mailer');
+
 module.exports.create = function() {
   var self = {   
     root: function(req, res) {
@@ -20,6 +22,11 @@ module.exports.create = function() {
     },
     contact: function(req, res) {
       res.render('front-end/contact', { title: "Contact Our Team | tabb.io" });     
+    },
+    sendContact: function(req, res) {
+      mailer.contactUs(req.body.email, req.body.name, req.body.message, function(error, response) {
+        res.send({status: "success", message: "Message Sent"});
+      });
     }
   };
   return self;

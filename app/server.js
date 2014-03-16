@@ -89,6 +89,7 @@ app.get(urls.static.consumers, staticController.consumers);
 app.get(urls.static.creditLab, staticController.creditLab);
 app.get(urls.static.support, staticController.support);
 app.get(urls.static.contact, staticController.contact);
+app.post(urls.static.contact, staticController.sendContact);
 
 //users routes
 app.get(urls.users.login, usersController.loginPage);

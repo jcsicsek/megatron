@@ -14,7 +14,8 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Send us a message</h2>
-      <form class="form-horizontal form-contact" method="POST" action="{{urls.static.contact}}">
+      <div id="contact-wrapper">
+      <form id="contact-form" class="form-horizontal form-contact" method="POST" action={{urls.static.contact}}>
         <div class="form-group">
           <label class="control-label" for="inputName">Name</label>
           <div class="controls">
@@ -46,9 +47,10 @@
           </div><!-- end controls -->
         </div><!-- end form-group -->
         <div class="form-actions form-actions-no-bg">
-          <button type="submit" value="send" class="btn btn-lg btn-purple">Send Message</button>
+          <button id ="contact" type="submit" value="send" class="btn btn-lg btn-purple">Send Message</button>
         </div>
       </form>
+      </div>
     </div>
     <div class="col-md-4 sidebar">
       <div class="widget">
@@ -67,3 +69,8 @@
   </div><!-- end row -->
 </div>
 {% endblock %}
+
+{%- block scripts %}
+    {% parent %}
+    <script src="/js/contact.js"></script>
+{%- endblock scripts %}

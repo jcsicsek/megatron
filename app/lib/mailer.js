@@ -1,6 +1,6 @@
 var mandrill = require('node-mandrill')('jBA7ACAJtD57C0-9Eu5eIg');
-var toAddress = "hello@tabb.io";
-var toName = "Contact Tabb.io";
+var toAddress = "frank@tabb.io";
+var toName = "Contact tabb.io";
 var fromAddress = "contact@tabb.io";
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     mandrill('/messages/send', {
         message: {
             to: [{email: toAddress, name: toName}],
-            from_email: 'info@tabb.io',
+            from_email: contactAddress,
             subject: "Contact Us form",
             text: "Customer Email: " + contactAddress + "\nCustomer Name: " + name + "\nCustomer Message:\n" + message
         }

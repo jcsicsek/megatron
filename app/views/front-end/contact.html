@@ -21,7 +21,7 @@
             <div class="controls">
               <div class="row">
                 <div class="col-md-6">
-                  <input type="text" id="inputName" placeholder="Name" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-minlength="2">
+                  <input type="text" id="inputName" placeholder="Name" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We like to know who we're talking to!">
                 </div><!-- end col -->
               </div><!-- end row -->
             </div><!-- end controls -->
@@ -31,7 +31,7 @@
             <div class="controls">
               <div class="row">
                 <div class="col-md-6">
-                  <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" name="email" data-parsley-trigger="change focusout blur" required>
+                  <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" name="email" data-parsley-trigger="change focusout blur" required data-parsley-type-message="We need a valid email to reply!" data-parsley-required-message="We need your email so that we can reply!">
                 </div><!-- end col -->
               </div><!-- end row -->
             </div><!-- end controls -->
@@ -41,7 +41,7 @@
             <div class="controls">
               <div class="row">
                 <div class="col-md-10">
-                  <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="8" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..."></textarea>
+                  <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="7" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..." data-parsley-required-message="We need to know what you're contacting us for!"></textarea>
                 </div><!-- end col -->
               </div><!-- end row -->
             </div><!-- end controls -->

@@ -15,41 +15,41 @@
     <div class="col-md-8">
       <h2>Send us a message</h2>
       <div id="contact-wrapper">
-      <form id="contact-form" class="form-horizontal form-contact" method="POST" action={{urls.static.contact}}>
-        <div class="form-group">
-          <label class="control-label" for="inputName">Name</label>
-          <div class="controls">
-            <div class="row">
-              <div class="col-md-6">
-                <input type="text" id="inputName" placeholder="Name" class="form-control" name="name">
-              </div><!-- end col -->
-            </div><!-- end row -->
-          </div><!-- end controls -->
-        </div><!-- end form-group -->
-        <div class="form-group">
-          <label class="control-label" for="inputEmail">Email Address</label>
-          <div class="controls">
-            <div class="row">
-              <div class="col-md-6">
-                <input type="text" id="inputEmail" placeholder="Email Address" class="form-control" name="email">
-              </div><!-- end col -->
-            </div><!-- end row -->
-          </div><!-- end controls -->
-        </div><!-- end form-group -->
-        <div class="form-group">
-          <label class="control-label" for="inputMessage">Message</label>
-          <div class="controls">
-            <div class="row">
-              <div class="col-md-10">
-                <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message"></textarea>
-              </div><!-- end col -->
-            </div><!-- end row -->
-          </div><!-- end controls -->
-        </div><!-- end form-group -->
-        <div class="form-actions form-actions-no-bg">
-          <button id ="contact" type="submit" value="send" class="btn btn-lg btn-purple">Send Message</button>
-        </div>
-      </form>
+        <form id="contact-form" class="form-horizontal form-contact" method="POST" action={{urls.static.contact}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+          <div id="name-group" class="form-group">
+            <label class="control-label" for="inputName">Name *</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" id="inputName" placeholder="Name" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-minlength="2">
+                </div><!-- end col -->
+              </div><!-- end row -->
+            </div><!-- end controls -->
+          </div><!-- end form-group -->
+          <div id="email-group" class="form-group">
+            <label class="control-label" for="inputEmail">Email Address *</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" name="email" data-parsley-trigger="change focusout blur" required>
+                </div><!-- end col -->
+              </div><!-- end row -->
+            </div><!-- end controls -->
+          </div><!-- end form-group -->
+          <div id="message-group" class="form-group">
+            <label class="control-label" for="inputMessage">Message *</label>
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-10">
+                  <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="8" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..."></textarea>
+                </div><!-- end col -->
+              </div><!-- end row -->
+            </div><!-- end controls -->
+          </div><!-- end form-group -->
+          <div class="form-actions form-actions-no-bg">
+            <button id ="submit" type="submit" value="send" class="btn btn-lg btn-purple disabled">Send Message</button>
+          </div>
+        </form>
       </div>
     </div>
     <div class="col-md-4 sidebar">
@@ -73,4 +73,5 @@
 {%- block scripts %}
     {% parent %}
     <script src="/js/contact.js"></script>
+    <script src="/parsley/parsley.min.js"></script>
 {%- endblock scripts %}

@@ -1,5 +1,5 @@
 var mandrill = require('node-mandrill')('jBA7ACAJtD57C0-9Eu5eIg');
-var toAddress = "frank@tabb.io";
+var toAddress = "hello@tabb.io";
 var toName = "Contact tabb.io";
 var fromAddress = "contact@tabb.io";
 

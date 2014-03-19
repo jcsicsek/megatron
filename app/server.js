@@ -106,6 +106,11 @@ app.use(function(req, res, next){
     res.status(500).render('error-pages/500', {title: "Sorry, page not found | tabb.io" });
 });
 
+//redirects
+app.get('/ts2014video', function(req, res) {
+  res.redirect('https://www.youtube.com/watch?v=s3lh7MxWCVc');
+});
+
 app.listen(port);
 console.log("app listening on port " + port);
 

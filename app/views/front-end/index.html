@@ -7,12 +7,12 @@
 <div id="myCarousel" class="container-wrapper container-top container-wrapper-home carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1" class=""></li>
-    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
-  </ol>
+<!--     <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+ -->  </ol>
   <div class="carousel-inner">
-    <div class="item">
+    <!-- <div class="item">
       <div class="container">
         <div class="carousel-caption">
           <div class="row">
@@ -20,15 +20,15 @@
               <h1>Tabb.io does the job</h1>
               <p class="lead">Tabb.io is the simplest way to reach new users, increase sales, and lower friction.</p>
               <p><a class="btn btn-lg btn-success" href="#">Try Now</a> <a class="btn btn-lg" href="#">View Features</a></p>
-            </div><!-- end col -->
-            <div class="col-md-6">
+            </div>--><!-- end col -->
+            <!--<div class="col-md-6">
               <img src="images/womanlaying.png" style="margin-top:-100px;" alt="">
-            </div><!-- end col -->
-          </div><!-- end row -->
-        </div><!-- end carousel-caption -->
-      </div><!-- end container -->
-    </div><!-- end item -->
-    <div class="item">
+            </div>--><!-- end col -->
+          <!--</div><!-- end row -->
+        <!--</div><!-- end carousel-caption -->
+      <!--</div><!-- end container -->
+    <!--</div> --><!-- end item -->
+    <div class="item active">
       <div class="container">
         <div class="carousel-caption">
           <ul class="unstyled center list-circle-icons">
@@ -39,20 +39,20 @@
           </ul>
           <h1>Wide range of use cases</h1>
           <p>Tabb.io is suitable for many types of businesses &amp; individuals with a wide range of use cases.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+          <p><a class="btn btn-lg btn-primary" href={{urls.static.contact}} role="button">Learn More</a></p>
         </div><!-- end carousel-caption -->
       </div><!-- end container -->
     </div><!-- end item -->
-    <div class="item active">
+    <div class="item">
       <div class="container">
         <div class="carousel-caption">
           <div class="row">
-            <div class="col-md-4 text-left">
+            <div class="col-md-4 col-md-offset-1 text-left">
               <h1>Mobile Optimized</h1>
               <p>Consumers are increasingly shopping on mobile, capture their sales. </p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn More</a></p>
+              <p><a class="btn btn-lg btn-primary" href={{urls.static.contact}} role="button">Learn More</a></p>
             </div><!-- end col -->
-            <div class="col-md-8">
+            <div class="col-md-7">
               <img src="images/mobile.png" alt="">
             </div><!-- end col -->
           </div><!-- end row -->
@@ -76,19 +76,19 @@
         <span class="fa fa-building-o fa-5x blue"></span>
         <h3 class="margin-top-10">Simple implementation</h3>
         <p>Using our simple API and widgets, implementation is as easy as 1-2-3!</p>
-        <p><a href="#" class="btn btn-lg btn-purple">Learn More</a></p>
+        <p><a href={{urls.static.contact}} class="btn btn-lg btn-purple">Learn More</a></p>
       </div><!-- end col -->
       <div class="col-md-4 center">
         <span class="fa fa-lock fa-5x"></span>
         <h3 class="margin-top-10">Risk free</h3>
         <p>Tabb.io assumes the risk of all invoice transactions so you always get paid.</p>
-        <p><a href="#" class="btn btn-lg btn-primary">Take Tour</a></p>
+        <p><a href={{urls.static.contact}} class="btn btn-lg btn-primary">Get Started</a></p>
       </div><!-- end col -->
       <div class="col-md-4 center">
         <span class="fa fa-bar-chart-o fa-5x red"></span>
         <h3 class="margin-top-10">Increase sales</h3>
         <p>Using tabb.io you will reach consumers who prefer paying by invoice.</p>
-        <p><a href="#" class="btn btn-lg btn-success">Contact Us</a></p>
+        <p><a href={{urls.static.contact}} class="btn btn-lg btn-success">Contact Us</a></p>
       </div><!-- end col -->
     </div><!-- end row -->
   </div><!-- end container -->
@@ -105,7 +105,7 @@
           <li>
             <span class="fa fa-bar-chart-o"></span>
             <h3>Increase Sales</h3>
-            <p>Using tabb.io you will reach the many consumers who prefer paying by invoice.</p>
+            <p>Using tabb.io you will reach the many consumers who prefer paying by store credit.</p>
           </li>
           <li>
             <span class="fa fa-building-o"></span>
@@ -115,12 +115,12 @@
           <li>
             <span class="fa fa-lock"></span>
             <h3>Risk Free Payments</h3>
-            <p>Tabb.io assumes the risk of all invoice transactions so you always get paid.</p>
+            <p>Tabb.io assumes the risk of all transactions so you get paid no matter what.</p>
           </li>
           <li>
             <span class="fa fa-check-square-o"></span>
             <h3>Trustworthy Payments</h3>
-            <p>Tabb.io is increasingly becoming synonymous with trust, increasing conversion.</p>
+            <p>Tabb.io allows you to whitelabel credit, turning your customers into loyal repeat buyers.</p>
           </li>
         </ul>
       </div><!-- end col -->
@@ -132,7 +132,7 @@
           <li>
             <span class="fa fa-credit-card"></span>
             <h3>Buy First, Pay Later</h3>
-            <p>To pay with Boleto or to pay with Credit Card? This can be decided later. Buying can happen now.</p>
+            <p>To pay with Cash or with Credit Card? This can be decided later. Buying can happen now.</p>
           </li>
           <li>
             <span class="fa fa-user"></span>
@@ -142,12 +142,12 @@
           <li>
             <span class="fa fa-shield"></span>
             <h3>No Risk Purchases</h3>
-            <p>New to ecommerce? Ensure you receive your products before paying. Our logo indicates trust!</p>
+            <p>Large purchase? Ensure you like your products before paying. Deferred payments help build trust!</p>
           </li>
           <li>
             <span class="fa fa-smile-o"></span>
             <h3>Great Experience</h3>
-            <p>With one click checkouts across the web and great customer service, shopping has never been easier.</p>
+            <p>With quick checkouts on the web and in-store and great service, shopping has never been easier.</p>
           </li>
         </ul>
       </div><!-- end col -->
@@ -177,7 +177,7 @@
                 <input type="text" id="ssnLastFour" placeholder="Last 4 of SSN" class="form-control">
               </div><!-- end col -->
               <div class="col-md-3 form-actions form-actions-no-bg">
-                <button type="submit" value="send" class="btn btn-success">View Invoice</button>
+                <button type="submit" value="send" class="btn btn-success disabled">View Invoice</button>
               </div>
             </div><!-- end row -->
           </div><!-- end controls -->
@@ -188,7 +188,7 @@
         <h4 class="header">Create a tabb.io Account</h4>
         <p>If you are a merchant or consumer who would like to view your complete transaction history, set up security criteria, pre-apply for transaction financing, and more, register for an account.</p>
         <div class="form-actions form-actions-no-bg pull-right">
-          <button type="submit" value="send" class="btn btn-purple">Register</button>
+          <button type="submit" value="send" class="btn btn-purple disabled">Register</button>
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
     "passport-local": "0.1.x",
     "password-hash": "1.2.x",
     "node-mandrill": "1.0.x",
-    "parsleyjs": "1.2.x"
+    "parsleyjs": "~2.0.0-rc2"
   },
   "devDependencies": {
     "supertest": "0.8.1",

@@ -2706,8 +2706,16 @@ ul.popover-examples li {
 .container-top.container-wrapper-home.carousel {
   padding: 73px 0 0;
   height: 580px;
-  background: url(../images/hero-bg-3.jpg) 25% center no-repeat #ffffff;
-}
+  background: #a3b6e8; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #a3b6e8 0%, #6fa4e4 51%, #115ab3 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #a3b6e8), color-stop(51%, #6fa4e4), color-stop(100%, #115ab3)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg, #a3b6e8 0%, #6fa4e4 51%, #115ab3 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg, #a3b6e8 0%, #6fa4e4 51%, #115ab3 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg, #a3b6e8 0%, #6fa4e4 51%, #115ab3 100%); /* IE10+ */
+  background: linear-gradient(135deg, #a3b6e8 0%, #6fa4e4 51%, #115ab3 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3b6e8', endColorstr='#115ab3', GradientType=1); /* IE6-9 fallback on horizontal gradient */
+/*  background: url(../images/hero-bg-3.jpg) 25% center no-repeat #ffffff;
+*/}
 .container-top.container-wrapper-consumer.carousel {
   padding: 73px 0 0;
   height: 580px;

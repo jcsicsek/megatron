@@ -83,19 +83,19 @@ app.locals.urls = urls;
 
 //staticy-pages
 app.get(urls.static.root, staticController.root);
-app.get(urls.static.about, staticController.about);
-app.get(urls.static.merchants, staticController.merchants);
-app.get(urls.static.consumers, staticController.consumers);
-app.get(urls.static.creditLab, staticController.creditLab);
-app.get(urls.static.support, staticController.support);
+// app.get(urls.static.about, staticController.about);
+// app.get(urls.static.merchants, staticController.merchants);
+// app.get(urls.static.consumers, staticController.consumers);
+// app.get(urls.static.creditLab, staticController.creditLab);
+// app.get(urls.static.support, staticController.support);
 app.get(urls.static.contact, staticController.contact);
 app.post(urls.static.contact, staticController.sendContact);
 
 //users routes
-app.get(urls.users.login, usersController.loginPage);
-app.post(urls.users.login, usersController.login);
-app.get(urls.users.register, usersController.registerPage);
-app.post(urls.users.register, usersController.register);
+// app.get(urls.users.login, usersController.loginPage);
+// app.post(urls.users.login, usersController.login);
+// app.get(urls.users.register, usersController.registerPage);
+// app.post(urls.users.register, usersController.register);
 
 //error handlers
 app.use(function(req, res, next){

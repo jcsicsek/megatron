@@ -50,6 +50,7 @@ passport.use(new LocalStrategy(
 var app = express();
 var path = require('path');
 
+
 //Setup Swig template engine
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
@@ -66,6 +67,25 @@ app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req, res, next) {
+  var user;
+  if (req.user) {
+    user = req.user;
+    user.is = {
+      authenticated: true
+    }
+    user.is[user.role] = true;
+  } else {
+    user = {
+      is: {
+        authenticated: false
+      }
+    }
+  }
+  res.locals.user = user;
+  next();
+});
 app.use(app.router);
 
 
@@ -91,6 +111,7 @@ var urls = {
 }
 
 app.locals.urls = urls;
+
 
 //staticy-pages
 app.get(urls.static.root, staticController.root);
@@ -122,24 +143,7 @@ app.use(function(req, res, next){
     res.status(500).render('error-pages/500', {title: "Sorry, page not found | tabb.io" });
 });
 
-app.use(function(req, res, next) {
-  var user;
-  if (req.user) {
-    user = req.user;
-    user.is = {
-      authenticated: true
-    }
-    user.is[user.role] = true;
-  } else {
-    user = {
-      is: {
-        authenticated: false
-      }
-    }
-  }
-  app.locals.user = user;
-  next();
-});
+
 
 //redirects
 app.get('/ts2014video', function(req, res) {

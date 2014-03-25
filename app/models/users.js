@@ -23,7 +23,7 @@ module.exports.create = function(pgClient) {
         });
       },
       get: function(userId, callback) {
-        var query = "SELECT * FROM users WHERE id=$1";
+        var query = "SELECT u.id, u.email, ur.role, u.active, u.password FROM users u JOIN user_roles ur ON u.id = ur.user_id WHERE u.id=$1";
         pgClient.query(query, [userId], function(error, result) {
           callback(error, result.rows[0]);
         });

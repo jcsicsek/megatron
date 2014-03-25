@@ -6,7 +6,7 @@
 {% block content %}
 <div id="myCarousel" class="container-wrapper container-top container-wrapper-home carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  {% if user.is.admin %}
+  {% if user.is.merchant %}
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1" class=""></li>
@@ -14,7 +14,7 @@
   </ol>
   {% endif %}
   <div class="carousel-inner">
-    {% if user.is.admin %}
+    {% if user.is.merchant %}
     <div class="item">
       <div class="container">
         <div class="carousel-caption">
@@ -35,19 +35,20 @@
     <div class="item active">
       <div class="container">
         <div class="carousel-caption">
+          <h1>White Label Credit API</h1>
+          <p>Tabb.io allows developers and merchants to easily enable consumer finance options in a wide range of use cases.</p>
+          <p class="margin-bottom-100"><a class="btn btn-lg btn-purple" href={{urls.static.contact}} role="button">Learn More</a></p>
           <ul class="unstyled center list-circle-icons">
             <li class=""><span class="fa fa-comments"></span></li>
             <li class="red"><span class="fa fa-columns"></span></li>
             <li class="green"><span class="fa fa-user"></span></li>
-            <li class="purple"><span class="fa fa-envelope-o"></span></li>
+            <li class="yellow"><span class="fa fa-envelope-o"></span></li>
           </ul>
-          <h1>White Label Credit API</h1>
-          <p>Tabb.io allows developers and merchants to easily enable consumer finance options in a wide range of use cases.</p>
-          <p><a class="btn btn-lg btn-purple" href={{urls.static.contact}} role="button">Learn More</a></p>
+          
         </div><!-- end carousel-caption -->
       </div><!-- end container -->
     </div><!-- end item -->
-    {% if user.is.admin %}
+    {% if user.is.merchant %}
     <div class="item">
       <div class="container">
         <div class="carousel-caption">
@@ -84,7 +85,7 @@
         <span class="fa fa-building-o fa-5x blue"></span>
         <h3 class="margin-top-10">Simple implementation</h3>
         <p>Using our simple API and widgets, implementation is as easy as 1-2-3!</p>
-        <p><a href={{urls.static.contact}} class="btn btn-lg btn-purple">Learn More</a></p>
+        <p><a href={{urls.static.contact}} class="btn btn-lg btn-warning">Learn More</a></p>
       </div><!-- end col -->
       <div class="col-md-4 center">
         <span class="fa fa-lock fa-5x"></span>

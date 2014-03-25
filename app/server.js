@@ -101,7 +101,6 @@ var urls = {
     about: '/about',
     merchants: '/merchants',
     consumers: '/consumers',
-    creditLab: '/credit-lab',
     support: '/support',
     contact: '/contact'
   },
@@ -118,7 +117,6 @@ app.get(urls.static.root, staticController.root);
 app.get(urls.static.about, staticController.about);
 app.get(urls.static.merchants, staticController.merchants);
 app.get(urls.static.consumers, staticController.consumers);
-app.get(urls.static.creditLab, staticController.creditLab);
 app.get(urls.static.support, staticController.support);
 app.get(urls.static.contact, staticController.contact);
 app.post(urls.static.contact, staticController.sendContact);

@@ -34,7 +34,9 @@ passport.use(new LocalStrategy(
         done(null, false, { message: 'Unknown user ' + email });
       } else if (!passwordHash.verify(password, user.password)) {
         done(null, false, { message: 'Invalid password' });
-      } else{
+      } else if (!user.active) {
+        done(null, false, {message: "User is not active" });
+      } else {
         done(null, user);    
       }
     });
@@ -110,6 +112,25 @@ app.use(function(req, res, next){
 
 app.use(function(req, res, next){
     res.status(500).render('error-pages/500', {title: "Sorry, page not found | tabb.io" });
+});
+
+app.use(function(req, res, next) {
+  var user;
+  if (req.user) {
+    user = req.user;
+    user.is = {
+      authenticated: true;
+    }
+    user.is[user.role] = true;
+  } else {
+    user = {
+      is: {
+        authenticated: false;
+      }
+    }
+  }
+  app.locals.user = user;
+  next();
 });
 
 //redirects

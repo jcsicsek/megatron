@@ -28,19 +28,22 @@ passport.deserializeUser(function(id, done) {
 
 passport.use(new LocalStrategy(
   function(email, password, done) {
-    usersModel.getByEmail(email, function(error, user) {
-      if (error) {
-        done(error);
-      } else if (!user) {
-        done(null, false, { message: 'Unknown user ' + email });
-      } else if (!passwordHash.verify(password, user.password)) {
-        done(null, false, { message: 'Invalid password' });
-      } else if (!user.active) {
-        done(null, false, {message: "User is not active" });
-      } else {
-        done(null, user);    
-      }
-    });
+    process.nextTick(function() {
+      console.log("Passport looking up user with email", email);
+      usersModel.getByEmail(email, function(error, user) {
+        if (error) {
+          done(error);
+        } else if (!user) {
+          done(null, false, { message: 'Unknown user ' + email });
+        } else if (!passwordHash.verify(password, user.password)) {
+          done(null, false, { message: 'Invalid password' });
+        } else if (!user.active) {
+          done(null, false, {message: "User is not active" });
+        } else {
+          done(null, user);    
+        }
+      });      
+    })
   }
 ));
 
@@ -60,16 +63,18 @@ app.use(express.cookieParser());
 app.use(express.session({ secret: 'poop' }));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(app.router);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(app.router);
+
 
 var urls = {
   users: {
     login: '/users/login',
     logout: '/users/logout',
-    register: '/users/register'
+    register: '/users/register',
+    whoami: '/users/whoami'
   },
   static: {
     root: '/',
@@ -99,9 +104,10 @@ app.post(urls.static.contact, staticController.sendContact);
 
 //users routes
 app.get(urls.users.login, usersController.loginPage);
-app.post(urls.users.login, usersController.login);
+app.post(urls.users.login, passport.authenticate('local', {failureRedirect: urls.users.login}), usersController.login);
 app.get(urls.users.register, usersController.registerPage);
 app.post(urls.users.register, usersController.register);
+app.get(urls.users.whoami, usersController.whoami);
 
 //loan routes
 app.post(urls.loans.apply, loansController.apply);

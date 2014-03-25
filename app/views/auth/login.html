@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container container-login">
       <div class="row">
-        <form class="form-login">
+        <form class="form-login" method="POST" action="{{urls.users.login}}">
           <a href={{urls.static.root}}><div class="logo"></div></a>
           <h1>Login</h1>
           <div class="form-group">
@@ -27,7 +27,7 @@
           </div><!-- end form group -->
           <div class="form-group">
             <div class="controls">
-              <input type="text" name ="email" class="form-control" placeholder="Your Email Address" mouseev="true" autocomplete="off" keyev="true" clickev="true">
+              <input type="text" name ="username" class="form-control" placeholder="Your Email Address" mouseev="true" autocomplete="off" keyev="true" clickev="true">
             </div><!-- end controls -->
           </div><!-- end form group -->
           <div class="form-group">

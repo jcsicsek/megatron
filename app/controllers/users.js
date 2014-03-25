@@ -7,7 +7,7 @@ module.exports.create = function(pgClient) {
       res.render('auth/login.html', {});
     },
     login: function(req, res) {
-      res.send(501, {status: "error", message: "Not implemented"});
+      res.redirect('/');
     },
     registerPage: function(req, res) {
       res.render('auth/register.html', {});
@@ -16,10 +16,15 @@ module.exports.create = function(pgClient) {
       if (req.body.password != req.body.password_conf) {
         res.send(400, {status: "error", message: "Password does not match password confirmation"});
       } else {
-        usersModel.create(req.body.email, passwordHash.generate(req.body.password), req.body.role, function(error, results) {
-          res.send({status: "success"});
+        usersModel.create(req.body.email, passwordHash.generate(req.body.password), req.body.role, function(error, user) {
+          req.login(user, function(error) {
+            res.send({status: "success"});          
+          })
         });     
       }
+    },
+    whoami: function(req, res) {
+      res.send(req.user);
     }
   };
   return self;

@@ -18,7 +18,7 @@
               <li><a href={{urls.static.support}}>Support</a></li>
               {% endif %}
               <li><a href={{urls.static.contact}}>Contact</a></li>
-              {% if g.user.is_authenticated() %}
+              {% if user.is.authenticated %}
               <li><a href={{urls.users.logout}}>Logout</a></li>
               {% else %}
               <!-- <li><a href={{urls.users.register}}>Register</a></li> -->

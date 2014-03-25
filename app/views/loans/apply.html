@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container container-login">
+      <div class="row">
+        <form class="form-login">
+          <a href={{urls.static.root}}><div class="logo"></div></a>
+          <h1>Loan Application</h1>
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                  </div>
+                </div>
+              </div><!-- end row -->
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="address_line_1" id="address_line_1" class="form-control input-sm" placeholder="Address Line 1">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="address_line_2" id="address_line_2" class="form-control input-sm" placeholder="Address Line 2">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="city" id="city" class="form-control input-sm" placeholder="City">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="state" id="state" class="form-control input-sm" placeholder="State">
+                  </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    <input type="text" name="zip_code" id="zip_code" class="form-control input-sm" placeholder="Zip Code">
+                  </div>
+                </div>
+              </div><!-- end row -->
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="country" id="country" class="form-control input-sm" placeholder="Country">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="phone" id="phone" class="form-control input-sm" placeholder="Phone Number">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="form-group">
+                    <input type="text" name="last4ssn" id="last4ssn" class="form-control input-sm" placeholder="Last 4 of SSN#">
+                  </div>
+                </div>
+              </div>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="form-group">
+            <div class="controls">
+              <button class="btn btn-lg btn-block btn-purple" type="submit">Apply for Loan</button>
+            </div><!-- end controls -->
+          </div><!-- end form group -->
+          <div class="space-50"></div>
+        </form>
+      </div><!-- end row -->
+    </div><!-- end container -->
+{% endblock content %}

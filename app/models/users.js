@@ -1,7 +1,7 @@
 module.exports.create = function(pgClient) {
   var self = {
       getByEmail: function(email, callback) {
-        var query = "SELECT * FROM users WHERE email=?";
+        var query = "SELECT u.id, u.email, ur.role, u.active FROM users u JOIN user_roles ur ON u.id = ur.user_id WHERE u.email=$1";
         pgClient.query(query, [email], function(error, result) {
           callback(error, result.rows[0]);
         });

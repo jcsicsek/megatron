@@ -104,8 +104,8 @@ app.get(urls.users.register, usersController.registerPage);
 app.post(urls.users.register, usersController.register);
 
 //loan routes
-app.get(urls.loans.apply, staticController.apply);
-app.post(urls.loans.apply, loansController.apply);
+app.get(urls.loans.apply, loansController.apply);
+app.post(urls.loans.apply, loansController.applyPage);
 
 //error handlers
 app.use(function(req, res, next){
@@ -121,13 +121,13 @@ app.use(function(req, res, next) {
   if (req.user) {
     user = req.user;
     user.is = {
-      authenticated: true;
+      authenticated: true
     }
     user.is[user.role] = true;
   } else {
     user = {
       is: {
-        authenticated: false;
+        authenticated: false
       }
     }
   }

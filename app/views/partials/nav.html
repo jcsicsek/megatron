@@ -12,7 +12,8 @@
           <div class="navbar-collapse collapse">
             <div class="nav-menu pull-left">
               <ul class="nav nav-pills">
-                <!-- <li><a href={{urls.static.about}}>About</a></li>
+                {% if user.is.admin %}
+                <li><a href={{urls.static.about}}>About</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Use tabb.io <b class="caret"></b></a>
                   <ul class="dropdown-menu">
@@ -22,11 +23,12 @@
                   </ul>
                 </li>
                 <li><a href={{urls.static.creditLab}}>Credit Lab</a></li>
-                <li><a href={{urls.static.support}}>Support</a></li> -->
+                <li><a href={{urls.static.support}}>Support</a></li>
+                {% endif %}
                 <li><a href={{urls.static.contact}}>Contact</a></li>
               </ul>
             </div><!-- end nav-menu -->
-            <!-- <div class="nav-menu pull-right">
+            <div class="nav-menu pull-right">
               <ul class="nav nav-pills">
                 <ul class="nav nav-user-options">
                   {% if user.is_authenticated() %}
@@ -44,12 +46,12 @@
                     </ul>
                   </li>
                   {% else %}
-                    <li class="register"><a href={{urls.users.register}} class="btn btn-purple">Register</a></li>
+                    <!-- <li class="register"><a href={{urls.users.register}} class="btn btn-purple">Register</a></li> -->
                     <li class="login"><a href={{urls.users.login}} class="btn btn-light">Login</a></li>
                   {% endif %}
                 </ul>
               </ul>
-            </div> --><!-- end nav-menu -->          
+            </div><!-- end nav-menu -->          
           </div><!-- end navbar-collapse -->
         </div><!-- end col-md-12 -->
       </div>

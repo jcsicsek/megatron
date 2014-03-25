@@ -11,17 +11,19 @@
             </ul>
             <ul class="list-inline">
               <li><a href={{urls.static.root}}>Home</a></li>
-              <!-- <li><a href={{urls.static.about}}>About</a></li>
+              {% if user.is.admin %}
+              <li><a href={{urls.static.about}}>About</a></li>
               <li><a href={{urls.static.merchants}}>Merchants</a></li>
               <li><a href={{urls.static.consumers}}>Consumers</a></li>
-              <li><a href={{urls.static.support}}>Support</a></li> -->
+              <li><a href={{urls.static.support}}>Support</a></li>
+              {% endif %}
               <li><a href={{urls.static.contact}}>Contact</a></li>
-              <!-- {% if g.user.is_authenticated() %}
+              {% if g.user.is_authenticated() %}
               <li><a href={{urls.users.logout}}>Logout</a></li>
               {% else %}
-              <li><a href={{urls.users.register}}>Register</a></li>
+              <!-- <li><a href={{urls.users.register}}>Register</a></li> -->
               <li><a href={{urls.users.login}}>Login</a></li>
-              {% endif %} -->
+              {% endif %}
             </ul>
             <p>© Copyright 2014. tabb.io.</p>
           </div><!-- end col -->

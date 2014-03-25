@@ -12,6 +12,7 @@ pgClient.connect();
 
 var usersController = require('./controllers/users').create(pgClient);
 var staticController = require('./controllers/static').create();
+var loansController = require('./controllers/loans').create();
 var usersModel = require('./models/users').create(pgClient);
 var passwordHash = require('password-hash');
 
@@ -78,6 +79,9 @@ var urls = {
     creditLab: '/credit-lab',
     support: '/support',
     contact: '/contact'
+  },
+  loans: {
+    apply: '/loans/apply'
   }
 }
 
@@ -98,6 +102,8 @@ app.post(urls.static.contact, staticController.sendContact);
 // app.post(urls.users.login, usersController.login);
 // app.get(urls.users.register, usersController.registerPage);
 // app.post(urls.users.register, usersController.register);
+
+app.post(urls.loans.apply, loansController.apply);
 
 //error handlers
 app.use(function(req, res, next){

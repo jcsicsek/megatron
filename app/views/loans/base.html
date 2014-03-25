@@ -7,3 +7,8 @@
 
 {%- block footer %}
 {%- endblock footer %}
+
+{%- block scripts %}
+    {% parent %}
+    <script src="/parsley/parsley.min.js"></script>
+{%- endblock scripts %}

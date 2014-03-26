@@ -22,7 +22,6 @@
                     <li><a href={{urls.static.consumers}}>I'm a Consumer</a></li>
                   </ul>
                 </li>
-                <li><a href={{urls.static.creditLab}}>Credit Lab</a></li>
                 <li><a href={{urls.static.support}}>Support</a></li>
                 {% endif %}
                 <li><a href={{urls.static.contact}}>Contact</a></li>
@@ -31,16 +30,23 @@
             <div class="nav-menu pull-right">
               <ul class="nav nav-pills">
                 <ul class="nav nav-user-options">
-                  {% if user.is_authenticated() %}
+                  {% if user.is.authenticated %}
                   <img src="{{user.avatar(32)}}" style="margin-right:-15px;">
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Email <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                       <li><a href="#">Account Settings</a></li>
                       <li class="divider"></li>
+                      {% if user.is.admin %}
                       <li><a href="#">Admin Portal</a></li>
                       <li><a href="#">Merchant Portal</a></li>
                       <li><a href="#">Consumer Portal</a></li>
+                      {% elif user.is.merchant %}
+                      <li><a href="#">Your Portal</a></li>
+                      {% elif user.is.consumer %}
+                      <li><a href="#">Your Portal</a></li>
+                      {% else %}
+                      {% endif %}
                       <li class="divider"></li>
                       <li><a href={{urls.users.logout}}>Logout</a></li>
                     </ul>

@@ -9,14 +9,14 @@ var nforce = require('nforce');
   //   mode: 'single' // optional, 'single' or 'multi' user mode, multi default
   // });
 
-  var org = nforce.createConnection({
-    clientId: '3MVG9A2kN3Bn17hsqUREORTK39yiKQO2pbNMRPkaPOfd5YUCHpqGT3glww8SJyg1hjIySrOSbGtTBTuwipKBc',
-    clientSecret: '8868983491936129853',
-    redirectUri: 'http://localhost:3000/oauth/_callback',
-    //apiVersion: 'v29.0',  // optional, defaults to current salesforce API version
-    environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
-    mode: 'single' // optional, 'single' or 'multi' user mode, multi default
-  });
+  // var org = nforce.createConnection({
+  //   clientId: '3MVG9A2kN3Bn17hsqUREORTK39yiKQO2pbNMRPkaPOfd5YUCHpqGT3glww8SJyg1hjIySrOSbGtTBTuwipKBc',
+  //   clientSecret: '8868983491936129853',
+  //   redirectUri: 'http://localhost:3000/oauth/_callback',
+  //   //apiVersion: 'v29.0',  // optional, defaults to current salesforce API version
+  //   environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+  //   mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+  // });
 
   var org = nforce.createConnection({
     clientId: '3MVG9JZ_r.QzrS7hBs6l2_L90yg2aBGSO72D1a_uGF0aPCkMIv7.Ef6Xaoow6oQVIi9.uu5VS7i1ULjWkMZ8y',

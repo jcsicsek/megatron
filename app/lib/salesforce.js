@@ -33,7 +33,7 @@ var nforce = require('nforce');
       org.authenticate({ username: 'jeff_trial@tabb.io', password: 'Welcome1', securityToken: 'l3o99Vq6Tdww3R9BCWV5mN3A3'}, function(error, response){
         console.log(error, response);
         // the oauth object was stored in the connection object
-        var loan = nforce.createSObject("Loan_Application__c", {
+        var loan = {Loan_Application__c: {
           attributes : {
             type : "payday__Loan_Application__c"
           },
@@ -109,9 +109,9 @@ var nforce = require('nforce');
             HomePhone : "7025553314",
             payday__Middle_Name__c :""
           }
-        });
+        }};
 
-        org.insert({ sobject: loan }, function(error, response){
+        org.apexRest({uri: 'services/apexrest/payday/insertLoanApplication', method: 'POST', body: JSON.stringify(loan) }, function(error, response){
           if(!error) console.log('It worked!');
           callback(error, response)
         });

@@ -4353,7 +4353,7 @@ textarea.parsley-error {
     opacity: 1;
 }
 
-li.parsley-required {
+li.parsley-required, li.parsley-length, li.parsley-type {
   font-size:12px;
   color:#a94442;
   float:left;

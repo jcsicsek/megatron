@@ -3,10 +3,16 @@ var passwordHash = require('password-hash');
 module.exports.create = function(pgClient) {
   var usersModel = require('../models/users').create(pgClient);
   var self = {   
-    loginPage: function(req, res) {
-      res.render('auth/login.html', {});
+    consumerloginPage: function(req, res) {
+      res.render('auth/consumerlogin.html', {});
     },
-    login: function(req, res) {
+    consumerlogin: function(req, res) {
+      res.redirect('/');
+    },
+    partnerloginPage: function(req, res) {
+      res.render('auth/partnerlogin.html', {});
+    },
+    partnerlogin: function(req, res) {
       res.redirect('/');
     },
     registerPage: function(req, res) {
@@ -18,7 +24,7 @@ module.exports.create = function(pgClient) {
       } else {
         usersModel.create(req.body.email, passwordHash.generate(req.body.password), req.body.role, function(error, user) {
           req.login(user, function(error) {
-            res.send({status: "success"});          
+            res.redirect('/');          
           })
         });     
       }

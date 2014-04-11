@@ -91,17 +91,21 @@ app.use(app.router);
 
 var urls = {
   users: {
-    login: '/users/login',
-    logout: '/users/logout',
-    register: '/users/register',
-    whoami: '/users/whoami'
+    logout: '/logout',
+    whoami: '/users/whoami',
+    consumerlogin: '/login',
+    register: '/register',
+    partnerlogin: '/partner/login'
+    // partnerregister: '/partner/register',
+    // adminlogin: '/admin/login',
+    // adminregister: '/admin/register'
   },
   static: {
     root: '/',
-    about: '/about',
-    merchants: '/merchants',
-    consumers: '/consumers',
+    company: '/company',
+    products: '/products',
     support: '/support',
+    faqs: '/faqs',
     contact: '/contact'
   },
   loans: {
@@ -114,16 +118,17 @@ app.locals.urls = urls;
 
 //staticy-pages
 app.get(urls.static.root, staticController.root);
-app.get(urls.static.about, staticController.about);
-app.get(urls.static.merchants, staticController.merchants);
-app.get(urls.static.consumers, staticController.consumers);
+app.get(urls.static.company, staticController.company);
+app.get(urls.static.products, staticController.products);
 app.get(urls.static.support, staticController.support);
+app.get(urls.static.faqs, staticController.faqs);
 app.get(urls.static.contact, staticController.contact);
 app.post(urls.static.contact, staticController.sendContact);
 
 //users routes
-app.get(urls.users.login, usersController.loginPage);
-app.post(urls.users.login, passport.authenticate('local', {failureRedirect: urls.users.login}), usersController.login);
+app.get(urls.users.consumerlogin, usersController.consumerloginPage);
+app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
+app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
 app.get(urls.users.register, usersController.registerPage);
 app.post(urls.users.register, usersController.register);
 app.get(urls.users.whoami, usersController.whoami);
@@ -140,8 +145,6 @@ app.use(function(req, res, next){
 app.use(function(req, res, next){
     res.status(500).render('error-pages/500', {title: "Sorry, page not found | tabb.io" });
 });
-
-
 
 //redirects
 app.get('/ts2014video', function(req, res) {

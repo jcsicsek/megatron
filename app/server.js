@@ -141,6 +141,7 @@ app.post(urls.static.contact, staticController.sendContact);
 app.get(urls.users.consumerlogin, usersController.consumerloginPage);
 app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
 app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
+app.get(urls.users.logout, usersController.logout);
 app.get(urls.users.register, usersController.registerPage);
 app.post(urls.users.register, usersController.register);
 app.get(urls.users.whoami, usersController.whoami);

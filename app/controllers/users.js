@@ -9,6 +9,10 @@ module.exports.create = function(pgClient) {
     consumerlogin: function(req, res) {
       res.redirect('/');
     },
+    logout: function(req, res) {
+      req.logout();
+      res.redirect('/');
+    },
     partnerloginPage: function(req, res) {
       res.render('auth/partnerlogin.html', {});
     },

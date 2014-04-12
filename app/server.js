@@ -88,8 +88,8 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  res.locals.active_page = req.path;
-  next();
+ res.locals.active_page = req.path;
+ next();
 });
 
 app.use(app.router);

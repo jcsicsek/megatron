@@ -53,7 +53,7 @@ module.exports = {
             id: record._fields.id,
             loanAmount: record._fields.payday__loan_amount__c,
             createdDate: record._fields.createddate
-          }}));
+          }}))
         }
         else {
           console.log("Error retreiving records from Salesforce!");

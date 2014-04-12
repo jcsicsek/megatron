@@ -86,10 +86,12 @@ app.use(function(req, res, next) {
   res.locals.user = user;
   next();
 });
+
 app.use(function(req, res, next) {
  res.locals.active_page = req.path;
  next();
 });
+
 app.use(app.router);
 
 

@@ -1,53 +1,57 @@
 {% extends "base.html" %}
 
+{% set fake_data = [
+  {id: 1834, merchant: 'Best Buy', amount: 234.40, outstanding: 56.23, due: 25.00, date: "April 24, 2014"},
+  {id: 2378, merchant: 'Amazon', amount: 3843.10, outstanding: 772.34, due: 36.00, date: "April 27, 2014"},
+  {id: 3945, merchant: 'Total Hockey', amount: 834.23, outstanding: 124.84, due: 52.00, date: "April 27, 2014"},
+  {id: 1024, merchant: 'Ties.com', amount: 124.44, outstanding: 16.76, due: 23.00, date: "May 24, 2014"},
+  {id: 9384, merchant: 'Fire and Ice', amount: 89.99, outstanding: 44.93, due: 10.00, date: "May 14, 2014"},
+  {id: 8374, merchant: 'ShoppersChoice', amount: 294.52, outstanding: 294.52, due: 65.00, date: "August 10, 2014"},
+  {id: 7364, merchant: 'EmpireCovers', amount: 232.23, outstanding: 232.23, due: 75.00, date: "August 15, 2014"}
+] %}
+
 {% block mast_attribs %}{% endblock mast_attribs %}
 
 {% block masttitle %}
-    <h1>Transaction Overview</h1>
+<h1>Transaction Overview</h1>
 {% endblock masttitle %}
 
 {% block content %}
 <div class="clear"></div>
 <div class="container">
-    <div class="row">
-        <div class="panel panel-primary filterable">
-            <div class="panel-heading">
-                <h3 class="panel-title">Users</h3>
-                <div class="pull-right">
-                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
-                </div>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr class="filters">
-                        <th><input type="text" class="form-control" placeholder="#" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="First Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Last Name" disabled></th>
-                        <th><input type="text" class="form-control" placeholder="Username" disabled></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
+  <div class="row">
+    <div class="panel panel-primary filterable">
+      <div class="panel-heading">
+        <h3 class="panel-title">Transactions</h3>
+        <div class="pull-right">
+          <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
         </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr class="filters">
+            <th><input type="text" class="form-control" placeholder="Invoice #" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Merchant" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Invoice Amount" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Outstanding Balance" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Payment Due" disabled></th>
+            <th><input type="text" class="form-control" placeholder="Payment Date" disabled></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in fake_data %}
+            <tr>
+              <td>{{ item.id }}</td>
+              <td>{{ item.merchant }}</td>
+              <td>{{ item.amount }}</td>
+              <td>{{ item.outstanding }}</td>
+              <td>{{ item.due }}</td>
+              <td>{{ item.date }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 {% endblock %}

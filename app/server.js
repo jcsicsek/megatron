@@ -11,6 +11,7 @@ var pgClient = new pg.Client(pgConnString);
 pgClient.connect();
 
 var usersController = require('./controllers/users').create(pgClient);
+var consumersController = require('./controllers/consumers').create();
 var staticController = require('./controllers/static').create();
 var loansController = require('./controllers/loans').create();
 var usersModel = require('./models/users').create(pgClient);
@@ -147,7 +148,7 @@ app.post(urls.loans.apply, loansController.apply);
 app.get(urls.loans.apply, loansController.applyPage);
 
 //consumer routes
-app.get(urls.consumers.uoverview, staticController.uoverview);
+app.get(urls.consumers.uoverview, consumersController.uoverview);
 
 //error handlers
 app.use(function(req, res, next){

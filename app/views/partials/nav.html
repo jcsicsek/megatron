@@ -1,9 +1,9 @@
 {% set navigation_bar = [
-    {url: urls.static.company, text: 'About'},
-    {url: urls.static.products, text: 'Products'},
-    {url: urls.static.support, text: 'Support'},
-    {url: urls.static.faqs, text: 'FAQs'},
-    {url: urls.static.contact, text: 'Contact'}
+  {url: urls.static.company, text: 'About'},
+  {url: urls.static.products, text: 'Products'},
+  {url: urls.static.support, text: 'Support'},
+  {url: urls.static.faqs, text: 'FAQs'},
+  {url: urls.static.contact, text: 'Contact'}
 ] %}
 
 <div class="navbar navbar-inverse navbar-fixed-top affix-top" id="navbar" role="navigation">
@@ -36,13 +36,13 @@
                       <li><a href="#">Account Settings</a></li>
                       <li class="divider"></li>
                       {% if user.is.admin %}
-                        <li><a href="#">Admin Portal</a></li>
-                        <li><a href="#">Merchant Portal</a></li>
-                        <li><a href="#">Consumer Portal</a></li>
+                      <li><a href="#">Admin Portal</a></li>
+                      <li><a href="#">Merchant Portal</a></li>
+                      <li><a href={{urls.consumers.uoverview}}>Consumer Portal</a></li>
                       {% elif user.is.merchant %}
-                        <li><a href="#">Your Portal</a></li>
+                      <li><a href="#">Your Portal</a></li>
                       {% elif user.is.consumer %}
-                        <li><a href="#">Your Portal</a></li>
+                      <li><a href="#">Your Portal</a></li>
                       {% else %}
                       {% endif %}
                       <li class="divider"></li>
@@ -50,7 +50,7 @@
                     </ul>
                   </li>
                   {% else %}
-                    <li class="login"><a href={{urls.users.consumerlogin}} class="btn btn-light">Login</a></li>
+                  <li class="login"><a href={{urls.users.consumerlogin}} class="btn btn-light">Login</a></li>
                   {% endif %}
                 </ul>
               </ul>
@@ -61,4 +61,3 @@
     </div>
   </div>
 </div>
-

@@ -1,0 +1,8 @@
+module.exports.create = function() {
+  var self = {   
+    uoverview: function(req, res) {
+      res.render('consumer/overview', { title: "Transaction Overview | tabb.io" });
+    }
+  };
+  return self;
+}

@@ -114,6 +114,9 @@ var urls = {
   },
   loans: {
     apply: '/loans/apply'
+  },
+  consumers: {
+    uoverview: '/u'
   }
 }
 
@@ -140,6 +143,9 @@ app.get(urls.users.whoami, usersController.whoami);
 //loan routes
 app.post(urls.loans.apply, loansController.apply);
 app.get(urls.loans.apply, loansController.applyPage);
+
+//consumer routes
+app.get(urls.consumers.uoverview, staticController.uoverview);
 
 //error handlers
 app.use(function(req, res, next){

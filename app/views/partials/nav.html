@@ -36,13 +36,13 @@
                       <li><a href="#">Account Settings</a></li>
                       <li class="divider"></li>
                       {% if user.is.admin %}
-                      <li><a href="#">Admin Portal</a></li>
-                      <li><a href="#">Merchant Portal</a></li>
-                      <li><a href="#">Consumer Portal</a></li>
+                        <li><a href="#">Admin Portal</a></li>
+                        <li><a href="#">Merchant Portal</a></li>
+                        <li><a href="#">Consumer Portal</a></li>
                       {% elif user.is.merchant %}
-                      <li><a href="#">Your Portal</a></li>
+                        <li><a href="#">Your Portal</a></li>
                       {% elif user.is.consumer %}
-                      <li><a href="#">Your Portal</a></li>
+                        <li><a href="#">Your Portal</a></li>
                       {% else %}
                       {% endif %}
                       <li class="divider"></li>
@@ -50,7 +50,6 @@
                     </ul>
                   </li>
                   {% else %}
-                    <!-- <li class="register"><a href={{urls.users.register}} class="btn btn-purple">Register</a></li> -->
                     <li class="login"><a href={{urls.users.consumerlogin}} class="btn btn-light">Login</a></li>
                   {% endif %}
                 </ul>

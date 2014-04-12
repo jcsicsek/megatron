@@ -6,15 +6,12 @@
 {% block content %}
 <div id="myCarousel" class="container-wrapper container-top container-wrapper-home carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  {% if user.is.merchant %}
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1" class=""></li>
     <li data-target="#myCarousel" data-slide-to="2" class=""></li>
   </ol>
-  {% endif %}
   <div class="carousel-inner">
-    {% if user.is.merchant %}
     <div class="item">
       <div class="container">
         <div class="carousel-caption">
@@ -31,7 +28,6 @@
         </div><!-- end carousel-caption -->
       </div><!-- end container -->
     </div><!-- end item -->
-    {% endif %}
     <div class="item active">
       <div class="container">
         <div class="carousel-caption">
@@ -48,7 +44,6 @@
         </div><!-- end carousel-caption -->
       </div><!-- end container -->
     </div><!-- end item -->
-    {% if user.is.merchant %}
     <div class="item">
       <div class="container">
         <div class="carousel-caption">
@@ -65,12 +60,9 @@
         </div><!-- end carousel-caption -->
       </div><!-- end container -->
     </div><!-- end item -->
-    {% endif %}
   </div><!-- end carousel-inner -->
-  {% if user.is.admin %}
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
   <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="fa fa-chevron-right"></span></a>
-  {% endif %}
 </div>
 <div class="clear"></div>
 <div class="container-wrapper">
@@ -103,7 +95,6 @@
   </div><!-- end container -->
 </div>
 <div class="clear"></div>
-{% if user.is.admin %}
 <div class="container-wrapper container-wrapper-bridge">
   <div class="container">
     <div class="row">
@@ -175,7 +166,7 @@
           <div class="controls">
             <div class="row">
               <div class="col-md-7">
-                <input type="text" id="invoiceNumber" placeholder="Invoice Number" class="form-control">
+                <input type="text" id="phone" placeholder="Phone Number" class="form-control">
               </div><!-- end col -->
             </div><!-- end row -->
           </div><!-- end controls -->
@@ -184,7 +175,7 @@
           <div class="controls">
             <div class="row">
               <div class="col-md-4">
-                <input type="text" id="ssnLastFour" placeholder="Last 4 of SSN" class="form-control">
+                <input type="text" id="pin-code" placeholder="Pin Number" class="form-control">
               </div><!-- end col -->
               <div class="col-md-3 form-actions form-actions-no-bg">
                 <button type="submit" value="send" class="btn btn-success disabled">View Invoice</button>
@@ -202,6 +193,5 @@
       </div>
     </div>
   </div>
-  {% endif %}
 </div>
 {% endblock %}

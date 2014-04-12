@@ -68,8 +68,14 @@ body {
 .margin-top-20 {
   margin-top: 10px !important;
 }
+.margin-top-50 {
+  margin-top: 50px !important;
+}
 .margin-bottom-20 {
   margin-bottom: 20px !important;
+}
+.margin-bottom-50 {
+  margin-bottom: 50px !important;
 }
 .margin-bottom-100 {
   margin-bottom: 100px !important;

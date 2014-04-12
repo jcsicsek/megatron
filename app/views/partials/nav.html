@@ -1,3 +1,11 @@
+{% set navigation_bar = [
+    {url: urls.static.company, text: 'About'},
+    {url: urls.static.products, text: 'Products'},
+    {url: urls.static.support, text: 'Support'},
+    {url: urls.static.faqs, text: 'FAQs'},
+    {url: urls.static.contact, text: 'Contact'}
+] %}
+
 <div class="navbar navbar-inverse navbar-fixed-top affix-top" id="navbar" role="navigation">
   <div class="navbar-inner">
     <div class="container">
@@ -12,13 +20,9 @@
           <div class="navbar-collapse collapse">
             <div class="nav-menu pull-left">
               <ul class="nav nav-pills">
-                {% if user.is.admin %}
-                <li><a href={{urls.static.company}}>About</a></li>
-                <li><a href={{urls.static.products}}>Products</a></li>
-                <li><a href={{urls.static.support}}>Support</a></li>
-                <li><a href={{urls.static.faqs}}>FAQ's</a></li>
-                {% endif %}
-                <li><a href={{urls.static.contact}}>Contact</a></li>
+                {% for link in navigation_bar %}
+                <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
+                {% endfor %}
               </ul>
             </div><!-- end nav-menu -->
             <div class="nav-menu pull-right">

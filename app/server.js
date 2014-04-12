@@ -119,9 +119,9 @@ var urls = {
     apply: '/loans/apply'
   },
   consumers: {
-    uoverview: '/u',
-    upay: '/u/pay',
-    ustatements: '/u/statements'
+    ustatementsummary: '/u',
+    ustatementdetail: '/u/detail',
+    upay: '/u/pay'
   }
 }
 
@@ -151,9 +151,9 @@ app.post(urls.loans.apply, loansController.apply);
 app.get(urls.loans.apply, loansController.applyPage);
 
 //consumer routes
-app.get(urls.consumers.uoverview, consumersController.uoverview);
+app.get(urls.consumers.ustatementsummary, consumersController.ustatementsummary);
+app.get(urls.consumers.ustatementdetail, consumersController.ustatementdetail);
 app.get(urls.consumers.upay, consumersController.upay);
-app.get(urls.consumers.ustatements, consumersController.ustatements);
 
 //error handlers
 app.use(function(req, res, next){

@@ -3,27 +3,25 @@
 {% block mast_attribs %}{% endblock mast_attribs %}
 
 {% block masttitle %}
-<h1>Pay Your Bill</h1>
+<h1>Invoice #123456789</h1>
 {% endblock masttitle %}
 
 {% block content %}
 <div class="col-md-10 col-md-offset-1">
 	<div class="row">
 		<div class="payment-container">
+          <!--Invoice Header-->
+    <div class="row invoice-header">
+      <div class="col-xs-6">
+       <img src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
+      </div>
+      <div class="col-xs-6 invoice-numb">
+        #123456789
+      </div>
+    </div>
+    <!--End Invoice Header-->
       <div class="card-container new-card">
         <form id="payment_form" role="form" action="#" method="post" class="styled-form form-horizontal">    
-          <div class="form-group form-inline choose-payment-type">
-            <label class="control-label" for="payment_type">
-              Choose an invoice
-            </label>
-            <div class="controls">
-              <div class="input-control">
-                <select class="form-control" data-placeholder="" data-value="" id="" name="invoice_number">
-                  <option value="015345">015345</option><option value="022323">022323</option><option value="035744">035744</option>
-                </select>
-              </div>
-            </div>
-          </div>
           <div class="form-group form-inline choose-payment-type">
             <label class="control-label" for="payment_type">
               Choose a method
@@ -32,11 +30,11 @@
               <ul class="radio-group form-input">
                 <li>
                   <input checked="" id="payment_cc" class="payment_type" name="payment_type" type="radio" value="credit_card">
-                  <label for="payment_cc">Credit / Debit Card</label>
+                  <label for="payment_cc">Payment Card</label>
                 </li>
                 <li>
                   <input id="payment_ach" class="payment_type" name="payment_type" type="radio" value="ach">
-                  <label for="payment_ach">ACH/Wire Transfer</label>
+                  <label for="payment_ach">ACH Transfer</label>
                 </li>
               </ul>
             </div>
@@ -87,24 +85,20 @@
                 <input class="form-control" id="" name="payment_amount" placeholder="" type="text" value="">
               </div>
             </div>
+<!--             <div class="form-group form-inline ">
+              <label class="control-label" for="payment_date">Payment Date</label>
+              <div class="controls">
+                <input class="form-control" id="" name="payment_date" placeholder="" type="text" value="">
+              </div>
+            </div> -->
             <div class="form-actions controls ">
-              <button name="submit" type="submit" class="btn btn-primary">Save</button>
+              <button name="submit" type="submit" class="btn btn-primary btn-lg">Pay Now</button>
             </div>
           </div>
         </form>
         <div class="ach-info payment-block ach">
-          <p>Please put your full name, and invoice number in the memo section of your wire.</p>
-          <p><strong>Beneficiary</strong><br>
-            Tabb, Inc<br>
-            123 Main St<br>
-            Philadelphia, PA 19118</p>
-          <p><strong>Bank</strong><br>
-            Silicon Valley Bank<br>
-            643 Park Avenue<br>
-            New York, NY 10017</p>
-          <p><strong>Account #</strong> 88374734873<br>
-            <strong>ABA/Routing #</strong> 34343434<br>
-            <strong>SWIFT:</strong> SVB343</p>
+          <P>Account number + Routing number</p>
+          <p>Show a picture of check</p>
         </div>
       </div>
     </div>

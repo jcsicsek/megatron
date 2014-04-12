@@ -1574,6 +1574,7 @@ label.checkbox.inline {
 }
 .styled-form .form-search label, .styled-form .form-inline label, .styled-form .form-search .btn-group, .styled-form .form-inline .btn-group {
   display: inline-block;
+  margin-right: 20px;
 }
 .styled-form ul.form-input li {
   display: inline-block;
@@ -1946,8 +1947,8 @@ ul.features-icon-list li:last-child {
   padding: 9px 12px;
   font-family: 'Raleway', Helvetica, Arial, sans-serif;
   line-height: 1.2;
-  color: #fff;
-  background: #7461aa;
+  color: #333;
+  background: #eee;
   border: none;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -1957,6 +1958,7 @@ ul.features-icon-list li:last-child {
 .pagination-wrapper ul.pagination li a:hover,
 .pagination-wrapper ul.pagination li a:focus {
   background: #513d8b;
+  color: #fff;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -o-border-radius: 0;
@@ -4364,7 +4366,7 @@ h1.font-lg {
 
 .hero-widget { text-align: center; padding-top: 20px; padding-bottom: 20px; }
 .hero-widget .icon { display: block; font-size: 96px; line-height: 96px; margin-bottom: 10px; text-align: center; }
-.hero-widget var { display: block; height: 64px; font-size: 64px; line-height: 64px; font-style: normal; }
+.hero-widget var { display: block; height: 64px; font-size: 24px; line-height: 64px; font-style: normal; }
 .hero-widget label { font-size: 17px; }
 .hero-widget .options { margin-top: 10px; }
 
@@ -4438,3 +4440,69 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 .filterable .filters input[disabled]:-ms-input-placeholder {
     color: #333;
 }
+
+/* ---------- Invoice ------------ */
+
+.invoice-header {
+    color: #555;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+.invoice-header .invoice-numb {
+    font-size: 16px;
+    text-align: right;
+}
+.invoice-info {
+    margin-bottom: 10px;
+}
+.tag-box {
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 30px;
+}
+.tag-box-v3 {
+    border: 2px solid #eee;
+}
+.tag-box-v6 {
+    background: #fafafa;
+    border: solid 1px #eee;
+}
+.invoice-info h2 {
+    color: #555;
+    font-size: 18px;
+}
+.tag-box h2 {
+    font-size: 20px;
+    line-height: 25px;
+}
+.tag-box p {
+    margin-bottom: 0;
+}
+.panel-grey {
+    border-color: #95a5a6;
+}
+.panel-grey > .panel-heading {
+    background: #95a5a6;
+    color: #fff;
+    padding: 5px 15px;
+}
+.invoice-total-info {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

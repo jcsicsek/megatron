@@ -1,0 +1,36 @@
+{% extends "../base.html" %}
+
+{%- block masthead -%}
+<div class="container-wrapper container-top container-wrapper-{% block mast_attribs %}{% endblock mast_attribs %}">
+  <div class="container container-admin container-top">
+    <div class="row">
+      <div class="col-md-12 center">
+        {%- block masttitle -%}
+        {%- endblock masttitle %}
+      </div>
+    </div><!-- end row -->
+  </div><!-- end container -->
+</div>
+{%- endblock masthead %}
+
+{% block manage_sidebar %}
+<div class="container container-admin">
+  <div class="row">
+    <div class="col-md-1 bs-docs-nav-wrapper">
+      <ul class="nav nav-pills nav-stacked bs-reports-nav affix-top" data-spy="affix" data-offset-top="200" data-offset-bottom="50">
+        {% for link in user_nav %}
+        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endblock manage_sidebar %}
+
+    {% block content %}
+  </div>
+</div>   
+{% endblock content %}
+
+{%- block scripts %}
+{% parent %}
+<script src="/js/table.js"></script>
+{%- endblock scripts %}

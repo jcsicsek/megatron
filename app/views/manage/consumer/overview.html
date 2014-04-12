@@ -17,8 +17,7 @@
 {% endblock masttitle %}
 
 {% block content %}
-<div class="clear"></div>
-<div class="container">
+<div class="col-md-10 col-md-offset-1">
   <div class="row">
     <div class="panel panel-primary filterable">
       <div class="panel-heading">
@@ -41,11 +40,11 @@
         <tbody>
           {% for item in fake_data %}
             <tr>
-              <td>{{ item.id }}</td>
+              <td><a href="#">{{ item.id }} <i class="fa fa-search"></i></a></td>
               <td>{{ item.merchant }}</td>
-              <td>{{ item.amount }}</td>
-              <td>{{ item.outstanding }}</td>
-              <td>{{ item.due }}</td>
+              <td>${{ item.amount }}</td>
+              <td>${{ item.outstanding }}</td>
+              <td>${{ item.due }}</td>
               <td>{{ item.date }}</td>
             </tr>
           {% endfor %}
@@ -54,4 +53,5 @@
     </div>
   </div>
 </div>
+{% parent %}
 {% endblock %}

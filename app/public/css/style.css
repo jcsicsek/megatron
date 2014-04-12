@@ -1206,6 +1206,9 @@ ul.dropdown-menu:after {
 .container {
   padding: 75px 0;
 }
+.container-admin {
+  padding: 35px 0;
+}
 .row {
   margin-bottom: 60px;
 }
@@ -1549,6 +1552,51 @@ label.checkbox.inline {
   background: none;
   border: none;
 }
+.styled-form {
+  color: #333;
+  font: 14px/14px "nimbus-sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.styled-form.form-horizontal .control-label {
+  line-height: 35px;
+  float: left;
+  width: 160px;
+}
+.styled-form.form-horizontal .controls {
+  margin-left: 180px;
+}
+.styled-form .control-label {
+  text-align: left;
+}
+.styled-form.form-horizontal .control-label{
+  float: left;
+  width: 160px;
+  padding-top: 5px;
+}
+.styled-form .form-search label, .styled-form .form-inline label, .styled-form .form-search .btn-group, .styled-form .form-inline .btn-group {
+  display: inline-block;
+}
+.styled-form ul.form-input li {
+  display: inline-block;
+  float:left;
+  list-style-type: none;
+  vertical-align: top;
+  margin-top:10px;
+  color: #333;
+}
+.styled-form .multiple-input .input-control {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.styled-form.form-horizontal .control-group:before, .form-horizontal .control-group:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.styled-form.form-horizontal .control-group:after {
+  clear: both;
+}
+
 /* Content List Widget - News, Blog Items, Anything with a thumbnail, heading and details */
 ul.list-items-thumb {
   margin: 0;
@@ -3018,7 +3066,7 @@ footer .col-md-12 ul.list-inline li:last-child:after {
 .bs-reports-nav.affix,
 .bs-reports-nav.affix-top,
 .bs-reports-nav.affix-bottom {
-  width: 235px;
+  width: 170px;
   top: 100px;
 }
 .affix-bottom {
@@ -4359,7 +4407,7 @@ textarea.parsley-error {
     opacity: 1;
 }
 
-li.parsley-required, li.parsley-length, li.parsley-type {
+li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
   font-size:12px;
   color:#a94442;
   float:left;
@@ -4368,7 +4416,7 @@ li.parsley-required, li.parsley-length, li.parsley-type {
 /* ---------- Filterable ------------ */
 
 .filterable {
-    margin-top: 15px;
+    margin-top: 5px;
 }
 .filterable .panel-heading .pull-right {
     margin-top: -20px;

@@ -1,7 +1,13 @@
 module.exports.create = function() {
   var self = {   
     uoverview: function(req, res) {
-      res.render('consumer/overview', { title: "Transaction Overview | tabb.io" });
+      res.render('manage/consumer/overview', { title: "Transaction Overview | tabb.io" });
+    },
+    upay: function(req, res) {
+      res.render('manage/consumer/pay', { title: "Make a Payment | tabb.io" });
+    },
+    ustatements: function(req, res) {
+      res.render('manage/consumer/statements', { title: "Statements | tabb.io" });
     }
   };
   return self;

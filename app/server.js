@@ -119,7 +119,9 @@ var urls = {
     apply: '/loans/apply'
   },
   consumers: {
-    uoverview: '/u'
+    uoverview: '/u',
+    upay: '/u/pay',
+    ustatements: '/u/statements'
   }
 }
 
@@ -149,6 +151,8 @@ app.get(urls.loans.apply, loansController.applyPage);
 
 //consumer routes
 app.get(urls.consumers.uoverview, consumersController.uoverview);
+app.get(urls.consumers.upay, consumersController.upay);
+app.get(urls.consumers.ustatements, consumersController.ustatements);
 
 //error handlers
 app.use(function(req, res, next){

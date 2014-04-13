@@ -11,7 +11,7 @@ var org = nforce.createConnection({
 
 
 module.exports = {
-  createLoanApp: function(firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
+  createLoanApp: function(id, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     org.authenticate({ username: 'jeff_trial@tabb.io', password: 'Welcome1', securityToken: 'l3o99Vq6Tdww3R9BCWV5mN3A3'}, function(error, response){
       var loan = {
         'Loan_Application__c': {
@@ -21,7 +21,8 @@ module.exports = {
           'payday__Loan_Amount__c' : amount,
           'payday__Product_Type__c': 'Installment',
           'payday__Lead_Source__c': 'tabb.io',
-          'payday__IP_Address__c' : ipAddress
+          'payday__IP_Address__c' : ipAddress,
+          'Loan_ID__c' : id
         },
         'Contact__r' : {
           'attributes' : {
@@ -54,6 +55,28 @@ module.exports = {
             loanAmount: record._fields.payday__loan_amount__c,
             createdDate: record._fields.createddate
           }}))
+        }
+        else {
+          console.log("Error retreiving records from Salesforce!");
+          callback(error, null);
+        }
+      });
+    });
+  },
+
+  queryById: function(id, callback) {
+    var query = 'SELECT id, payday__Loan_Amount__c, payday__First_Payment_Date__c, payday__Monthly_Payment_Amount__c, CreatedDate, payday__Contact__r.MobilePhone FROM payday__Loan_Application__c WHERE Loan_ID__c=\'' + id + '\'';
+    org.authenticate({ username: 'jeff_trial@tabb.io', password: 'Welcome1', securityToken: 'l3o99Vq6Tdww3R9BCWV5mN3A3'}, function(error, response){
+      org.query({query: query}, function(error, results) {
+        if (!error) {
+          callback(null, _.map(results.records, function(record){return {
+            id: id,
+            loanAmount: record._fields.payday__loan_amount__c,
+            createdDate: record._fields.createddate,
+            paymentAmount: record._fields.payday__monthly_payment_amount__c,
+            paymentDueDate: record._fields.payday__first_payment_date__c,
+            phone: record._fields.payday__contact__r.MobilePhone
+          }})[0]);
         }
         else {
           console.log("Error retreiving records from Salesforce!");

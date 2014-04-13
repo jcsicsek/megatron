@@ -3,7 +3,7 @@
 {% block mast_attribs %}{% endblock mast_attribs %}
 
 {% block masttitle %}
-<h1>Invoice #123456789</h1>
+<h1>Invoice {{ loan.id }}</h1>
 {% endblock masttitle %}
 
 {% block content %}
@@ -15,7 +15,7 @@
        <img src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
       </div>
       <div class="col-xs-6 invoice-numb">
-        #123456789
+        {{ loan.id }}
       </div>
     </div>
     <!--End Invoice Header-->
@@ -27,7 +27,7 @@
              <i class="fa fa-shopping-cart"></i>
           </div>
           <div class="text">
-            <var>$1,263.64</var>
+            <var>${{ loan.loanAmount.toFixed(2) }}</var>
             <label class="text-muted">Purchase Amount</label>
           </div>
           <div class="options">
@@ -41,7 +41,7 @@
             <i class="fa fa-money"></i>
           </div>
           <div class="text">
-            <var>$543.21</var>
+            <var>${{ loan.loanAmount.toFixed(2) }}</var>
             <label class="text-muted">Remaining Balance</label>
           </div>
           <div class="options">
@@ -55,7 +55,7 @@
             <i class="fa fa-calendar"></i>
           </div>
           <div class="text">
-            <var>$123.10 <span style="font-size:12px;">on</span> Apr 24, 2014</var>
+            <var>${{ loan.paymentAmount.toFixed(2) }} <span style="font-size:12px;">on</span> {{ loan.paymentDueDate|date('M j, Y') }}</var>
             <label class="text-muted">Next Payment</label>
           </div>
           <div class="options">

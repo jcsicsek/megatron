@@ -122,6 +122,11 @@ var urls = {
     ustatementsummary: '/u',
     ustatementdetail: '/u/detail',
     upay: '/u/pay'
+  },
+  invoices: {
+    summary: '/i/:invoiceid',
+    details: '/i/:invoiceid/details',
+    pay: '/i/invoiceid/pay'
   }
 }
 
@@ -150,10 +155,10 @@ app.get(urls.users.whoami, usersController.whoami);
 app.post(urls.loans.apply, loansController.apply);
 app.get(urls.loans.apply, loansController.applyPage);
 
-//consumer routes
-app.get(urls.consumers.ustatementsummary, consumersController.ustatementsummary);
-app.get(urls.consumers.ustatementdetail, consumersController.ustatementdetail);
-app.get(urls.consumers.upay, consumersController.upay);
+app.get(urls.invoices.summary, loansController.invoiceSummary);
+app.get(urls.invoices.details, loansController.invoiceDetails);
+app.get(urls.invoices.pay, loansController.invoicePayPage);
+
 
 //error handlers
 app.use(function(req, res, next){
@@ -168,6 +173,7 @@ app.use(function(req, res, next){
 app.get('/ts2014video', function(req, res) {
   res.redirect('https://www.youtube.com/watch?v=s3lh7MxWCVc');
 });
+
 
 app.listen(port);
 console.log("app listening on port " + port);

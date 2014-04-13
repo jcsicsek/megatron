@@ -37,13 +37,13 @@ $( document ).ready(function() {
 	        data : postData,
 	        success:function(data, textStatus, jqXHR) 
 	        {
-	            $('#contact-wrapper').html("<div id='message' class='panel panel-success margin-top-20'></div>");
+	            $('#contact-wrapper').html("<div id='message' class='margin-top-20'></div>");
 				$('#message').html("<div class='panel-heading'><h4>Contact Form Submitted!<h4></div>")
 					.append("<div class='panel-body'><p>We will be in touch soon.</p></div>")
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
 	        {
-	            $('#contact-wrapper').html("<div id='message' class='panel panel-danger margin-top-20'></div>");
+	            $('#contact-wrapper').html("<div id='message' class='margin-top-20'></div>");
 				$('#message').html("<div class='panel-heading'><h4>Uh oh, something went wrong!</h4></div>")
 					.append("<div class='panel-body'><p>Try refreshing the page or <a href='/contact'>trying again.</p></div>")    
 	        }

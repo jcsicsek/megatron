@@ -1,31 +1,23 @@
 {% extends "../base.html" %}
 
-{%- block masthead -%}
-<div class="container-wrapper container-top container-wrapper-{% block mast_attribs %}{% endblock mast_attribs %}">
-  <div class="container container-admin container-top">
-    <div class="row">
-      <div class="col-md-12 center">
-        {%- block masttitle -%}
-        {%- endblock masttitle %}
-      </div>
-      <ul class="nav nav-pills">
-        {% for link in user_nav %}
-        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
-        {% endfor %}
-      </ul>
-    </div><!-- end row -->
-  </div><!-- end container -->
-</div>
-{%- endblock masthead %}
-
-{% block mast_attribs %}stripes{% endblock mast_attribs %}
+{% block masthead %}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+  <div class="container">
+    <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
+    <ul class="pull-right breadcrumb">
+      <li><a href={{urls.static.root}}>Home</a></li>
+      <li class="active">{% block masttitle %}{% endblock masttitle %}</li>
+    </ul>
+  </div>
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+{% endblock masthead %}
 
 {% block main %}
 <div class="container content">
-  <div class="row">
     {% block content %}
     {% endblock content %}
-  </div>
 </div>
 {% endblock main %}
 

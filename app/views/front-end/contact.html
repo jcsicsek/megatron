@@ -1,73 +1,63 @@
 {% extends "base.html" %}
 
-{% block mast_attribs %}winter{% endblock mast_attribs %}
+{%- block styles %}
+    {% parent %}
+    <link rel="stylesheet" href="/css/pages/contact.css">
+{%- endblock scripts %}
 
-{% block masttitle %}
-    <h1>Contact</h1>
-{% endblock masttitle %}
+{% block masttitle %}Contact{% endblock masttitle %}
+
+{% block google_map %}
+<div id="map" class="map">
+  <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=15&amp;iwloc=near&amp;output=embed"></iframe>
+</div>
+{% endblock google_map %}
 
 {% block content %}
-<div class="container-wrapper">
-  <div class="google-map"><iframe width="770" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=15&amp;iwloc=near&amp;output=embed"></iframe></div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h2>Send us a message</h2>
-      <div id="contact-wrapper">
-        <form id="contact-form" class="form-horizontal form-contact" method="POST" action={{urls.static.contact}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
-          <div id="name-group" class="form-group">
-            <label class="control-label" for="inputName">Name *</label>
-            <div class="controls">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" id="inputName" placeholder="Name" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We like to know who we're talking to!">
-                </div><!-- end col -->
-              </div><!-- end row -->
-            </div><!-- end controls -->
-          </div><!-- end form-group -->
-          <div id="email-group" class="form-group">
-            <label class="control-label" for="inputEmail">Email Address *</label>
-            <div class="controls">
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="email" id="inputEmail" placeholder="Email Address" class="form-control" name="email" data-parsley-trigger="change focusout blur" required data-parsley-type-message="We need a valid email to reply!" data-parsley-required-message="We need your email so that we can reply!">
-                </div><!-- end col -->
-              </div><!-- end row -->
-            </div><!-- end controls -->
-          </div><!-- end form-group -->
-          <div id="message-group" class="form-group">
-            <label class="control-label" for="inputMessage">Message *</label>
-            <div class="controls">
-              <div class="row">
-                <div class="col-md-10">
-                  <textarea id="inputMessage" placeholder="Your Message" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="7" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..." data-parsley-required-message="We need to know what you're contacting us for!"></textarea>
-                </div><!-- end col -->
-              </div><!-- end row -->
-            </div><!-- end controls -->
-          </div><!-- end form-group -->
-          <div class="form-actions form-actions-no-bg">
-            <button id ="submit" type="submit" value="send" class="btn btn-lg btn-purple disabled">Send Message</button>
-          </div>
-        </form>
-      </div>
+<div class="row margin-bottom-30">
+  <div class="col-md-9 mb-margin-bottom-30">
+    <div class="headline"><h2>Send a Message</h2></div>
+    <div id="contact-wrapper">
+      <p>Feel free to send us a message with any questions or feedback and we'll get back to you within 24 hours.</p><br />
+      <form id="contact-form" method="POST" action={{urls.static.contact}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+        <label>Name <span class="color-red">*</span></label>
+        <div class="row margin-bottom-20">
+          <div class="col-md-7 col-md-offset-0">
+            <input type="text" id="inputName" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We like to know who we're talking to!">
+          </div>                
+        </div>
+
+        <label>Email <span class="color-red">*</span></label>
+        <div class="row margin-bottom-20">
+          <div class="col-md-7 col-md-offset-0">
+            <input type="email" id="inputEmail" class="form-control" name="email" data-parsley-trigger="change focusout blur" required data-parsley-type-message="We need a valid email to reply!" data-parsley-required-message="We need your email so that we can reply!">
+          </div>                
+        </div>
+
+        <label>Message <span class="color-red">*</span></label>
+        <div class="row margin-bottom-20">
+          <div class="col-md-11 col-md-offset-0">
+            <textarea rows="8" id="inputMessage" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="7" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..." data-parsley-required-message="We need to know what you're contacting us for!"></textarea>
+          </div>                
+        </div>
+        <p><button type="submit" id="submit" class="btn btn-u disabled">Send Message</button></p>
+      </form>
     </div>
-    <div class="col-md-4 sidebar">
-      <div class="widget">
-        <h2>Contact Details</h2>
-        <ul class="fa-ul">
-          <li><i class="fa-li fa fa-map-marker"></i> 1735 Market St, Philadelphia, PA 19103</li>
-          <!--<li><i class="fa-li fa fa-phone"></i> (347) 305-1052</li>-->
-          <li><i class="fa-li fa fa-mobile-phone"></i> (347) 305-1052</li>
-          <li><i class="fa-li fa fa-facebook"></i> <a href="http://www.facebook.com/tabbio" target="_blank">facebook.com/tabbio</a></li>
-          <li><i class="fa-li fa fa-twitter"></i> <a href="http://www.twitter.com/tabb_io" target="_blank">@tabb_io</a></li>
-          <li><i class="fa-li fa fa-google-plus"></i> <a href="https://plus.google.com/112382070351069863899" target="_blank">+tabb.io</a></li>
-          <li><i class="fa-li fa fa-linkedin-square"></i> <a href="https://www.linkedin.com/company/tabb-io" target="_blank">tabb.io</a></li>
-        </ul>
-      </div><!-- end widget -->
-    </div>
-  </div><!-- end row -->
-</div>
+  </div><!--/col-md-9-->
+  <div class="col-md-3">
+    <!-- Contacts -->
+    <div class="headline"><h2>Contact Us</h2></div>
+    <ul class="list-unstyled who margin-bottom-30">
+      <li><i class="fa fa-home"></i>1735 Market St, Philadelphia, PA 19103</a></li>
+      <li><a href="mailto:hello@tabb.io"><i class="fa fa-envelope"></i>hello@tabb.io</a></li>
+      <li><i class="fa fa-phone"></i>1(888) 123 4567</a></li>
+      <li><i class="fa fa-facebook"></i> <a href="http://www.facebook.com/tabbio" target="_blank">facebook.com/tabbio</a></li>
+      <li><i class="fa fa-twitter"></i> <a href="http://www.twitter.com/tabb_io" target="_blank">@tabb_io</a></li>
+      <li><i class="fa fa-google-plus"></i> <a href="https://plus.google.com/112382070351069863899" target="_blank">+tabb.io</a></li>
+      <li><i class="fa fa-linkedin-square"></i> <a href="https://www.linkedin.com/company/tabb-io" target="_blank">tabb.io</a></li>
+    </ul>
+  </div><!--/col-md-3-->
+</div><!--/row-->  
 {% endblock %}
 
 {%- block scripts %}

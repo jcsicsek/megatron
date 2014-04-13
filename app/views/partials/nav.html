@@ -5,59 +5,86 @@
   {url: urls.static.faqs, text: 'FAQs'},
   {url: urls.static.contact, text: 'Contact'}
 ] %}
+{% set navigation_bar = [
+  {url: urls.static.company, text: 'About'},
+  {url: urls.static.products, text: 'Products'},
+  {url: urls.static.support, text: 'Support'},
+  {url: urls.static.faqs, text: 'FAQs'},
+  {url: urls.static.contact, text: 'Contact'}
+] %}
 
-<div class="navbar navbar-inverse navbar-fixed-top affix-top" id="navbar" role="navigation">
-  <div class="navbar-inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-          <a href="#" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="fa fa-bars"></span>
-            <span class="btn-navbar-text">Menu</span>
-          </a>
-          <a class="brand" href={{urls.static.root}}><span class="logo"></span>tabb.io</a>
-          <div class="navbar-collapse collapse">
-            <div class="nav-menu pull-left">
-              <ul class="nav nav-pills">
-                {% for link in navigation_bar %}
-                <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
-                {% endfor %}
-              </ul>
-            </div><!-- end nav-menu -->
-            <div class="nav-menu pull-right">
-              <ul class="nav nav-pills">
-                <ul class="nav nav-user-options">
-                  {% if user.is.authenticated %}
-                  <img src="{{user.avatar(32)}}" style="margin-right:-15px;">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">Account Settings</a></li>
-                      <li class="divider"></li>
-                      {% if user.is.admin %}
-                      <li><a href="#">Admin Portal</a></li>
-                      <li><a href="#">Merchant Portal</a></li>
-                      <li><a href={{urls.consumers.ustatementsummary}}>Consumer Portal</a></li>
-                      {% elif user.is.merchant %}
-                      <li><a href="#">Your Portal</a></li>
-                      {% elif user.is.consumer %}
-                      <li><a href="#">Your Portal</a></li>
-                      {% else %}
-                      {% endif %}
-                      <li class="divider"></li>
-                      <li><a href={{urls.users.logout}}>Logout</a></li>
-                    </ul>
-                  </li>
-                  {% else %}
-                  <li class="login"><a href={{urls.users.consumerlogin}} class="btn btn-light">Login</a></li>
-                  {% endif %}
-                </ul>
-              </ul>
-            </div><!-- end nav-menu -->          
-          </div><!-- end navbar-collapse -->
-        </div><!-- end col-md-12 -->
-      </div>
-    </div>
+<!--=== Header ===-->    
+<div class="header">
+ <!-- Topbar -->
+ <div class="topbar">
+  <div class="container">
+    <!-- Topbar Navigation -->
+    <ul class="loginbar pull-right">
+      <li>
+        <i class="fa fa-globe"></i>
+        <a>Languages</a>
+        <ul class="lenguages">
+          <li class="active">
+            <a href="#">English <i class="fa fa-check"></i></a> 
+          </li>
+          <li><a href="#">Spanish</a></li>
+        </ul>
+      </li>
+      <li class="topbar-devider"></li>   
+      {% if user.is.authenticated %}
+      <li>
+        <i class="fa fa-user"></i>
+        <a>My Account</a>
+        <ul class="lenguages">
+          <li><a href="#">Account Settings</a></li>
+          <li class="divider"></li>
+          {% if user.is.admin %}
+          <li><a href="#">Admin Portal</a></li>
+          <li><a href="#">Merchant Portal</a></li>
+          <li><a href={{urls.consumers.ustatementsummary}}>Consumer Portal</a></li>
+          {% elif user.is.merchant %}
+          <li><a href="#">Your Portal</a></li>
+          {% elif user.is.consumer %}
+          <li><a href={{urls.consumers.ustatementsummary}}>Your Portal</a></li>
+          {% else %}
+          {% endif %}
+          <li class="divider"></li>
+          <li><a href={{urls.users.logout}}>Logout</a></li>
+        </ul>
+      </li> 
+      {% else %}
+      <li><a href={{urls.users.consumerlogin}}>View Statement</a></li>
+      {% endif %}  
+    </ul>
+    <!-- End Topbar Navigation -->
   </div>
 </div>
+<!-- End Topbar -->
+<!-- Navbar -->
+<div class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="fa fa-bars"></span>
+      </button>
+      <a class="navbar-brand" href={{urls.static.root}}>
+        <img id="logo-header" src="/images/tabbio-small.png" alt="Logo" style="margin-top:-10px;">
+      </a>
+    </div>
+    <!-- Collect the nav links -->
+    <div class="collapse navbar-collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Links -->
+        {% for link in navigation_bar %}
+        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
+        {% endfor %}
+        <!-- End links -->
+      </ul>
+    </div><!--/navbar-collapse-->
+  </div>    
+</div>            
+<!-- End Navbar -->
+</div>
+<!--=== End Header ===-->

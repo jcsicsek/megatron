@@ -1,108 +1,64 @@
 {% extends 'base.html' %}
 
-{% block mast_attribs %}grey-blue{% endblock mast_attribs %}
-
-{%- block masttitle -%}
-    <h1>About</h1>
-{%- endblock masttitle %}
+{%- block masttitle -%}About{%- endblock masttitle %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-5">
-      <h2>Meet tabb.io</h2>
-      <p><strong>Subhead: Partem corrumpit ut qui, mei at magna paulo! Nam brute audiam adipisci ei! Ates quaeque dignissim pri vero eos aliquam eam no, nobis moderatius.</strong></p>
-      <p>Content: Ut sit nisl consul ullamcorpers te, mel summo argu antum cu. Id civibus nominavi inciderint sea, sit hinc consequat cu, sea ut inani iusto putent quisque semper justo at risus. Mei id ferri feugait, eos intellegebat zril splendide has. Nam ultricies dolor eu velit varius scelerisque. Vestibulum in lacus in felis pretium feugiat non sed elit. Duis pretium, urna sed pellentesque tincidunt.</p>
+<div class="row margin-bottom-40">
+  <div class="col-md-6 md-margin-bottom-40">
+    <p>Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit.</p>
+    <ul class="list-unstyled">
+      <li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida</li>
+      <li><i class="fa fa-check color-green"></i> Elit non mi porta gravida</li>
+      <li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida</li>
+      <li><i class="fa fa-check color-green"></i> Elit non mi porta gravida</li>
+      <li><i class="fa fa-check color-green"></i> Donec id elit non mi porta gravida</li>
+    </ul>   
+  </div>
+  <div class="col-md-6 md-margin-bottom-40">
+    <blockquote class="hero-unify">
+      <p>Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit. Lorem sequat ipsum dolor lorem sit amet, consectetur adipiscing dolor elit.</p>
+      <small>CEO, Ben Brown</small>
+    </blockquote>
+  </div>
+</div><!--/row-->
+<!-- Meet Our Team -->
+<div class="headline"><h2>Meet Our Team</h2></div>
+<div class="row team">
+  <div class="col-sm-4">
+    <div class="thumbnail-style">
+      <img class="img-responsive img-width-250 center-image" src="images/people/ben.png" alt="" />
+      <h3 class="margin-top-10"><a>Ben Brown</a> <small>Chief Executive Officer</small></h3>
+      <p>Ben spent 6 years as a payments strategy consultant for First Annapolis Consulting where he worked with clients worldwide on strategy, operations, product, and mergers and acquisitions. Ben has Dual B.S. degrees from the University of Maryland, College Park.</p>
+      <ul class="list-unstyled list-inline team-socail">
+        <li><a href="mailto:ben@tabb.io"><i class="fa fa-envelope"></i></a></li>
+        <li><a href="http://www.twitter.com/bebrown2" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="http://linkedin.com/in/benjaminebrown" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
     </div>
-    <div class="col-md-6 col-md-offset-1">
-      <h2>Our Mission and Experiences</h2>
-      <p>Mission: Partem corrumpit ut qui, mei at magna paulo! Nam brute audiam adipisci ei! Ates quaeque dignissim pri, vero aliquam eam no, nobis moderatius consequuntur ut est! Ut sit nisl consul ullamcorper, ne falli soleat neque massa imperdiet meliore sit an dicta posidonium mei, sea at recteque hendrerit evertitur.</p>
-      <p>Experiences: Nam ultricies dolor eu velit varius scelerisque. Vestibulum in lacus in felis pretium feugiat non sed elit. Duis pretium, urna sed pellentesque tincidunt, neque massa imperdiet nisi, sed cursus leo magna pretium elit. Proin bibendum ipsum a ante viverra lobortis. Phasellus id augue ligula, nec ultrices augue.</p>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail-style">
+      <img class="img-responsive img-width-250 center-image" src="images/people/frank.png" alt="" />
+      <h3 class="margin-top-10"><a>Frank Fumarola</a> <small>Chief Operating Officer</small></h3>
+      <p>Frank came from the ad tech and ecommerce worlds where he was a VP of Product for 50onRed. He managed a team of product managers, designers, user experience engineers, and front-end developers. Frank has Dual B.S. degrees from the University of Maryland, College Park.</p>
+      <ul class="list-unstyled list-inline team-socail">
+        <li><a href="mailto:frank@tabb.io"><i class="fa fa-envelope"></i></a></li>
+        <li><a href="http://www.twitter.com/ffumarola" target="_blank"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="http://linkedin.com/in/francisfumarola/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+      </ul>
     </div>
-  </div><!-- end row -->
-</div>
-<div class="container-wrapper">
-  <div class="container">
-    <div class="row margin-bottom-20">
-      <div class="col-md-12 center">
-        <h2>Our Team</h2>
-      </div><!-- end col -->
-    </div><!-- end row -->
-    <div class="row">
-      <div class="col-md-4 center">
-        <p><img class="width-300" src="images/people/ben.png" alt=""></p>
-        <h3>Ben Brown</h3>
-        <p>Ben spent 6 years as a payments strategy consultant for First Annapolis Consulting where he worked with clients worldwide on strategy, operations, product, and mergers and acquisitions. Ben has Dual B.S. degrees from the University of Maryland, College Park.</p>
-        <p class="margin-0">
-          <a href="mailto:benbrownumd@gmail.com" class="btn btn-sm btn-success"><span class="fa fa-envelope"></span> Email Ben</a> 
-          <a href="http://www.twitter.com/bebrown2" class="btn btn-sm btn-default" target="_blank"><span class="fa fa-twitter"></span> @bebrown2</a>
-          <a href="http://linkedin.com/in/benjaminebrown" class="btn btn-sm btn-primary" target="_blank"><span class="fa fa-linkedin"></span> Ben Brown</a>
-        </p>
-      </div><!-- end col -->
-      <div class="col-md-4 center">
-        <p><img class="width-300" src="images/people/frank.png" alt=""></p>
-        <h3>Frank Fumarola</h3>
-        <p>Frank came from the ad tech and ecommerce worlds where he was a VP of Product for 50onRed. He managed a team of product managers, designers, user experience engineers, and front-end developers. Frank has Dual B.S. degrees from the University of Maryland, College Park.</p>
-        <p class="margin-0">
-          <a href="mailto:ffumarola@gmail.com" class="btn btn-sm btn-success"><span class="fa fa-envelope"></span> Email Frank</a> 
-          <a href="http://www.twitter.com/ffumarola" class="btn btn-sm btn-default" target="_blank"><span class="fa fa-twitter"></span> @ffumarola</a>
-          <a href="http://linkedin.com/in/francisfumarola/" class="btn btn-sm btn-primary" target="_blank"><span class="fa fa-linkedin"></span> Frank Fumarola</a>
-        </p>
-      </div><!-- end col -->
-      <div class="col-md-4 center">
-        <p><img class="width-300" src="images/people/jeff.png" alt=""></p>
-        <h3>Jeff Csicsek</h3>
-        <p>Jeff came from Big Human where he was a Sr. Software Engineer. He developed many of their clients prototypes and MVPs. He previously worked for an energy sustainability web company and an IT consultancy. Jeff has a B.S. from Virginia Tech.</p>
-        <p class="margin-0">
-          <a href="mailto:jcsicsek@gmail.com" class="btn btn-sm btn-success"><span class="fa fa-envelope"></span> Email Jeff</a> 
-          <a href="http://www.twitter.com/jcsicsek" class="btn btn-sm btn-default" target="_blank"><span class="fa fa-twitter"></span> @jcsicsek</a>
-        </p>
-      </div><!-- end col -->
-    </div><!-- end row -->
-  </div><!-- end container -->
-</div>
-<div class="container">
-  <div class="row margin-bottom-20">
-    <div class="col-md-12 center">
-      <h2>Our Advisors</h2>
-    </div><!-- end col -->
-  </div><!-- end row -->
-  <div class="row">
-    <div class="col-md-3 center">
-      <p><img class="width-200" src="images/people/joao.png" alt=""></p>
-      <h3>João Pecorari</h3>
-      <p>João is a São Paulo resident and the CFO of <a href="http://www.jofege.com.br" target="_blank">Jofege</a>, a top construction and textiles firm with multiple facilities and thousands of employees in Brasil.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success"><span class="fa fa-envelope"></span> Email Joao</a>
-      </p>
-    </div><!-- end col -->
-    <div class="col-md-3 center">
-      <p><img class="width-200" src="images/people/luis.png" alt=""></p>
-      <h3>Luís Gustavo</h3>
-      <p>Luís is a São Paulo resident and is the CTO and Co-Founder of <a href="https://cloudwalk.io/" target="_blank">Cloudwalk</a>, the Co-Founder of <a href="http://cloudmed.io/" target="_blank">Cloudmed</a>, and the Head of <a href="http://merka.ba/" target="_blank">Merkaba Investments</a>.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success margin-bottom-5"><span class="fa fa-envelope"></span> Email Luis</a>
-        <a href="http://www.twitter.com/luisbebop" target="_blank" class="btn btn-sm btn-default margin-bottom-5"><span class="fa fa-twitter"></span> @luisbebop</a>
-      </p>
-    </div><!-- end col -->
-    <div class="col-md-3 center">
-      <p><img class="width-200" src="images/people/ricardo.png" alt=""></p>
-      <h3>Ricardo Parro</h3>
-      <p>Ricardo is a São Paulo resident from Portugal and is the CTO at <a href="https://www.tacerto.com/" target="_blank">TaCerto</a>, former CTO at <a href="https://www.printi.com.br" target="_blank">Printi</a>, and former founding member and developer at <a href="https://www.wonga.com/" target="_blank">Wonga</a>.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success margin-bottom-5"><span class="fa fa-envelope"></span> Email Ricardo</a>
-        <a href="http://www.twitter.com/ricardoparro" target="_blank" class="btn btn-sm btn-default"><span class="fa fa-twitter"></span> @ricardoparro</a>
-      </p>
-    </div> <!-- end col --> 
-    <div class="col-md-3 center">
-      <p><img class="width-200" src="images/people/josh.png" alt=""></p>
-      <h3>Josh Kuzon</h3>
-      <p>Josh is a New York resident and works in Corporate Strategy & Development at JPMorgan Chase. He has led or managed JPM's investments in <a href="https://squareup.com/" target="_blank">Square</a>, <a href="http://www.gopago.com/" target="_blank">GoPago</a>, etc.</p>
-      <p class="margin-0">
-        <a href="#" class="btn btn-sm btn-success margin-bottom-5"><span class="fa fa-envelope"></span> Email Josh</a>
-        <a href="http://www.twitter.com/jkuzon" target="_blank" class="btn btn-sm btn-default margin-bottom-5"><span class="fa fa-twitter"></span> @jkuzon</a>
-      </p>
-    </div><!-- end col -->
-  </div><!-- end row -->
-</div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail-style">
+      <img class="img-responsive img-width-250 center-image" src="images/people/jeff.png" alt="" />
+      <h3 class="margin-top-10"><a>Jeff Csicsek</a> <small>Chief Architect</small></h3>
+      <p>Jeff came from Big Human where he was a Sr. Software Engineer. He developed many of their clients prototypes and MVPs. He previously worked for an energy sustainability web company and an IT consultancy. Jeff has a B.S. from Virginia Tech.</p>
+      <ul class="list-unstyled list-inline team-socail">
+        <li><a href="mailto:jeff@tabb.io"><i class="fa fa-envelope"></i></a></li>
+        <li><a href="http://www.twitter.com/jcsicsek" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</div><!--/team-->
+<!-- End Meer Our Team -->
 {% endblock %}

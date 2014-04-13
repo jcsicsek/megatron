@@ -1,3 +1,21 @@
 {% extends "../base.html" %}
 
+{% block body_attribs %}class="header-fixed"{% endblock body_attribs %}
 
+{% block masthead %}
+<!--=== Breadcrumbs ===-->
+<div class="breadcrumbs">
+	<div class="container">
+		<h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
+		<ul class="pull-right breadcrumb">
+			<li><a href={{urls.static.root}}>Home</a></li>
+			<li class="active">{% block masttitle %}{% endblock masttitle %}</li>
+		</ul>
+	</div>
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+{% endblock masthead %}
+
+{%- block footer %}
+	{% include "../partials/footer.html" %}
+{%- endblock footer %}

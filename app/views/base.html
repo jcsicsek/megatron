@@ -1,5 +1,8 @@
 {% block doc -%}
 <!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <html{% block html_attribs %}{% endblock html_attribs %}>
 {%- block html %}
   <head>
@@ -15,19 +18,23 @@
     	</title>
 
         {%- block metas %}
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="description">
+        <meta content="" name="author">
         {%- endblock metas %}
 
         {%- block styles %}
-    	    <!-- Bootstrap & Font Awesome-->
-    	    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
-    	    <link rel="stylesheet" href="/css/font-awesome.css">
+          <!-- Favicon -->
+          <link rel="shortcut icon" href="/favicon.ico">
+    	    <!-- Bootstrap & Font Awesome & Line Icons-->
+    	    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    	    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+          <link rel="stylesheet" href="/vendor/line-icons/line-icons.css">
     	    <!-- Custom Styles -->
     	    <link rel="stylesheet" href="/css/style.css">
-    	    <!--[if lt IE 9]>
-    			<script src="js/html5shiv.js"></script>
-    			<script src="js/respond.min.js"></script>
-    		<![endif]-->
+          <link rel="stylesheet" href="/css/themes/purple.css">
+          <link rel="stylesheet" href="/css/custom.css">
         {%- endblock styles %}
 
     {%- endblock head %}
@@ -37,6 +44,7 @@
     {%- block body -%}
         
       {%- block navbar %}
+        <div class="wrapper">
       	{% include "partials/nav.html" %}
       {%- endblock navbar %}
 
@@ -44,37 +52,45 @@
       {%- endblock flash_messages %}
 
       {%- block masthead -%}
-        <div class="container-wrapper container-top container-wrapper-{% block mast_attribs %}{% endblock mast_attribs %}">
-          <div class="container container-top">
-            <div class="row">
-              <div class="col-md-12 center">
-                {%- block masttitle -%}
-                {%- endblock masttitle %}
-              </div>
-            </div><!-- end row -->
-          </div><!-- end container -->
-        </div>
+        {%- block masttitle -%}
+        {%- endblock masttitle %}
       {%- endblock masthead %}
 
-      {%- block manage_sidebar -%}
-      {%- endblock manage_sidebar %}
+      {%- block google_map -%}
+      {%- endblock google_map -%}
 
       {%- block main -%}
+      <div class="container content">
         {%- block content -%}
         {%- endblock content %}
+      </div>
       {%- endblock main %}
-      <div class="clear"></div>
 
 	    {%- block footer %}
-      	{% include "partials/footer.html" %}
       {%- endblock footer %}
 
+      {%- block copyright %}
+        {% include "partials/copyright.html" %}
+        </div> <!-- end wrapper -->
+      {%- endblock copyright %}
+
       {%- block scripts %}
-      	<!-- Custom JS -->
-	      <script src="/js/jquery.js"></script>
-      	<!-- Bootstrap JS -->
-       	<script src="/bootstrap/js/bootstrap.js"></script>
-        <script src="/parsley/parsley.min.js"></script>
+        <!-- Vendor JS -->
+	      <script type="text/javascript" src="/vendor/jquery.min.js"></script>
+        <script type="text/javascript" src="/vendor/jquery-migrate-1.2.1.min.js"></script>
+       	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/vendor/parsley/js/parsley.min.js"></script>
+        <!-- Custom JS -->
+        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                App.init();
+            });
+        </script>
+        <!--[if lt IE 9]>
+          <script src="/vendor/js/html5shiv.js"></script>
+          <script src="/vendor/js/respond.min.js"></script>
+        <![endif]-->
 	    {%- endblock scripts %}
 
     {%- endblock body %}

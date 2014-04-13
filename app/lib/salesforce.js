@@ -1,6 +1,6 @@
 var nforce = require('nforce');
 var _ = require('underscore');
-var config = require('./app/config');
+var config = require('../config');
 
 var org = nforce.createConnection(config.salesforce.connection);
 

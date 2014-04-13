@@ -10,9 +10,6 @@ var port = process.env.PORT || 5000;
 var pgClient = new pg.Client(pgConnString);
 pgClient.connect();
 
-var usersController = require('./controllers/users').create(pgClient);
-var staticController = require('./controllers/static').create();
-var loansController = require('./controllers/loans').create();
 var usersModel = require('./models/users').create(pgClient);
 var passwordHash = require('password-hash');
 
@@ -94,64 +91,7 @@ app.use(function(req, res, next) {
 
 app.use(app.router);
 
-
-var urls = {
-  users: {
-    logout: '/logout',
-    whoami: '/users/whoami',
-    consumerlogin: '/login',
-    register: '/register',
-    partnerlogin: '/partner/login'
-    // partnerregister: '/partner/register',
-    // adminlogin: '/admin/login',
-    // adminregister: '/admin/register'
-  },
-  static: {
-    root: '/',
-    company: '/company',
-    products: '/products',
-    support: '/support',
-    faqs: '/faqs',
-    contact: '/contact'
-  },
-  loans: {
-    apply: '/loans/apply'
-  },
-  invoices: {
-    summary: function(invoiceid){return '/i/' + invoiceid},
-    details: function(invoiceid){return '/i/' + invoiceid + '/details'},
-    pay: function(invoiceid){return '/i/' + invoiceid + '/pay'}
-  }
-}
-
-app.locals.urls = urls;
-
-
-//staticy-pages
-app.get(urls.static.root, staticController.root);
-app.get(urls.static.company, staticController.company);
-app.get(urls.static.products, staticController.products);
-app.get(urls.static.support, staticController.support);
-app.get(urls.static.faqs, staticController.faqs);
-app.get(urls.static.contact, staticController.contact);
-app.post(urls.static.contact, staticController.sendContact);
-
-//users routes
-app.get(urls.users.consumerlogin, usersController.consumerloginPage);
-app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
-app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
-app.get(urls.users.logout, usersController.logout);
-app.get(urls.users.register, usersController.registerPage);
-app.post(urls.users.register, usersController.register);
-app.get(urls.users.whoami, usersController.whoami);
-
-//loan routes
-app.post(urls.loans.apply, loansController.apply);
-app.get(urls.loans.apply, loansController.applyPage);
-
-app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
-app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
-app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
+require('./config/routes')(app, passport, pgClient);
 
 
 //error handlers

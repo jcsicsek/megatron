@@ -3,6 +3,7 @@ var pg = require('pg');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var swig = require('swig');
+var logger = require('winston');
 
 var pgConnString = process.env.DATABASE_URL;
 var port = process.env.PORT || 5000;
@@ -88,6 +89,13 @@ app.use(function(req, res, next) {
  res.locals.active_page = req.path;
  next();
 });
+
+var loggerStream = {
+  write: function(message, encoding){
+    logger.info(message);
+  }
+};
+app.use(express.logger({stream:loggerStream}));
 
 app.use(app.router);
 

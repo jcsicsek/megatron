@@ -2728,6 +2728,11 @@ ul.popover-examples li {
   background-attachment: fixed;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
 }
+.container-wrapper-stripes {
+  background: url(../images/nav.png) top center repeat #57448a;
+  background-attachment: fixed;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
 .container-wrapper-bridge a {
   color: #ffc23f;
 }

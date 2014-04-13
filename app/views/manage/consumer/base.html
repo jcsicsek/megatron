@@ -6,6 +6,10 @@
   {url: urls.invoices.pay(loan.id), text: 'Pay'}
 ] %}
 
+{% block masttitle %}
+<h1>Invoice {{ loan.id }}</h1>
+{% endblock masttitle %}
+
 {% block content %}
 <!--Invoice Header-->
 <div class="row invoice-header">

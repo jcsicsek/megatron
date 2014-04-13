@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block masttitle %}
-<h1>Invoice {{ loan.id }}</h1>
-{% endblock masttitle %}
-
 {% block content %}
 {% parent %}
 <!--Invoice Table-->
@@ -18,7 +14,7 @@
         <label class="text-muted">Purchase Amount</label>
       </div>
       <div class="options">
-    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Receipt</a>
+    <a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">View Receipt</button></a>
   </div>
     </div>
   </div>
@@ -32,7 +28,7 @@
         <label class="text-muted">Remaining Balance</label>
       </div>
       <div class="options">
-    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Payments</a>
+    <a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">View Payments</button></a>
   </div>
     </div>
   </div>
@@ -46,7 +42,7 @@
         <label class="text-muted">Next Payment</label>
       </div>
       <div class="options">
-    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> Schedule Payment</a>
+    <a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">Schedule Payment</button></a>
   </div>
     </div>
   </div>

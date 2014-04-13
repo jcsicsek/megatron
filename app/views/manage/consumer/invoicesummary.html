@@ -1,71 +1,55 @@
 {% extends "base.html" %}
 
-{% block mast_attribs %}{% endblock mast_attribs %}
-
 {% block masttitle %}
 <h1>Invoice #123456789</h1>
 {% endblock masttitle %}
 
 {% block content %}
-<div class="col-md-10 col-md-offset-1">
-	<div class="row">
-    <!--Invoice Header-->
-    <div class="row invoice-header">
-      <div class="col-xs-6">
-       <img src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
+{% parent %}
+<!--Invoice Table-->
+<div class="row">
+  <div class="col-sm-4">
+    <div class="hero-widget well well-sm">
+      <div class="icon">
+         <i class="fa fa-shopping-cart"></i>
       </div>
-      <div class="col-xs-6 invoice-numb">
-        #123456789
+      <div class="text">
+        <var>$1,263.64</var>
+        <label class="text-muted">Purchase Amount</label>
       </div>
+      <div class="options">
+    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Receipt</a>
+  </div>
     </div>
-    <!--End Invoice Header-->
-    <!--Invoice Table-->
-    <div>
-      <div class="col-sm-4">
-        <div class="hero-widget well well-sm">
-          <div class="icon">
-             <i class="fa fa-shopping-cart"></i>
-          </div>
-          <div class="text">
-            <var>$1,263.64</var>
-            <label class="text-muted">Purchase Amount</label>
-          </div>
-          <div class="options">
-        <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Receipt</a>
+  </div>
+  <div class="col-sm-4">
+    <div class="hero-widget well well-sm">
+      <div class="icon">
+        <i class="fa fa-money"></i>
       </div>
-        </div>
+      <div class="text">
+        <var>$543.21</var>
+        <label class="text-muted">Remaining Balance</label>
       </div>
-      <div class="col-sm-4">
-        <div class="hero-widget well well-sm">
-          <div class="icon">
-            <i class="fa fa-money"></i>
-          </div>
-          <div class="text">
-            <var>$543.21</var>
-            <label class="text-muted">Remaining Balance</label>
-          </div>
-          <div class="options">
-        <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Payments</a>
-      </div>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="hero-widget well well-sm">
-          <div class="icon">
-            <i class="fa fa-calendar"></i>
-          </div>
-          <div class="text">
-            <var>$123.10 <span style="font-size:12px;">on</span> Apr 24, 2014</var>
-            <label class="text-muted">Next Payment</label>
-          </div>
-          <div class="options">
-        <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> Schedule Payment</a>
-      </div>
-        </div>
-      </div>
+      <div class="options">
+    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> View Payments</a>
+  </div>
     </div>
-<!--End Invoice Table-->
+  </div>
+  <div class="col-sm-4">
+    <div class="hero-widget well well-sm">
+      <div class="icon">
+        <i class="fa fa-calendar"></i>
+      </div>
+      <div class="text">
+        <var>$123.10 <span style="font-size:12px;">on</span> Apr 24, 2014</var>
+        <label class="text-muted">Next Payment</label>
+      </div>
+      <div class="options">
+    <a href={{urls.consumers.upay}} class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-"></i> Schedule Payment</a>
+  </div>
+    </div>
   </div>
 </div>
-{% parent %}
+<!--End Invoice Table-->
 {% endblock %}

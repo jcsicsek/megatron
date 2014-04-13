@@ -1,9 +1,9 @@
 {% extends "../base.html" %}
 
 {% set user_nav = [
-  {url: urls.consumers.ustatementsummary, text: 'Summary'},
-  {url: urls.consumers.ustatementdetail, text: 'Detail'},
-  {url: urls.consumers.upay, text: 'Pay'}
+  {url: urls.invoices.summary(loan.id), text: 'Summary'},
+  {url: urls.invoices.details(loan.id), text: 'Detail'},
+  {url: urls.invoices.pay(loan.id), text: 'Pay'}
 ] %}
 
 {% block content %}

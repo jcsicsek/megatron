@@ -117,15 +117,10 @@ var urls = {
   loans: {
     apply: '/loans/apply'
   },
-  consumers: {
-    ustatementsummary: '/u',
-    ustatementdetail: '/u/detail',
-    upay: '/u/pay'
-  },
   invoices: {
-    summary: '/i/:invoiceid',
-    details: '/i/:invoiceid/details',
-    pay: '/i/invoiceid/pay'
+    summary: function(invoiceid){return '/i/' + invoiceid},
+    details: function(invoiceid){return '/i/' + invoiceid + '/details'},
+    pay: function(invoiceid){return '/i/' + invoiceid + '/pay'}
   }
 }
 
@@ -154,9 +149,9 @@ app.get(urls.users.whoami, usersController.whoami);
 app.post(urls.loans.apply, loansController.apply);
 app.get(urls.loans.apply, loansController.applyPage);
 
-app.get(urls.invoices.summary, loansController.invoiceSummary);
-app.get(urls.invoices.details, loansController.invoiceDetails);
-app.get(urls.invoices.pay, loansController.invoicePayPage);
+app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
+app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
+app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
 
 
 //error handlers

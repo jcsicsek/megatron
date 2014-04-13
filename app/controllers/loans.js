@@ -30,13 +30,17 @@ module.exports.create = function() {
     invoiceSummary: function(req, res) {
       sf.queryById(req.params.invoiceid, function(error, loan) {
         res.render('manage/consumer/invoicesummary.html', {title: "Invoice | tabb.io", loan: loan});    
-      })
+      });
     },
     invoiceDetails: function(req, res) {
-      res.render('manage/consumer/invoicedetail.html', {title: "Statements | tabb.io"});
+      sf.queryById(req.params.invoiceid, function(error, loan) {
+        res.render('manage/consumer/invoicedetail.html', {title: "Statements | tabb.io", loan: loan});
+      });
     },
     invoicePayPage: function(req, res) {
-      res.render('manage/consumer/pay.html', {title: "Make a Payment | tabb.io"});
+      sf.queryById(req.params.invoiceid, function(error, loan) {
+        res.render('manage/consumer/pay.html', {title: "Make a Payment | tabb.io", loan: loan});
+      });
     }
   };
   return self;

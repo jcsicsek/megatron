@@ -1,110 +1,88 @@
 {% extends "base.html" %}
 
-{% block mast_attribs %}{% endblock mast_attribs %}
-
 {% block masttitle %}
 <h1>Invoice #123456789</h1>
 {% endblock masttitle %}
 
 {% block content %}
-<div class="col-md-10 col-md-offset-1">
-	<div class="row">
-		<div class="payment-container">
-          <!--Invoice Header-->
-    <div class="row invoice-header">
-      <div class="col-xs-6">
-       <img src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
-      </div>
-      <div class="col-xs-6 invoice-numb">
-        #123456789
-      </div>
-    </div>
-    <!--End Invoice Header-->
-      <div class="card-container new-card">
-        <form id="payment_form" role="form" action="#" method="post" class="styled-form form-horizontal">    
-          <div class="form-group form-inline choose-payment-type">
-            <label class="control-label" for="payment_type">
-              Choose a method
-            </label>
-            <div class="controls">
-              <ul class="radio-group form-input">
-                <li>
-                  <input checked="" id="payment_cc" class="payment_type" name="payment_type" type="radio" value="credit_card">
-                  <label for="payment_cc">Payment Card</label>
-                </li>
-                <li>
-                  <input id="payment_ach" class="payment_type" name="payment_type" type="radio" value="ach">
-                  <label for="payment_ach">ACH Transfer</label>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="payment-type-form payment-block credit_card">
-            <div class="form-group form-inline ">
-              <label class="control-label" for="credit_card__cardholder_name">Name</label>
-              <div class="controls">
-                <input class="form-control" id="" name="credit_card__cardholder_name" placeholder="" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group form-inline ">
-              <label class="control-label" for="credit_card__number">Card Number</label>
-              <div class="controls">
-                <input autocomplete="off" class="form-control" id="" name="credit_card__number" placeholder="" type="text" value="">
-              </div>
-            </div>
-            <div class="form-inline form-group multiple-input">
-              <label class="control-label">Exp. Date</label>
-              <div class="controls">
-                <div class="input-control">
-                  <select class="form-control" data-placeholder="" data-value="" id="" name="credit_card__expiration_month">
-                    <option value="01">01</option><option value="02">02</option><option value="03">03</option><option selected="" value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                  </select>
-                </div>
-                <div class="input-control">
-                  <select class="form-control" data-placeholder="" data-value="None" id="" name="credit_card__expiration_year">
-                    <option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option><option value="2034">2034</option><option value="2035">2035</option><option value="2036">2036</option><option value="2037">2037</option><option value="2038">2038</option><option value="2039">2039</option><option value="2040">2040</option><option value="2041">2041</option><option value="2042">2042</option><option value="2043">2043</option><option value="2044">2044</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-group form-inline ">
-              <label class="control-label" for="credit_card__cvv">CVV</label>
-              <div class="controls">
-                <input autocomplete="off" class="form-control" id="" name="credit_card__cvv" placeholder="" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group form-inline ">
-              <label class="control-label" for="credit_card__billing_address__postal_code">Zip/Postal Code</label>
-              <div class="controls">
-                <input class="form-control" id="" name="credit_card__billing_address__postal_code" placeholder="" type="text" value="">
-              </div>
-            </div>
-            <div class="form-group form-inline ">
-              <label class="control-label" for="payment_amount">Payment Amount</label>
-              <div class="controls">
-                <input class="form-control" id="" name="payment_amount" placeholder="" type="text" value="">
-              </div>
-            </div>
-<!--             <div class="form-group form-inline ">
-              <label class="control-label" for="payment_date">Payment Date</label>
-              <div class="controls">
-                <input class="form-control" id="" name="payment_date" placeholder="" type="text" value="">
-              </div>
-            </div> -->
-            <div class="form-actions controls ">
-              <button name="submit" type="submit" class="btn btn-primary btn-lg">Pay Now</button>
-            </div>
-          </div>
-        </form>
-        <div class="ach-info payment-block ach">
-          <P>Account number + Routing number</p>
-          <p>Show a picture of check</p>
+{% parent %}
+<div class="payment-container">
+  <div class="card-container new-card">
+    <form id="payment_form" role="form" action="#" method="post" class="styled-form form-horizontal">    
+      <div class="form-group form-inline choose-payment-type">
+        <label class="control-label" for="payment_type">
+          Choose a method
+        </label>
+        <div class="controls">
+          <ul class="radio-group form-input">
+            <li>
+              <input checked="" id="payment_cc" class="payment_type" name="payment_type" type="radio" value="credit_card">
+              <label for="payment_cc">Payment Card</label>
+            </li>
+            <li>
+              <input id="payment_ach" class="payment_type" name="payment_type" type="radio" value="ach">
+              <label for="payment_ach">ACH Transfer</label>
+            </li>
+          </ul>
         </div>
       </div>
+      <div class="payment-type-form payment-block credit_card">
+        <div class="form-group form-inline ">
+          <label class="control-label" for="credit_card__cardholder_name">Name</label>
+          <div class="controls">
+            <input class="form-control" id="" name="credit_card__cardholder_name" placeholder="" type="text" value="">
+          </div>
+        </div>
+        <div class="form-group form-inline ">
+          <label class="control-label" for="credit_card__number">Card Number</label>
+          <div class="controls">
+            <input autocomplete="off" class="form-control" id="" name="credit_card__number" placeholder="" type="text" value="">
+          </div>
+        </div>
+        <div class="form-inline form-group multiple-input">
+          <label class="control-label">Exp. Date</label>
+          <div class="controls">
+            <div class="input-control">
+              <select class="form-control" data-placeholder="" data-value="" id="" name="credit_card__expiration_month">
+                <option value="01">01</option><option value="02">02</option><option value="03">03</option><option selected="" value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+              </select>
+            </div>
+            <div class="input-control">
+              <select class="form-control" data-placeholder="" data-value="None" id="" name="credit_card__expiration_year">
+                <option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option><option value="2030">2030</option><option value="2031">2031</option><option value="2032">2032</option><option value="2033">2033</option><option value="2034">2034</option><option value="2035">2035</option><option value="2036">2036</option><option value="2037">2037</option><option value="2038">2038</option><option value="2039">2039</option><option value="2040">2040</option><option value="2041">2041</option><option value="2042">2042</option><option value="2043">2043</option><option value="2044">2044</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group form-inline ">
+          <label class="control-label" for="credit_card__cvv">CVV</label>
+          <div class="controls">
+            <input autocomplete="off" class="form-control" id="" name="credit_card__cvv" placeholder="" type="text" value="">
+          </div>
+        </div>
+        <div class="form-group form-inline ">
+          <label class="control-label" for="credit_card__billing_address__postal_code">Zip/Postal Code</label>
+          <div class="controls">
+            <input class="form-control" id="" name="credit_card__billing_address__postal_code" placeholder="" type="text" value="">
+          </div>
+        </div>
+        <div class="form-group form-inline ">
+          <label class="control-label" for="payment_amount">Payment Amount</label>
+          <div class="controls">
+            <input class="form-control" id="" name="payment_amount" placeholder="" type="text" value="">
+          </div>
+        </div>
+        <div class="form-actions controls ">
+          <button name="submit" type="submit" class="btn btn-primary btn-lg">Pay Now</button>
+        </div>
+      </div>
+    </form>
+    <div class="ach-info payment-block ach">
+      <P>Account number + Routing number</p>
+      <p>Show a picture of check</p>
     </div>
   </div>
 </div>
-{% parent %}
 {% endblock %}
 
 {% block scripts %}

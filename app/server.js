@@ -11,7 +11,6 @@ var pgClient = new pg.Client(pgConnString);
 pgClient.connect();
 
 var usersController = require('./controllers/users').create(pgClient);
-var consumersController = require('./controllers/consumers').create();
 var staticController = require('./controllers/static').create();
 var loansController = require('./controllers/loans').create();
 var usersModel = require('./models/users').create(pgClient);

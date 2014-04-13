@@ -8,27 +8,24 @@
         {%- block masttitle -%}
         {%- endblock masttitle %}
       </div>
+      <ul class="nav nav-pills">
+        {% for link in user_nav %}
+        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
+        {% endfor %}
+      </ul>
     </div><!-- end row -->
   </div><!-- end container -->
 </div>
 {%- endblock masthead %}
 
-{% block manage_sidebar %}
-<div class="container container-admin">
+{% block main %}
+<div class="container content">
   <div class="row">
-    <div class="col-md-1 bs-docs-nav-wrapper">
-      <ul class="nav nav-pills nav-stacked bs-reports-nav affix-top" data-spy="affix" data-offset-top="200" data-offset-bottom="50">
-        {% for link in user_nav %}
-        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endblock manage_sidebar %}
-
     {% block content %}
+    {% endblock content %}
   </div>
-</div>   
-{% endblock content %}
+</div>
+{% endblock main %}
 
 {%- block scripts %}
 {% parent %}

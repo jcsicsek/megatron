@@ -4,7 +4,6 @@
 {%- block html %}
   <head>
     {%- block head %}
-
         <title>
     	    {%- block title %}
     			{% if title %}
@@ -37,43 +36,45 @@
   <body {% block body_attribs %}{% endblock body_attribs %}>
     {%- block body -%}
         
-        {%- block navbar %}
-        	{% include "partials/nav.html" %}
-        {%- endblock navbar %}
+      {%- block navbar %}
+      	{% include "partials/nav.html" %}
+      {%- endblock navbar %}
 
-        {%- block flash_messages %}
-        {%- endblock flash_messages %}
+      {%- block flash_messages %}
+      {%- endblock flash_messages %}
 
-        {%- block masthead -%}
-            <div class="container-wrapper container-top container-wrapper-{% block mast_attribs %}{% endblock mast_attribs %}">
-              <div class="container container-top">
-                <div class="row">
-                  <div class="col-md-12 center">
-                    {%- block masttitle -%}
-                    {%- endblock masttitle %}
-                  </div>
-                </div><!-- end row -->
-              </div><!-- end container -->
-            </div>
-        {%- endblock masthead %}
+      {%- block masthead -%}
+        <div class="container-wrapper container-top container-wrapper-{% block mast_attribs %}{% endblock mast_attribs %}">
+          <div class="container container-top">
+            <div class="row">
+              <div class="col-md-12 center">
+                {%- block masttitle -%}
+                {%- endblock masttitle %}
+              </div>
+            </div><!-- end row -->
+          </div><!-- end container -->
+        </div>
+      {%- endblock masthead %}
 
-        {%- block manage_sidebar -%}
-        {%- endblock manage_sidebar %}
+      {%- block manage_sidebar -%}
+      {%- endblock manage_sidebar %}
 
+      {%- block main -%}
         {%- block content -%}
         {%- endblock content %}
-        <div class="clear"></div>
+      {%- endblock main %}
+      <div class="clear"></div>
 
 	    {%- block footer %}
-        	{% include "partials/footer.html" %}
-        {%- endblock footer %}
+      	{% include "partials/footer.html" %}
+      {%- endblock footer %}
 
-        {%- block scripts %}
-        	<!-- Custom JS -->
-	        <script src="/js/jquery.js"></script>
-        	<!-- Bootstrap JS -->
-        	<script src="/bootstrap/js/bootstrap.js"></script>
-            <script src="/parsley/parsley.min.js"></script>
+      {%- block scripts %}
+      	<!-- Custom JS -->
+	      <script src="/js/jquery.js"></script>
+      	<!-- Bootstrap JS -->
+       	<script src="/bootstrap/js/bootstrap.js"></script>
+        <script src="/parsley/parsley.min.js"></script>
 	    {%- endblock scripts %}
 
     {%- endblock body %}

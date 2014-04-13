@@ -6,3 +6,15 @@
   {url: urls.consumers.upay, text: 'Pay'}
 ] %}
 
+{% block content %}
+<!--Invoice Header-->
+<div class="row invoice-header">
+  <div class="col-xs-6">
+   <img src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
+  </div>
+  <div class="col-xs-6 invoice-numb">
+    {{ loan.id }}
+  </div>
+</div>
+<!--End Invoice Header-->
+{% endblock content %}

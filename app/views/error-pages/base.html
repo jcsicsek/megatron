@@ -1,30 +1,18 @@
 {% extends "../base.html" %}
 
-{%- block masthead %}
-{%- endblock masthead %}
+{%- block styles %}
+    {% parent %}
+    <link rel="stylesheet" href="/css/pages/404.css">
+{%- endblock scripts %}
 
 {% block content %}
-<div class="clear"></div>
-<section class="slice bg-2" style="padding:90px 0;">
-  <div class="w-section inverse">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-              <div class="text-center">
-              	{% block top_error %}
-                {% endblock content %}
-                <span class="clearfix"></span>
-              </div>
-            </div>
-          </div>
-      </div>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="error-v1">
+      <span class="error-v1-title">{% block top_error %}{% endblock top_error %}</span>
+      {% block bottom_error %}
+      {% endblock bottom_error %}
     </div>
-</section>
-<section class="slice bg-3 margin-top-50 margin-bottom-50">
-  <div class="text-center p-15">
-  	{% block bottom_error %}
-    {% endblock bottom_error %}
   </div>
-</section>
-<div class="clear"></div>
+</div>
 {% endblock content %}

@@ -13,9 +13,12 @@ var urls = {
     root: '/',
     company: '/company',
     products: '/products',
-    support: '/support',
+    api: '/api',
+    apiapply: '/api/apply',
     faqs: '/faqs',
-    contact: '/contact'
+    contact: '/contact',
+    terms: '/terms',
+    privacy: '/privacy-policy'
   },
   loans: {
     apply: '/loans/apply'
@@ -40,10 +43,13 @@ module.exports = function(app, passport, pgClient) {
   app.get(urls.static.root, staticController.root);
   app.get(urls.static.company, staticController.company);
   app.get(urls.static.products, staticController.products);
-  app.get(urls.static.support, staticController.support);
+  app.get(urls.static.api, staticController.api);
+  app.get(urls.static.apiapply, staticController.apiapply);
   app.get(urls.static.faqs, staticController.faqs);
   app.get(urls.static.contact, staticController.contact);
   app.post(urls.static.contact, staticController.sendContact);
+  app.get(urls.static.terms, staticController.terms);
+  app.get(urls.static.privacy, staticController.privacy);
 
   //users routes
   app.get(urls.users.consumerlogin, usersController.consumerloginPage);

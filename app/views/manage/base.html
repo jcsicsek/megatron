@@ -1,26 +1,5 @@
 {% extends "../base.html" %}
 
-{% block masthead %}
-<!--=== Breadcrumbs ===-->
-<div class="breadcrumbs">
-  <div class="container">
-    <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
-    <ul class="pull-right breadcrumb">
-      <li><a href={{urls.static.root}}>Home</a></li>
-      <li class="active">{% block masttitle %}{% endblock masttitle %}</li>
-    </ul>
-  </div>
-</div><!--/breadcrumbs-->
-<!--=== End Breadcrumbs ===-->
-{% endblock masthead %}
-
-{% block main %}
-<div class="container content">
-    {% block content %}
-    {% endblock content %}
-</div>
-{% endblock main %}
-
 {%- block scripts %}
 {% parent %}
 <script src="/js/table.js"></script>

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block masttitle %}Documentation{% endblock masttitle %}
+
+{% block content %}
+<h2>Get Started with tabb.io</h2>
+<p>This is how your customer will experience tabb.io:</p>
+<ul class="fa-ul margin-bottom-60">
+  <li><span class="fa fa-li fa-check-square-o"></span>Your customer will browse your site and choose a product or service that they're interested in.</li>
+  <li><span class="fa fa-li fa-check-square-o"></span>They will then proceed to checkout and choose your stores credit option as a payment method.</li>
+  <li><span class="fa fa-li fa-check-square-o"></span>Once your customer clicks the checkout button, you will collect a few pieces of information that will enable tabb.io to verify identity and assess credit risk. You will pass this information along with the order information over to tabb.io.</li>
+  <li><span class="fa fa-li fa-check-square-o"></span>Tabb.io will respond with a refusal or an acceptance with credit terms based on the information sent over.</li>
+  <li><span class="fa fa-li fa-check-square-o"></span>The customer now has store credit with your store, along with any benefits you enabled such as deferred payment!</li>
+</ul>
+<div class="row margin-bottom-10">
+  <div class="col-md-6 col-sm-12">
+    <div class="servive-block servive-block-dark-blue">            
+      <i class="icon-2x color-light fa fa-terminal"></i>
+      <h2 class="heading-md">Use Our API</h2>
+      <p>Roll up your sleeves and integrate directly with our easy to use RESTful API.</p>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="servive-block servive-block-dark-blue">            
+      <i class="icon-2x color-light fa fa-shopping-cart"></i>
+      <h2 class="heading-md">Shopping Cart Widgets</h2>
+      <p>Go the plug and play route and use of one our plugins or modules built for ecommerce platforms.</p>
+    </div>
+  </div>
+</div>
+<div class="row margin-bottom-10">
+  <div class="col-md-6 col-sm-12">
+    <div class="servive-block servive-block-dark-blue">            
+      <i class="icon-2x color-light fa fa-tablet"></i>
+      <h2 class="heading-md">Tablet POS</h2>
+      <p>If you use one of the major tablet POS providers, chances are we have an option you can just enable.</p>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="servive-block servive-block-dark-blue">            
+      <i class="icon-2x color-light fa fa-wrench"></i>
+      <h2 class="heading-md">Custom Integration</h2>
+      <p>Do you think you'd be a good fit but need a custom integration? <a href={{urls.static.contact}}>Contact us</a> and let's talk.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

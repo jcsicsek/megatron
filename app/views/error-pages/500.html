@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-{% block top_error %}
-  <h2>We're having some server issues.</h2>
-  <h1 class="font-lg">5<i class="fa fa-times-circle-o"></i><i class="fa fa-times-circle-o"></i></h1>
-  <p>We feel great shame in telling you this... but our servers are having some issues. Shame.</p>
-{% endblock top_error %}
+{% block masttitle -%}500 Error{% endblock masttitle %}
+
+{% block top_error %}500 Error{% endblock top_error %}
 
 {% block bottom_error %}
-  <h4>We're having some server issues.</h4>
-  <p>Please try again later, go back to the <a href="/">homepage</a>, or <a href="/contact">contact us</a> if you think this is a mistake.</p>
+	<span>That’s an error!</span>
+      <p>Our server is having a few issues. <a href={{urls.static.contact}}>Contact us</a> if you'd like a status update.</p>
+      <a class="btn-u btn-bordered" href={{urls.static.root}}>Back Home</a>
 {% endblock bottom_error %}

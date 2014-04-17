@@ -42,6 +42,14 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
   float:left;
 }
 
+/*Block widgets
+------------------------------------*/
+.hero-widget { text-align: center; padding-top: 20px; padding-bottom: 20px; }
+.hero-widget .icon { display: block; font-size: 96px; line-height: 96px; margin-bottom: 10px; text-align: center; }
+.hero-widget var { display: block; height: 64px; font-size: 24px; line-height: 64px; font-style: normal; }
+.hero-widget label { font-size: 17px; }
+.hero-widget .options { margin-top: 10px; }
+
 /*Others
 ------------------------------------*/
 .img-width-250 { width:250px;}
@@ -64,4 +72,8 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
         background:none;
         border:none;
     }
+}
+
+.sky-form .icon-append {
+    border-left-style: none;
 }

@@ -10,16 +10,16 @@
   <form method="POST" action={{urls.users.consumerlogin}}>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-      <input type="text" name="username" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-type="digits" data-parsley-type-message="This doesn't look like a valid phone number" data-parsley-required-message="A phone number is required to login" data-parsley-length="[10, 10]" data-parsley-length-message="Your phone number must be 10 numbers long">
+      <input type="text" id="phone" name="username" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-type="digits" data-parsley-type-message="This doesn't look like a valid phone number" data-parsley-required-message="A phone number is required to login" data-parsley-length="[10, 10]" data-parsley-length-message="Your phone number must be 10 numbers long">
     </div>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-      <input type="password" name="password" class="form-control" placeholder="Invoice Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We need your pin code so that you can login" data-parsley-length="[4, 12]" data-parsley-length-message="Pin codes must be at least 4 digits">
+      <input type="text" id="invoice" name="password" class="form-control" placeholder="Invoice Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We need your pin code so that you can login" data-parsley-length="[4, 12]" data-parsley-length-message="Pin codes must be at least 4 digits">
     </div>
     <hr>
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
-        <button type="submit" class="btn-u btn-block">View Statement</button>
+        <button type="submit" value="send" class="btn-u btn-block">View Statement</button>
       </div>
     </div>
   </form>

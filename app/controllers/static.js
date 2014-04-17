@@ -11,11 +11,20 @@ module.exports.create = function() {
     products: function(req, res) {
       res.render('front-end/products', { title: "Products | tabb.io" });
     },
-    support: function(req, res) {
-      res.render('front-end/support', { title: "Support | tabb.io" });
+    api: function(req, res) {
+      res.render('front-end/api/index', { title: "API Overview | tabb.io" });
+    },
+    apiapply: function(req, res) {
+      res.render('front-end/api/apply', { title: "Apply for API | tabb.io" });
     },
     faqs: function(req, res) {
       res.render('front-end/faqs', { title: "Frequently Asked Questions | tabb.io" });
+    },
+    terms: function(req, res) {
+      res.render('front-end/terms', { title: "Terms & Conditions | tabb.io" });
+    },
+    privacy: function(req, res) {
+      res.render('front-end/privacy', { title: "Privacy Policy | tabb.io" });
     },
     contact: function(req, res) {
       res.render('front-end/contact', { title: "Contact Our Team | tabb.io" });     

@@ -1,14 +1,7 @@
 {% set navigation_bar = [
   {url: urls.static.company, text: 'About'},
   {url: urls.static.products, text: 'Products'},
-  {url: urls.static.support, text: 'Support'},
-  {url: urls.static.faqs, text: 'FAQs'},
-  {url: urls.static.contact, text: 'Contact'}
-] %}
-{% set navigation_bar = [
-  {url: urls.static.company, text: 'About'},
-  {url: urls.static.products, text: 'Products'},
-  {url: urls.static.support, text: 'Support'},
+  {url: urls.static.api, text: 'API'},
   {url: urls.static.faqs, text: 'FAQs'},
   {url: urls.static.contact, text: 'Contact'}
 ] %}
@@ -20,7 +13,8 @@
   <div class="container">
     <!-- Topbar Navigation -->
     <ul class="loginbar pull-right">
-      <li>
+      Welcome!
+      <!-- <li>
         <i class="fa fa-globe"></i>
         <a>Languages</a>
         <ul class="lenguages">
@@ -29,7 +23,7 @@
           </li>
           <li><a href="#">Spanish</a></li>
         </ul>
-      </li>
+      </li> -->
       <li class="topbar-devider"></li>   
       {% if user.is.authenticated %}
       <li>

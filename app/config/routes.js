@@ -21,6 +21,7 @@ var urls = {
     apply: '/loans/apply'
   },
   invoices: {
+    portal: '/i',
     summary: function(invoiceid){return '/i/' + invoiceid},
     details: function(invoiceid){return '/i/' + invoiceid + '/details'},
     pay: function(invoiceid){return '/i/' + invoiceid + '/pay'}
@@ -61,5 +62,6 @@ module.exports = function(app, passport, pgClient) {
   app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
   app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
   app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
+  app.post(urls.invoices.portal, loansController.invoicePortal);
 }
 

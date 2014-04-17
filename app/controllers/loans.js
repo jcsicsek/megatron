@@ -27,6 +27,9 @@ module.exports.create = function() {
     applyPage: function(req, res) {
       res.render('loans/apply.html', {});
     },
+    invoicePortal: function(req, res) {
+      res.redirect('/i/' + req.body.invoiceId);
+    },
     invoiceSummary: function(req, res) {
       sf.queryById(req.params.invoiceid, function(error, loan) {
         res.render('manage/consumer/invoicesummary.html', {title: "Invoice | tabb.io", loan: loan});    

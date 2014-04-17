@@ -17,83 +17,110 @@
     		{%- endblock title %}
     	</title>
 
-        {%- block metas %}
+      {%- block metas %}
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="description">
         <meta content="" name="author">
-        {%- endblock metas %}
+      {%- endblock metas %}
 
-        {%- block styles %}
-          <!-- Favicon -->
-          <link rel="shortcut icon" href="/favicon.ico">
-    	    <!-- Bootstrap & Font Awesome & Line Icons-->
-    	    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-    	    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-          <link rel="stylesheet" href="/vendor/line-icons/line-icons.css">
-    	    <!-- Custom Styles -->
-    	    <link rel="stylesheet" href="/css/style.css">
-          <link rel="stylesheet" href="/css/themes/purple.css">
-          <link rel="stylesheet" href="/css/custom.css">
-        {%- endblock styles %}
+      {%- block styles %}
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="/favicon.ico">
+  	    <!-- Bootstrap & Font Awesome & Line Icons-->
+  	    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  	    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/vendor/line-icons/line-icons.css">
+        <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms.css">
+        <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-purple.css">
+        <!--[if lt IE 9]>
+          <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-ie8.css">
+        <![endif]-->
+  	    <!-- Custom Styles -->
+  	    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/themes/purple.css">
+        <link rel="stylesheet" href="/css/custom.css">
+      {%- endblock styles %}
 
     {%- endblock head %}
   </head>
 
   <body {% block body_attribs %}{% endblock body_attribs %}>
-    {%- block body -%}
+  {%- block body -%}
+  <div {% block wrapper_attribs %}class="wrapper"{% endblock wrapper_attribs %}>
         
-      {%- block navbar %}
-        <div class="wrapper">
-      	{% include "partials/nav.html" %}
-      {%- endblock navbar %}
+    {%- block navbar %}
+    	{% include "partials/nav.html" %}
+    {%- endblock navbar %}
 
-      {%- block flash_messages %}
-      {%- endblock flash_messages %}
+    {%- block flash_messages %}
+    {%- endblock flash_messages %}
 
-      {%- block masthead -%}
-        {%- block masttitle -%}
-        {%- endblock masttitle %}
-      {%- endblock masthead %}
+    {%- block masthead -%}
+      <!--=== Breadcrumbs ===-->
+      <div class="breadcrumbs">
+        <div class="container">
+          <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
+          <ul class="pull-right breadcrumb">
+            <li><a href={{urls.static.root}}>Home</a></li>
+            <li class="active">{% block masttitle %}{% endblock masttitle %}</li>
+          </ul>
+        </div>
+      </div><!--/breadcrumbs-->
+      <!--=== End Breadcrumbs ===-->
+    {%- endblock masthead %}
 
-      {%- block google_map -%}
-      {%- endblock google_map -%}
+    {%- block google_map -%}
+    {%- endblock google_map -%}
 
-      {%- block main -%}
-      <div class="container content">
-        {%- block content -%}
-        {%- endblock content %}
-      </div>
-      {%- endblock main %}
+    {%- block main -%}
+    <div class="container content">
+      {%- block content -%}
+      {%- endblock content %}
+    </div>
+    {%- endblock main %}
 
-	    {%- block footer %}
-      {%- endblock footer %}
+    {%- block footer %}
+    {%- endblock footer %}
 
-      {%- block copyright %}
-        {% include "partials/copyright.html" %}
-        </div> <!-- end wrapper -->
-      {%- endblock copyright %}
+    {%- block copyright %}
+      {% include "partials/copyright.html" %}
+    {%- endblock copyright %}
 
-      {%- block scripts %}
-        <!-- Vendor JS -->
-	      <script type="text/javascript" src="/vendor/jquery.min.js"></script>
-        <script type="text/javascript" src="/vendor/jquery-migrate-1.2.1.min.js"></script>
-       	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="/vendor/parsley/js/parsley.min.js"></script>
-        <!-- Custom JS -->
-        <script type="text/javascript" src="/js/app.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                App.init();
-            });
-        </script>
-        <!--[if lt IE 9]>
-          <script src="/vendor/js/html5shiv.js"></script>
-          <script src="/vendor/js/respond.min.js"></script>
-        <![endif]-->
-	    {%- endblock scripts %}
+    {%- block scripts %}
+      <!-- Vendor JS -->
+      <script type="text/javascript" src="/vendor/jquery.min.js"></script>
+      <script type="text/javascript" src="/vendor/jquery-migrate-1.2.1.min.js"></script>
+     	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.js"></script>
+      <script type="text/javascript" src="/vendor/parsley/js/parsley.min.js"></script>
+      <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery.form.min.js"></script>
+      <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery.validate.min.js"></script>
+      <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery.maskedinput.min.js"></script>
+      <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery.modal.js"></script>
+      <!--[if lt IE 10]>
+        <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/jquery.placeholder.min.js"></script>
+      <![endif]-->    
+      <!--[if lt IE 9]>
+        <script type="text/javascript" src="/vendor/js/respond.min.js"></script>
+        <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/sky-forms-ie8.js"></script>
+      <![endif]-->
+      <!-- Custom JS -->
+      <script type="text/javascript" src="/js/app.js"></script>
+      <script type="text/javascript">
+          jQuery(document).ready(function() {
+              App.init();
+          });
+          jQuery(function($){
+           $("#phone").mask("(999) 999-9999");
+           $("#invoice").mask("****");
+          });
+      </script>
+    {%- endblock scripts %}
 
-    {%- endblock body %}
+  </div> <!-- end wrapper -->
+  {%- endblock body %}
   </body>
 
 {%- endblock html %}

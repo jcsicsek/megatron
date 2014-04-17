@@ -23,11 +23,15 @@
       -->
   </div>
   <div class="col-xs-6 invoice-numb"> 
-    <ul class="nav nav-tabs pull-right col-xs-12">
+    <div class="tab-v1">
+      <ul class="nav nav-tabs pull-right margin-bottom-10">
       {% for link in user_nav %}
         <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
       {% endfor %}
-    </ul>
+    </ul>               
+    </div>
+
+    
   </div>
 
 </div>

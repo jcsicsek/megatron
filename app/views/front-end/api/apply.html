@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block masttitle %}Documentation{% endblock masttitle %}
+
+{% block content %}
+<h2>Apply to Use the API</h2>
+<p class="margin-bottom-30">In order to use the tabb.io API, we require you to request API credentials to both our sandbox and development environments. The credentials we send to you will include a merchant identifier and a shared secret key for signing the requests.</p>
+<form method="POST" action={{urls.static.contact}} id="api-request" class="sky-form margin-bottom-30" data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+  <header>API Request Form</header>
+  <fieldset>                  
+    <div class="row">
+      <section class="col col-6">
+        <label class="label">Name <span class="color-red">*</span></label>
+        <label class="input">
+          <i class="icon-append fa fa-user"></i>
+          <input type="text" name="name" id="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Who will we have the pleasure of talking to?">
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="label">E-mail <span class="color-red">*</span></label>
+        <label class="input">
+          <i class="icon-append fa fa-envelope-o"></i>
+          <input type="email" name="email" id="email" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We may email you if we have follow up questions or to schedule a call">
+        </label>
+      </section>
+    </div>
+
+    <section>
+      <label class="label">Company Name <span class="color-red">*</span></label>
+      <label class="input">
+        <i class="icon-append fa fa-building-o"></i>
+        <input type="text" name="cname" id="cname" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We'd love to know who we're talking to">
+      </label>
+    </section>
+
+    <section>
+      <label class="label">Company URL or Address <span class="color-red">*</span></label>
+      <label class="input">
+        <i class="icon-append fa fa-link"></i>
+        <input type="text" name="caddress" id="caddress" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Before calling, we'd want to understand your business a bit better">
+      </label>
+    </section>
+
+    <section>
+      <label class="label">Phone Number <span class="color-red">*</span></label>
+      <label class="input">
+        <i class="icon-append fa fa-phone"></i>
+        <input type="text" id="phone" name="phone" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We need a phone number to contact you">
+      </label>
+    </section>
+
+    <section>
+      <label class="label">Notes</label>
+      <label class="textarea">
+        <i class="icon-append fa fa-comment"></i>
+        <textarea rows="4" name="message" id="message"></textarea>
+      </label>
+    </section>
+
+    <section>
+      <label class="checkbox"><input type="checkbox" name="copy"><i></i>Send a copy to my e-mail address</label>
+    </section>
+  </fieldset>
+
+  <footer>
+    <button type="submit" class="btn btn-u pull-right">Send message</button>
+  </footer>
+
+  <div class="message">
+    <i class="rounded-x fa fa-check"></i>
+    <p>Your message was successfully sent!</p>
+  </div>
+</form>
+{% endblock %}

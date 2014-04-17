@@ -31,7 +31,7 @@
 /*Parallax Backgrounds
 ------------------------------------*/
 .parallax-bg {
-	background: url(../img/blur/img1.jpg) 50% 0 repeat fixed;		
+	background: url(../images/bg/img2.jpg) 50% 0 repeat fixed;		
 }
 
 /*Parallax Counter Block*/
@@ -54,7 +54,7 @@
 
 /*Parallax Team*/
 .parallax-team {
-	background: url(../img/team/faces.jpg) 50% 0 repeat fixed;	
+	background: url(../images/people/faces.jpg) 50% 0 repeat fixed;	
 }
 
 .parallax-team,
@@ -2087,6 +2087,11 @@ ul.labels-demo li {
 	border: 1px solid #4862a3;
 }
 
+.team-social li a.li {
+  color: #007bb6;
+  border: 1px solid #007bb6;
+}
+
 .team-social li a.tw {
 	color: #159ceb;
 	border: 1px solid #159ceb;
@@ -2095,6 +2100,11 @@ ul.labels-demo li {
 .team-social li a.gp {
 	color: #dc4a38;
 	border: 1px solid #dc4a38;
+}
+
+.team-social li a.email {
+  color: #a82400;
+  border: 1px solid #a82400;
 }
 
 .team-social li a:hover {
@@ -2106,6 +2116,11 @@ ul.labels-demo li {
 	background: #4862a3;
 }
 
+.team-social li a.li:hover {
+  color: #fff;
+  background: #007bb6;
+}
+
 .team-social li a.tw:hover {
 	color: #fff;
 	background: #159ceb;
@@ -2114,6 +2129,11 @@ ul.labels-demo li {
 .team-social li a.gp:hover {
 	color: #fff;
 	background: #dc4a38;
+}
+
+.team-social li a.email:hover {
+  color: #fff;
+  background: #a82400;
 }
 
 /*Simple Block

@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-{% block top_error %}
-  <h2>The page could not be found</h2>
-  <h1 class="font-lg">4<i class="fa fa-times-circle-o"></i>4</h1>
-  <p>It looks like we either misplaced the page you're looking for or it went to Rio de Janeiro for the weekend.</p>
-{% endblock top_error %}
+{% block masttitle -%}404 Error{% endblock masttitle %}
+
+{% block top_error %}404 Error{% endblock top_error %}
 
 {% block bottom_error %}
-  <h4>The requested page was not found</h4>
-  <p>Please try again later, go back to the <a href="/">homepage</a>, or <a href="/contact">contact us</a> if you think this is a mistake.</p>
+	<span>That’s an error!</span>
+      <p>The requested URL wasn't found. That’s all we know. <a href={{urls.static.contact}}>Contact us</a> if you think we've made a mistake!</p>
+      <a class="btn-u btn-bordered" href={{urls.static.root}}>Back Home</a>
 {% endblock bottom_error %}

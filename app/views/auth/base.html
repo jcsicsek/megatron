@@ -3,10 +3,15 @@
 {%- block styles %}
     {% parent %}
     <link rel="stylesheet" href="/css/pages/login.css">
-{%- endblock scripts %}
+{%- endblock styles %}
+
+{% block wrapper_attribs %}{% endblock wrapper_attribs %}
 
 {%- block navbar %}
 {%- endblock navbar %}
+
+{%- block masthead -%}
+{%- endblock masthead -%}
 
 {%- block main -%}
 <div class="container">
@@ -22,12 +27,12 @@
 {% parent %}
 <script type="text/javascript" src="vendor/backstretch/jquery.backstretch.min.js"></script>
 <script type="text/javascript">
-    $.backstretch([
-      "images/bg/5.jpg",
-      "images/bg/4.jpg",
-      ], {
-        fade: 1000,
-        duration: 7000
-    });
+  $.backstretch([
+    "images/bg/5.jpg",
+    "images/bg/4.jpg",
+    ], {
+      fade: 1000,
+      duration: 7000
+  });
 </script>
 {%- endblock scripts %}

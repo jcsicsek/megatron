@@ -5,8 +5,8 @@
 	color: #555;
 	overflow: hidden;
 	margin-bottom: 40px;
-	border-bottom:1px solid #eee;
-}
+/*	border-bottom:1px solid #eee;
+*/}
 
 .invoice-header h2 {
 	font-size: 30px;
@@ -24,8 +24,8 @@
 	font-size: 13px;
 }
 .invoice-header .nav.nav-tabs {
-	border-bottom:none;
-}
+/*	border-bottom:none;
+*/}
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
 	background-color: #fafafa;
 }

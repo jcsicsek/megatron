@@ -50,14 +50,84 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 .hero-widget label { font-size: 17px; }
 .hero-widget .options { margin-top: 10px; }
 
+/*Funny Colored Boxes
+------------------------------------*/
+/*Purple Top Bordered Funny Box*/
+.funny-boxes-top-purple {
+  border-top: solid 2px #9b6bcc;
+}
+
+.funny-boxes-top-purple:hover {
+  border-top-color: #9b6bcc;  
+}
+
+/*Red Top Bordered Funny Box*/
+.funny-boxes-top-red {
+  border-top: solid 2px #e74c3c;
+}
+
+.funny-boxes-top-red:hover {
+  border-top-color: #e74c3c;  
+}
+
+/*Green Top Bordered Funny Box*/
+.funny-boxes-top-green {
+  border-top: solid 2px #2ecc71;
+}
+
+.funny-boxes-top-green:hover {
+  border-top-color: #2ecc71;  
+}
+/*Blue Top Bordered Funny Box*/
+.funny-boxes-top-blue {
+  border-top: solid 2px #3498db;
+}
+
+.funny-boxes-top-blue:hover {
+  border-top-color: #3498db;  
+}
+
+/*Text Colors
+------------------------------------*/
+.color-yellow { color: #f1c40f;}
+
+/*Background Colors
+------------------------------------*/
+.bg-color-yellow { color: #fff;}
+.bg-color-yellow { background-color: #f1c40f;}
+
+/*Info Blocks
+------------------------------------*/
+.yellow .info-blocks:hover i.icon-info-blocks {
+    color: #f1c40f;
+}
+.red .info-blocks:hover i.icon-info-blocks {
+    color: #e74c3c;
+}
+.green .info-blocks:hover i.icon-info-blocks {
+    color: #2ecc71;
+}
+.blue .info-blocks:hover i.icon-info-blocks {
+    color: #3498db;
+}
+.no-decor { text-decoration: none;}
+.no-decor:hover { text-decoration: none;}
+
+/*About Product*/
+.about-product h2 {
+    text-transform: uppercase;
+}
+
 /*Others
 ------------------------------------*/
 .img-width-250 { width:250px;}
+
 .center-image {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
 @media (max-width: 767px) { 
     .nav-tabs > li {
         float:none;
@@ -76,4 +146,12 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 
 .sky-form .icon-append {
     border-left-style: none;
+}
+
+a.top {
+position: relative;
+top:-100px;
+display: block;
+height: 0;
+width:0;
 }

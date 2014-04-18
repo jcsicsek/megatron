@@ -150,8 +150,26 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 
 a.top {
 position: relative;
-top:-100px;
+top:-180px;
 display: block;
 height: 0;
 width:0;
+}
+
+.margin-tb-80 { 
+   clear:both;
+}
+
+.margin-tb-80 { margin-top:80px; margin-bottom:80px;}
+
+@media (max-width: 768px) {
+  .sm-margin-tb-80 {
+    margin-top:80px; margin-bottom:80px;
+  }
+}
+
+@media (max-width: 992px) {
+  .md-margin-tb-80 {
+    margin-top:80px; margin-bottom:80px;
+  }
 }

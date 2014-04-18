@@ -5,31 +5,33 @@
   <div class="row">
   	<div class="col-md-3">
   		<ul class="list-group sidebar-nav-v1" id="sidebar-nav">
-  			<li {% if urls.static.api == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.api}}>Get Started with tabb.io</a></li>
+  			<li class="list-group-item list-toggle">                   
+          <a class="accordion-toggle" href="#collapse-timeline" data-toggle="collapse">Getting Started</a>
+          <ul id="collapse-timeline" class="collapse">
+            <li {% if urls.static.api == active_page %} class="active" {% else %}{% endif %}>                            
+              <a href={{urls.static.api}}><i class="fa fa-dot-circle-o"></i> Overview</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-dot-circle-o"></i> Tabb.io Form</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-dot-circle-o"></i> Shopping Cart Widget</a>
+            </li>
+            <li>
+              <span class="badge badge-green">New</span>
+              <a href="#"><i class="fa fa-dot-circle-o"></i> Tablet POS</a>
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-dot-circle-o"></i> Custom Integration</a>
+            </li>
+          </ul>
+        </li>                   
         <li {% if urls.static.apiapply == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.apiapply}}>Apply for API Credentials</a></li>
-        
-<!--   			<li class="list-group-item list-toggle">                   
-  				<a class="accordion-toggle" href="#collapse-timeline" data-toggle="collapse">Using the API</a>
-  				<ul id="collapse-timeline" class="collapse">
-  					<li>
-  						<span class="badge badge-u">New</span>                            
-  						<a href="#"><i class="fa fa-dot-circle-o"></i> Sign Up</a>
-  					</li>
-  					<li>
-  						<span class="badge badge-u">New</span>                            
-  						<a href="#"><i class="fa fa-dot-circle-o"></i> Verification Checklist</a>
-  					</li>
-  				</ul>
-  			</li>                   
-  			<li class="list-group-item">
-  				<span class="badge badge-green">New</span>                    
-  				<a href="feature_carousels.html">Integrating</a>
-  			</li>
-        <li class="list-group-item">
-          <span class="badge badge-red">Deprecated</span>                    
-          <a href="feature_carousels.html">Testing</a>
-        </li> -->
-
+        <li {% if urls.static.root == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.apiapply}}>Creating Loan Request</a></li>
+        <li {% if urls.static.root == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.apiapply}}>Checking Loan Status</a></li>
+        <li {% if urls.static.root == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.apiapply}}>Displaying Payment Plan</a></li>
+        <li {% if urls.static.root == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><a href={{urls.static.apiapply}}>Creating Loan Products</a></li>
+        <li {% if urls.static.root == active_page %} class="list-group-item active" {% else %} class="list-group-item" {% endif %}><span class="badge badge-green">New</span><a href={{urls.static.apiapply}}>Loan Rules</a></li>
   		</ul>
   	</div>
 
@@ -40,3 +42,12 @@
   </div>
 </div>
 {%- endblock main -%}
+
+{%- block scripts %}
+{% parent %}
+<script>
+$(document).ready(function() {
+  $('ul#sidebar-nav li ul li.active').parent().addClass('in').parent().addClass('active')
+});
+</script>
+{%- endblock scripts %}

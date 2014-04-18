@@ -8,8 +8,8 @@
 		<div class="tag-box tag-box-v3">
 			<h2>Client Information:</h2>
 			<ul class="list-unstyled">
-				<li><strong>Name:</strong> Frank Fumarola</li>
-				<li><strong>Phone:</strong> (410) 382-6574</li>
+				<li><strong>Name:</strong> {{ loan.name }}</li>
+				<li><strong>Phone:</strong> {{ loan.phone }}</li>
 			</ul>
 		</div>        
 	</div>
@@ -17,8 +17,8 @@
 		<div class="tag-box tag-box-v3">
 			<h2>Payment Details:</h2>        
 			<ul class="list-unstyled">
-				<li><strong>Merchant Name:</strong> Total Hockey</li>
-				<li><strong>Purchase Date:</strong> April 01, 2014</li>
+				<li><strong>Merchant Name:</strong> {{ loan.merchant }}</li>
+				<li><strong>Purchase Date:</strong> {{ loan.createdDate|date('M j, Y') }}</li>
 			</ul>
 		</div>
 	</div>
@@ -77,7 +77,7 @@
 	</div>
 	<div class="col-sm-6 text-right">
 		<ul class="list-unstyled invoice-total-info">
-			<li><strong>Grand Total:</strong> $2,351</li>
+			<li><strong>Grand Total:</strong> ${{ loan.loanAmount.toFixed(2) }}</li>
 		</ul>
 		<button class="btn btn-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
 		<a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">Schedule Payment</button></a>         

@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% parent %}
 <!--Invoice Table-->
 <div class="row">
   <div class="col-sm-8">
@@ -21,7 +20,7 @@
           <label class="text-muted">Balance Remaining</label>
         </div>
         <div class="options padding-top-15">
-          <a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">View Details</button></a>
+          <a href={{urls.invoices.details(loan.id)}}><button class="btn btn-primary btn-lg">View Details</button></a>
         </div>
       </div>
     </div>
@@ -36,13 +35,13 @@
         <label class="text-muted">Next Payment</label>
       </div>
       <div class="options">
-        <a href={{urls.consumers.upay}}><button class="btn btn-primary btn-lg">Schedule Payment</button></a>
+        <a href={{urls.invoices.pay(loan.id)}}><button class="btn btn-primary btn-lg">Schedule Payment</button></a>
       </div>
     </div>
   </div>
 </div>
 <!--End Invoice Table-->
-{% endblock %}
+{% endblock content %}
 
 
 
@@ -51,14 +50,14 @@
 <script type="text/javascript" src="/vendor/circles-master/circles.js"></script>
 <script>
 jQuery(document).ready(function() {
-        CirclesMaster.initCirclesMaster1();
-    });
+  CirclesMaster.initCirclesMaster1();
+});
 var CirclesMaster = function () {
-    return {
+  return {
         // Both Circles
         initCirclesMaster1: function () {
           // Purchase Amount + Remaining Balance
-        Circles.create({
+          Circles.create({
             id:         'circle-1',
             percentage: 87,
             radius:     150,
@@ -66,10 +65,10 @@ var CirclesMaster = function () {
             number:     {{ loan.loanAmount.toFixed(2) }},
             text:       '',
             colors:     ['#eee', '#72c02c'],
-            duration:   2000
-        })
+            duration:   800
+          })
         },
-    };
-}();
-</script>
+      };
+    }();
+    </script>
 {%- endblock scripts %}

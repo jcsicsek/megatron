@@ -3,7 +3,7 @@
 {% set user_nav = [
   {url: urls.invoices.summary(loan.id), text: 'Summary'},
   {url: urls.invoices.details(loan.id), text: 'Details'},
-  {url: urls.invoices.pay(loan.id), text: 'Make Payment'}
+  {url: urls.invoices.pay(loan.id), text: 'Schedule Payment'}
 ] %}
 
 {%- block styles %}
@@ -13,27 +13,28 @@
 
 {% block masttitle %}Invoice {{ loan.id }}{% endblock masttitle %}
 
-{% block content %}
-<!--Invoice Header-->
-<div class="row invoice-header">
-  <div class="col-xs-6">
-    <img class="img-responsive" src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
-        <!-- You also can use a title instead of image
-        <h2 class="pull-left">Product Invoice</h2>
-      -->
-  </div>
-  <div class="col-xs-6 invoice-numb"> 
-    <div class="tab-v1">
-      <ul class="nav nav-tabs pull-right margin-bottom-10">
-      {% for link in user_nav %}
-        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
-      {% endfor %}
-    </ul>               
+{% block main %}
+<div class="container content">
+  <!--Invoice Header-->
+  <div class="row invoice-header">
+    <div class="col-xs-6">
+      <img class="img-responsive" src="http://www.shopperschoice.com/images/site-specific/1/logo.png" alt="">
+          <!-- You also can use a title instead of image
+          <h2 class="pull-left">Product Invoice</h2>
+        -->
     </div>
-
-    
+    <div class="col-xs-6 invoice-numb"> 
+      <div class="tab-v1">
+        <ul class="nav nav-tabs pull-right margin-bottom-10">
+        {% for link in user_nav %}
+          <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
+        {% endfor %}
+      </ul>               
+      </div>
+    </div>
   </div>
-
-</div>
-<!--End Invoice Header-->
+  <!--End Invoice Header-->
+{% block content %}
 {% endblock content %}
+</div>
+{% endblock main %}

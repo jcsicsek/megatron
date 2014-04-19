@@ -17,6 +17,9 @@ module.exports.create = function() {
     apiapply: function(req, res) {
       res.render('front-end/api/apply', { title: "Apply for API | tabb.io" });
     },
+    apiloanrequest: function(req, res) {
+      res.render('front-end/api/loanrequest', { title: "Create Loan Request | tabb.io" });
+    },
     faqs: function(req, res) {
       res.render('front-end/faqs', { title: "Frequently Asked Questions | tabb.io" });
     },

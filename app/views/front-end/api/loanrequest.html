@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block masttitle %}Documentation{% endblock masttitle %}
+
+{% block content %}
+<h2>Create a Loan Request</h2>
+<p>The loan request methods will allow you to create a consumer loan with tabb.io. When you create this loan request, tabb.io will perform fraud and risk decisions on the consumer and then let you know whether the purchase is approved or not.</p>
+<div class="row margin-tb-30">
+  <div class="col-sm-3">
+    <a class="no-decor" href="#configure">
+      <div class="servive-block servive-block-default funny-boxes funny-boxes-top-yellow">
+        <i class="icon-custom icon-color-yellow rounded-x">A</i>
+        <h2 class="heading-md">Create Object</h2>
+        <p>Configure the library to communicate with tabb.io.</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-3">
+    <a class="no-decor" href="#consumer">
+      <div class="servive-block servive-block-default funny-boxes funny-boxes-top-red">
+        <i class="icon-custom icon-color-red rounded-x">B</i>
+        <h2 class="heading-md">Add Consumer</h2>
+        <p>Tell tabb.io who is making the purchase. Required.</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-3">
+    <a class="no-decor" href="#cart">
+      <div class="servive-block servive-block-default funny-boxes funny-boxes-top-green">
+        <i class="icon-custom icon-color-green rounded-x">C</i>
+        <h2 class="heading-md">Add Cart Items</h2>
+        <p>Let tabb.io know whats in the cart to improve approval rates.</p>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-3">
+    <a class="no-decor" href="#request">
+      <div class="servive-block servive-block-default funny-boxes funny-boxes-top-blue">
+        <i class="icon-custom icon-color-blue rounded-x">D</i>
+        <h2 class="heading-md">Make Request</h2>
+        <p>Make the API request once everything above is filled in!</p>
+      </div>
+    </a>
+  </div>
+</div>
+<hr>
+<div class="row about-product margin-tb-60">
+  <a name="deferred" class="top">&nbsp;</a>
+  <div class="col-md-3 md-margin-bottom-20">
+    <h2 class="heading-md"><span class="color-yellow">Create</span> Object</h2>
+    <p>Donec bibendum vitae lacus vitae eleifend. Curabitur vitae turpis eget mi vulputate volutpat. Curabitur molestie magna non tellus viverra ornare. Etiam enim sapien, tristique et faucibus et, scelerisque id risus.</p>
+  </div>
+  <div class="col-md-9 yellow">
+    <div class="row">
+        <div class="info-blocks-in">
+          <pre class="funny-boxes funny-boxes-top-yellow"><code class="lang-html"><ol class="linenums"><li class="L0"><span class="dec">&lt;!doctype html&gt;</span></li><li class="L1"><span class="tag">&lt;html&gt;</span></li><li class="L2"><span class="tag">&lt;body&gt;</span></li><li class="L3"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-controller</span><span class="pun">=</span><span class="atv">"WelcomeController"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  {{greeting}}</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li><li class="L6"><span class="pln">&nbsp;</span></li><li class="L7"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"angular.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li><li class="L8"><span class="tag">&lt;script&gt;</span></li><li class="L9"><span class="pln">  </span><span class="kwd">var</span><span class="pln"> app </span><span class="pun">=</span><span class="pln"> angular</span><span class="pun">.</span><span class="pln">module</span><span class="pun">(</span><span class="str">'demo'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[])</span></li><li class="L0"><span class="pln">  </span><span class="pun">.</span><span class="pln">controller</span><span class="pun">(</span><span class="str">'WelcomeController'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$scope</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">      $scope</span><span class="pun">.</span><span class="pln">greeting </span><span class="pun">=</span><span class="pln"> </span><span class="str">'Welcome!'</span><span class="pun">;</span></li><li class="L2"><span class="pln">  </span><span class="pun">});</span></li><li class="L3"><span class="pln">  angular</span><span class="pun">.</span><span class="pln">bootstrap</span><span class="pun">(</span><span class="pln">document</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'demo'</span><span class="pun">]);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L5"><span class="tag">&lt;/body&gt;</span></li><li class="L6"><span class="tag">&lt;/html&gt;</span></li></ol></code></pre>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row about-product margin-tb-60">
+  <a name="deferred" class="top">&nbsp;</a>
+  <div class="col-md-3 md-margin-bottom-20">
+    <h2 class="heading-md"><span class="color-red">Add</span> Consumer</h2>
+    <p>Donec bibendum vitae lacus vitae eleifend. Curabitur vitae turpis eget mi vulputate volutpat. Curabitur molestie magna non tellus viverra ornare. Etiam enim sapien, tristique et faucibus et, scelerisque id risus.</p>
+  </div>
+  <div class="col-md-9 red">
+    <div class="row">
+        <div class="info-blocks-in">
+          <pre class="funny-boxes funny-boxes-top-red"><code class="lang-html"><ol class="linenums"><li class="L0"><span class="dec">&lt;!doctype html&gt;</span></li><li class="L1"><span class="tag">&lt;html&gt;</span></li><li class="L2"><span class="tag">&lt;body&gt;</span></li><li class="L3"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-controller</span><span class="pun">=</span><span class="atv">"WelcomeController"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  {{greeting}}</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li><li class="L6"><span class="pln">&nbsp;</span></li><li class="L7"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"angular.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li><li class="L8"><span class="tag">&lt;script&gt;</span></li><li class="L9"><span class="pln">  </span><span class="kwd">var</span><span class="pln"> app </span><span class="pun">=</span><span class="pln"> angular</span><span class="pun">.</span><span class="pln">module</span><span class="pun">(</span><span class="str">'demo'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[])</span></li><li class="L0"><span class="pln">  </span><span class="pun">.</span><span class="pln">controller</span><span class="pun">(</span><span class="str">'WelcomeController'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$scope</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">      $scope</span><span class="pun">.</span><span class="pln">greeting </span><span class="pun">=</span><span class="pln"> </span><span class="str">'Welcome!'</span><span class="pun">;</span></li><li class="L2"><span class="pln">  </span><span class="pun">});</span></li><li class="L3"><span class="pln">  angular</span><span class="pun">.</span><span class="pln">bootstrap</span><span class="pun">(</span><span class="pln">document</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'demo'</span><span class="pun">]);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L5"><span class="tag">&lt;/body&gt;</span></li><li class="L6"><span class="tag">&lt;/html&gt;</span></li></ol></code></pre>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row about-product margin-tb-60">
+  <a name="deferred" class="top">&nbsp;</a>
+  <div class="col-md-3 md-margin-bottom-20">
+    <h2 class="heading-md"><span class="color-green">Add</span> Cart Items</h2>
+    <p>Donec bibendum vitae lacus vitae eleifend. Curabitur vitae turpis eget mi vulputate volutpat. Curabitur molestie magna non tellus viverra ornare. Etiam enim sapien, tristique et faucibus et, scelerisque id risus.</p>
+  </div>
+  <div class="col-md-9 green">
+    <div class="row">
+        <div class="info-blocks-in">
+          <pre class="funny-boxes funny-boxes-top-green"><code class="lang-html"><ol class="linenums"><li class="L0"><span class="dec">&lt;!doctype html&gt;</span></li><li class="L1"><span class="tag">&lt;html&gt;</span></li><li class="L2"><span class="tag">&lt;body&gt;</span></li><li class="L3"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-controller</span><span class="pun">=</span><span class="atv">"WelcomeController"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  {{greeting}}</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li><li class="L6"><span class="pln">&nbsp;</span></li><li class="L7"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"angular.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li><li class="L8"><span class="tag">&lt;script&gt;</span></li><li class="L9"><span class="pln">  </span><span class="kwd">var</span><span class="pln"> app </span><span class="pun">=</span><span class="pln"> angular</span><span class="pun">.</span><span class="pln">module</span><span class="pun">(</span><span class="str">'demo'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[])</span></li><li class="L0"><span class="pln">  </span><span class="pun">.</span><span class="pln">controller</span><span class="pun">(</span><span class="str">'WelcomeController'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$scope</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">      $scope</span><span class="pun">.</span><span class="pln">greeting </span><span class="pun">=</span><span class="pln"> </span><span class="str">'Welcome!'</span><span class="pun">;</span></li><li class="L2"><span class="pln">  </span><span class="pun">});</span></li><li class="L3"><span class="pln">  angular</span><span class="pun">.</span><span class="pln">bootstrap</span><span class="pun">(</span><span class="pln">document</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'demo'</span><span class="pun">]);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L5"><span class="tag">&lt;/body&gt;</span></li><li class="L6"><span class="tag">&lt;/html&gt;</span></li></ol></code></pre>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row about-product margin-tb-60">
+  <a name="deferred" class="top">&nbsp;</a>
+  <div class="col-md-3 md-margin-bottom-20">
+    <h2 class="heading-md"><span class="color-blue">Make</span> Request</h2>
+    <p>Donec bibendum vitae lacus vitae eleifend. Curabitur vitae turpis eget mi vulputate volutpat. Curabitur molestie magna non tellus viverra ornare. Etiam enim sapien, tristique et faucibus et, scelerisque id risus.</p>
+  </div>
+  <div class="col-md-9 blue">
+    <div class="row">
+        <div class="info-blocks-in">
+          <pre class="funny-boxes funny-boxes-top-blue"><code class="lang-html"><ol class="linenums"><li class="L0"><span class="dec">&lt;!doctype html&gt;</span></li><li class="L1"><span class="tag">&lt;html&gt;</span></li><li class="L2"><span class="tag">&lt;body&gt;</span></li><li class="L3"><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">ng-controller</span><span class="pun">=</span><span class="atv">"WelcomeController"</span><span class="tag">&gt;</span></li><li class="L4"><span class="pln">  {{greeting}}</span></li><li class="L5"><span class="tag">&lt;/div&gt;</span></li><li class="L6"><span class="pln">&nbsp;</span></li><li class="L7"><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pun">=</span><span class="atv">"angular.js"</span><span class="tag">&gt;&lt;/script&gt;</span></li><li class="L8"><span class="tag">&lt;script&gt;</span></li><li class="L9"><span class="pln">  </span><span class="kwd">var</span><span class="pln"> app </span><span class="pun">=</span><span class="pln"> angular</span><span class="pun">.</span><span class="pln">module</span><span class="pun">(</span><span class="str">'demo'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[])</span></li><li class="L0"><span class="pln">  </span><span class="pun">.</span><span class="pln">controller</span><span class="pun">(</span><span class="str">'WelcomeController'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$scope</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">      $scope</span><span class="pun">.</span><span class="pln">greeting </span><span class="pun">=</span><span class="pln"> </span><span class="str">'Welcome!'</span><span class="pun">;</span></li><li class="L2"><span class="pln">  </span><span class="pun">});</span></li><li class="L3"><span class="pln">  angular</span><span class="pun">.</span><span class="pln">bootstrap</span><span class="pun">(</span><span class="pln">document</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'demo'</span><span class="pun">]);</span></li><li class="L4"><span class="tag">&lt;/script&gt;</span></li><li class="L5"><span class="tag">&lt;/body&gt;</span></li><li class="L6"><span class="tag">&lt;/html&gt;</span></li></ol></code></pre>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

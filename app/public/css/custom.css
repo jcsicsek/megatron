@@ -156,19 +156,27 @@ height: 0;
 width:0;
 }
 
-.margin-tb-80 { 
+.margin-tb-80,
+.margin-tb-30, { 
    clear:both;
 }
 
+.margin-tb-30 { margin-top:30px; margin-bottom:30px;}
 .margin-tb-80 { margin-top:80px; margin-bottom:80px;}
 
 @media (max-width: 768px) {
+  .sm-margin-tb-30 {
+    margin-top:30px; margin-bottom:30px;
+  }
   .sm-margin-tb-80 {
     margin-top:80px; margin-bottom:80px;
   }
 }
 
 @media (max-width: 992px) {
+  .md-margin-tb-30 {
+    margin-top:30px; margin-bottom:30px;
+  }
   .md-margin-tb-80 {
     margin-top:80px; margin-bottom:80px;
   }

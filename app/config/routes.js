@@ -15,6 +15,7 @@ var urls = {
     products: '/products',
     api: '/api',
     apiapply: '/api/apply',
+    apiloanrequest: '/api/loan-request',
     faqs: '/faqs',
     contact: '/contact',
     terms: '/terms',
@@ -46,6 +47,7 @@ module.exports = function(app, passport, pgClient) {
   app.get(urls.static.products, staticController.products);
   app.get(urls.static.api, staticController.api);
   app.get(urls.static.apiapply, staticController.apiapply);
+  app.get(urls.static.apiloanrequest, staticController.apiloanrequest);
   app.get(urls.static.faqs, staticController.faqs);
   app.get(urls.static.contact, staticController.contact);
   app.post(urls.static.contact, staticController.sendContact);

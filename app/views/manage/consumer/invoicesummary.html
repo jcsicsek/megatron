@@ -57,13 +57,14 @@ var CirclesMaster = function () {
         // Both Circles
         initCirclesMaster1: function () {
           // Purchase Amount + Remaining Balance
+          var percentage = 87;
           Circles.create({
             id:         'circle-1',
-            percentage: 87,
+            percentage: percentage,
             radius:     150,
             width:      15,
             number:     {{ loan.loanAmount.toFixed(2) }},
-            text:       '',
+            text:       '$',
             colors:     ['#eee', '#72c02c'],
             duration:   800
           })

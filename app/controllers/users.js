@@ -19,10 +19,10 @@ module.exports.create = function(pgClient) {
     partnerlogin: function(req, res) {
       res.redirect('/');
     },
-    registerPage: function(req, res) {
+    partnerregisterPage: function(req, res) {
       res.render('auth/register.html', {});
     },
-    register: function(req, res) {
+    partnerregister: function(req, res) {
       if (req.body.password != req.body.password_conf) {
         res.send(400, {status: "error", message: "Password does not match password confirmation"});
       } else {

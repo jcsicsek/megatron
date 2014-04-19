@@ -3,9 +3,8 @@
 {% block content %}
 <div class="reg-block">
   <div class="reg-block-header">
-    <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="images/tabbio-small.png"></a>
-    <h2>View Statement</h2>
-    <p>Are you a merchant or a bank? <a class="color-green" href={{url.users.partnerlogin}}>Partner with us</a>.</p>            
+    <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
+    <h2>View Statement</h2>           
   </div>
   <form method="POST" action={{urls.invoices.portal}}>
     <div class="input-group margin-bottom-20">
@@ -18,10 +17,15 @@
     </div>
     <hr>
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-10 col-md-offset-1 margin-bottom-25">
         <button type="submit" value="send" class="btn-u btn-block">View Statement</button>
       </div>
     </div>
   </form>
+  <div class="row">
+    <div class="col-md-12 centered">
+      <p>Are you a merchant or a lender? <a class="color-green" href={{urls.users.partnerlogin}}>Partner with us</a>.</p> 
+    </div>
+  </div>
 </div>
 {% endblock content %}

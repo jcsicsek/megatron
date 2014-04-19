@@ -4,8 +4,8 @@ var urls = {
     whoami: '/users/whoami',
     consumerlogin: '/login',
     register: '/register',
-    partnerlogin: '/partner/login'
-    // partnerregister: '/partner/register',
+    partnerlogin: '/partner/login',
+    partnerregister: '/partner/register',
     // adminlogin: '/admin/login',
     // adminregister: '/admin/register'
   },
@@ -56,11 +56,12 @@ module.exports = function(app, passport, pgClient) {
 
   //users routes
   app.get(urls.users.consumerlogin, usersController.consumerloginPage);
+  app.get(urls.users.partnerlogin, usersController.partnerloginPage);
   app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
   app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
   app.get(urls.users.logout, usersController.logout);
-  app.get(urls.users.register, usersController.registerPage);
-  app.post(urls.users.register, usersController.register);
+  app.get(urls.users.partnerregister, usersController.partnerregisterPage);
+  app.post(urls.users.partnerregister, usersController.partnerregister);
   app.get(urls.users.whoami, usersController.whoami);
 
   //loan routes

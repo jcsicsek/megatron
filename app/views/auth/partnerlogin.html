@@ -6,10 +6,10 @@
     <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
     <h2>Partner Login</h2>           
   </div>
-  <form method="POST" action={{urls.invoices.portal}}>
+  <form method="POST" action={{urls.users.partnerlogin}}>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-      <input type="email" id="email" name="email" class="form-control" placeholder="Email" data-parsley-trigger="change focusout blur" required data-parsley-type="email" data-parsley-type-message="This doesn't look like a valid email" data-parsley-required-message="Your email is required to login">
+      <input type="email" id="email" name="username" class="form-control" placeholder="Email" data-parsley-trigger="change focusout blur" required data-parsley-type="email" data-parsley-type-message="This doesn't look like a valid email" data-parsley-required-message="Your email is required to login">
     </div>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-key"></i></span>

@@ -41,7 +41,10 @@ module.exports.create = function() {
     },
     invoiceSummary: function(req, res) {
       sf.queryById(req.params.invoiceid, function(error, loan) {
-        if (isAuthenticated(req, loan)) {
+        if (!loan) {
+          res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
+        }
+        else if (isAuthenticated(req, loan)) {
           res.render('manage/consumer/invoicesummary.html', {title: "Invoice | tabb.io", loan: loan});    
         } else {
           res.send(403, {status: "error", message: "Phone number not provided or invalid"})
@@ -50,7 +53,10 @@ module.exports.create = function() {
     },
     invoiceDetails: function(req, res) {
       sf.queryById(req.params.invoiceid, function(error, loan) {
-        if (isAuthenticated(req, loan)) {
+        if (!loan) {
+          res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
+        }
+        else if (isAuthenticated(req, loan)) {
           res.render('manage/consumer/invoicedetail.html', {title: "Statements | tabb.io", loan: loan});
         } else {
           res.send(403, {status: "error", message: "Phone number not provided or invalid"})
@@ -59,7 +65,10 @@ module.exports.create = function() {
     },
     invoicePayPage: function(req, res) {
       sf.queryById(req.params.invoiceid, function(error, loan) {
-        if (isAuthenticated(req, loan)) {
+        if (!loan) {
+          res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
+        }
+        else if (isAuthenticated(req, loan)) {
           res.render('manage/consumer/pay.html', {title: "Make a Payment | tabb.io", loan: loan});
         } else {
           res.send(403, {status: "error", message: "Phone number not provided or invalid"})

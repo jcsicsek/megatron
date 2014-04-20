@@ -2,7 +2,7 @@ var urls = {
   users: {
     logout: '/logout',
     whoami: '/users/whoami',
-    consumerlogin: '/login',
+    consumerlogin: '/statement',
     register: '/register',
     partnerlogin: '/partner/login',
     partnerregister: '/partner/register',

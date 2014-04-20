@@ -24,7 +24,7 @@
         <meta content="" name="author">
       {%- endblock metas %}
 
-      {%- block styles %}
+      
         <!-- Favicon -->
         <link rel="shortcut icon" href="/favicon.ico">
   	    <!-- Bootstrap & Font Awesome & Line Icons-->
@@ -36,11 +36,12 @@
         <!--[if lt IE 9]>
           <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-ie8.css">
         <![endif]-->
+        {%- block styles %}
+        {%- endblock styles %}
   	    <!-- Custom Styles -->
   	    <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/themes/purple.css">
         <link rel="stylesheet" href="/css/custom.css">
-      {%- endblock styles %}
 
     {%- endblock head %}
   </head>

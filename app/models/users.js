@@ -6,19 +6,22 @@ module.exports.create = function(pgClient) {
           callback(error, result.rows[0]);
         });
       },
-      create: function(email, passwordHash, role, callback) {
+      createPartner: function(email, passwordHash, role, contactName, businessName, phone, logoUrl, subdomain, callback) {
         var now = new Date();
         var query = "INSERT INTO users (email, password, created, modified, last_login, active) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id";
         pgClient.query(query, [email, passwordHash, now, now, now, true], function(error, result) {
           var query = "INSERT INTO user_roles (user_id, role, created, modified) VALUES ($1, $2, $3, $4)";
           var userId = result.rows[0].id;
           pgClient.query(query, [userId, role, now, now], function(error, results) {
-            callback(error, {
-              id: userId,
-              email: email,
-              role: role,
-              active: true
-            });
+            var query = "INSERT INTO partners (user_id, logo_url, contact_name, business_name, phone, subdomain, created, modified, active) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+            pgClient.query(query, [userId, logoUrl, contactName, businessName, phone, subdomain, now, now, true], function(error, result) {
+              callback(error, {
+                id: userId,
+                email: email,
+                role: role,
+                active: true
+              });
+            })
           })
         });
       },

@@ -22,11 +22,12 @@ module.exports.create = function(pgClient) {
     partnerregisterPage: function(req, res) {
       res.render('auth/register.html', {});
     },
+
     partnerregister: function(req, res) {
       if (req.body.password != req.body.password_conf) {
         res.send(400, {status: "error", message: "Password does not match password confirmation"});
       } else {
-        usersModel.create(req.body.email, passwordHash.generate(req.body.password), req.body.role, function(error, user) {
+        usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, function(error, user) {
           req.login(user, function(error) {
             res.redirect('/');          
           })

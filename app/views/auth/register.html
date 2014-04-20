@@ -6,7 +6,7 @@
     <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
     <h2>Partner Register</h2>           
   </div>
-  <form method="POST" action={{urls.invoices.portal}}>
+  <form method="POST" action={{urls.users.partnerregister}}>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
       <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your name is required">
@@ -30,6 +30,10 @@
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-key"></i></span>
       <input type="password" id="password" name="password" class="form-control" placeholder="Password" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your password is required">
+    </div>
+    <div class="input-group margin-bottom-20">
+      <span class="input-group-addon"><i class="fa fa-key"></i></span>
+      <input type="password" id="password_conf" name="password_conf" class="form-control" placeholder="Confirm Password" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Please confirm your password">
     </div>
     <hr>
     <div class="row">

@@ -1,1 +1,9 @@
 {% extends "../base.html" %}
+
+{% set user_nav = [
+  {url: urls.merchants.overview, text: 'Overview'},
+  {url: urls.merchants, text: 'Statements'},
+  {url: urls.merchants, text: 'Account Settings'}
+] %}
+
+{% block masttitle %}{{ company.name }} Portal{% endblock masttitle %}

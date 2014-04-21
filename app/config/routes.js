@@ -29,6 +29,9 @@ var urls = {
     summary: function(invoiceid){return '/i/' + invoiceid},
     details: function(invoiceid){return '/i/' + invoiceid + '/details'},
     pay: function(invoiceid){return '/i/' + invoiceid + '/pay'}
+  },
+  merchants: {
+    overview: '/manage'
   }
 }
 
@@ -37,6 +40,7 @@ module.exports = function(app, passport, pgClient) {
   var usersController = require('../controllers/users').create(pgClient);
   var staticController = require('../controllers/static').create();
   var loansController = require('../controllers/loans').create();
+  var merchantsController = require('../controllers/merchants').create();
 
   app.locals.urls = urls;
 
@@ -68,9 +72,13 @@ module.exports = function(app, passport, pgClient) {
   app.post(urls.loans.apply, loansController.apply);
   app.get(urls.loans.apply, loansController.applyPage);
 
+  //invoice routes
   app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
   app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
   app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
   app.post(urls.invoices.portal, loansController.invoicePortal);
+
+  //merchant routes
+  app.get(urls.merchants.overview, merchantsController.overview);
 }
 

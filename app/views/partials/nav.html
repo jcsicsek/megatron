@@ -35,9 +35,9 @@
           {% if user.is.admin %}
           <li><a href="#">Admin Portal</a></li>
           <li><a href="#">Merchant Portal</a></li>
-          <li><a href={{urls.consumers.ustatementsummary}}>Consumer Portal</a></li>
-          {% elif user.is.merchant %}
-          <li><a href="#">Your Portal</a></li>
+          <li><a href="#">Consumer Portal</a></li>
+          {% elif user.is.partner %}
+          <li><a href={{urls.merchants.overview}}>Your Portal</a></li>
           {% elif user.is.consumer %}
           <li><a href={{urls.consumers.ustatementsummary}}>Your Portal</a></li>
           {% else %}

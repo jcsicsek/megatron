@@ -4,10 +4,10 @@ var urls = require('../config/routes').urls;
 module.exports.create = function(pgClient) {
   var usersModel = require('../models/users').create(pgClient);
   var self = {   
-    consumerloginPage: function(req, res) {
-      res.render('auth/consumerlogin.html', {});
+    viewstatementPage: function(req, res) {
+      res.render('auth/viewstatement.html', {});
     },
-    consumerlogin: function(req, res) {
+    viewstatement: function(req, res) {
       res.redirect(urls.static.root);
     },
     logout: function(req, res) {
@@ -21,7 +21,7 @@ module.exports.create = function(pgClient) {
       res.redirect(urls.static.root);
     },
     partnerregisterPage: function(req, res) {
-      res.render('auth/register.html', {});
+      res.render('auth/partnerregister.html', {});
     },
 
     partnerregister: function(req, res) {

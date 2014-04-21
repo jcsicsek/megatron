@@ -2,10 +2,9 @@ var urls = {
   users: {
     logout: '/logout',
     whoami: '/users/whoami',
-    consumerlogin: '/statement',
-    register: '/register',
+    viewstatement: '/statement',
     partnerlogin: '/partner/login',
-    partnerregister: '/partner/register',
+    partnerregister: '/partner/register'
     // adminlogin: '/admin/login',
     // adminregister: '/admin/register'
   },
@@ -59,9 +58,9 @@ module.exports = {
     app.get(urls.static.privacy, staticController.privacy);
 
     //users routes
-    app.get(urls.users.consumerlogin, usersController.consumerloginPage);
+    app.get(urls.users.viewstatement, usersController.viewstatementPage);
+    app.post(urls.users.viewstatement, passport.authenticate('local', {failureRedirect: urls.users.viewstatement}), usersController.viewstatement);
     app.get(urls.users.partnerlogin, usersController.partnerloginPage);
-    app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
     app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
     app.get(urls.users.logout, usersController.logout);
     app.get(urls.users.partnerregister, usersController.partnerregisterPage);

@@ -102,7 +102,7 @@
     <div class="headline"><h2>View Your Statement</h2></div>
     <div class="row">
       <p>See statement, schedule payments, and other activities.</p>
-      <form method="POST" action={{urls.users.consumerlogin}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+      <form method="POST" action={{urls.users.viewstatement}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
         <div class="form-group">
           <div class="controls">
             <div class="row">
@@ -130,9 +130,11 @@
   <div class="col-md-6 md-margin-bottom-40">
     <div class="headline"><h2>Create a tabb.io Acount</h2></div>
     <div class="row">
-      <p>If you are a merchant or consumer who would like to view your complete transaction history, set up security criteria, pre-apply for transaction financing, and more, register for an account.</p>
+      <p>If you are a merchant who would like to offer purchase financing with custom built promotions just for your customers, register for an account.</p>
       <div class="form-actions form-actions-no-bg pull-right">
-        <button type="submit" value="send" class="btn-u btn-u-purple">Register</button>
+        <a href={{urls.users.partnerregister}}>
+          <button type="submit" value="send" class="btn-u btn-u-purple">Register</button>
+        </a>
       </div>
     </div>
   </div>

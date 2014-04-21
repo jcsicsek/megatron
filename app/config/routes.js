@@ -43,6 +43,8 @@ module.exports = {
     var loansController = require('../controllers/loans').create();
     var merchantsController = require('../controllers/merchants').create();
 
+    app.locals.urls = urls;
+
     //staticy-pages
     app.get(urls.static.root, staticController.root);
     app.get(urls.static.company, staticController.company);

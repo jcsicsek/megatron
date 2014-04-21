@@ -1,4 +1,5 @@
 var passwordHash = require('password-hash');
+var urls = require('../config/routes').urls;
 
 module.exports.create = function(pgClient) {
   var usersModel = require('../models/users').create(pgClient);
@@ -7,17 +8,17 @@ module.exports.create = function(pgClient) {
       res.render('auth/consumerlogin.html', {});
     },
     consumerlogin: function(req, res) {
-      res.redirect('/');
+      res.redirect(urls.static.root);
     },
     logout: function(req, res) {
       req.logout();
-      res.redirect('/');
+      res.redirect(urls.static.root);
     },
     partnerloginPage: function(req, res) {
       res.render('auth/partnerlogin.html', {});
     },
     partnerlogin: function(req, res) {
-      res.redirect('/');
+      res.redirect(urls.static.root);
     },
     partnerregisterPage: function(req, res) {
       res.render('auth/register.html', {});
@@ -37,7 +38,7 @@ module.exports.create = function(pgClient) {
               } else {
                 usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, function(error, user) {
                   req.login(user, function(error) {
-                    res.redirect('/');          
+                    res.redirect(urls.static.root);          
                   })
                 });
               }

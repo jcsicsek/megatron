@@ -99,7 +99,7 @@ app.use(express.logger({stream:loggerStream}));
 
 app.use(app.router);
 
-require('./config/routes')(app, passport, pgClient);
+require('./config/routes').configure(app, passport, pgClient);
 
 
 //error handlers

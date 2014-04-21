@@ -35,50 +35,50 @@ var urls = {
   }
 }
 
-module.exports = function(app, passport, pgClient) {
+module.exports = {
+  configure: function(app, passport, pgClient) {
 
-  var usersController = require('../controllers/users').create(pgClient);
-  var staticController = require('../controllers/static').create();
-  var loansController = require('../controllers/loans').create();
-  var merchantsController = require('../controllers/merchants').create();
+    var usersController = require('../controllers/users').create(pgClient);
+    var staticController = require('../controllers/static').create();
+    var loansController = require('../controllers/loans').create();
+    var merchantsController = require('../controllers/merchants').create();
 
-  app.locals.urls = urls;
+    //staticy-pages
+    app.get(urls.static.root, staticController.root);
+    app.get(urls.static.company, staticController.company);
+    app.get(urls.static.products, staticController.products);
+    app.get(urls.static.api, staticController.api);
+    app.get(urls.static.apiapply, staticController.apiapply);
+    app.get(urls.static.apiloanrequest, staticController.apiloanrequest);
+    app.get(urls.static.faqs, staticController.faqs);
+    app.get(urls.static.contact, staticController.contact);
+    app.post(urls.static.contact, staticController.sendContact);
+    app.get(urls.static.terms, staticController.terms);
+    app.get(urls.static.privacy, staticController.privacy);
 
+    //users routes
+    app.get(urls.users.consumerlogin, usersController.consumerloginPage);
+    app.get(urls.users.partnerlogin, usersController.partnerloginPage);
+    app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
+    app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
+    app.get(urls.users.logout, usersController.logout);
+    app.get(urls.users.partnerregister, usersController.partnerregisterPage);
+    app.post(urls.users.partnerregister, usersController.partnerregister);
+    app.get(urls.users.whoami, usersController.whoami);
 
-  //staticy-pages
-  app.get(urls.static.root, staticController.root);
-  app.get(urls.static.company, staticController.company);
-  app.get(urls.static.products, staticController.products);
-  app.get(urls.static.api, staticController.api);
-  app.get(urls.static.apiapply, staticController.apiapply);
-  app.get(urls.static.apiloanrequest, staticController.apiloanrequest);
-  app.get(urls.static.faqs, staticController.faqs);
-  app.get(urls.static.contact, staticController.contact);
-  app.post(urls.static.contact, staticController.sendContact);
-  app.get(urls.static.terms, staticController.terms);
-  app.get(urls.static.privacy, staticController.privacy);
+    //loan routes
+    app.post(urls.loans.apply, loansController.apply);
+    app.get(urls.loans.apply, loansController.applyPage);
 
-  //users routes
-  app.get(urls.users.consumerlogin, usersController.consumerloginPage);
-  app.get(urls.users.partnerlogin, usersController.partnerloginPage);
-  app.post(urls.users.consumerlogin, passport.authenticate('local', {failureRedirect: urls.users.consumerlogin}), usersController.consumerlogin);
-  app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);
-  app.get(urls.users.logout, usersController.logout);
-  app.get(urls.users.partnerregister, usersController.partnerregisterPage);
-  app.post(urls.users.partnerregister, usersController.partnerregister);
-  app.get(urls.users.whoami, usersController.whoami);
+    //invoice routes
+    app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
+    app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
+    app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
+    app.post(urls.invoices.portal, loansController.invoicePortal);
 
-  //loan routes
-  app.post(urls.loans.apply, loansController.apply);
-  app.get(urls.loans.apply, loansController.applyPage);
-
-  //invoice routes
-  app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
-  app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
-  app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
-  app.post(urls.invoices.portal, loansController.invoicePortal);
-
-  //merchant routes
-  app.get(urls.merchants.overview, merchantsController.overview);
+    //merchant routes
+    app.get(urls.merchants.overview, merchantsController.overview);
+  },
+  urls: urls
 }
 

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block masttitle -%}403 Forbidden{% endblock masttitle %}
+
+{% block top_error %}403 Forbidden{% endblock top_error %}
+
+{% block bottom_error %}
+	<span>That’s an error!</span>
+      <p>You don't have permission for this page. <a href={{urls.static.contact}}>Contact us</a> if you think we've made a mistake!</p>
+      <a class="btn-u btn-bordered" href={{urls.static.root}}>Back Home</a>
+{% endblock bottom_error %}

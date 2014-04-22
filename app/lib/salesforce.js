@@ -7,7 +7,7 @@ var org = nforce.createConnection(config.salesforce.connection);
 
 
 module.exports = {
-  createLoanApp: function(id, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
+  createLoanApp: function(id, merchant, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("SALESFORCE: creating loan application for id", id);
     org.authenticate(config.salesforce.credentials, function(error, response){
       var loan = {
@@ -17,7 +17,7 @@ module.exports = {
           },
           'payday__Loan_Amount__c' : amount,
           'payday__Product_Type__c': 'Installment',
-          'payday__Lead_Source__c': 'tabb.io',
+          'payday__Lead_Source__c': merchant,
           'payday__IP_Address__c' : ipAddress,
           'Loan_ID__c' : id
         },

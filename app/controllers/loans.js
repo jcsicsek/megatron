@@ -24,7 +24,8 @@ module.exports.create = function() {
   var self = {   
     apply: function(req, res) {
       var loan = req.body;
-    	sf.createLoanApp(generateId(4), loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, loan.phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
+      var merchant = req.subdomains.length > 0 ? req.subdomains[0] : "tabb.io";
+    	sf.createLoanApp(generateId(4), merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, loan.phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
         if (!error) {
           res.send({status: "success", response: response});
         } else {

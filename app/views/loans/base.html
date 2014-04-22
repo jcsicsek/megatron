@@ -1,17 +1,38 @@
 {% extends "../base.html" %}
 
-{% block body_attribs %}class="login-form" style="zoom: 1;"{% endblock body_attribs %}
+{%- block styles %}
+    {% parent %}
+    <link rel="stylesheet" href="/css/pages/login.css">
+{%- endblock styles %}
+
+{% block wrapper_attribs %}{% endblock wrapper_attribs %}
 
 {%- block navbar %}
 {%- endblock navbar %}
 
-{%- block masthead %}
-{%- endblock masthead %}
+{%- block masthead -%}
+{%- endblock masthead -%}
 
-{%- block footer %}
-{%- endblock footer %}
+{%- block main -%}
+<div class="container">
+	{%- block content -%}
+	{%- endblock content -%}
+</div>
+{%- endblock main -%}
+
+{%- block copyright %}
+{%- endblock copyright %}
 
 {%- block scripts %}
-    {% parent %}
-    <script src="/parsley/parsley.min.js"></script>
+{% parent %}
+<script type="text/javascript" src="/vendor/backstretch/jquery.backstretch.min.js"></script>
+<script type="text/javascript">
+  $.backstretch([
+    "/images/bg/5.jpg",
+    "/images/bg/4.jpg",
+    ], {
+      fade: 1000,
+      duration: 7000
+  });
+</script>
 {%- endblock scripts %}

@@ -102,17 +102,9 @@ app.use(app.router);
 require('./config/routes').configure(app, passport, pgClient);
 
 
-//error handlers
-app.use(function(req, res, next){
-    res.status(403).render('error-pages/403', {title: "Sorry, permission denied | tabb.io" });
-});
-
+//error handler
 app.use(function(req, res, next){
     res.status(404).render('error-pages/404', {title: "Sorry, page not found | tabb.io" });
-});
-
-app.use(function(req, res, next){
-    res.status(500).render('error-pages/500', {title: "Sorry, server error | tabb.io" });
 });
 
 //redirects

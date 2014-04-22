@@ -44,6 +44,7 @@ module.exports = {
 
     app.locals.urls = urls;
 
+
     //staticy-pages
     app.get(urls.static.root, staticController.root);
     app.get(urls.static.company, staticController.company);

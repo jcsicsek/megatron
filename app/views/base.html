@@ -27,6 +27,7 @@
       
         <!-- Favicon -->
         <link rel="shortcut icon" href="/favicon.ico">
+        {%- block global_styles %}
   	    <!-- Bootstrap & Font Awesome & Line Icons-->
   	    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
   	    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
@@ -36,11 +37,12 @@
         <!--[if lt IE 9]>
           <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-ie8.css">
         <![endif]-->
+        {%- endblock global_styles %}
         {%- block styles %}
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/themes/purple.css">
-        <link rel="stylesheet" href="/css/custom.css">
         {%- endblock styles %}
+        <link rel="stylesheet" href="/css/custom.css">
   	    <!-- Custom Styles -->
 
     {%- endblock head %}

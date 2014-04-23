@@ -7,8 +7,8 @@
 ] %}
 
 {%- block styles %}
-    {% parent %}
-    <link rel="stylesheet" href="/css/pages/invoice.css">
+  <link rel="stylesheet" href="/css/pages/invoice.css">
+  {% parent %}
 {%- endblock scripts %}
 
 {% block masttitle %}Invoice {{ loan.id }}{% endblock masttitle %}

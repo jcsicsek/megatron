@@ -261,5 +261,9 @@ li.active.brown {color: #9c8061;}
 li.active.dark-blue {color: #4765a0;}
 li.active.light-green {color: #79d5b3;}
 
+.footer a, .copyright a, .footer a:hover, .copyright a:hover {
+  color: #9b6bcc;
+}
 
+ul.loginbar a {color: #9b6bcc;}
 

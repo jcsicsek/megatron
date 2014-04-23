@@ -79,8 +79,8 @@
 		<ul class="list-unstyled invoice-total-info">
 			<li><strong>Grand Total:</strong> ${{ loan.loanAmount.toFixed(2) }}</li>
 		</ul>
-		<button class="btn btn-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
-		<a href={{urls.invoices.pay(loan.id)}}><button class="btn btn-primary btn-lg">Schedule Payment</button></a>         
+		<button class="btn-u btn-u-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
+		<a href={{urls.invoices.pay(loan.id)}}><button class="btn-u btn-u-{{colorTheme}} btn-lg">Schedule Payment</button></a>         
 	</div>
 </div>
 <!--End Invoice Footer-->

@@ -229,7 +229,7 @@ a.top {
 }
 
 .company-logo.view {
-  width: 200px;
+  width: 250px;
   height: auto;
   margin-bottom: 15px;
 }
@@ -239,3 +239,9 @@ a.top {
   height: 50px;
   margin-top: -10px;
 }
+
+.btn-u.btn-lg {
+padding: 10px 16px;
+font-size: 18px;
+line-height: 1.33;
+border-radius: 6px;

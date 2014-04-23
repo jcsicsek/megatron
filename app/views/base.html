@@ -37,11 +37,11 @@
           <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-ie8.css">
         <![endif]-->
         {%- block styles %}
-        {%- endblock styles %}
-  	    <!-- Custom Styles -->
-  	    <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/themes/purple.css">
         <link rel="stylesheet" href="/css/custom.css">
+        {%- endblock styles %}
+  	    <!-- Custom Styles -->
 
     {%- endblock head %}
   </head>
@@ -64,7 +64,7 @@
           <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
           <ul class="pull-right breadcrumb">
             <li><a href={{urls.static.root}}>Home</a></li>
-            <li class="active">{% block masttitle %}{% endblock masttitle %}</li>
+            <li class="active {{colorTheme}}">{% block masttitle %}{% endblock masttitle %}</li>
           </ul>
         </div>
       </div><!--/breadcrumbs-->

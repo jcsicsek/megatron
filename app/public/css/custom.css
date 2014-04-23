@@ -241,7 +241,25 @@ a.top {
 }
 
 .btn-u.btn-lg {
-padding: 10px 16px;
-font-size: 18px;
-line-height: 1.33;
-border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+li.active.blue {color: #3498db;}
+li.active.red {color: #e74c3c;}
+li.active.orange {color: #e67e22;}
+li.active.sea {color: #1abc9c;}
+li.active.green {color: #2ecc71;}
+li.active.yellow {color: #f1c40f;}
+li.active.default {color: #95a5a6;}
+li.active.dark {color: #555;}
+li.active.purple {color: #9b6bcc;}
+li.active.aqua {color: #27d7e7;}
+li.active.brown {color: #9c8061;}
+li.active.dark-blue {color: #4765a0;}
+li.active.light-green {color: #79d5b3;}
+
+
+

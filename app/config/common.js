@@ -12,5 +12,10 @@ module.exports = {
       password: "Welcome1",
       securityToken: "l3o99Vq6Tdww3R9BCWV5mN3A3"
     }
+  },
+  twilio: {
+    account_sid: "AC3666eafb680bb9c0584c0df44549195c",
+    auth_token: "2a9e0ec1e36f341189750449b98d739b",
+    phone: "6466812434"
   }
 }

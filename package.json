@@ -15,7 +15,8 @@
     "underscore": "1.6.0",
     "deepmerge": "0.2.7",
     "winston": "0.7.3",
-    "hat": "0.0.3"
+    "hat": "0.0.3",
+    "twilio": "1.6.0"
   },
   "devDependencies": {
     "supertest": "0.8.1",

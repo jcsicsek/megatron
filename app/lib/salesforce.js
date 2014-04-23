@@ -36,6 +36,7 @@ module.exports = {
         }
       };
       org.apexRest({uri: 'services/apexrest/payday/insertLoanApplication', method: 'POST', body: JSON.stringify(loan) }, function(error, response){
+        response.id = id;
         callback(error, response)
       });
     });

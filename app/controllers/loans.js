@@ -36,7 +36,7 @@ module.exports.create = function() {
       var loanId = generateId(4);
     	sf.createLoanApp(loanId, merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
         if (!error) {
-          var smsMessage = "Your $" + loan.amount + " purchase at " + merchant + " is approved! Check your statement at " + merchant + ".tabb.io/i/" + loanId + ". First payment due in " + paymentDueDays + " days.";
+          var smsMessage = "Your $" + loan.amount + " purchase at " + merchant + " is approved! Check your statement at http://" + merchant + ".tabb.io/i/" + loanId + ". First payment due in " + paymentDueDays + " days.";
           twilio.sendMessage({to: phone, from: config.twilio.phone, body: smsMessage}, function(error, response) {if (error) console.log(error)});
           res.send({status: "success", response: response});
         } else {

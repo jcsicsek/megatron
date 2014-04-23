@@ -86,6 +86,11 @@ module.exports.create = function() {
           res.send(403, {status: "error", message: "Phone number not provided or invalid"})
         }
       });
+    },
+    merchantLoans: function(req, res) {
+      sf.queryByMerchant(req.subdomains[0], function(error, loans) {
+        res.send(loans);
+      });
     }
   };
   return self;

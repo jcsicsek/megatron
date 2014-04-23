@@ -85,6 +85,31 @@ module.exports = {
         }
       });
     });
+  },
+
+  queryByMerchant: function(merchant, callback) {
+    logger.info("SALESFORCE: querying for loans by merchant ", merchant);
+    var query = 'SELECT id, Loan_ID__c, payday__Loan_Amount__c, payday__First_Payment_Date__c, payday__Monthly_Payment_Amount__c, CreatedDate, payday__Contact__r.MobilePhone, payday__Contact__r.FirstName, payday__Contact__r.LastName, payday__Lead_Source__c FROM payday__Loan_Application__c WHERE payday__Lead_Source__c=\'' + merchant + '\'';
+    org.authenticate(config.salesforce.credentials, function(error, response){
+      org.query({query: query}, function(error, results) {
+        if (!error) {
+          callback(null, _.map(results.records, function(record){return {
+            id: record._fields.Loan_ID__c,
+            loanAmount: record._fields.payday__loan_amount__c,
+            createdDate: record._fields.createddate,
+            paymentAmount: record._fields.payday__monthly_payment_amount__c,
+            paymentDueDate: record._fields.payday__first_payment_date__c,
+            phone: record._fields.payday__contact__r.MobilePhone,
+            name: record._fields.payday__contact__r.FirstName + " " + record._fields.payday__contact__r.LastName,
+            merchant: record._fields.payday__Lead_Source__c
+          }}));
+        }
+        else {
+          console.log("Error retreiving records from Salesforce!");
+          callback(error, null);
+        }
+      });
+    });
   }
 
 }

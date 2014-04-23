@@ -31,7 +31,8 @@ var urls = {
     pay: function(invoiceid){return '/i/' + invoiceid + '/pay'}
   },
   merchants: {
-    overview: '/manage'
+    overview: '/manage',
+    loans: '/loans'
   }
 }
 
@@ -82,6 +83,7 @@ module.exports = {
 
     //merchant routes
     app.get(urls.merchants.overview, merchantsController.overview);
+    app.get(urls.merchants.loans, loansController.merchantLoans);
   },
   urls: urls
 }

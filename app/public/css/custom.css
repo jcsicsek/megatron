@@ -221,3 +221,21 @@ width:0;
     color: #eee;
     background-color: #777;
 }
+
+.company-logo {
+    display:block; 
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.company-logo.view {
+    width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.company-logo.manage {
+    width: auto;
+    height: 50px;
+    margin-top: -10px;
+}

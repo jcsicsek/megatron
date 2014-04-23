@@ -82,8 +82,8 @@ module.exports = {
     app.post(urls.invoices.portal, loansController.invoicePortal);
 
     //merchant routes
-    app.get(urls.merchants.overview, merchantsController.overview);
-    app.get(urls.merchants.loans, loansController.merchantLoans);
+    app.get(urls.merchants.overview, setMerchantContext, merchantsController.overview);
+    app.get(urls.merchants.loans, setMerchantContext, loansController.merchantLoans);
   },
   urls: urls
 }

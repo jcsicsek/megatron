@@ -58,7 +58,7 @@ module.exports.create = function(pgClient) {
       })
     },
     getPartner: function(subdomain, callback) {
-      var query = "SELECT logo_url, color_theme FROM partners WHERE subdomain=$1";
+      var query = "SELECT logo_url, color_theme, business_name FROM partners WHERE subdomain=$1";
       pgClient.query(query, [subdomain], function(error, results) {
         callback(error, results.rows[0]);
       });

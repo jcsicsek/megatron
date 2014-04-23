@@ -16,7 +16,7 @@ module.exports.create = function(pgClient) {
         var query = "INSERT INTO user_roles (user_id, role, created, modified) VALUES ($1, $2, $3, $4)";
         var userId = result.rows[0].id;
         pgClient.query(query, [userId, role, now, now], function(error, results) {
-          var query = "INSERT INTO partners (user_id, logo_url, contact_name, business_name, phone, subdomain, created, modified, active, api_key) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+          var query = "INSERT INTO partners (user_id, logo_url, contact_name, business_name, phone, subdomain, created, modified, active, api_key) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
           pgClient.query(query, [userId, logoUrl, contactName, businessName, phone, subdomain, now, now, true, apiKey], function(error, result) {
             callback(error, {
               id: userId,

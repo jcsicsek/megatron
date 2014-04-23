@@ -61,7 +61,7 @@ module.exports = {
     app.get(urls.static.privacy, staticController.privacy);
 
     //users routes
-    app.get(urls.users.viewstatement, usersController.viewstatementPage);
+    app.get(urls.users.viewstatement, middleware.setMerchantContext, usersController.viewstatementPage);
     app.post(urls.users.viewstatement, passport.authenticate('local', {failureRedirect: urls.users.viewstatement}), usersController.viewstatement);
     app.get(urls.users.partnerlogin, usersController.partnerloginPage);
     app.post(urls.users.partnerlogin, passport.authenticate('local', {failureRedirect: urls.users.partnerlogin}), usersController.partnerlogin);

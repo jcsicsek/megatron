@@ -1,3 +1,4 @@
+
 var urls = {
   users: {
     logout: '/logout',
@@ -36,6 +37,7 @@ var urls = {
 
 module.exports = {
   configure: function(app, passport, pgClient) {
+    var middleware = require('../middleware').create(pgClient);
 
     var usersController = require('../controllers/users').create(pgClient);
     var staticController = require('../controllers/static').create();
@@ -73,9 +75,9 @@ module.exports = {
     app.get(urls.loans.apply, loansController.applyPage);
 
     //invoice routes
-    app.get(urls.invoices.summary(':invoiceid'), loansController.invoiceSummary);
-    app.get(urls.invoices.details(':invoiceid'), loansController.invoiceDetails);
-    app.get(urls.invoices.pay(':invoiceid'), loansController.invoicePayPage);
+    app.get(urls.invoices.summary(':invoiceid'), middleware.setMerchantContext, loansController.invoiceSummary);
+    app.get(urls.invoices.details(':invoiceid'), middleware.setMerchantContext, loansController.invoiceDetails);
+    app.get(urls.invoices.pay(':invoiceid'), middleware.setMerchantContext, loansController.invoicePayPage);
     app.post(urls.invoices.portal, loansController.invoicePortal);
 
     //merchant routes

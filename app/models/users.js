@@ -56,6 +56,12 @@ module.exports.create = function(pgClient) {
           callback(null, results[0].api_key);
         }
       })
+    },
+    getPartner: function(subdomain, callback) {
+      var query = "SELECT logo_url FROM partners WHERE subdomain=$1";
+      pgClient.query(query, [subdomain], function(error, results) {
+        callback(error, results.rows[0]);
+      });
     }
   };
   return self;

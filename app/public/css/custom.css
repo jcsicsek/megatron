@@ -236,8 +236,8 @@ a.top {
 
 .company-logo.manage {
   width: auto;
-  height: 50px;
-  margin-top: -10px;
+  height: 70px;
+  margin-top: -25px;
 }
 
 .btn-u.btn-lg {
@@ -266,4 +266,28 @@ li.active.light-green {color: #79d5b3;}
 }
 
 ul.loginbar a {color: #9b6bcc;}
+
+
+
+
+.mini-box {
+min-height: 105px;
+padding: 20px;
+}
+
+.mini-box .box-icon {
+display: block;
+float: left;
+margin: 0 10px 10px 0;
+width: 65px;
+height: 65px;
+border-radius: 50%;
+line-height: 65px;
+vertical-align: middle;
+text-align: center;
+font-size: 35px;
+}
+
+
+
 

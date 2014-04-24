@@ -3,94 +3,101 @@
 {% block content %}
 <div class="reg-block">
   <div class="reg-block-header">
-    <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
+    <a href={{urls.static.root}}><img class="company-logo view" src="{{logoUrl}}"></a>
     <h2>Loan Application</h2>           
   </div>
-  <form method="POST" action={{urls.loans.apply}}>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-      <input type="text" id="first_name" name="firstName" class="form-control" placeholder="First Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your first name is required">
-      <input type="text" id="last_name" name="lastName" class="form-control margin-top-10" placeholder="Last Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your last name is required">
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
-      <input type="text" id="address_1" name="address1" class="form-control" placeholder="Address Line 1" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your address is required">
-      <input type="text" id="address_2" name="address2" class="form-control margin-top-10" placeholder="Address Line 2">
-      <input type="text" id="city" name="city" class="form-control margin-top-10" placeholder="City" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your city is required">
-      <select name="state" class="form-control margin-top-10" id="state">
-        <option value="">Please choose state...</option>
-        <option value="AL">AL</option>
-        <option value="AK">AK</option>
-        <option value="AZ">AZ</option>
-        <option value="AR">AR</option>
-        <option value="CA">CA</option>
-        <option value="CO">CO</option>
-        <option value="CT">CT</option>
-        <option value="DE">DE</option>
-        <option value="DC">DC</option>
-        <option value="FL">FL</option>
-        <option value="GA">GA</option>
-        <option value="HI">HI</option>
-        <option value="ID">ID</option>
-        <option value="IL">IL</option>
-        <option value="IN">IN</option>
-        <option value="IA">IA</option>
-        <option value="KS">KS</option>
-        <option value="KY">KY</option>
-        <option value="LA">LA</option>
-        <option value="ME">ME</option>
-        <option value="MD">MD</option>
-        <option value="MA">MA</option>
-        <option value="MI">MI</option>
-        <option value="MN">MN</option>
-        <option value="MS">MS</option>
-        <option value="MO">MO</option>
-        <option value="MT">MT</option>
-        <option value="NE">NE</option>
-        <option value="NV">NV</option>
-        <option value="NH">NH</option>
-        <option value="NJ">NJ</option>
-        <option value="NM">NM</option>
-        <option value="NY">NY</option>
-        <option value="NC">NC</option>
-        <option value="ND">ND</option>
-        <option value="OH">OH</option>
-        <option value="OK">OK</option>
-        <option value="OR">OR</option>
-        <option value="PA">PA</option>
-        <option value="RI">RI</option>
-        <option value="SC">SC</option>
-        <option value="SD">SD</option>
-        <option value="TN">TN</option>
-        <option value="TX">TX</option>
-        <option value="UT">UT</option>
-        <option value="VT">VT</option>
-        <option value="VA">VA</option>
-        <option value="WA">WA</option>
-        <option value="WV">WV</option>
-        <option value="WI">WI</option>
-        <option value="WY">WY</option>
-      </select>
-      <input type="text" id="zip_code" name="zipCode" class="form-control margin-top-10" placeholder="Zip Code" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your zip code is required">
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-      <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your phone number is required">
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-key"></i></span>
-      <input type="text" id="last4ssn" name="lastFour" class="form-control" placeholder="Last 4 of SSN #" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your last 4 SSN # is required">
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-money"></i></span>
-      <input type="text" id="amount" name="amount" class="form-control" placeholder="Loan Amount" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your requested loan amount is required">
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1 margin-bottom-25">
-        <button type="submit" value="send" class="btn-u btn-block">Apply for Loan</button>
+  <div id="loan-apply-wrapper">
+    <form id="loan-apply-form" method="POST" action={{urls.loans.apply}}>
+      <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" id="first_name" name="firstName" class="form-control" placeholder="First Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your first name is required">
+        <input type="text" id="last_name" name="lastName" class="form-control margin-top-10" placeholder="Last Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your last name is required">
       </div>
-    </div>
-  </form>
+      <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+        <input type="text" id="address_1" name="address1" class="form-control" placeholder="Address Line 1" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your address is required">
+        <input type="text" id="address_2" name="address2" class="form-control margin-top-10" placeholder="Address Line 2">
+        <input type="text" id="city" name="city" class="form-control margin-top-10" placeholder="City" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your city is required">
+        <select name="state" class="form-control margin-top-10" id="state">
+          <option value="">Please choose state...</option>
+          <option value="AL">AL</option>
+          <option value="AK">AK</option>
+          <option value="AZ">AZ</option>
+          <option value="AR">AR</option>
+          <option value="CA">CA</option>
+          <option value="CO">CO</option>
+          <option value="CT">CT</option>
+          <option value="DE">DE</option>
+          <option value="DC">DC</option>
+          <option value="FL">FL</option>
+          <option value="GA">GA</option>
+          <option value="HI">HI</option>
+          <option value="ID">ID</option>
+          <option value="IL">IL</option>
+          <option value="IN">IN</option>
+          <option value="IA">IA</option>
+          <option value="KS">KS</option>
+          <option value="KY">KY</option>
+          <option value="LA">LA</option>
+          <option value="ME">ME</option>
+          <option value="MD">MD</option>
+          <option value="MA">MA</option>
+          <option value="MI">MI</option>
+          <option value="MN">MN</option>
+          <option value="MS">MS</option>
+          <option value="MO">MO</option>
+          <option value="MT">MT</option>
+          <option value="NE">NE</option>
+          <option value="NV">NV</option>
+          <option value="NH">NH</option>
+          <option value="NJ">NJ</option>
+          <option value="NM">NM</option>
+          <option value="NY">NY</option>
+          <option value="NC">NC</option>
+          <option value="ND">ND</option>
+          <option value="OH">OH</option>
+          <option value="OK">OK</option>
+          <option value="OR">OR</option>
+          <option value="PA">PA</option>
+          <option value="RI">RI</option>
+          <option value="SC">SC</option>
+          <option value="SD">SD</option>
+          <option value="TN">TN</option>
+          <option value="TX">TX</option>
+          <option value="UT">UT</option>
+          <option value="VT">VT</option>
+          <option value="VA">VA</option>
+          <option value="WA">WA</option>
+          <option value="WV">WV</option>
+          <option value="WI">WI</option>
+          <option value="WY">WY</option>
+        </select>
+        <input type="text" id="zip_code" name="zipCode" class="form-control margin-top-10" placeholder="Zip Code" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your zip code is required">
+      </div>
+      <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your phone number is required">
+      </div>
+      <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input type="text" id="last4ssn" name="lastFour" class="form-control" placeholder="Last 4 of SSN #" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your last 4 SSN # is required">
+      </div>
+      <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+        <input type="text" id="amount" name="amount" class="form-control" placeholder="Loan Amount" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your requested loan amount is required">
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 margin-bottom-25">
+          <button type="submit" value="send" class="btn-u btn-block">Apply for Loan</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock content %}
+
+{%- block scripts %}
+    {% parent %}
+    <script src="/js/loan-apply.js"></script>
+{%- endblock scripts %}

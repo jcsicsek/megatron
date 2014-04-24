@@ -75,7 +75,7 @@ module.exports = {
 
     //loan routes
     app.post(urls.loans.apply, loansController.apply);
-    app.get(urls.loans.apply, loansController.applyPage);
+    app.get(urls.loans.apply, middleware.setMerchantContext, loansController.applyPage);
 
     //invoice routes
     app.get(urls.invoices.summary(':invoiceid'), middleware.setMerchantContext, loansController.invoiceSummary);

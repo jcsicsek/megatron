@@ -3,7 +3,7 @@ var urls = {
   users: {
     logout: '/logout',
     whoami: '/users/whoami',
-    viewstatement: '/statement',
+    viewstatement: '/view-statement',
     partnerlogin: '/partner/login',
     partnerregister: '/partner/register'
     // adminlogin: '/admin/login',
@@ -32,6 +32,8 @@ var urls = {
   },
   merchants: {
     overview: '/manage',
+    invoices: '/invoices',
+    settings: '/settings',
     loans: '/loans'
   }
 }
@@ -83,6 +85,8 @@ module.exports = {
 
     //merchant routes
     app.get(urls.merchants.overview, middleware.setMerchantContext, merchantsController.overview);
+    app.get(urls.merchants.invoices, middleware.setMerchantContext, merchantsController.invoices);
+    app.get(urls.merchants.settings, middleware.setMerchantContext, merchantsController.settings);
     app.get(urls.merchants.loans, middleware.setMerchantContext, loansController.merchantLoans);
   },
   urls: urls

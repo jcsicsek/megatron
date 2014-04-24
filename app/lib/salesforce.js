@@ -101,6 +101,8 @@ module.exports = {
             paymentDueDate: record._fields.payday__first_payment_date__c,
             phone: record._fields.payday__contact__r.MobilePhone,
             name: record._fields.payday__contact__r.FirstName + " " + record._fields.payday__contact__r.LastName,
+            firstName: record._fields.payday__contact__r.FirstName,
+            lastName: record._fields.payday__contact__r.LastName,
             merchant: record._fields.payday__Lead_Source__c
           }}));
         }

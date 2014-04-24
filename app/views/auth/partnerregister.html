@@ -6,7 +6,7 @@
     <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
     <h2>Partner Register</h2>           
   </div>
-  <form method="POST" action={{urls.users.partnerregister}}>
+  <form method="POST" action={{urls.users.partnerregister}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
       <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your name is required">
@@ -17,7 +17,7 @@
     </div>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-      <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-type="digits" data-parsley-type-message="This doesn't look like a valid phone number" data-parsley-required-message="A phone number is required to login" data-parsley-length="[10, 10]" data-parsley-length-message="Your phone number must be 10 numbers long">
+      <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="A phone number is required to register">
     </div>
     <div class="input-group margin-bottom-20">
       <input type="text" id="url" name="url" class="form-control" placeholder="Requested URL" data-parsley-trigger="change focusout blur">

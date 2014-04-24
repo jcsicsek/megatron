@@ -61,6 +61,7 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
   font-size:12px;
   color:#a94442;
   float:left;
+  clear:both;
 }
 
 /*Block widgets

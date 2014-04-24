@@ -40,7 +40,11 @@
         {%- endblock global_styles %}
         {%- block styles %}
         <link rel="stylesheet" href="/css/style.css">
+        {% if colorTheme %}
+        <link rel="stylesheet" href="/css/themes/{{colorTheme}}.css">
+        {% else %}
         <link rel="stylesheet" href="/css/themes/purple.css">
+        {% endif %}
         {%- endblock styles %}
         <link rel="stylesheet" href="/css/custom.css">
   	    <!-- Custom Styles -->

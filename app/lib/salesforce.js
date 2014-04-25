@@ -94,7 +94,7 @@ module.exports = {
       org.query({query: query}, function(error, results) {
         if (!error) {
           callback(null, _.map(results.records, function(record){return {
-            id: record._fields.Loan_ID__c,
+            id: record._fields.loan_id__c,
             loanAmount: record._fields.payday__loan_amount__c,
             createdDate: record._fields.createddate,
             paymentAmount: record._fields.payday__monthly_payment_amount__c,
@@ -103,7 +103,9 @@ module.exports = {
             name: record._fields.payday__contact__r.FirstName + " " + record._fields.payday__contact__r.LastName,
             firstName: record._fields.payday__contact__r.FirstName,
             lastName: record._fields.payday__contact__r.LastName,
-            merchant: record._fields.payday__Lead_Source__c
+            merchant: record._fields.payday__lead_source__c,
+            //TODO:  Hardcoded loan status!
+            status: "Approved"
           }}));
         }
         else {

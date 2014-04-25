@@ -4,6 +4,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var swig = require('swig');
 var logger = require('winston');
+var timeago = require('timeago');
 
 var pgConnString = process.env.DATABASE_URL;
 var port = process.env.PORT || 5000;
@@ -96,6 +97,8 @@ var loggerStream = {
   }
 };
 app.use(express.logger({stream:loggerStream}));
+
+app.locals.timeago = timeago;
 
 app.use(app.router);
 

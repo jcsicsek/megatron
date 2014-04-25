@@ -1,10 +1,18 @@
 var sf = require('../lib/salesforce');
+var _ = require('underscore');
 
 module.exports.create = function() {
   var self = {   
     overview: function(req, res) {
       sf.queryByMerchant(req.subdomains[0], function(error, loans) {
-        res.render('manage/merchant/overview', { title: "Your Store Overview | tabb.io", loans: loans });
+        res.render('manage/merchant/overview', {
+          title: "Your Store Overview | tabb.io",
+          loans: loans.reverse(),
+          totalRevenue: _.reduce(loans, function(memo, loan) {return memo + loan.loanAmount}, 0).toFixed(0),
+          totalTransactions: loans.length,
+          acceptancePercent: (_.where(loans, {status: "Approved"}).length / loans.length * 100).toFixed(0),
+          totalCustomers: _.uniq(loans, function(loan) {return loan.phone}).length
+        });
       });
     },
     invoices: function(req, res) {

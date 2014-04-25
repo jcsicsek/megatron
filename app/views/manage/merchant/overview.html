@@ -8,7 +8,7 @@
 				<i class="fa fa-shopping-cart icon-bg-red icon-custom icon-lg rounded-x"></i>
 			</span>
 			<div class="box-info">
-				<h2>262</h2>
+				<h2>{{ totalTransactions }}</h2>
 				<p class="text-muted">Transactions</p>
 			</div>
 		</div>
@@ -19,7 +19,7 @@
 				<i class="fa fa-rocket icon-bg-sea icon-custom icon-lg rounded-x"></i>
 			</span>
 			<div class="box-info">
-				<h2>85%</h2>
+				<h2>{{ acceptancePercent }}%</h2>
 				<p class="text-muted">Acceptance</p>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 				<i class="fa fa-dollar icon-bg-yellow icon-custom icon-lg rounded-x"></i>
 			</span>
 			<div class="box-info">
-				<h2>$45,550</h2>
+				<h2>${{ totalRevenue }}</h2>
 				<p class="text-muted">Revenue</p>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 				<i class="fa fa-users icon-bg-blue icon-custom icon-lg rounded-x"></i>
 			</span>
 			<div class="box-info">
-				<h2>184</h2>
+				<h2>{{ totalCustomers }}</h2>
 				<p class="text-muted">Consumers</p>
 			</div>
 		</div>
@@ -62,46 +62,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>3 minutes ago</td>
-					<td>TWLT</td>
-					<td>$235.43</td>
-					<td>Amery</td>
-					<td>Lee</td>
-					<td><span class="label label-success">Approved</span></td>
-				</tr>
-				<tr>
-					<td>28 minutes ago</td>
-					<td>A16Z</td>
-					<td>$116.29</td>
-					<td>Romayne</td>
-					<td>Carlyn</td>
-					<td><span class="label label-warning">Reviewing</span></td>
-				</tr>
-				<tr>
-					<td>About 1 hour ago</td>
-					<td>DARK</td>
-					<td>$709.04</td>
-					<td>Marybeth</td>
-					<td>Joanna</td>
-					<td><span class="label label-success">Approved</span></td>
-				</tr>
-				<tr>
-					<td>About 1 hour ago</td>
-					<td>Q300</td>
-					<td>$1,201.97</td>
-					<td>Jonah</td>
-					<td>Benny</td>
-					<td><span class="label label-danger">Denied</span></td>
-				</tr>
-				<tr>
-					<td>About 4 hours ago</td>
-					<td>RVNG</td>
-					<td>$174.83</td>
-					<td>Daly</td>
-					<td>Royle</td>
-					<td><span class="label label-success">Approved</span></td>
-				</tr>
+				{% for loan in loans %}
+					<tr>
+						<td>{{ timeago(loan.createdDate) }}</td>
+						<td>{{ loan.id }}</td>
+						<td>${{ loan.loanAmount.toFixed(2) }}</td>
+						<td>{{ loan.firstName }}</td>
+						<td>{{ loan.lastName }}</td>
+						<td><span class="label label-success">Approved</span></td>
+					</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 	</div>

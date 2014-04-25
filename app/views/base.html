@@ -20,15 +20,12 @@
       {%- block metas %}
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="description">
-        <meta content="" name="author">
+        <meta content="tabb.io provides an open lending platform to enable private label retail credit" name="description">
+        <meta content="tabb.io" name="author">
+        <link rel="shortcut icon" href="/favicon.ico">
       {%- endblock metas %}
 
-      
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="/favicon.ico">
-        {%- block global_styles %}
-  	    <!-- Bootstrap & Font Awesome & Line Icons-->
+      {%- block global_styles %}
   	    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
   	    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="/vendor/line-icons/line-icons.css">
@@ -37,68 +34,67 @@
         <!--[if lt IE 9]>
           <link rel="stylesheet" href="/vendor/sky-forms/version-2.0.1/css/sky-forms-ie8.css">
         <![endif]-->
-        {%- endblock global_styles %}
-        {%- block styles %}
+      {%- endblock global_styles %}
+
+      {%- block styles %}
         <link rel="stylesheet" href="/css/style.css">
         {% if colorTheme %}
-        <link rel="stylesheet" href="/css/themes/{{colorTheme}}.css">
+          <link rel="stylesheet" href="/css/themes/{{colorTheme}}.css">
         {% else %}
-        <link rel="stylesheet" href="/css/themes/purple.css">
+          <link rel="stylesheet" href="/css/themes/purple.css">
         {% endif %}
-        {%- endblock styles %}
         <link rel="stylesheet" href="/css/custom.css">
-  	    <!-- Custom Styles -->
+      {%- endblock styles %}
 
     {%- endblock head %}
   </head>
 
   <body {% block body_attribs %}{% endblock body_attribs %}>
   {%- block body -%}
-  <div {% block wrapper_attribs %}class="wrapper"{% endblock wrapper_attribs %}>
-        
-    {%- block navbar %}
-    	{% include "partials/nav.html" %}
-    {%- endblock navbar %}
 
-    {%- block flash_messages %}
-    {%- endblock flash_messages %}
+    <div {% block wrapper_attribs %}class="wrapper"{% endblock wrapper_attribs %}>
+          
+      {%- block navbar %}
+      	{% include "partials/nav.html" %}
+      {%- endblock navbar %}
 
-    {%- block masthead -%}
-      <!--=== Breadcrumbs ===-->
-      <div class="breadcrumbs">
-        <div class="container">
-          <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
-          <ul class="pull-right breadcrumb">
-            <li><a href={{urls.static.root}}>Home</a></li>
-            <li class="active {{colorTheme}}">{% block masttitle %}{% endblock masttitle %}</li>
-          </ul>
+      {%- block flash_messages %}
+      {%- endblock flash_messages %}
+
+      {%- block masthead -%}
+        <div class="breadcrumbs">
+          <div class="container">
+            <h1 class="pull-left">{% block masttitle %}{% endblock masttitle %}</h1>
+            <ul class="pull-right breadcrumb">
+              <li><a href={{urls.static.root}}>Home</a></li>
+              <li class="active {{colorTheme}}">{% block masttitle %}{% endblock masttitle %}</li>
+            </ul>
+          </div>
         </div>
-      </div><!--/breadcrumbs-->
-      <!--=== End Breadcrumbs ===-->
-    {%- endblock masthead %}
+      {%- endblock masthead %}
 
-    {%- block google_map -%}
-    {%- endblock google_map -%}
+      {%- block google_map -%}
+      {%- endblock google_map -%}
 
-    {%- block main -%}
-    <div class="container content">
-      {%- block content -%}
-      {%- endblock content %}
-    </div>
-    {%- endblock main %}
+      {%- block main -%}
+        <div {% block container_attribs %}class="container content"{% endblock container %}>
+          {%- block content -%}
+          {%- endblock content %}
+        </div>
+      {%- endblock main %}
 
-  </div> <!-- end wrapper -->
+    </div> <!-- end wrapper -->
 
     <div id="footer">
-    {%- block footer %}
-    {%- endblock footer %}
+      {%- block footer %}
+      {%- endblock footer %}
 
-    {%- block copyright %}
-      {% include "partials/copyright.html" %}
-    {%- endblock copyright %}
+      {%- block copyright %}
+        {% include "partials/copyright.html" %}
+      {%- endblock copyright %}
     </div>
 
-    {%- block scripts %}
+    {%- block global_scripts %}
       <!-- Vendor JS -->
       <script type="text/javascript" src="/vendor/jquery.min.js"></script>
       <script type="text/javascript" src="/vendor/jquery-migrate-1.2.1.min.js"></script>
@@ -117,6 +113,8 @@
         <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <script type="text/javascript" src="/vendor/sky-forms/version-2.0.1/js/sky-forms-ie8.js"></script>
       <![endif]-->
+    {%- endblock global_scripts %}
+    {%- block scripts %}
       <!-- Custom JS -->
       <script type="text/javascript" src="/js/app.js"></script>
       <script type="text/javascript">

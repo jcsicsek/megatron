@@ -1,3 +1,11 @@
 {% extends "../base.html" %}
 
+{% set navigation_bar = [
+  {url: urls.static.company, text: 'About'},
+  {url: urls.static.products, text: 'Products'},
+  {url: urls.static.api, text: 'API'},
+  {url: urls.static.faqs, text: 'FAQs'},
+  {url: urls.static.contact, text: 'Contact'}
+] %}
+
 {% block body_attribs %}class="header-fixed"{% endblock body_attribs %}

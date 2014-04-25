@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
+{% set form_title = 'Partner Register' %}
+
 {% block content %}
-<div class="reg-block">
-  <div class="reg-block-header">
-    <a href={{urls.static.root}}><img style="display:block; margin-left:auto; margin-right:auto;" src="/images/tabbio-small.png"></a>
-    <h2>Partner Register</h2>           
-  </div>
   <form method="POST" action={{urls.users.partnerregister}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -47,5 +44,4 @@
       <p>Already a partner? <a href={{urls.users.partnerlogin}}>Login</a>.</p> 
     </div>
   </div>
-</div>
 {% endblock content %}

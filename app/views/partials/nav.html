@@ -1,11 +1,3 @@
-{% set navigation_bar = [
-  {url: urls.static.company, text: 'About'},
-  {url: urls.static.products, text: 'Products'},
-  {url: urls.static.api, text: 'API'},
-  {url: urls.static.faqs, text: 'FAQs'},
-  {url: urls.static.contact, text: 'Contact'}
-] %}
-
 <!--=== Header ===-->    
 <div class="header">
  <!-- Topbar -->
@@ -13,6 +5,9 @@
   <div class="container">
     <!-- Topbar Navigation -->
     <ul class="loginbar pull-right">
+      {% if hide_top %}
+      <a href={{urls.static.root}}><< Back to tabb.io</a>
+      {% else %}
       Welcome!
       <!-- <li>
         <i class="fa fa-globe"></i>
@@ -48,7 +43,8 @@
       </li> 
       {% else %}
       <li><a href={{urls.users.viewstatement}}>View Statement</a></li>
-      {% endif %}  
+      {% endif %}
+      {% endif %}
     </ul>
     <!-- End Topbar Navigation -->
   </div>
@@ -64,7 +60,7 @@
         <span class="fa fa-bars"></span>
       </button>
       <a class="navbar-brand" href={{urls.static.root}}>
-        <img id="logo-header" src="/images/tabbio-small.png" alt="Logo" class="company-logo manage">
+        <img id="logo-header" src={% if logoUrl %}"{{logoUrl}}"{% else %}"/images/tabbio-small.png"{% endif %} alt="Logo" class="company-logo manage">
       </a>
     </div>
     <!-- Collect the nav links -->

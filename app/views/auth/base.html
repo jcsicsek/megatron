@@ -7,32 +7,35 @@
 
 {% block wrapper_attribs %}{% endblock wrapper_attribs %}
 
-{%- block navbar %}
-{%- endblock navbar %}
+{%- block navbar %}{%- endblock navbar %}
 
-{%- block masthead -%}
-{%- endblock masthead -%}
+{%- block masthead -%}{%- endblock masthead -%}
 
-{%- block main -%}
-<div class="container">
-	{%- block content -%}
-	{%- endblock content -%}
+{% block container_attribs %}class="container"{% endblock container %}
+
+{%- block main %}
+<div class="reg-block">
+  <div class="reg-block-header">
+    <a href={{urls.static.root}}><img class="company-logo view" src={% if logoUrl %}"{{logoUrl}}"{% else %}"/images/tabbio.png"{% endif %}></a>
+    <h2>{{form_title}}</h2>           
+  </div>
+  {%- block content %}
+  {%- endblock content %}
 </div>
-{%- endblock main -%}
+{%- endblock main %}
 
-{%- block copyright %}
-{%- endblock copyright %}
+{%- block copyright %}{%- endblock copyright %}
 
 {%- block scripts %}
-{% parent %}
-<script type="text/javascript" src="/vendor/backstretch/jquery.backstretch.min.js"></script>
-<script type="text/javascript">
-  $.backstretch([
-    "/images/bg/5.jpg",
-    "/images/bg/4.jpg",
-    ], {
-      fade: 1000,
-      duration: 7000
-  });
-</script>
+  {% parent %}
+  <script type="text/javascript" src="/vendor/backstretch/jquery.backstretch.min.js"></script>
+  <script type="text/javascript">
+    $.backstretch([
+      "/images/bg/5.jpg",
+      "/images/bg/4.jpg",
+      ], {
+        fade: 1000,
+        duration: 7000
+    });
+  </script>
 {%- endblock scripts %}

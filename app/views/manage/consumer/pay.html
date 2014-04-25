@@ -1,167 +1,165 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% parent %}
-<div class="col-md-9">
-  <!-- Checkout-Form -->
-  <form action="" id="sky-form" class="sky-form" novalidate="">
-    <header>Make a Payment</header>
-    <fieldset>                  
-      <div class="row">
-        <section class="col col-6">
-          <label class="input">
-            <i class="icon-prepend fa fa-user"></i>
-            <input type="text" name="fname" placeholder="First name">
-          </label>
-        </section>
-        <section class="col col-6">
-          <label class="input">
-            <i class="icon-prepend fa fa-user"></i>
-            <input type="text" name="lname" placeholder="Last name">
-          </label>
-        </section>
-      </div>
-
-      <div class="row">
-        <section class="col col-6">
-          <label class="input">
-            <i class="icon-prepend fa fa-envelope"></i>
-            <input type="email" name="email" placeholder="E-mail">
-          </label>
-        </section>
-        <section class="col col-6">
-          <label class="input">
-            <i class="icon-prepend fa fa-phone"></i>
-            <input type="tel" name="phone" placeholder="Phone">
-          </label>
-        </section>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="row">
-        <section class="col col-5">
-          <label class="select">
-            <select name="country">
-              <option value="0" selected="" disabled="">Country</option>
-              <option value="244">Aaland Islands</option>
-              <option value="1">Afghanistan</option>
-              <option value="2">Albania</option>
-              <option value="3">Algeria</option>
-              <option value="4">American Samoa</option>
-              <option value="5">Andorra</option>
-              <option value="6">Angola</option>
-              <option value="7">Anguilla</option>
-              <option value="8">Antarctica</option>
-              <option value="9">Antigua and Barbuda</option>
-              <option value="239">Zimbabwe</option>
-            </select>
-            <i></i>
-          </label>
-        </section>
-
-        <section class="col col-4">
-          <label class="input">
-            <input type="text" name="city" placeholder="City">
-          </label>
-        </section>
-
-        <section class="col col-3">
-          <label class="input">
-            <input type="text" name="code" placeholder="Post code">
-          </label>
-        </section>
-      </div>
-
-      <section>
-        <label for="file" class="input">
-          <input type="text" name="address" placeholder="Address">
-        </label>
-      </section>
-
-      <section>
-        <label class="textarea">
-          <textarea rows="3" name="info" placeholder="Additional info"></textarea>
-        </label>
-      </section>
-    </fieldset>
-
-    <fieldset>
-      <section>
-        <div class="inline-group">
-          <label class="radio"><input type="radio" name="radio-inline" checked=""><i class="rounded-x"></i>Visa</label>
-          <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>MasterCard</label>
-          <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>PayPal</label>
+  {% parent %}
+  <div class="col-md-9">
+    <form action="" id="sky-form" class="sky-form" novalidate="">
+      <header>Make a Payment</header>
+      <fieldset>                  
+        <div class="row">
+          <section class="col col-6">
+            <label class="input">
+              <i class="icon-prepend fa fa-user"></i>
+              <input type="text" name="fname" placeholder="First name">
+            </label>
+          </section>
+          <section class="col col-6">
+            <label class="input">
+              <i class="icon-prepend fa fa-user"></i>
+              <input type="text" name="lname" placeholder="Last name">
+            </label>
+          </section>
         </div>
-      </section>                  
 
-      <section>
-        <label class="input">
-          <input type="text" name="name" placeholder="Name on card">
-        </label>
-      </section>
+        <div class="row">
+          <section class="col col-6">
+            <label class="input">
+              <i class="icon-prepend fa fa-envelope"></i>
+              <input type="email" name="email" placeholder="E-mail">
+            </label>
+          </section>
+          <section class="col col-6">
+            <label class="input">
+              <i class="icon-prepend fa fa-phone"></i>
+              <input type="tel" name="phone" placeholder="Phone">
+            </label>
+          </section>
+        </div>
+      </fieldset>
 
-      <div class="row">
-        <section class="col col-10">
+      <fieldset>
+        <div class="row">
+          <section class="col col-5">
+            <label class="select">
+              <select name="country">
+                <option value="0" selected="" disabled="">Country</option>
+                <option value="244">Aaland Islands</option>
+                <option value="1">Afghanistan</option>
+                <option value="2">Albania</option>
+                <option value="3">Algeria</option>
+                <option value="4">American Samoa</option>
+                <option value="5">Andorra</option>
+                <option value="6">Angola</option>
+                <option value="7">Anguilla</option>
+                <option value="8">Antarctica</option>
+                <option value="9">Antigua and Barbuda</option>
+                <option value="239">Zimbabwe</option>
+              </select>
+              <i></i>
+            </label>
+          </section>
+
+          <section class="col col-4">
+            <label class="input">
+              <input type="text" name="city" placeholder="City">
+            </label>
+          </section>
+
+          <section class="col col-3">
+            <label class="input">
+              <input type="text" name="code" placeholder="Post code">
+            </label>
+          </section>
+        </div>
+
+        <section>
+          <label for="file" class="input">
+            <input type="text" name="address" placeholder="Address">
+          </label>
+        </section>
+
+        <section>
+          <label class="textarea">
+            <textarea rows="3" name="info" placeholder="Additional info"></textarea>
+          </label>
+        </section>
+      </fieldset>
+
+      <fieldset>
+        <section>
+          <div class="inline-group">
+            <label class="radio"><input type="radio" name="radio-inline" checked=""><i class="rounded-x"></i>Visa</label>
+            <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>MasterCard</label>
+            <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>PayPal</label>
+          </div>
+        </section>                  
+
+        <section>
           <label class="input">
-            <input type="text" name="card" id="card" placeholder="Card number">
+            <input type="text" name="name" placeholder="Name on card">
           </label>
         </section>
-        <section class="col col-2">
-          <label class="input">
-            <input type="text" name="cvv" id="cvv" placeholder="CVV2">
-          </label>
-        </section>
-      </div>
 
-      <div class="row">
-        <label class="label col col-4">Expiration date</label>
-        <section class="col col-5">
-          <label class="select">
-            <select name="month">
-              <option value="0" selected="" disabled="">Month</option>
-              <option value="1">January</option>
-              <option value="1">February</option>
-              <option value="3">March</option>
-              <option value="4">April</option>
-              <option value="5">May</option>
-              <option value="6">June</option>
-              <option value="7">July</option>
-              <option value="8">August</option>
-              <option value="9">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
-            <i></i>
-          </label>
-        </section>
-        <section class="col col-3">
-          <label class="input">
-            <input type="text" name="year" id="year" placeholder="Year">
-          </label>
-        </section>
-      </div>
-    </fieldset>
+        <div class="row">
+          <section class="col col-10">
+            <label class="input">
+              <input type="text" name="card" id="card" placeholder="Card number">
+            </label>
+          </section>
+          <section class="col col-2">
+            <label class="input">
+              <input type="text" name="cvv" id="cvv" placeholder="CVV2">
+            </label>
+          </section>
+        </div>
 
-    <footer>
-      <button type="submit" class="btn-u btn-lg">Continue</button>
-    </footer>
-  </form>         
-  <!-- End Checkout-Form -->
-</div>
+        <div class="row">
+          <label class="label col col-4">Expiration date</label>
+          <section class="col col-5">
+            <label class="select">
+              <select name="month">
+                <option value="0" selected="" disabled="">Month</option>
+                <option value="1">January</option>
+                <option value="1">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <i></i>
+            </label>
+          </section>
+          <section class="col col-3">
+            <label class="input">
+              <input type="text" name="year" id="year" placeholder="Year">
+            </label>
+          </section>
+        </div>
+      </fieldset>
+
+      <footer>
+        <button type="submit" class="btn-u btn-lg">Continue</button>
+      </footer>
+    </form>         
+  </div>
 {% endblock %}
 
 {% block scripts %}
-{% parent %}
-<script>
-$(document).ready(function() {
-  $(".payment-block.ach").hide();
-  $("input[name='payment_type']").change(function() {
-    var choice = $(this).val();
-    $(".payment-block").hide();
-    $(".payment-block." + choice + "").show();
+  {% parent %}
+  <script>
+  $(document).ready(function() {
+    $(".payment-block.ach").hide();
+    $("input[name='payment_type']").change(function() {
+      var choice = $(this).val();
+      $(".payment-block").hide();
+      $(".payment-block." + choice + "").show();
+    });
   });
-});
-</script>
+  </script>
 {% endblock scripts %}

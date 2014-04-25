@@ -1,56 +1,56 @@
 {% extends "base.html" %}
 
 {%- block styles %}
-    {% parent %}
-    <link rel="stylesheet" href="/css/pages/contact.css">
+  <link rel="stylesheet" href="/css/pages/contact.css">
+  {% parent %}
 {%- endblock scripts %}
 
 {% block masttitle %}Contact{% endblock masttitle %}
 
 {% block google_map %}
-<div id="map" class="map">
-  <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=15&amp;iwloc=near&amp;output=embed"></iframe>
-</div>
+  <div id="map" class="map">
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?ie=UTF8&amp;q=1735+Market+St+Philadelphia+PA&amp;gl=US&amp;hl=EN&amp;t=m&amp;z=15&amp;iwloc=near&amp;output=embed"></iframe>
+  </div>
 {% endblock google_map %}
 
 {% block content %}
-<div class="row margin-bottom-30">
-  <div class="col-md-9 mb-margin-bottom-30">
-    <div class="headline"><h2>Send a Message</h2></div>
-    <div id="contact-wrapper">
-      <p>Feel free to send us a message with any questions or feedback and we'll get back to you within 24 hours.</p><br />
-      <form id="contact-form" method="POST" action={{urls.static.contact}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
-        <label>Name <span class="color-red">*</span></label>
-        <div class="row margin-bottom-20">
-          <div class="col-md-7 col-md-offset-0">
-            <input type="text" id="inputName" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We like to know who we're talking to!">
-          </div>                
-        </div>
+  <div class="row margin-bottom-30">
+    <div class="col-md-9 mb-margin-bottom-30">
+      <div class="headline"><h2>Send a Message</h2></div>
+      <div id="contact-wrapper">
+        <p>Feel free to send us a message with any questions or feedback and we'll get back to you within 24 hours.</p><br />
+        <form id="contact-form" method="POST" action={{urls.static.contact}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+          <label>Name <span class="color-red">*</span></label>
+          <div class="row margin-bottom-20">
+            <div class="col-md-7 col-md-offset-0">
+              <input type="text" id="inputName" class="form-control" name="name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="We like to know who we're talking to!">
+            </div>                
+          </div>
 
-        <label>Email <span class="color-red">*</span></label>
-        <div class="row margin-bottom-20">
-          <div class="col-md-7 col-md-offset-0">
-            <input type="email" id="inputEmail" class="form-control" name="email" data-parsley-trigger="change focusout blur" required data-parsley-type-message="We need a valid email to reply!" data-parsley-required-message="We need your email so that we can reply!">
-          </div>                
-        </div>
+          <label>Email <span class="color-red">*</span></label>
+          <div class="row margin-bottom-20">
+            <div class="col-md-7 col-md-offset-0">
+              <input type="email" id="inputEmail" class="form-control" name="email" data-parsley-trigger="change focusout blur" required data-parsley-type-message="We need a valid email to reply!" data-parsley-required-message="We need your email so that we can reply!">
+            </div>                
+          </div>
 
-        <label>Message <span class="color-red">*</span></label>
-        <div class="row margin-bottom-20">
-          <div class="col-md-11 col-md-offset-0">
-            <textarea rows="8" id="inputMessage" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="7" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..." data-parsley-required-message="We need to know what you're contacting us for!"></textarea>
-          </div>                
-        </div>
-        <p><button type="submit" id="submit" class="btn btn-u disabled">Send Message</button></p>
-      </form>
-    </div>
-  </div><!--/col-md-9-->
-  <div class="col-md-3">
-    {% include "../partials/contact.html" %}
-  </div><!--/col-md-3-->
-</div><!--/row-->  
+          <label>Message <span class="color-red">*</span></label>
+          <div class="row margin-bottom-20">
+            <div class="col-md-11 col-md-offset-0">
+              <textarea rows="8" id="inputMessage" class="form-control" rows="10" name="message" required data-parsley-trigger="focusout blur keyup" data-parsley-minlength="10" data-parsley-validation-threshold="7" data-parsley-minlength-message = "Come on! You need to enter at least a 10 character long message..." data-parsley-required-message="We need to know what you're contacting us for!"></textarea>
+            </div>                
+          </div>
+          <p><button type="submit" id="submit" class="btn btn-u disabled">Send Message</button></p>
+        </form>
+      </div>
+    </div><!--/col-md-9-->
+    <div class="col-md-3">
+      {% include "../partials/contact.html" %}
+    </div><!--/col-md-3-->
+  </div><!--/row-->  
 {% endblock %}
 
 {%- block scripts %}
-    {% parent %}
-    <script src="/js/contact.js"></script>
+  {% parent %}
+  <script src="/js/contact.js"></script>
 {%- endblock scripts %}

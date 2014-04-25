@@ -1,87 +1,86 @@
 {% extends "base.html" %}
 
+{%- block styles %}
+  <link rel="stylesheet" href="/css/pages/invoice.css">
+  {% parent %}
+{%- endblock scripts %}
+
 {% block content %}
-{% parent %}
-<!--Invoice Details-->
-<div class="row invoice-info">
-	<div class="col-sm-6">
-		<div class="tag-box tag-box-v3">
-			<h2>Client Information:</h2>
-			<ul class="list-unstyled">
-				<li><strong>Name:</strong> {{ loan.name }}</li>
-				<li><strong>Phone:</strong> {{ loan.phone }}</li>
-			</ul>
-		</div>        
-	</div>
-	<div class="col-sm-6">
-		<div class="tag-box tag-box-v3">
-			<h2>Payment Details:</h2>        
-			<ul class="list-unstyled">
-				<li><strong>Merchant Name:</strong> {{ businessName }}</li>
-				<li><strong>Purchase Date:</strong> {{ loan.createdDate|date('M j, Y') }}</li>
-			</ul>
+	{% parent %}
+	<div class="row invoice-info">
+		<div class="col-sm-6">
+			<div class="tag-box tag-box-v3">
+				<h2>Client Information:</h2>
+				<ul class="list-unstyled">
+					<li><strong>Name:</strong> {{ loan.name }}</li>
+					<li><strong>Phone:</strong> {{ loan.phone }}</li>
+				</ul>
+			</div>        
+		</div>
+		<div class="col-sm-6">
+			<div class="tag-box tag-box-v3">
+				<h2>Payment Details:</h2>        
+				<ul class="list-unstyled">
+					<li><strong>Merchant Name:</strong> {{ businessName }}</li>
+					<li><strong>Purchase Date:</strong> {{ loan.createdDate|date('M j, Y') }}</li>
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
-<!--End Invoice Details-->
-<!--Invoice Table-->
-<div class="panel panel-grey margin-bottom-50">
-	<div class="panel-heading">
-		<h3 class="panel-title">What You Bought</h3>
+	<div class="panel panel-grey margin-bottom-50">
+		<div class="panel-heading">
+			<h3 class="panel-title">What You Bought</h3>
+		</div>
+		<table class="table table-striped invoice-table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th class="hidden-sm">Description</th>
+					<th>Quantity</th>
+					<th>Unit Cost</th>
+					<th>Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Grill</td>
+					<td class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
+					<td>1</td>
+					<td>$1,847</td>
+					<td>$1,847</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Lawn lights</td>
+					<td class="hidden-sm">Verode eoset accusamus etofficia deserunt</td>
+					<td>18</td>
+					<td>$28</td>
+					<td>$504</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<table class="table table-striped invoice-table">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Item</th>
-				<th class="hidden-sm">Description</th>
-				<th>Quantity</th>
-				<th>Unit Cost</th>
-				<th>Total</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Grill</td>
-				<td class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
-				<td>1</td>
-				<td>$1,847</td>
-				<td>$1,847</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Lawn lights</td>
-				<td class="hidden-sm">Verode eoset accusamus etofficia deserunt</td>
-				<td>18</td>
-				<td>$28</td>
-				<td>$504</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-<!--End Invoice Table-->
-<!--Invoice Footer-->
-<div class="row">
-	<div class="col-sm-6">
-		<div class="tag-box tag-box-v6">
-			<h2>Fusce condimentum enim</h2>
-			<p><strong>Note:</strong> Atharum quidem rerum facexpe ditailis est et  distinctio lorem ipsum dolor sit amet consectetur adipiscing elit.</p><br>
-			<address>
-				123 Main St.<br>
-				Philadelphia, PA 19128 <br>
-				Phone: 800 123 4567 <br>
-				Email: <a href="mailto:billing@tabb.io">billing@tabb.io</a>
-			</address>                
-		</div>            
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="tag-box tag-box-v6">
+				<h2>Fusce condimentum enim</h2>
+				<p><strong>Note:</strong> Atharum quidem rerum facexpe ditailis est et  distinctio lorem ipsum dolor sit amet consectetur adipiscing elit.</p><br>
+				<address>
+					123 Main St.<br>
+					Philadelphia, PA 19128 <br>
+					Phone: 800 123 4567 <br>
+					Email: <a href="mailto:billing@tabb.io">billing@tabb.io</a>
+				</address>                
+			</div>            
+		</div>
+		<div class="col-sm-6 text-right">
+			<ul class="list-unstyled invoice-total-info">
+				<li><strong>Grand Total:</strong> ${{ loan.loanAmount.toFixed(2) }}</li>
+			</ul>
+			<button class="btn-u btn-u-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
+			<a href={{urls.invoices.pay(loan.id)}}><button class="btn-u btn-lg">Schedule Payment</button></a>         
+		</div>
 	</div>
-	<div class="col-sm-6 text-right">
-		<ul class="list-unstyled invoice-total-info">
-			<li><strong>Grand Total:</strong> ${{ loan.loanAmount.toFixed(2) }}</li>
-		</ul>
-		<button class="btn-u btn-u-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
-		<a href={{urls.invoices.pay(loan.id)}}><button class="btn-u btn-lg">Schedule Payment</button></a>         
-	</div>
-</div>
-<!--End Invoice Footer-->
 {% endblock %}

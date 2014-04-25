@@ -1,50 +1,8 @@
 {% extends "../base.html" %}
 
-{%- block navbar %}
-<!--=== Header ===-->    
-<div class="header">
- <!-- Topbar -->
- <div class="topbar">
-  <div class="container">
-    <!-- Topbar Navigation -->
-    <ul class="loginbar pull-right">
-      <a href={{urls.static.root}}><< Back to tabb.io</a>
-    </ul>
-    <!-- End Topbar Navigation -->
-  </div>
-</div>
-<!-- End Topbar -->
-<!-- Navbar -->
-<div class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="fa fa-bars"></span>
-      </button>
-      <a class="navbar-brand" href={{urls.static.root}}>
-        <img id="logo-header" src="{{ logoUrl }}" alt="Logo" class="company-logo manage">
-      </a>
-    </div>
-    <!-- Collect the nav links -->
-    <div class="collapse navbar-collapse navbar-responsive-collapse">
-      <ul class="nav navbar-nav">
-        <!-- Links -->
-        {% for link in user_nav %}
-        <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}>{{ link.text|e }}</a></li>
-        {% endfor %}
-        <!-- End links -->
-      </ul>
-    </div><!--/navbar-collapse-->
-  </div>    
-</div>            
-<!-- End Navbar -->
-</div>
-<!--=== End Header ===-->
-{%- endblock navbar %}
+{% set hide_top = "yes" %}
 
 {%- block scripts %}
-{% parent %}
-<script src="/js/table.js"></script>
+  {% parent %}
+  <script src="/js/table.js"></script>
 {%- endblock scripts %}

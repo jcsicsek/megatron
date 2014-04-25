@@ -1,18 +1,18 @@
 {% extends "../base.html" %}
 
 {%- block styles %}
-    {% parent %}
-    <link rel="stylesheet" href="/css/pages/404.css">
+  <link rel="stylesheet" href="/css/pages/404.css">
+  {% parent %}
 {%- endblock scripts %}
 
 {% block content %}
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="error-v1">
-      <span class="error-v1-title">{% block top_error %}{% endblock top_error %}</span>
-      {% block bottom_error %}
-      {% endblock bottom_error %}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="error-v1">
+        <span class="error-v1-title">{% block top_error %}{% endblock top_error %}</span>
+        {% block bottom_error %}
+        {% endblock bottom_error %}
+      </div>
     </div>
   </div>
-</div>
 {% endblock content %}

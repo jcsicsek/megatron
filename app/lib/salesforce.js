@@ -5,8 +5,7 @@ var logger = require('winston');
 
 var org = nforce.createConnection(config.salesforce.connection);
 
-
-module.exports = {
+module.exports = process.env.MOCK_SALESFORCE ? require('./mock/salesforce') : {
   createLoanApp: function(id, merchant, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("SALESFORCE: creating loan application for id", id);
     org.authenticate(config.salesforce.credentials, function(error, response){
@@ -115,5 +114,5 @@ module.exports = {
       });
     });
   }
-
 }
+

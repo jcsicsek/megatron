@@ -17,7 +17,10 @@
     "winston": "0.7.3",
     "hat": "0.0.3",
     "twilio": "1.6.0",
-    "timeago": "0.1.0"
+    "timeago": "0.1.0",
+    "hashids": "0.3.3",
+    "request": "2.34.0",
+    "dateformat": "1.0.7-1.2.3"
   },
   "devDependencies": {
     "supertest": "0.8.1",

@@ -1,9 +1,10 @@
 var logger = require('winston');
 var HashIds = require('hashids');
-var hashids = new HashIds('poop');
 var request = require("request");
 var config = require('../config');
 var dateFormat = require('dateFormat');
+
+var hashids = new HashIds('poop', 4);
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
@@ -43,14 +44,13 @@ module.exports = {
       request.post(options, function(error, response, body) {
         var clientId = body.clientId;
         var loan = {
-          loanType: 1,
+          loanType: "individual",
           clientId: clientId,
           productId: loanProductId,
           principal: amount,
           //TODO:  Hardcoded
-          loanTermFrequency: 12,
-          loanTermFrequencyType: 1,
-          //end hardcoded
+          loanTermFrequency: 52,
+          loanTermFrequencyType: loanProduct.repaymentFrequencyType.id,
           numberOfRepayments: loanProduct.numberOfRepayments,
           repaymentEvery: loanProduct.repaymentEvery,
           repaymentFrequencyType: loanProduct.repaymentFrequencyType.id,
@@ -74,7 +74,7 @@ module.exports = {
           }
         }
         request.post(options, function(error, response, body) {
-          console.log(error, response, body);
+          console.log(body);
           callback(null, {id: hashids.encrypt(body.loanId)});
         })
       })

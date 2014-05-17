@@ -1,0 +1,74 @@
+.container-wrapper {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #f3f3f3;
+  border: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  text-shadow: 0 1px 0 #fff;
+  padding: 60px;
+}
+
+.container-wrapper-bridge {
+  background: url(http://pukekodesigns.co.nz/clients/zion/img/sample/bg-2.jpg) top center no-repeat #57448a;
+  background-attachment: fixed;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.container-wrapper-bridge h1, .container-wrapper-bridge h2, .container-wrapper-bridge h3, .container-wrapper-bridge h4, .container-wrapper-bridge h5, .container-wrapper-bridge h6, .container-wrapper-bridge p, .container-wrapper-bridge blockquote, .container-wrapper-bridge ul li, .container-wrapper-bridge ol li, .container-wrapper-bridge [class^="fa-"], .container-wrapper-bridge [class*=" fa-"] {
+	color: #fff;
+}
+
+.container-wrapper-bridge h2 {
+	font-size: 36px;
+}
+
+.container-wrapper-bridge p {
+	font-size: 15px;
+}
+
+ul.features-icon-list {
+  margin: 0;
+  padding: 0;
+}
+
+ul.features-icon-list li {
+  margin: 0 0 30px;
+  position: relative;
+  text-align: left;
+  list-style-type: none;
+}
+
+ul.features-icon-list li h3, ul.features-icon-list li p {
+  margin: 0 20px 5px 75px;
+  text-align: left;
+}
+
+ul.features-icon-list li [class^="fa-"], ul.features-icon-list li [class*=" fa-"] {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  font-size: 45px;
+  text-align: center;
+}
+
+.container-wrapper-bridge [class^="fa-"], .container-wrapper-bridge [class*=" fa-"] {
+  opacity: 0.5;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 1199px) and (min-width: 992px)
+.container ul.features-icon-list li [class^="fa-"], .container ul.features-icon-list li [class*=" fa-"] {
+  width: 40px;
+  font-size: 30px;
+}
+
+@media (max-width: 1199px) and (min-width: 992px)
+.container ul.features-icon-list li h3, .container ul.features-icon-list li p {
+  margin-left: 50px;
+}

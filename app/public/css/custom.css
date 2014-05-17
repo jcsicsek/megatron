@@ -180,6 +180,18 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 
 .centered {text-align: center;}
 
+[class^="space-"], [class*=" space-"] {
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.space-20 {
+  height: 20px;
+  max-height: 20px;
+}
+
 /*Others
 ------------------------------------*/
 .img-width-250 { width:250px;}
@@ -269,21 +281,21 @@ li.active.light-green {color: #79d5b3;}
 ul.loginbar a {color: #9b6bcc;}
 
 .mini-box {
-min-height: 105px;
-padding: 20px;
+  min-height: 105px;
+  padding: 20px;
 }
 
 .mini-box .box-icon {
-display: block;
-float: left;
-margin: 0 10px 10px 0;
-width: 65px;
-height: 65px;
-border-radius: 50%;
-line-height: 65px;
-vertical-align: middle;
-text-align: center;
-font-size: 35px;
+  display: block;
+  float: left;
+  margin: 0 10px 10px 0;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  line-height: 65px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 35px;
 }
 
 i.icon-md {
@@ -293,5 +305,3 @@ i.icon-md {
   line-height: 45px;
   margin-bottom: 15px;
 }
-
-

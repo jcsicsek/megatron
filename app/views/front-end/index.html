@@ -1,9 +1,46 @@
 {% extends 'base.html' %}
 
+{%- block styles %}
+  <link rel="stylesheet" href="/css/pages/index.css">
+  <link rel="stylesheet" href="/vendor/horizontal-parallax/css/horizontal-parallax.css">
+  {% parent %}
+{%- endblock scripts %}
+
 {% block masthead %}
 {% endblock masthead %}
 
+{% block main %}
 {% block content %}
+<div id="sequence-theme" class="sequence-inner">
+  <div id="sequence">
+    <img class="prev" src="vendor/horizontal-parallax/images/bt-prev1.png" alt="Previous" />
+    <img class="next" src="vendor/horizontal-parallax/images/bt-next1.png" alt="Next" />
+    <ul>
+      <li class="animate-in">
+        <div class="info">
+          <h2>Custom Loan Products</h2>
+          <p>The only limit you will face is your creativity.</p>
+        </div>
+        <img class="balloon" src="vendor/horizontal-parallax/images/balloon.png" alt="Balloon" />
+      </li>
+      <li>
+        <div class="info">
+          <h2>Increase Sales</h2>
+          <p>Offer your customers a customized and branded pay it later option to increase sales!</p>
+        </div>
+        <img class="aeroplane" src="vendor/horizontal-parallax/images/aeroplane.png" alt="Aeroplane" />
+      </li>
+      <li>
+        <div class="info">
+          <h2>Fast Checkout</h2>
+          <p>Your shoppers will be able to checkout quickly without having to worry about paying until later.</p>
+        </div>
+        <img class="kite" src="vendor/horizontal-parallax/images/kite.png" alt="Kite" />
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container content">
   <div class="row margin-bottom-40">
     <div class="col-md-4">
       <div class="promo-box">
@@ -27,76 +64,68 @@
       </div>
     </div>
   </div>
-
-  <div class="headline"><h2>Why use tabb.io?</h2></div>
-
-  <div class="row category margin-bottom-40">
-    <div class="col-md-5">
-      <h2>For Merchants</h2>
-      <p>Tabb.io is suitable for many types of businesses. Find out more reasons why below.</p>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-bar-chart-o"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Increase Sales</h3>
-          <p>Private label credit is proven to increase conversion, basket size, and shopping frequency.</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-building-o"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Simple Implementation</h3>
-          <p>Using our simple API and embeddable widgets, implementation is as easy as 1-2-3!</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-lock"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Risk Free Payments</h3>
-          <p>Tabb.io assumes the risk of all transactions so you get paid no matter what.</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-check-square-o"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Trustworthy Payments</h3>
-          <p>Tabb.io allows you to whitelabel credit, turning your customers into loyal repeat buyers.</p>
-        </div> 
-      </div>
-    </div><!-- end col -->
-    <div class="col-md-5 col-md-offset-2">
-      <h2>For Consumers</h2>
-      <p>Why are your consumers choosing tabb.io more and more? Because the choice is simple.</p>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-credit-card"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Buy First, Pay Later</h3>
-          <p>To pay with Cash or with Credit Card? This can be decided later. Buying can happen now.</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-user"></i>
-        <div class="content-boxes-in-v3">
-          <h3> No Account Needed</h3>
-          <p>Tired of signing up for accounts? Perfect. We don't require you to, just check out like normal.</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-shield"></i>
-        <div class="content-boxes-in-v3">
-          <h3> No Risk Purchases</h3>
-          <p>Large purchase? Ensure you like your products before paying. Deferred payments help build trust!</p>
-        </div> 
-      </div>
-      <div class="content-boxes-v3">
-        <i class="icon-custom icon-md rounded-x icon-bg-light-grey fa fa-smile-o"></i>
-        <div class="content-boxes-in-v3">
-          <h3> Great Experience</h3>
-          <p>With quick checkouts on the web and in-store and great service, shopping has never been easier.</p>
-        </div> 
-      </div>
-    </div><!-- end col -->
+</div>
+<div class="container-wrapper container-wrapper-bridge">
+  <div class="container">
+    <div class="row margin-bottom-40">
+      <div class="col-md-5 centered">
+        <h2>For Merchants</h2>
+        <p>Tabb.io is suitable for many types of businesses. Find out more reasons why below.</p>
+        <div class="space-20"></div>
+        <ul class="features-icon-list">
+          <li>
+            <span class="fa fa-bar-chart-o"></span>
+            <h3> Increase Sales</h3>
+            <p>Private label credit is proven to increase conversion, basket size, and shopping frequency.</p>
+          </li>
+          <li>
+            <span class="fa fa-building-o"></span>
+            <h3> Simple Implementation</h3>
+            <p>Using our simple API and embeddable widgets, implementation is as easy as 1-2-3!</p>
+          </li>
+          <li>
+            <span class="fa fa-lock"></span>
+            <h3> Risk Free Payments</h3>
+            <p>Tabb.io assumes the risk of all transactions so you get paid no matter what.</p>
+          </li>
+          <li>
+            <span class="fa fa-check-square-o"></span>
+            <h3> Trustworthy Payments</h3>
+            <p>Tabb.io allows you to whitelabel credit, turning your customers into loyal repeat buyers.</p>
+          </li>
+        </ul>
+      </div><!-- end col -->
+      <div class="col-md-5 col-md-offset-2 centered">
+        <h2>For Consumers</h2>
+        <p>Why are your consumers choosing tabb.io more and more? Because the choice is simple.</p>
+        <div class="space-20"></div>
+        <ul class="features-icon-list">
+          <li>
+            <span class="fa fa-credit-card"></span>
+            <h3> Buy First, Pay Later</h3>
+            <p>To pay with Cash or with Credit Card? This can be decided later. Buying can happen now.</p>
+          </li>
+          <li>
+            <span class="fa fa-user"></span>
+            <h3> No Account Needed</h3>
+            <p>Tired of signing up for accounts? Perfect. We don't require you to, just check out like normal.</p>
+          </li>
+          <li>
+            <span class="fa fa-shield"></span>
+            <h3> No Risk Purchases</h3>
+            <p>Large purchase? Ensure you like your products before paying. Deferred payments help build trust!</p>
+          </li>
+          <li>
+            <span class="fa fa-smile-o"></span>
+            <h3> Great Experience</h3>
+            <p>With quick checkouts on the web and in-store and great service, shopping has never been easier.</p>
+          </li>
+        </ul>
+      </div><!-- end col -->
+    </div>
   </div>
-
+</div>
+<div class="container content">
   <div class="row margin-bottom-40">
     <div class="col-md-6 md-margin-bottom-40">
       <div class="headline"><h2>View Your Statement</h2></div>
@@ -139,4 +168,12 @@
       </div>
     </div>
   </div>
-{% endblock %}
+</div>
+{% endblock content %}
+{% endblock main %}
+
+{%- block scripts %}
+  {% parent %}
+  <script type="text/javascript" src="/vendor/horizontal-parallax/js/sequence.jquery-min.js"></script>
+  <script type="text/javascript" src="/vendor/horizontal-parallax/js/horizontal-parallax.js"></script>
+{%- endblock scripts %}

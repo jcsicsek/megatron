@@ -17,5 +17,12 @@ module.exports = {
     account_sid: "AC3666eafb680bb9c0584c0df44549195c",
     auth_token: "2a9e0ec1e36f341189750449b98d739b",
     phone: "6466812434"
+  },
+  mifos: {
+    url: "https://ec2-54-76-20-104.eu-west-1.compute.amazonaws.com:8443/mifosng-provider/api/v1/",
+    username: "mifos",
+    password: "password",
+    tenantIdentifier: "default",
+    officeId: 1
   }
 }

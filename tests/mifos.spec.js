@@ -4,7 +4,7 @@ var loanProductId = 1;
 
 describe('Mifos wrapper', function() {
   this.timeout(5000);
-	it('opens a new loan application', function(done) {
+	xit('opens a new loan application', function(done) {
 		var app = {
 			firstName: "Dutch",
 			lastName: "Ruppersberger",
@@ -22,4 +22,12 @@ describe('Mifos wrapper', function() {
 			done();
 		});
 	});
+
+  it('queries a single loan application by id', function(done) {
+    var id = 'jkqg';
+    mifos.queryById(id, function(error, results) {
+      console.log(error, results);
+      done();
+    });
+  });
 });

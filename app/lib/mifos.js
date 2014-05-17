@@ -12,11 +12,14 @@ module.exports = {
   createLoanApp: function(loanProductId, merchant, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("MIFOS: pulling down loan product with id ", loanProductId);
     var options = {
-      url: config.mifos.url + 'loanproducts/' + loanProductId + '?tenantIdentifier=' + config.mifos.tenantIdentifier,
+      url: config.mifos.url + 'loanproducts/' + loanProductId,
       auth: {
         user: config.mifos.username,
         pass: config.mifos.password,
         sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier
       }
     }
     request.get(options, function(error, response, body) {
@@ -33,12 +36,15 @@ module.exports = {
         locale: "en"
       }
       var options = {
-        url: config.mifos.url + 'clients?tenantIdentifier=' + config.mifos.tenantIdentifier,
+        url: config.mifos.url + 'clients',
         json: client,
         auth: {
           user: config.mifos.username,
           pass: config.mifos.password,
           sendImmediately: true
+        },
+        qs: {
+          tenantIdentifier: config.mifos.tenantIdentifier
         }
       }
       request.post(options, function(error, response, body) {
@@ -65,12 +71,15 @@ module.exports = {
           locale: "en"
         }
         var options = {
-          url: config.mifos.url + 'loans?tenantIdentifier=' + config.mifos.tenantIdentifier,
+          url: config.mifos.url + 'loans',
           json: loan,
           auth: {
             user: config.mifos.username,
             pass: config.mifos.password,
             sendImmediately: true
+          },
+          qs: {
+            tenantIdentifier: config.mifos.tenantIdentifier
           }
         }
         request.post(options, function(error, response, body) {
@@ -83,17 +92,37 @@ module.exports = {
 
   //TODO:  Stubbed
   queryById: function(id, callback) {
-    logger.info("SALESFORCE MOCK: querying summary for loan with id", id);
-    callback(null, {
-      id: id,
-      loanAmount: 10000,
-      createdDate: new Date(),
-      paymentAmount: 5000,
-      paymentDueDate: new Date(),
-      phone: "4105555555",
-      name: "Dutch Ruppersberger",
-      merchant: "mock"
-    });
+    logger.info("MIFOS: querying summary for loan with id", id);
+    var mifosLoanId = hashids.decrypt(id);
+    var options = {
+      url: config.mifos.url + 'loans/' + mifosLoanId,
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier,
+        associations: 'repaymentSchedule'
+      }
+    }
+    request.get(options, function(error, response, body) {
+      var loan = JSON.parse(body);
+
+      callback(null, {
+        id: id,
+        loanAmount: loan.principal,
+        createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
+        //TODO:  Identify the next period
+        paymentAmount: loan.repaymentSchedule.periods[1].totalDueForPeriod,
+        paymentDueDate: new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2]),
+        //TODO:  Pull in client detail to get phone number
+        phone: "4105555555",
+        name: loan.clientName,
+        //TODO:  Merchant Info
+        merchant: "tabbio"
+      });
+    })
   },
 
   //TODO:  Stubbed

@@ -242,15 +242,15 @@ a.top {
 }
 
 .company-logo.view {
-  width: 250px;
+  max-width: 250px;
   height: auto;
   margin-bottom: 15px;
 }
 
 .company-logo.manage {
   width: auto;
-  height: 70px;
-  margin-top: -25px;
+  max-height: 70px;
+  margin-top: -20px;
 }
 
 .btn-u.btn-lg {

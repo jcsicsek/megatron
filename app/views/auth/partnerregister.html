@@ -45,3 +45,19 @@
     </div>
   </div>
 {% endblock content %}
+
+{%- block scripts %}
+  {% parent %}
+  <script type="text/javascript" src="/vendor/backstretch/jquery.backstretch.min.js"></script>
+  <script type="text/javascript">
+    $.backstretch([
+      "/images/bg/1.jpg",
+      "/images/bg/2.jpg",
+      "/images/bg/3.jpg",
+      "/images/bg/6.jpg",
+      ], {
+        fade: 2500,
+        duration: 7000
+    });
+  </script>
+{%- endblock scripts %}

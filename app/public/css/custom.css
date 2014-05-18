@@ -19,6 +19,120 @@ body {
   height: 60px;
 }
 
+/*Custom Panels
+------------------------------------*/
+.panel .panel-heading {
+  text-transform: uppercase;
+}
+.panel .panel-title {
+  font-size: 14px;
+}
+
+.panel-box {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border: none;
+}
+.panel-box .panel-item {
+  display: table-cell;
+  padding: 30px;
+  width: 1%;
+  vertical-align: top;
+  border-radius: 0;
+}
+.panel-box .panel-left {
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.panel-box .panel-right {
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+  -moz-border-radius-bottomright: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.panel-box.info-box i {
+  line-height: 70px;
+}
+.panel-box .panel-top,
+.panel-box .panel-bottom {
+  display: block;
+}
+.panel-box .panel-top {
+  padding: 30px 20px;
+  -moz-border-radius-topleft: 2px;
+  -webkit-border-top-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -moz-border-radius-topright: 2px;
+  -webkit-border-top-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.panel-box .panel-bottom {
+  padding: 10px;
+  -moz-border-radius-bottomleft: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  -moz-border-radius-bottomright: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.panel-box .list-justified-container {
+  padding: 15px 0;
+}
+.panel-box ul.list-justified {
+  display: table;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+.panel-box ul.list-justified > li {
+  float: none;
+  display: table-cell;
+  padding: 10px;
+  width: 1%;
+  border-right: 1px solid #eeeeee;
+}
+.panel-box ul.list-justified > li:last-child {
+  border: none;
+}
+.panel-box .panel-icon {
+  display: block;
+  margin: -75px auto 0;
+  padding: 5px 5px 35px;
+  border-radius: 50%;
+  border: 10px solid white;
+  width: 150px;
+  height: 150px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 58px;
+  text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.panel-box h2 {
+  color: #fff;
+}
+
+.bg-info {
+background-color: #2ec1cc;
+color: white;
+}
+.bg-info-icon {
+background-color: #eee;
+color: white;
+}
+.bg-reverse {
+background-color: white;
+color: #767676;
+}
+
 /*Parsley
 ------------------------------------*/
 input.parsley-success,
@@ -146,17 +260,22 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 
 .margin-tb-80,
 .margin-tb-30,
+.margin-tb-10,
 .margin-bottom-180,
 .margin-top-10 { 
  clear:both;
 }
 
+.margin-tb-10 { margin-top:10px; margin-bottom:10px;}
 .margin-tb-30 { margin-top:30px; margin-bottom:30px;}
 .margin-tb-80 { margin-top:80px; margin-bottom:80px;}
 .margin-bottom-180 { margin-bottom:400px;}
 .margin-top-10 { margin-top:10px;}
 
 @media (max-width: 768px) {
+  .sm-margin-tb-10 {
+    margin-top:10px; margin-bottom:10px;
+  }
   .sm-margin-tb-30 {
     margin-top:30px; margin-bottom:30px;
   }
@@ -168,6 +287,9 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 }
 
 @media (max-width: 992px) {
+  .md-margin-tb-10 {
+    margin-top:10px; margin-bottom:10px;
+  }
   .md-margin-tb-30 {
     margin-top:30px; margin-bottom:30px;
   }
@@ -192,8 +314,6 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
   max-height: 20px;
 }
 
-/*Others
-------------------------------------*/
 .img-width-250 { width:250px;}
 
 .center-image {
@@ -201,6 +321,20 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
   margin-left: auto;
   margin-right: auto;
 }
+
+.divider {
+display: block;
+height: 10px;
+}
+.divider-lg {
+height: 30px;
+}
+.divider-xl {
+height: 50px;
+}
+
+/*Others
+------------------------------------*/
 
 @media (max-width: 767px) { 
   .nav-tabs > li {
@@ -257,7 +391,7 @@ a.top {
   padding: 10px 16px;
   font-size: 18px;
   line-height: 1.33;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 
 li.active.blue {color: #3498db;}

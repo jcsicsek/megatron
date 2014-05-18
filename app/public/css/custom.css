@@ -107,7 +107,7 @@ body {
   display: block;
   margin: -75px auto 0;
   padding: 5px 5px 35px;
-  border-radius: 50%;
+  border-radius: 50% !important;
   border: 10px solid white;
   width: 150px;
   height: 150px;

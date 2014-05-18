@@ -25,7 +25,7 @@ module.exports.create = function(pgClient) {
           next();
         });
       } else {
-        res.locals.logoUrl = "/images/tabbio.png";
+        res.locals.logoUrl = "/images/tabbio-small.png";
         next();
       }
     }

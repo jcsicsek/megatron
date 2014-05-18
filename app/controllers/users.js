@@ -18,7 +18,7 @@ module.exports.create = function(pgClient) {
       res.render('auth/partnerlogin.html', {});
     },
     partnerlogin: function(req, res) {
-      res.redirect(urls.static.root);
+      res.redirect(urls.merchants.overview);
     },
     partnerregisterPage: function(req, res) {
       res.render('auth/partnerregister.html', {});
@@ -38,7 +38,7 @@ module.exports.create = function(pgClient) {
               } else {
                 usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, function(error, user) {
                   req.login(user, function(error) {
-                    res.redirect(urls.static.root);          
+                    res.redirect(urls.merchants.overview);          
                   })
                 });
               }

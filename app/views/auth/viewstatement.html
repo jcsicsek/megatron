@@ -21,7 +21,21 @@
   </form>
   <div class="row">
     <div class="col-md-12 centered">
-      <p>Are you a merchant or a lender? <a class="color-green" href={{urls.users.partnerlogin}}>Partner with us</a>.</p> 
+      <p>Are you a merchant or a lender? <a class="color-green" href={{urls.users.partnerlogin}}>Login or Register now.</a>.</p> 
     </div>
   </div>
 {% endblock content %}
+
+{%- block scripts %}
+  {% parent %}
+  <script type="text/javascript" src="/vendor/backstretch/jquery.backstretch.min.js"></script>
+  <script type="text/javascript">
+    $.backstretch([
+      "/images/bg/5.jpg",
+      "/images/bg/4.jpg",
+      ], {
+        fade: 1000,
+        duration: 7000
+    });
+  </script>
+{%- endblock scripts %}

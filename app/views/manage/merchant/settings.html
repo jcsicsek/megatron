@@ -1,5 +1,102 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>boo settings</div>
+<h2>Company Settings</h2>
+<form action="" id="settings-form" class="sky-form margin-tb-30" novalidate="novalidate">
+  <fieldset>
+    <div class="row">
+      <section class="col col-6">
+        <label class="label">First Name</label>
+        <label class="input">
+          <i class="icon-append fa fa-user"></i>
+          <input type="text" name="firstname">
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="label">Last Name</label>
+        <label class="input">
+          <i class="icon-append fa fa-user"></i>
+          <input type="text" name="lastname">
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="label">Company Name</label>
+        <label class="input">
+          <i class="icon-append fa fa-building-o"></i>
+          <input type="text" name="company" id="company">
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="label">Phone Number</label>
+        <label class="input">
+          <i class="icon-append fa fa-phone"></i>
+          <input type="text" name="company" id="company">
+        </label>
+      </section>
+    </div>
+    <div class="row">
+      <section class="col col-6">
+        <label class="label">E-mail</label>
+        <label class="input">
+          <i class="icon-append fa fa-envelope-o"></i>
+          <input type="email" name="email">
+        </label>
+      </section>
+    </div>
+  </fieldset>
+  <fieldset>
+    <div class="row">
+      <section class="col col-6">
+        <label class="label">tabb.io URL</label>
+        <label class="input">
+          <i class="icon-append fa fa-globe"></i>
+          <div class="input-group">
+            <input type="text" name="tabb_url" id="tabb_url">
+            <span class="input-group-addon url">.tabb.io</span>
+          </div>
+        </label>
+      </section>
+      <section class="col col-6">
+        <label class="label">Company Website</label>
+        <label class="input">
+          <i class="icon-append fa fa-globe"></i>
+          <input type="url" name="url">
+        </label>
+      </section>
+    </div>
+    <section>
+      <label class="label">Company Logo URL</label>
+      <label class="input">
+        <i class="icon-append fa fa-photo"></i>
+        <input type="url" name="company_logo">
+      </label>
+    </section>
+    <section>
+      <label class="label">Theme Color</label>
+      <div class="row">
+      <div class="col col-4">
+          <label class="radio"><input type="radio" name="radio" checked=""><i class="rounded-x"></i>Aqua <span class="color-box" style="background-color:#27d7e7;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Blue <span class="color-box" style="background-color:#3498db;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Brown <span class="color-box" style="background-color:#9c8061;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Dark Blue <span class="color-box" style="background-color:#4765a0;"></span></label>
+        </div>
+        <div class="col col-4">
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Default (Green) <span class="color-box" style="background-color:#72c02c;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Light Green <span class="color-box" style="background-color:#79d5b3;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Grey <span class="color-box" style="background-color:#95a5a6;"></span></label>
+        </div>
+        <div class="col col-4">
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Orange <span class="color-box" style="background-color:#e67e22;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Purple <span class="color-box" style="background-color:#9b6bcc;"></span></label>
+          <label class="radio"><input type="radio" name="radio"><i class="rounded-x"></i>Red <span class="color-box" style="background-color:#e74c3c;"></span></label>
+        </div>
+      </div>                      
+    </section>
+  </fieldset>
+  <footer>
+    <button type="submit" name="submit" class="btn-u pull-right">Save Company Settings</button>
+  </footer>
+</form>
 {% endblock %}

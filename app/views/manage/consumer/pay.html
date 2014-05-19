@@ -3,33 +3,39 @@
 {% block content %}
   {% parent %}
   <h2>Make a Payment</h2>
-  <form action="" id="payment-form" class="sky-form margin-tb-30" novalidate="novalidate">
+  <form action="" id="payment-form" class="sky-form margin-tb-30">
     <fieldset>                  
       <div class="row">
-        <section class="col col-6">
+        <section class="col col-3">
+          <label class="label">First Name</label>
           <label class="input">
             <i class="icon-append fa fa-user"></i>
-            <input type="text" name="fname" placeholder="First name">
+            <input type="text" name="fname">
           </label>
         </section>
-        <section class="col col-6">
+        <section class="col col-3">
+          <label class="label">Last Name</label>
           <label class="input">
             <i class="icon-append fa fa-user"></i>
-            <input type="text" name="lname" placeholder="Last name">
+            <input type="text" name="lname">
           </label>
         </section>
       </div>
       <div class="row">
-        <section class="col col-6">
-          <label class="input">
-            <i class="icon-append fa fa-envelope"></i>
-            <input type="email" name="email" placeholder="E-mail">
-          </label>
-        </section>
-        <section class="col col-6">
+        <section class="col col-3">
+          <label class="label">Phone Number</label>
           <label class="input">
             <i class="icon-append fa fa-phone"></i>
-            <input type="tel" name="phone" placeholder="Phone">
+            <input type="text" name="phone" id="phone">
+          </label>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col col-4">
+          <label class="label">E-mail</label>
+          <label class="input">
+            <i class="icon-append fa fa-envelope-o"></i>
+            <input type="email" name="email">
           </label>
         </section>
       </div>
@@ -37,7 +43,34 @@
 
     <fieldset>
       <div class="row">
-        <section class="col col-5">
+        <section class="col col-6">
+          <label class="label">City</label>
+          <label class="input">
+            <input type="text" name="city">
+          </label>
+        </section>
+        <section class="col col-3">
+          <label class="label">State</label>
+          <label class="input">
+            <input type="text" name="state">
+          </label>
+        </section>
+        <section class="col col-3">
+          <label class="label">Zip Code</label>
+          <label class="input">
+            <input type="text" name="zip_code">
+          </label>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col col-9">
+          <label class="label">Street Address</label>
+          <label for="file" class="input">
+            <input type="text" name="address">
+          </label>
+        </section>
+        <section class="col col-3">
+          <label class="label">Country</label>
           <label class="select">
             <select name="country">
               <option value="0" selected="" disabled="">Country</option>
@@ -47,64 +80,48 @@
             <i></i>
           </label>
         </section>
-
-        <section class="col col-4">
-          <label class="input">
-            <input type="text" name="city" placeholder="City">
-          </label>
-        </section>
-
-        <section class="col col-3">
-          <label class="input">
-            <input type="text" name="code" placeholder="Post code">
-          </label>
-        </section>
       </div>
-
       <section>
-        <label for="file" class="input">
-          <input type="text" name="address" placeholder="Address">
-        </label>
-      </section>
-
-      <section>
-        <label class="textarea">
-          <textarea rows="3" name="info" placeholder="Additional info"></textarea>
+        <label class="label">Additional Info / Notes</label>
+        <label class="textarea textarea-expandable textarea-resizable">
+          <textarea rows="3" name="info"></textarea>
         </label>
       </section>
     </fieldset>
-
     <fieldset>
       <section>
         <div class="inline-group">
-          <label class="radio"><input type="radio" name="radio-inline" checked=""><i class="rounded-x"></i>Visa</label>
-          <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>MasterCard</label>
+          <label class="radio"><input type="radio" name="radio-inline" checked=""><i class="rounded-x"></i>Credit/Debit Card</label>
+          <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>Bank Transfer</label>
           <label class="radio"><input type="radio" name="radio-inline"><i class="rounded-x"></i>PayPal</label>
         </div>
       </section>                  
-
-      <section>
-        <label class="input">
-          <input type="text" name="name" placeholder="Name on card">
-        </label>
-      </section>
-
       <div class="row">
-        <section class="col col-10">
+        <section class="col col-6">
+          <label class="label">Billing Name</label>
           <label class="input">
-            <input type="text" name="card" id="card" placeholder="Card number">
+            <input type="text" name="name">
+          </label>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col col-4">
+          <label class="label">Credit Card Number</label>
+          <label class="input">
+            <input type="text" name="card" id="card">
           </label>
         </section>
         <section class="col col-2">
+          <label class="label">CVV</label>
           <label class="input">
-            <input type="text" name="cvv" id="cvv" placeholder="CVV2">
+            <input type="text" name="cvv" id="cvv">
           </label>
         </section>
       </div>
 
       <div class="row">
-        <label class="label col col-4">Expiration date</label>
-        <section class="col col-5">
+        <label class="label col col-2">Expiration date</label>
+        <section class="col col-2">
           <label class="select">
             <select name="month">
               <option value="0" selected="" disabled="">Month</option>
@@ -124,7 +141,7 @@
             <i></i>
           </label>
         </section>
-        <section class="col col-3">
+        <section class="col col-2">
           <label class="input">
             <input type="text" name="year" id="year" placeholder="Year">
           </label>
@@ -136,17 +153,3 @@
     </footer>
   </form>         
 {% endblock %}
-
-{% block scripts %}
-  {% parent %}
-  <script>
-  $(document).ready(function() {
-    $(".payment-block.ach").hide();
-    $("input[name='payment_type']").change(function() {
-      var choice = $(this).val();
-      $(".payment-block").hide();
-      $(".payment-block." + choice + "").show();
-    });
-  });
-  </script>
-{% endblock scripts %}

@@ -3,14 +3,14 @@
 {% set form_title = 'Partner Login' %}
 
 {% block content %}
-  <form method="POST" action={{urls.users.partnerlogin}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+  <form method="POST" action={{urls.users.partnerlogin}}>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-      <input type="email" id="email" name="username" class="form-control" placeholder="Email" data-parsley-trigger="change focusout blur" required data-parsley-type="email" data-parsley-type-message="This doesn't look like a valid email" data-parsley-required-message="Your email is required to login">
+      <input type="email" id="email" name="username" class="form-control" placeholder="Email" required>
     </div>
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-key"></i></span>
-      <input type="password" id="password" name="password" class="form-control" placeholder="Password" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your password is required to login">
+      <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
     </div>
     <hr>
     <div class="row">

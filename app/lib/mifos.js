@@ -3,9 +3,11 @@ var HashIds = require('hashids');
 var request = require("request");
 var config = require('../config');
 var dateFormat = require('dateFormat');
+var _ = require('underscore');
 
 var hashids = new HashIds('poop', 4);
 
+//ignore broken ssl on mifos
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 module.exports = {
@@ -68,7 +70,8 @@ module.exports = {
           expectedDisbursementDate: dateFormat(new Date(), "dd mmmm yyyy"),
           submittedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
           dateFormat: "dd MMMM yyyy",
-          locale: "en"
+          locale: "en",
+          loanPurposeId: 2
         }
         var options = {
           url: config.mifos.url + 'loans',
@@ -127,7 +130,7 @@ module.exports = {
 
   //TODO:  Stubbed
   queryByMerchant: function(merchant, callback) {
-    logger.info("SALESFORCE MOCK: querying for loans by merchant ", merchant);
+    logger.info("MIFOS: querying for loans by merchant ", merchant);
     callback(null, [
       {
         id: "ABCD",
@@ -172,5 +175,40 @@ module.exports = {
         status: "Approved"
       }
     ]);
+  },
+  addMerchant: function(merchantSlug, callback) {
+    logger.info("MIFOS:  Querying for id of merchant list");
+    var options = {
+      url: config.mifos.url + 'codes',
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier
+      }
+    }
+    request.get(options, function(error, response, body) {
+      var codesList = JSON.parse(body);
+      var loanPurposeCodeId = _.find(codesList, function(code) {return code.name == 'LoanPurpose'}).id;
+      var options = {
+        url: config.mifos.url + 'codes/' + loanPurposeCodeId + '/codevalues',
+        json: {
+          name: merchantSlug
+        },
+        auth: {
+          user: config.mifos.username,
+          pass: config.mifos.password,
+          sendImmediately: true
+        },
+        qs: {
+          tenantIdentifier: config.mifos.tenantIdentifier
+        }
+      }
+      request.post(options, function(error, results, body) {
+        callback(error, body.subResourceId);
+      });
+    });
   }
 }

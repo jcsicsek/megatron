@@ -23,10 +23,17 @@ describe('Mifos wrapper', function() {
 		});
 	});
 
-  it('queries a single loan application by id', function(done) {
+  xit('queries a single loan application by id', function(done) {
     var id = 'jkqg';
     mifos.queryById(id, function(error, results) {
       console.log(error, results);
+      done();
+    });
+  });
+
+  it('adds a new merchant into the system', function(done) {
+    mifos.addMerchant("test-merchant-" + Math.floor(Math.random() * 10000000000), function(error, merchantId) {
+      console.log(error, merchantId);
       done();
     });
   });

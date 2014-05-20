@@ -256,6 +256,8 @@ li.parsley-required, li.parsley-length, li.parsley-type, li.parsley-minlength {
 
 /*Utilities
 ------------------------------------*/
+.ma { margin:0 auto; }
+
 .padding-top-15 { padding-top:15px;}
 
 .margin-tb-80,

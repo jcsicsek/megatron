@@ -26,16 +26,16 @@
       <li>
         <div class="info">
           <h2>Increase Sales</h2>
-          <p>Offer your customers a customized and branded pay it later option to increase sales.</p>
+          <p>Offer your customers a customized and branded "pay later" option to increase sales.</p>
         </div>
-        <img class="aeroplane" src="vendor/horizontal-parallax/images/aeroplane.png" alt="Aeroplane" />
+        <img class="kite" src="vendor/horizontal-parallax/images/kite.png" alt="Kite" />
       </li>
       <li>
         <div class="info">
           <h2>Fast Checkout</h2>
           <p>Your shoppers will be able to checkout quickly without having to worry about paying until later.</p>
         </div>
-        <img class="kite" src="vendor/horizontal-parallax/images/kite.png" alt="Kite" />
+        <img class="aeroplane" src="vendor/horizontal-parallax/images/aeroplane.png" alt="Aeroplane" />
       </li>
     </ul>
   </div>
@@ -44,23 +44,23 @@
   <div class="row margin-bottom-40">
     <div class="col-md-4">
       <div class="promo-box">
-        <i class="fa fa-building-o fa-5x color-blue"></i>
-        <strong>Simple Implementation</strong>
-        <p>Using our simple API and widgets, implementation is as easy as 1-2-3!</p>
+        <i class="icon-custom icon-lg rounded-x icon-bg-blue icon-line icon-reload ma"></i>
+        <strong>Pay Later</strong>
+        <p>Give your customers from 30 to 90 more days to pay at no extra cost.</p>
       </div>        
     </div>
     <div class="col-md-4">
       <div class="promo-box">
-        <i class="fa fa-lock fa-5x color-sea"></i>
-        <strong>Risk Free</strong>
-        <p>Tabb.io assumes the risk of all loans so merchants always get paid.</p>
+        <i class="icon-custom icon-lg rounded-x icon-bg-sea icon-line icon-pie-chart ma"></i>
+        <strong>Installments</strong>
+        <p>Let your customers buy now and split their purchase into simple monthly payments over 3 to 24 months.</p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="promo-box">        
-        <i class="fa fa-bar-chart-o fa-5x color-red"></i>
-        <strong>Increase Sales</strong>
-        <p>Retail credit increases conversion, order value, and shopping frequency.</p>
+        <i class="icon-custom icon-lg rounded-x icon-bg-red icon-line icon-credit-card ma"></i>
+        <strong>Store Credit</strong>
+        <p>Put your own private label credit account in the hands of your most loyal customers.</p>
       </div>
     </div>
   </div>
@@ -70,55 +70,55 @@
     <div class="row margin-bottom-40">
       <div class="col-md-5 centered">
         <h2>For Merchants</h2>
-        <p>Tabb.io is suitable for many types of businesses. Find out more reasons why below.</p>
+        <p>Tabb.io is suitable for many types of businesses.</p>
         <div class="space-20"></div>
         <ul class="features-icon-list">
           <li>
             <span class="fa fa-bar-chart-o"></span>
             <h3> Increase Sales</h3>
-            <p>Private label credit is proven to increase conversion, basket size, and shopping frequency.</p>
+            <p>Private label credit increases conversion, basket size, and shopping frequency.</p>
           </li>
           <li>
             <span class="fa fa-building-o"></span>
             <h3> Simple Implementation</h3>
-            <p>Using our simple API and embeddable widgets, implementation is as easy as 1-2-3!</p>
+            <p>Using our cloud-based platform and simple API, it is easy to design and implement private label credit.</p>
           </li>
           <li>
             <span class="fa fa-lock"></span>
             <h3> Risk Free Payments</h3>
-            <p>Tabb.io assumes the risk of all transactions so you get paid no matter what.</p>
+            <p>Merchants receive funds right away regardless of when customers pay.</p>
           </li>
           <li>
             <span class="fa fa-check-square-o"></span>
-            <h3> Trustworthy Payments</h3>
-            <p>Tabb.io allows you to whitelabel credit, turning your customers into loyal repeat buyers.</p>
+            <h3> Build Customer Loyalty</h3>
+            <p>Build loyalty with a new channel for post-purchase contact and targeted marketing tools.</p>
           </li>
         </ul>
       </div><!-- end col -->
       <div class="col-md-5 col-md-offset-2 centered">
         <h2>For Consumers</h2>
-        <p>Why are your consumers choosing tabb.io more and more? Because the choice is simple.</p>
+        <p>Tabb.io is the simple way to pay.</p>
         <div class="space-20"></div>
         <ul class="features-icon-list">
           <li>
             <span class="fa fa-credit-card"></span>
             <h3> Buy First, Pay Later</h3>
-            <p>To pay with Cash or with Credit Card? This can be decided later. Buying can happen now.</p>
+            <p>Store credit gives you more time to pay for today’s important purchases.</p>
           </li>
           <li>
             <span class="fa fa-user"></span>
             <h3> No Account Needed</h3>
-            <p>Tired of signing up for accounts? Perfect. We don't require you to, just check out like normal.</p>
+            <p>Tired of signing up for accounts? Perfect. We don't require you to sign up; just check out with your basic info.</p>
           </li>
           <li>
-            <span class="fa fa-shield"></span>
-            <h3> No Risk Purchases</h3>
-            <p>Large purchase? Ensure you like your products before paying. Deferred payments help build trust!</p>
+            <span class="fa fa-gavel"></span>
+            <h3> Control</h3>
+            <p>Take control of your monthly budget with purchase-specific payment plans.</p>
           </li>
           <li>
-            <span class="fa fa-smile-o"></span>
-            <h3> Great Experience</h3>
-            <p>With quick checkouts on the web and in-store and great service, shopping has never been easier.</p>
+            <span class="fa fa-gift"></span>
+            <h3> Special Offers</h3>
+            <p>Save money and discover great new products with discounts and relevant offers.</p>
           </li>
         </ul>
       </div><!-- end col -->
@@ -131,12 +131,12 @@
       <div class="headline"><h2>View Your Statement</h2></div>
       <div class="row">
         <p>See statement, schedule payments, and other activities.</p>
-        <form method="POST" action={{urls.users.viewinvoice}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+        <form method="POST" action={{urls.invoices.portal}}>
           <div class="form-group">
             <div class="controls">
               <div class="row">
                 <div class="col-md-7">
-                  <input type="text" id="phone" name="username" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="A phone number is required to login">
+                  <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" required>
                 </div><!-- end col -->
               </div><!-- end row -->
             </div><!-- end controls -->
@@ -145,10 +145,10 @@
             <div class="controls">
               <div class="row">
                 <div class="col-md-4">
-                  <input type="text" id="invoice" name="password" class="form-control" placeholder="Invoice Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Invoice number is required" data-parsley-length="[4, 4]" data-parsley-length-message="Invoices are 4 letters and numbers long">
+                  <input type="text" id="invoice" name="invoiceId" class="form-control" placeholder="Purchase Code" required>
                 </div><!-- end col -->
                 <div class="col-md-3 form-actions form-actions-no-bg">
-                  <button type="submit" value="send" class="btn btn-success">View Invoice</button>
+                  <button type="submit" value="send" class="btn btn-success">View Statement</button>
                 </div>
               </div><!-- end row -->
             </div><!-- end controls -->
@@ -157,12 +157,12 @@
       </div>
     </div>
     <div class="col-md-6 md-margin-bottom-40">
-      <div class="headline"><h2>Create a tabb.io Acount</h2></div>
+      <div class="headline"><h2>Create tabb.io Merchant Acount</h2></div>
       <div class="row">
         <p>If you are a merchant who would like to offer purchase financing with custom built promotions just for your customers, register for an account.</p>
         <div class="form-actions form-actions-no-bg pull-right">
           <a href={{urls.users.partnerregister}}>
-            <button type="submit" value="send" class="btn-u btn-u-purple">Register</button>
+            <button type="submit" value="send" class="btn-u btn-u-purple">Sign Up</button>
           </a>
         </div>
       </div>

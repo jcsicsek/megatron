@@ -2,12 +2,12 @@ var logger = require('winston');
 
 module.exports = {
   createLoanApp: function(id, merchant, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
-    logger.info("SALESFORCE MOCK: creating loan application for id", id);
+    logger.info("MOCK PLATFORM: creating loan application for id", id);
     callback(null, {id: id})
   },
 
   queryByPhone: function(phone, callback) {
-    logger.info("SALESFORCE MOCK: quering all loans with phone number", phone);
+    logger.info("MOCK PLATFORM: quering all loans with phone number", phone);
     callback(null, [
       {
         id: "ABCD",
@@ -28,7 +28,7 @@ module.exports = {
   },
 
   queryById: function(id, callback) {
-    logger.info("SALESFORCE MOCK: querying summary for loan with id", id);
+    logger.info("MOCK PLATFORM: querying summary for loan with id", id);
     callback(null, {
       id: id,
       loanAmount: 10000,
@@ -42,7 +42,7 @@ module.exports = {
   },
 
   queryByMerchant: function(merchant, callback) {
-    logger.info("SALESFORCE MOCK: querying for loans by merchant ", merchant);
+    logger.info("MOCK PLATFORM: querying for loans by merchant ", merchant);
     callback(null, [
       {
         id: "ABCD",

@@ -1,4 +1,4 @@
-var sf = require('../lib/salesforce');
+var loanPlatform = require('../lib/loan_servicing_platform');
 var config = require('../config');
 var twilio = require('twilio')(config.twilio.account_sid, config.twilio.auth_token);
 
@@ -34,7 +34,7 @@ module.exports.create = function() {
       var merchant = req.subdomains.length > 0 ? req.subdomains[0] : "tabbio";
       var phone = loan.phone.replace(/\D/g,'');
       var loanId = generateId(4);
-    	sf.createLoanApp(loanId, merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
+    	loanPlatform.createLoanApp(loanId, merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
         if (!error) {
           var smsMessage = "Your $" + loan.amount + " purchase at " + merchant + " is approved! Check your statement at http://" + merchant + ".tabb.io/i/" + loanId + ". First payment due in " + paymentDueDays + " days.";
           twilio.sendMessage({to: phone, from: config.twilio.phone, body: smsMessage}, function(error, response) {if (error) console.log(error)});
@@ -52,7 +52,7 @@ module.exports.create = function() {
       res.redirect('/i/' + req.body.invoiceId);
     },
     invoiceSummary: function(req, res) {
-      sf.queryById(req.params.invoiceid, function(error, loan) {
+      loanPlatform.queryById(req.params.invoiceid, function(error, loan) {
         if (!loan) {
           res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
         }
@@ -64,7 +64,7 @@ module.exports.create = function() {
       });
     },
     invoiceDetails: function(req, res) {
-      sf.queryById(req.params.invoiceid, function(error, loan) {
+      loanPlatform.queryById(req.params.invoiceid, function(error, loan) {
         if (!loan) {
           res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
         }
@@ -76,7 +76,7 @@ module.exports.create = function() {
       });
     },
     invoicePayPage: function(req, res) {
-      sf.queryById(req.params.invoiceid, function(error, loan) {
+      loanPlatform.queryById(req.params.invoiceid, function(error, loan) {
         if (!loan) {
           res.send(404, {status: "error", message: "Invoice with id " + req.params.invoiceid + " not found."})
         }
@@ -88,7 +88,7 @@ module.exports.create = function() {
       });
     },
     merchantLoans: function(req, res) {
-      sf.queryByMerchant(req.subdomains[0], function(error, loans) {
+      loanPlatform.queryByMerchant(req.subdomains[0], function(error, loans) {
         res.send(loans);
       });
     }

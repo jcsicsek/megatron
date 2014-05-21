@@ -1,4 +1,4 @@
-var mifos = require('../app/lib/mifos');
+var mifos = require('../app/lib/loan_servicing_platform/mifos');
 
 var loanProductId = 1;
 

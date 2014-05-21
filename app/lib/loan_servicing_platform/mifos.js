@@ -1,7 +1,7 @@
 var logger = require('winston');
 var HashIds = require('hashids');
 var request = require("request");
-var config = require('../config');
+var config = require('../../config');
 var dateFormat = require('dateFormat');
 var _ = require('underscore');
 

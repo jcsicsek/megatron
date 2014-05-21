@@ -20,8 +20,8 @@ module.exports.create = function(pgClient) {
       if (req.subdomains.length == 1) {
         usersModel.getPartner(req.subdomains[0], function(error, merchant) {
           // res.locals.logoUrl = merchant.logo_url;
-          res.locals.colorTheme = merchant.color_theme;
-          res.locals.businessName = merchant.business_name;
+          // res.locals.colorTheme = merchant.color_theme;
+          // res.locals.businessName = merchant.business_name;
           next();
         });
       } else {

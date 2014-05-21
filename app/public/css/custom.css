@@ -455,3 +455,7 @@ i.icon-md {
 em.invalid {
   font-weight: normal;
 }
+
+#view-statement.sky-form {
+  border: none;
+}

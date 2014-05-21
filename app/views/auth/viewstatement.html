@@ -3,21 +3,31 @@
 {% set form_title = 'View Statement' %}
 
 {% block content %}
-  <form method="POST" action={{urls.invoices.portal}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-      <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" data-parsley-trigger="change focusout blur" required data-parsley-required-message="A phone number is required to view your invoice">
-    </div>
-    <div class="input-group margin-bottom-20">
-      <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-      <input type="text" id="invoice" name="invoiceId" class="form-control" placeholder="Purchase Code" data-parsley-trigger="change focusout blur" required data-parsley-required-message="To view your invoice we need your number">
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1 margin-bottom-25">
-        <button type="submit" value="send" class="btn-u btn-block">View Statement</button>
+  <form method="POST" id="view-statement" class="sky-form" action={{urls.invoices.portal}}>
+    <fieldset>
+      <div class="row">
+        <section>
+          <label class="input">
+            <i class="icon-append fa fa-phone"></i>
+            <input type="text" id="phone" name="phone" placeholder="Phone Number">
+          </label>
+        </section>
       </div>
-    </div>
+      <div class="row">
+        <section >
+          <label class="input">
+            <i class="icon-append fa fa-barcode"></i>
+            <input type="text" id="invoice" name="invoiceId" placeholder="Purchase Code">
+          </label>
+        </section>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 margin-bottom-25">
+          <button type="submit" value="send" class="btn disabled btn-u btn-block">View Statement</button>
+        </div>
+      </div>
+    </fieldset>
   </form>
   <div class="row">
     <div class="col-md-12 centered">
@@ -36,6 +46,12 @@
       ], {
         fade: 1000,
         duration: 7000
+    });
+  </script>
+    <script src="/js/view-statement.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+        ViewStatement.initViewStatement();
     });
   </script>
 {%- endblock scripts %}

@@ -1,26 +1,70 @@
-// AJAX SUBMIT
-$("#contact-form").submit(function(e)
-{
-	var postData = $(this).serializeArray();
-	var formURL = $(this).attr("action");
-	$.ajax(
-	{
-		url : formURL,
-		type: "POST",
-		data : postData,
-		success:function(data, textStatus, jqXHR) 
-		{
-			$('#contact-wrapper').html("<div id='message' class='margin-top-20'></div>");
-			$('#message').html("<div class='panel-heading'><h4>Contact Form Submitted!<h4></div>")
-			.append("<div class='panel-body'><p>We will be in touch soon.</p></div>")
-		},
-		error: function(jqXHR, textStatus, errorThrown) 
-		{
-			$('#contact-wrapper').html("<div id='message' class='margin-top-20'></div>");
-			$('#message').html("<div class='panel-heading'><h4>Uh oh, something went wrong!</h4></div>")
-			.append("<div class='panel-body'><p>Try refreshing the page or <a href='/contact'>trying again.</p></div>")    
-		}
-	});
-    e.preventDefault(); //STOP default action
-    e.unbind(); //unbind. to stop multiple form submit.
-});
+var ContactForm = function () {
+    return {
+        //Contact Form
+        initContactForm: function () {
+          // Validation
+          $("#contact-form").validate({
+              // Rules for form validation
+              rules:
+              {
+                  name:
+                  {
+                      required: true
+                  },
+                  email:
+                  {
+                      required: true,
+                      email: true
+                  },
+                  message:
+                  {
+                      required: true,
+                      minlength: 10
+                  }
+              },
+                                  
+              // Messages for form validation
+              messages:
+              {
+                  name:
+                  {
+                      required: 'Please enter your name',
+                  },
+                  email:
+                  {
+                      required: 'Please enter your email address',
+                      email: 'Please enter a VALID email address'
+                  },
+                  message:
+                  {
+                      required: 'Please enter your message'
+                  }
+              },
+                                  
+              // Ajax form submission                  
+              submitHandler: function(form)
+              {
+                  $(form).ajaxSubmit(
+                  {
+                      beforeSend: function()
+                      {
+                          $('#contact-form button[type="submit"]').attr('disabled', true);
+                      },
+                      success: function()
+                      {
+                          $("#contact-form").addClass('submited');
+                      }
+                  });
+              },
+              
+              // Do not change code below
+              errorPlacement: function(error, element)
+              {
+                  error.insertAfter(element.parent());
+              }
+          });
+        }
+
+    };
+    
+}();

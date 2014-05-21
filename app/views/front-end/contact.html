@@ -47,8 +47,12 @@
             </section>
           </fieldset>
           <footer>
-            <button type="submit" id="submit" class="btn-u btn-lg pull-right disabled">Send Message</button>
+            <button type="submit" id="submit" class="btn-u btn-lg pull-right">Send Message</button>
           </footer>
+          <div class="message margin-tb-30">
+            <i class="rounded-x fa fa-check"></i>
+            <p>Your message was successfully sent!</p>
+          </div>
         </form>
       </div>
     </div><!--/col-md-9-->
@@ -61,4 +65,9 @@
 {%- block scripts %}
   {% parent %}
   <script src="/js/contact.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+        ContactForm.initContactForm();
+    });
+  </script>
 {%- endblock scripts %}

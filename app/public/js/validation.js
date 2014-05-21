@@ -11,7 +11,7 @@ var Validation = function () {
         },
         $.validator.format('Please enter a valid credit card number.'));
 
-        $(".sky-form").validate({                   
+        $(".sky-form2").validate({                   
           // Rules for form validation
           rules:
           {

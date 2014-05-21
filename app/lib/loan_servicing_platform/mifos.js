@@ -10,6 +10,71 @@ var hashids = new HashIds('poop', 4);
 //ignore broken ssl on mifos
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
+var getClientId = function(phone, callback) {
+  logger.info("MIFOS: Looking up client with phone number", phone);
+  var options = {
+    url: config.mifos.url + 'clients',
+    auth: {
+      user: config.mifos.username,
+      pass: config.mifos.password,
+      sendImmediately: true
+    },
+    qs: {
+      tenantIdentifier: config.mifos.tenantIdentifier,
+      sqlSearch: "c.mobile_no='" + phone + "'"
+    }
+  }
+  request.get(options, function(error, response, body) {
+    var clients = JSON.parse(body);
+    if (clients.totalFilteredRecords == 0) {
+      callback(null, null);
+    } else {
+      callback(null, clients.pageItems[0].id);
+    }
+  })
+}
+
+var createClient = function(firstName, lastName, phone, callback) {
+  logger.info("MIFOS: Creating client with phone number", phone);
+  var client = {
+    firstname: firstName,
+    lastname: lastName,
+    officeId: config.mifos.officeId,
+    active: true,
+    activationDate: dateFormat(new Date(), "dd mmmm yyyy"),
+    dateFormat: "dd MMMM yyyy",
+    mobileNo: phone,
+    locale: "en"
+  }
+  var options = {
+    url: config.mifos.url + 'clients',
+    json: client,
+    auth: {
+      user: config.mifos.username,
+      pass: config.mifos.password,
+      sendImmediately: true
+    },
+    qs: {
+      tenantIdentifier: config.mifos.tenantIdentifier
+    }
+  }
+  request.post(options, function(error, response, body) {
+    callback(error, body.clientId);
+  })
+}
+
+var getOrCreateClientId = function(firstName, lastName, phone, callback) {
+  getClientId(phone, function(error, clientId) {
+    if (clientId) {
+      logger.info("MIFOS: Client with phone", phone, "already exists and has id", clientId);
+      callback(error, clientId);
+    } else {
+      logger.info("MIFOS: Client with phone", phone, "does not exist.  Creating...");
+      createClient(firstName, lastName, phone, callback);
+    }
+  })
+}
+
 module.exports = {
   createLoanApp: function(loanProductId, merchantId, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("MIFOS: pulling down loan product with id ", loanProductId);
@@ -26,31 +91,7 @@ module.exports = {
     }
     request.get(options, function(error, response, body) {
       var loanProduct = JSON.parse(body);
-      logger.info("MIFOS: creating client for phone ", phone);
-      var client = {
-        firstname: firstName,
-        lastname: lastName,
-        officeId: config.mifos.officeId,
-        active: true,
-        activationDate: dateFormat(new Date(), "dd mmmm yyyy"),
-        dateFormat: "dd MMMM yyyy",
-        mobileNo: phone,
-        locale: "en"
-      }
-      var options = {
-        url: config.mifos.url + 'clients',
-        json: client,
-        auth: {
-          user: config.mifos.username,
-          pass: config.mifos.password,
-          sendImmediately: true
-        },
-        qs: {
-          tenantIdentifier: config.mifos.tenantIdentifier
-        }
-      }
-      request.post(options, function(error, response, body) {
-        var clientId = body.clientId;
+      getOrCreateClientId(firstName, lastName, phone, function(error, clientId) {
         var loan = {
           loanType: "individual",
           clientId: clientId,
@@ -86,7 +127,6 @@ module.exports = {
           }
         }
         request.post(options, function(error, response, body) {
-          console.log(body);
           callback(null, {id: hashids.encrypt(body.loanId)});
         })
       })
@@ -159,24 +199,6 @@ module.exports = {
         merchant: loan.oanPurposeName
       }}));
     });
-
-
-    // callback(null, [
-    //   {
-    //     id: "ABCD",
-    //     loanAmount: 10000,
-    //     createdDate: new Date(),
-    //     paymentAmount: 5000,
-    //     paymentDueDate: new Date(),
-    //     phone: "4105555555",
-    //     name: "Dutch Ruppersberger",
-    //     firstName: "Dutch",
-    //     lastName: "Ruppersberger",
-    //     merchant: "mock",
-    //     //TODO:  Hardcoded loan status!
-    //     status: "Approved"
-    //   }
-    // ]);
   },
   addMerchant: function(merchantSlug, callback) {
     logger.info("MIFOS:  Querying for id of merchant list");

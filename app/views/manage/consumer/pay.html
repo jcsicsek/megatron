@@ -3,7 +3,7 @@
 {% block content %}
   {% parent %}
   <h2>Make a Payment</h2>
-  <form action="" id="payment-form" class="sky-form sky-form2 margin-tb-30">
+  <form action="" id="payment-form" class="sky-form margin-tb-30">
     <fieldset>                  
       <div class="row">
         <section class="col col-3">
@@ -153,3 +153,13 @@
     </footer>
   </form>         
 {% endblock %}
+
+{%- block scripts %}
+  {% parent %}
+  <script src="/js/payment-form.js"></script>
+  <script type="text/javascript">
+    jQuery(document).ready(function() {
+        PaymentForm.initPaymentForm();
+    });
+  </script>
+{%- endblock scripts %}

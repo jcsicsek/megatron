@@ -56,6 +56,7 @@ module.exports = {
     app.get(urls.static.products, staticController.products);
     app.get(urls.static.api, staticController.api);
     app.get(urls.static.apiapply, staticController.apiapply);
+    app.post(urls.static.apiapply, staticController.sendApiRequest);
     app.get(urls.static.apiloanrequest, staticController.apiloanrequest);
     app.get(urls.static.faqs, staticController.faqs);
     app.get(urls.static.contact, staticController.contact);

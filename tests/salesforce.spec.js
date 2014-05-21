@@ -1,4 +1,4 @@
-var sf = require('./app/lib/salesforce');
+var sf = require('./app/lib/loan_servicing_platform/salesforce');
 
 function generateId(length)
 {

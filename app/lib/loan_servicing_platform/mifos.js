@@ -1,15 +1,17 @@
 var logger = require('winston');
 var HashIds = require('hashids');
 var request = require("request");
-var config = require('../config');
+var config = require('../../config');
 var dateFormat = require('dateFormat');
+var _ = require('underscore');
 
 var hashids = new HashIds('poop', 4);
 
+//ignore broken ssl on mifos
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 module.exports = {
-  createLoanApp: function(loanProductId, merchant, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
+  createLoanApp: function(loanProductId, merchantId, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("MIFOS: pulling down loan product with id ", loanProductId);
     var options = {
       url: config.mifos.url + 'loanproducts/' + loanProductId,
@@ -68,7 +70,8 @@ module.exports = {
           expectedDisbursementDate: dateFormat(new Date(), "dd mmmm yyyy"),
           submittedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
           dateFormat: "dd MMMM yyyy",
-          locale: "en"
+          locale: "en",
+          loanPurposeId: merchantId
         }
         var options = {
           url: config.mifos.url + 'loans',
@@ -126,51 +129,88 @@ module.exports = {
   },
 
   //TODO:  Stubbed
-  queryByMerchant: function(merchant, callback) {
-    logger.info("SALESFORCE MOCK: querying for loans by merchant ", merchant);
-    callback(null, [
-      {
-        id: "ABCD",
-        loanAmount: 10000,
-        createdDate: new Date(),
-        paymentAmount: 5000,
-        paymentDueDate: new Date(),
-        phone: "4105555555",
-        name: "Dutch Ruppersberger",
-        firstName: "Dutch",
-        lastName: "Ruppersberger",
-        merchant: "mock",
-        //TODO:  Hardcoded loan status!
-        status: "Approved"
+  queryByMerchant: function(merchantId, callback) {
+    logger.info("MIFOS: querying for loans by merchant id ", merchantId);
+
+    var options = {
+      url: config.mifos.url + 'loans',
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
       },
-      {
-        id: "EFGH",
-        loanAmount: 20000,
-        createdDate: new Date(),
-        paymentAmount: 6000,
-        paymentDueDate: new Date(),
-        phone: "4102222222",
-        name: "Habit Neige",
-        firstName: "Habit",
-        lastName: "Neige",
-        merchant: "mock",
-        //TODO:  Hardcoded loan status!
-        status: "Approved"
-      },
-      {
-        id: "IJKL",
-        loanAmount: 30000,
-        createdDate: new Date(),
-        paymentAmount: 7000,
-        paymentDueDate: new Date(),
-        phone: "4103333333",
-        name: "Addy Roxy",
-        firstName: "Addy",
-        lastName: "Roxy",
-        merchant: "mock",
-        //TODO:  Hardcoded loan status!
-        status: "Approved"
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier,
+        sqlSearch: 'loanpurpose_cv_id=' + merchantId,
+        associations: 'repaymentSchedule'
       }
-    ]);
+    }
+
+    request.get(options, function(error, response, body) {
+      var loans = JSON.parse(body);
+      callback(error, _.map(loans.pageItems, function(loan){return {
+        id: hashids.encrypt(loan.id),
+        loanAmount: loan.principal,
+        createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
+        paymentAmount: loan.repaymentSchedule ? loan.repaymentSchedule.periods[1].totalDueForPeriod : 0,
+        paymentDueDate: loan.repaymentSchedule ? (new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2])) : new Date(),
+        phone: "4105555555",
+        name: loan.clientName,
+        merchant: loan.oanPurposeName
+      }}));
+    });
+
+
+    // callback(null, [
+    //   {
+    //     id: "ABCD",
+    //     loanAmount: 10000,
+    //     createdDate: new Date(),
+    //     paymentAmount: 5000,
+    //     paymentDueDate: new Date(),
+    //     phone: "4105555555",
+    //     name: "Dutch Ruppersberger",
+    //     firstName: "Dutch",
+    //     lastName: "Ruppersberger",
+    //     merchant: "mock",
+    //     //TODO:  Hardcoded loan status!
+    //     status: "Approved"
+    //   }
+    // ]);
+  },
+  addMerchant: function(merchantSlug, callback) {
+    logger.info("MIFOS:  Querying for id of merchant list");
+    var options = {
+      url: config.mifos.url + 'codes',
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier
+      }
+    }
+    request.get(options, function(error, response, body) {
+      var codesList = JSON.parse(body);
+      var loanPurposeCodeId = _.find(codesList, function(code) {return code.name == 'LoanPurpose'}).id;
+      var options = {
+        url: config.mifos.url + 'codes/' + loanPurposeCodeId + '/codevalues',
+        json: {
+          name: merchantSlug
+        },
+        auth: {
+          user: config.mifos.username,
+          pass: config.mifos.password,
+          sendImmediately: true
+        },
+        qs: {
+          tenantIdentifier: config.mifos.tenantIdentifier
+        }
+      }
+      request.post(options, function(error, results, body) {
+        callback(error, body.subResourceId);
+      });
+    });
   }
 }

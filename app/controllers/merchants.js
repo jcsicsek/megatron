@@ -1,10 +1,10 @@
-var sf = require('../lib/salesforce');
+var loanPlatform = require('../lib/loan_servicing_platform');
 var _ = require('underscore');
 
 module.exports.create = function() {
   var self = {   
     overview: function(req, res) {
-      sf.queryByMerchant(req.subdomains[0], function(error, loans) {
+      loanPlatform.queryByMerchant(req.subdomains[0], function(error, loans) {
         res.render('manage/merchant/overview', {
           title: "Your Store Overview | tabb.io",
           loans: loans.reverse(),
@@ -16,7 +16,7 @@ module.exports.create = function() {
       });
     },
     invoices: function(req, res) {
-      sf.queryByMerchant(req.subdomains[0], function(error, loans) {
+      loanPlatform.queryByMerchant(req.subdomains[0], function(error, loans) {
         res.render('manage/merchant/invoices', { title: "Your Store Invoices | tabb.io", loans: loans });
       });
     },

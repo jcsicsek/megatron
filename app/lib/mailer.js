@@ -16,5 +16,24 @@ module.exports = {
     {
         callback(error, response);
     });
-  }
+  },
+
+  apiRequest: function(contactAddress, name, companyName, companyAddress, phone, message, callback) {
+      mandrill('/messages/send', {
+          message: {
+              to: [{email: toAddress, name: toName}],
+              from_email: contactAddress,
+              subject: "API Request form",
+              text: "Customer Email: " + contactAddress +
+                "\nCustomer Name: " + name +
+                "\nCompany Name: " + companyName +
+                "\nCompany Address: " + companyAddress +
+                "\nPhone: " + phone +
+                "\nCustomer Message:\n" + message
+          }
+      }, function(error, response)
+      {
+          callback(error, response);
+      });
+    }
 }

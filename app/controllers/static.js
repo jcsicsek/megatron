@@ -36,6 +36,11 @@ module.exports.create = function() {
       mailer.contactUs(req.body.email, req.body.name, req.body.message, function(error, response) {
         res.send({status: "success", message: "Message Sent"});
       });
+    },
+    sendApiRequest: function(req, res) {
+      mailer.apiRequest(req.body.email, req.body.name, req.body.cname, req.body.caddress, req.body.phone, req.body.message, function(error, response) {
+        res.send({status: "success", message: "API Request Received"});
+      });
     }
   };
   return self;

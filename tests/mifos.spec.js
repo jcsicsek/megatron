@@ -1,10 +1,11 @@
 var mifos = require('../app/lib/loan_servicing_platform/mifos');
+var mifosApi = require('../app/lib/mifos_api');
 
 var loanProductId = 1;
 
 describe('Mifos wrapper', function() {
   this.timeout(5000);
-	xit('opens a new loan application for a new client', function(done) {
+	it('opens a new loan application for a new client', function(done) {
 		var app = {
 			firstName: "Dutch",
 			lastName: "Ruppersberger",
@@ -24,7 +25,7 @@ describe('Mifos wrapper', function() {
 		});
 	});
 
-  xit('opens a new loan application for an existing client', function(done) {
+  it('opens a new loan application for an existing client', function(done) {
     var app = {
       firstName: "Dutch",
       lastName: "Ruppersberger",
@@ -44,7 +45,7 @@ describe('Mifos wrapper', function() {
     });
   });
 
-  xit('queries a single loan application by id', function(done) {
+  it('queries a single loan application by id', function(done) {
     var id = 'jkqg';
     mifos.queryById(id, function(error, results) {
       console.log(error, results);
@@ -52,32 +53,36 @@ describe('Mifos wrapper', function() {
     });
   });
 
-  xit('adds a new merchant into the system', function(done) {
+  it('adds a new merchant into the system', function(done) {
     mifos.addMerchant("test-merchant-" + Math.floor(Math.random() * 10000000000), function(error, merchantId) {
       console.log(error, merchantId);
       done();
     });
   });
 
-  xit('queries loans by merchant', function(done) {
+  it('queries loans by merchant', function(done) {
     var merchantId = 26;
     mifos.queryByMerchant(merchantId, function(error, results) {
       console.log(error, results);
       done();
     });
   });
+});
 
-  xit('approves a loan', function(done) {
+xdescribe('Mifos API', function() {
+  this.timeout(5000);
+
+  it('approves a loan', function(done) {
     var loanId = 14;
-    mifos.approveLoan(loanId, function(error, results) {
+    mifosApi.approveLoan(loanId, function(error, results) {
       console.log(error, results);
       done();
     })
   })
 
-  xit('rejects a loan', function(done) {
+  it('rejects a loan', function(done) {
     var loanId = 12;
-    mifos.rejectLoan(loanId, function(error, results) {
+    mifosApi.rejectLoan(loanId, function(error, results) {
       console.log(error, results);
       done();
     })
@@ -85,7 +90,7 @@ describe('Mifos wrapper', function() {
 
   it('disburses a loan', function(done) {
     var loanId = 14;
-    mifos.disburseLoan(loanId, function(error, results) {
+    mifosApi.disburseLoan(loanId, function(error, results) {
       console.log(error, results);
       done();
     })

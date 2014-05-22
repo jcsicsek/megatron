@@ -1,234 +1,40 @@
 var logger = require('winston');
 var HashIds = require('hashids');
-var request = require("request");
-var config = require('../../config');
-var dateFormat = require('dateFormat');
 var _ = require('underscore');
 var loanOrigination = require('../loan_origination');
+var mifosApi = require('../mifos_api');
 
 var hashids = new HashIds('poop', 4);
 
-//ignore broken ssl on mifos
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
-var getClientId = function(phone, callback) {
-  logger.info("MIFOS: Looking up client with phone number", phone);
-  var options = {
-    url: config.mifos.url + 'clients',
-    auth: {
-      user: config.mifos.username,
-      pass: config.mifos.password,
-      sendImmediately: true
-    },
-    qs: {
-      tenantIdentifier: config.mifos.tenantIdentifier,
-      sqlSearch: "c.mobile_no='" + phone + "'"
-    }
-  }
-  request.get(options, function(error, response, body) {
-    var clients = JSON.parse(body);
-    if (clients.totalFilteredRecords == 0) {
-      callback(null, null);
-    } else {
-      callback(null, clients.pageItems[0].id);
-    }
-  })
-}
-
-var createClient = function(firstName, lastName, phone, callback) {
-  logger.info("MIFOS: Creating client with phone number", phone);
-  var client = {
-    firstname: firstName,
-    lastname: lastName,
-    officeId: config.mifos.officeId,
-    active: true,
-    activationDate: dateFormat(new Date(), "dd mmmm yyyy"),
-    dateFormat: "dd MMMM yyyy",
-    mobileNo: phone,
-    locale: "en"
-  }
-  var options = {
-    url: config.mifos.url + 'clients',
-    json: client,
-    auth: {
-      user: config.mifos.username,
-      pass: config.mifos.password,
-      sendImmediately: true
-    },
-    qs: {
-      tenantIdentifier: config.mifos.tenantIdentifier
-    }
-  }
-  request.post(options, function(error, response, body) {
-    callback(error, body.clientId);
-  })
-}
-
 var getOrCreateClientId = function(firstName, lastName, phone, callback) {
-  getClientId(phone, function(error, clientId) {
+  mifosApi.getClientId(phone, function(error, clientId) {
     if (clientId) {
-      logger.info("MIFOS: Client with phone", phone, "already exists and has id", clientId);
+      logger.info("MIFOS WRAPPER: Client with phone", phone, "already exists and has id", clientId);
       callback(error, clientId);
     } else {
-      logger.info("MIFOS: Client with phone", phone, "does not exist.  Creating...");
-      createClient(firstName, lastName, phone, callback);
+      logger.info("MIFOS WRAPPER: Client with phone", phone, "does not exist.  Creating...");
+      mifosApi.createClient(firstName, lastName, phone, callback);
     }
   })
 }
 
-var approveLoan = function(loanId, callback) {
-  logger.info("MIFOS: Approving loan with id", loanId);
-  var options = {
-    url: config.mifos.url + 'loans/' + loanId,
-    json: {
-      approvedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
-      dateFormat: "dd MMMM yyyy",
-      locale: "en"
-    },
-    auth: {
-      user: config.mifos.username,
-      pass: config.mifos.password,
-      sendImmediately: true
-    },
-    qs: {
-      tenantIdentifier: config.mifos.tenantIdentifier,
-      command: "approve"
-    }
-  }
-  request.post(options, function(error, response, body) {
-    callback(error, body);
-  })
-}
-
-var rejectLoan = function(loanId, callback) {
-  logger.info("MIFOS: Rejecting loan with id", loanId);
-  var options = {
-    url: config.mifos.url + 'loans/' + loanId,
-    json: {
-      rejectedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
-      dateFormat: "dd MMMM yyyy",
-      locale: "en"
-    },
-    auth: {
-      user: config.mifos.username,
-      pass: config.mifos.password,
-      sendImmediately: true
-    },
-    qs: {
-      tenantIdentifier: config.mifos.tenantIdentifier,
-      command: "reject"
-    }
-  }
-  request.post(options, function(error, response, body) {
-    callback(error, body);
-  })
-}
-
-var disburseLoan = function(loanId, callback) {
-  logger.info("MIFOS: Disbursing loan with id", loanId);
-  var options = {
-    url: config.mifos.url + 'loans/' + loanId,
-    json: {
-      actualDisbursementDate: dateFormat(new Date(), "dd mmmm yyyy"),
-      dateFormat: "dd MMMM yyyy",
-      locale: "en"
-    },
-    auth: {
-      user: config.mifos.username,
-      pass: config.mifos.password,
-      sendImmediately: true
-    },
-    qs: {
-      tenantIdentifier: config.mifos.tenantIdentifier,
-      command: "disburse"
-    }
-  }
-  request.post(options, function(error, response, body) {
-    callback(error, body);
-  })
-}
 
 module.exports = {
-  approveLoan: approveLoan,
-  rejectLoan: rejectLoan,
-  disburseLoan: disburseLoan,
 
   createLoanApp: function(loanProductId, merchantId, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
-    logger.info("MIFOS: pulling down loan product with id ", loanProductId);
-    var options = {
-      url: config.mifos.url + 'loanproducts/' + loanProductId,
-      auth: {
-        user: config.mifos.username,
-        pass: config.mifos.password,
-        sendImmediately: true
-      },
-      qs: {
-        tenantIdentifier: config.mifos.tenantIdentifier
-      }
-    }
-    request.get(options, function(error, response, body) {
-      var loanProduct = JSON.parse(body);
+    mifosApi.getLoanProduct(loanProductId, function(error, loanProduct) {
       getOrCreateClientId(firstName, lastName, phone, function(error, clientId) {
-        var loan = {
-          loanType: "individual",
-          clientId: clientId,
-          productId: loanProductId,
-          principal: amount,
-          //TODO:  Hardcoded
-          loanTermFrequency: 52,
-          loanTermFrequencyType: loanProduct.repaymentFrequencyType.id,
-          numberOfRepayments: loanProduct.numberOfRepayments,
-          repaymentEvery: loanProduct.repaymentEvery,
-          repaymentFrequencyType: loanProduct.repaymentFrequencyType.id,
-          interestRatePerPeriod: loanProduct.interestRatePerPeriod,
-          amortizationType: loanProduct.amortizationType.id,
-          interestType: loanProduct.interestType.id,
-          interestCalculationPeriodType: loanProduct.interestCalculationPeriodType.id,
-          transactionProcessingStrategyId: loanProduct.transactionProcessingStrategyId,
-          expectedDisbursementDate: dateFormat(new Date(), "dd mmmm yyyy"),
-          submittedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
-          dateFormat: "dd MMMM yyyy",
-          locale: "en",
-          loanPurposeId: merchantId
-        }
-        var options = {
-          url: config.mifos.url + 'loans',
-          json: loan,
-          auth: {
-            user: config.mifos.username,
-            pass: config.mifos.password,
-            sendImmediately: true
-          },
-          qs: {
-            tenantIdentifier: config.mifos.tenantIdentifier
-          }
-        }
-        request.post(options, function(error, response, body) {
-          callback(null, {id: hashids.encrypt(body.loanId)});
+        mifosApi.createLoanApp(clientId, merchantId, loanProduct, amount, function(error, loanAppResponse){
+          callback(error, {id: hashids.encrypt(loanAppResponse.loanId)});
         })
       })
     })
   },
 
-  //TODO:  Stubbed
   queryById: function(id, callback) {
     logger.info("MIFOS: querying summary for loan with id", id);
     var mifosLoanId = hashids.decrypt(id);
-    var options = {
-      url: config.mifos.url + 'loans/' + mifosLoanId,
-      auth: {
-        user: config.mifos.username,
-        pass: config.mifos.password,
-        sendImmediately: true
-      },
-      qs: {
-        tenantIdentifier: config.mifos.tenantIdentifier,
-        associations: 'repaymentSchedule'
-      }
-    }
-    request.get(options, function(error, response, body) {
-      var loan = JSON.parse(body);
-
+    mifosApi.getLoan(mifosLoanId, function(error, loan) {
       callback(null, {
         id: id,
         loanAmount: loan.principal,
@@ -245,26 +51,9 @@ module.exports = {
     })
   },
 
-  //TODO:  Stubbed
   queryByMerchant: function(merchantId, callback) {
     logger.info("MIFOS: querying for loans by merchant id ", merchantId);
-
-    var options = {
-      url: config.mifos.url + 'loans',
-      auth: {
-        user: config.mifos.username,
-        pass: config.mifos.password,
-        sendImmediately: true
-      },
-      qs: {
-        tenantIdentifier: config.mifos.tenantIdentifier,
-        sqlSearch: 'loanpurpose_cv_id=' + merchantId,
-        associations: 'repaymentSchedule'
-      }
-    }
-
-    request.get(options, function(error, response, body) {
-      var loans = JSON.parse(body);
+    mifosApi.getLoansByPurposeId(merchantId, function(error, loans) {
       callback(error, _.map(loans.pageItems, function(loan){return {
         id: hashids.encrypt(loan.id),
         loanAmount: loan.principal,
@@ -278,37 +67,11 @@ module.exports = {
     });
   },
   addMerchant: function(merchantSlug, callback) {
-    logger.info("MIFOS:  Querying for id of merchant list");
-    var options = {
-      url: config.mifos.url + 'codes',
-      auth: {
-        user: config.mifos.username,
-        pass: config.mifos.password,
-        sendImmediately: true
-      },
-      qs: {
-        tenantIdentifier: config.mifos.tenantIdentifier
-      }
-    }
-    request.get(options, function(error, response, body) {
-      var codesList = JSON.parse(body);
+    logger.info("MIFOS:  Adding merchant with slug", merchantSlug);
+    mifosApi.getCodesList(function(error, codesList) {
       var loanPurposeCodeId = _.find(codesList, function(code) {return code.name == 'LoanPurpose'}).id;
-      var options = {
-        url: config.mifos.url + 'codes/' + loanPurposeCodeId + '/codevalues',
-        json: {
-          name: merchantSlug
-        },
-        auth: {
-          user: config.mifos.username,
-          pass: config.mifos.password,
-          sendImmediately: true
-        },
-        qs: {
-          tenantIdentifier: config.mifos.tenantIdentifier
-        }
-      }
-      request.post(options, function(error, results, body) {
-        callback(error, body.subResourceId);
+      mifosApi.addCodeValue(loanPurposeCodeId, merchantSlug, function(error, codeValueAddResults) {
+        callback(error, codeValueAddResults.subResourceId);
       });
     });
   }

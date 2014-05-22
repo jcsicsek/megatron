@@ -4,6 +4,7 @@ var request = require("request");
 var config = require('../../config');
 var dateFormat = require('dateFormat');
 var _ = require('underscore');
+var loanOrigination = require('../loan_origination');
 
 var hashids = new HashIds('poop', 4);
 
@@ -75,7 +76,58 @@ var getOrCreateClientId = function(firstName, lastName, phone, callback) {
   })
 }
 
+var approveLoan = function(loanId, callback) {
+  logger.info("MIFOS: Approving loan with id", loanId);
+  var options = {
+    url: config.mifos.url + 'loans/' + loanId,
+    json: {
+      approvedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
+      dateFormat: "dd MMMM yyyy",
+      locale: "en"
+    },
+    auth: {
+      user: config.mifos.username,
+      pass: config.mifos.password,
+      sendImmediately: true
+    },
+    qs: {
+      tenantIdentifier: config.mifos.tenantIdentifier,
+      command: "approve"
+    }
+  }
+  request.post(options, function(error, response, body) {
+    callback(error, body);
+  })
+}
+
+var rejectLoan = function(loanId, callback) {
+  logger.info("MIFOS: Rejecting loan with id", loanId);
+  var options = {
+    url: config.mifos.url + 'loans/' + loanId,
+    json: {
+      rejectedOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
+      dateFormat: "dd MMMM yyyy",
+      locale: "en"
+    },
+    auth: {
+      user: config.mifos.username,
+      pass: config.mifos.password,
+      sendImmediately: true
+    },
+    qs: {
+      tenantIdentifier: config.mifos.tenantIdentifier,
+      command: "reject"
+    }
+  }
+  request.post(options, function(error, response, body) {
+    callback(error, body);
+  })
+}
+
 module.exports = {
+  approveLoan: approveLoan,
+  rejectLoan: rejectLoan,
+
   createLoanApp: function(loanProductId, merchantId, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("MIFOS: pulling down loan product with id ", loanProductId);
     var options = {

@@ -24,7 +24,7 @@ describe('Mifos wrapper', function() {
 		});
 	});
 
-  it('opens a new loan application for an existing client', function(done) {
+  xit('opens a new loan application for an existing client', function(done) {
     var app = {
       firstName: "Dutch",
       lastName: "Ruppersberger",
@@ -66,4 +66,20 @@ describe('Mifos wrapper', function() {
       done();
     });
   });
+
+  xit('approves a loan', function(done) {
+    var loanId = 14;
+    mifos.approveLoan(loanId, function(error, results) {
+      console.log(error, results);
+      done();
+    })
+  })
+
+  it('rejects a loan', function(done) {
+    var loanId = 12;
+    mifos.rejectLoan(loanId, function(error, results) {
+      console.log(error, results);
+      done();
+    })
+  })
 });

@@ -124,9 +124,34 @@ var rejectLoan = function(loanId, callback) {
   })
 }
 
+var disburseLoan = function(loanId, callback) {
+  logger.info("MIFOS: Disbursing loan with id", loanId);
+  var options = {
+    url: config.mifos.url + 'loans/' + loanId,
+    json: {
+      actualDisbursementDate: dateFormat(new Date(), "dd mmmm yyyy"),
+      dateFormat: "dd MMMM yyyy",
+      locale: "en"
+    },
+    auth: {
+      user: config.mifos.username,
+      pass: config.mifos.password,
+      sendImmediately: true
+    },
+    qs: {
+      tenantIdentifier: config.mifos.tenantIdentifier,
+      command: "disburse"
+    }
+  }
+  request.post(options, function(error, response, body) {
+    callback(error, body);
+  })
+}
+
 module.exports = {
   approveLoan: approveLoan,
   rejectLoan: rejectLoan,
+  disburseLoan: disburseLoan,
 
   createLoanApp: function(loanProductId, merchantId, firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, callback) {
     logger.info("MIFOS: pulling down loan product with id ", loanProductId);

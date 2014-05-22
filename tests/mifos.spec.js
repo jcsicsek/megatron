@@ -75,9 +75,17 @@ describe('Mifos wrapper', function() {
     })
   })
 
-  it('rejects a loan', function(done) {
+  xit('rejects a loan', function(done) {
     var loanId = 12;
     mifos.rejectLoan(loanId, function(error, results) {
+      console.log(error, results);
+      done();
+    })
+  })
+
+  it('disburses a loan', function(done) {
+    var loanId = 14;
+    mifos.disburseLoan(loanId, function(error, results) {
       console.log(error, results);
       done();
     })

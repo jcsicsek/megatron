@@ -25,7 +25,19 @@ module.exports = {
     mifosApi.getLoanProduct(loanProductId, function(error, loanProduct) {
       getOrCreateClientId(firstName, lastName, phone, function(error, clientId) {
         mifosApi.createLoanApp(clientId, merchantId, loanProduct, amount, function(error, loanAppResponse){
-          callback(error, {id: hashids.encrypt(loanAppResponse.loanId)});
+          loanOrigination.decideApproval(firstName, lastName, address, city, state, zipCode, phone, lastFour, amount, ipAddress, function(error, decision) {
+            if (decision) {
+              mifosApi.approveLoan(loanAppResponse.loanId, function(error, results) {
+                mifosApi.disburseLoan(loanAppResponse.loanId, function(error, results) {
+                  callback(error, {id: hashids.encrypt(loanAppResponse.loanId), approved: true});
+                })
+              })
+            } else {
+              mifosApi.rejectLoan(loanAppResponse.loanId, function(error, results) {
+                callback(error, {id: hashids.encrypt(loanAppResponse.loanId), approved: false});
+              })
+            }
+          })
         })
       })
     })

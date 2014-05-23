@@ -43,7 +43,7 @@
 
     <fieldset>
       <div class="row">
-        <section class="col col-6">
+        <section class="col col-4">
           <label class="label">City</label>
           <label class="input">
             <input type="text" name="city">
@@ -63,7 +63,7 @@
         </section>
       </div>
       <div class="row">
-        <section class="col col-9">
+        <section class="col col-7">
           <label class="label">Street Address</label>
           <label for="file" class="input">
             <input type="text" name="address">
@@ -81,22 +81,24 @@
           </label>
         </section>
       </div>
-      <section>
-        <label class="label">Additional Info / Notes</label>
-        <label class="textarea textarea-expandable textarea-resizable">
-          <textarea rows="3" name="info"></textarea>
-        </label>
-      </section>
+      <div class="row">
+        <section class="col col-10">
+          <label class="label">Additional Info / Notes</label>
+          <label class="textarea textarea-expandable textarea-resizable">
+            <textarea rows="3" name="info"></textarea>
+          </label>
+        </section>
+      </div>
     </fieldset>
     <fieldset>
       <section>
         <div class="inline-group">
-          <label class="radio"><input type="radio" name="radio-inline" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i>Credit/Debit Card</label>
-          <label class="radio"><input type="radio" class="bank-transfer" value="bank-transfer" name="radio-inline"><i class="rounded-x"></i>Bank Transfer</label>
-          <label class="radio"><input type="radio" name="radio-inline" class="paypal" value="paypal"><i class="rounded-x"></i>PayPal</label>
+          <label class="radio"><input type="radio" name="radio-inline" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i><img src="/images/payment-cards.jpg"></label>
+          <label class="radio"><input type="radio" class="bank-transfer" value="bank-transfer" name="radio-inline"><i class="rounded-x"></i><img src="/images/bank-transfer.png"></label>
+          <label class="radio"><input type="radio" name="radio-inline" class="paypal" value="paypal"><i class="rounded-x"></i><img src="/images/paypal.jpg"></label>
         </div>
       </section>
-      <div class="collapse payment-card">                  
+      <div class="collapse payment-card margin-tb-30">                  
         <div class="row">
           <section class="col col-6">
             <label class="label">Billing Name</label>
@@ -126,7 +128,7 @@
               <select name="month">
                 <option value="0" selected="" disabled="">Month</option>
                 <option value="1">January</option>
-                <option value="1">February</option>
+                <option value="2">February</option>
                 <option value="3">March</option>
                 <option value="4">April</option>
                 <option value="5">May</option>
@@ -148,11 +150,39 @@
           </section>
         </div>
       </div>
-      <div class="collapse bank-transfer">
-        <p>test bank transfer</p>
+      <div class="collapse bank-transfer margin-tb-30">
+        <div class="row">
+          <section class="col col-6">
+            <label class="label">Bank Account Number</label>
+            <label class="input">
+              <input type="text" name="account" id="account">
+            </label>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col col-6">
+            <label class="label">Routing Number</label>
+            <label class="input">
+              <input type="text" name="routing" id="routing">
+            </label>
+          </section>
+        </div>
+        <div class="row">
+          <section class="col col-4">
+            <label class="label">Account Type</label>
+            <label class="select">
+              <select name="type">
+                <option value="0" selected="" disabled="">Account Type</option>
+                <option value="1">Checking</option>
+                <option value="2">Savings</option>
+              </select>
+              <i></i>
+            </label>
+          </section>
+        </div>
       </div>
-      <div class="collapse paypal">
-        <p>test paypal</p>
+      <div class="collapse paypal margin-tb-80">
+        <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
       </div>
     </fieldset>
     <footer>

@@ -67,7 +67,22 @@ var PaymentForm = function () {
           {
             required: true,
             digits: true
+          },
+          account:
+          {
+            required: true,
+            digits: true
+          },
+          routing:
+          {
+            required: true,
+            digits: true
+          },
+          type:
+          {
+            required: true
           }
+
         },
 
         // Messages for form validation
@@ -132,6 +147,20 @@ var PaymentForm = function () {
          {
            required: 'Please enter your expiration year',
            digits: 'Please enter a valid year'
+         },
+         account:
+         {
+           required: 'Please enter an account number',
+           digits: 'Please enter a valid account number'
+         },
+         routing:
+         {
+           required: 'Please enter a routing number',
+           digits: 'Please enter a valid routing number'
+         },
+         type:
+         {
+           required: 'Please indicate the type of bank account'
          }
        },
 

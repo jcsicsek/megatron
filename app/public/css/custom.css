@@ -459,3 +459,7 @@ em.invalid {
 #view-statement.sky-form {
   border: none;
 }
+
+ .collapse.payment-card {
+     display: block;
+ }

@@ -1,5 +1,7 @@
 var passwordHash = require('password-hash');
 var urls = require('../config/routes').urls;
+var loanPlatform = require('../lib/loan_servicing_platform');
+
 
 module.exports.create = function(pgClient) {
   var usersModel = require('../models/users').create(pgClient);
@@ -36,11 +38,13 @@ module.exports.create = function(pgClient) {
               if (subdomainExists) {
                 res.send(409, {status: "error", message: "This subdomain is in use by another partner."})
               } else {
-                usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, function(error, user) {
-                  req.login(user, function(error) {
-                    res.redirect(urls.merchants.overview);          
-                  })
-                });
+                loanPlatform.addMerchant(req.body.url, function(error, lpMerchantId) {
+                  usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, lpMerchantId, function(error, user) {
+                    req.login(user, function(error) {
+                      res.redirect(urls.merchants.overview);          
+                    })
+                  });
+                })
               }
             })
           }

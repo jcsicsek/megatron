@@ -1,12 +1,12 @@
 var express = require('express');
 
 module.exports.create = function(pgClient) {
-  var usersModel = require('./models/users').create(pgClient);
+  var partnersModel = require('./models/partners').create(pgClient);
 
   var self = {
     authenticateMerchant: function(req, res, next) {
       basicAuth(function(username, password, callback) {
-        getApiKeyBySubdomain(req.subdomains[0], function(error, apiKey) {
+        partnersModel.getApiKeyBySubdomain(req.subdomains[0], function(error, apiKey) {
           if (!apiKey || apiKey != username) {
             callback(null, false);
           } else {
@@ -18,7 +18,7 @@ module.exports.create = function(pgClient) {
 
     setMerchantContext: function(req, res, next) {
       if (req.subdomains.length == 1) {
-        usersModel.getPartner(req.subdomains[0], function(error, merchant) {
+        partnersModel.getPartner(req.subdomains[0], function(error, merchant) {
           res.locals.logoUrl = merchant.logo_url;
           res.locals.colorTheme = merchant.color_theme;
           res.locals.businessName = merchant.business_name;

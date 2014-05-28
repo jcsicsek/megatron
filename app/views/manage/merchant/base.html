@@ -1,9 +1,9 @@
 {% extends "../base.html" %}
 
 {% set navigation_bar = [
-  {url: urls.merchants.overview, text: 'Overview'},
-  {url: urls.merchants.invoices, text: 'Invoices'},
-  {url: urls.merchants.settings, text: 'Account Settings'}
+  {url: urls.merchants.overview, text: 'Overview', icon: 'dashboard'},
+  {url: urls.merchants.invoices, text: 'Invoices', icon: 'barcode'},
+  {url: urls.merchants.settings, text: 'Account Settings', icon: 'gears'}
 ] %}
 
 {% block masttitle %}{{ businessName }} Portal{% endblock masttitle %}

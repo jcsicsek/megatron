@@ -1,0 +1,61 @@
+<div id="main-navbar" class="navbar navbar-inverse" role="navigation">
+  <button type="button" id="main-menu-toggle"><i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span></button>
+  <div class="navbar-inner">
+    <div class="navbar-header">
+      <a href="index.html" class="navbar-brand">
+        <div><img alt="Pixel Admin" src="/images/tabbio-small.png"></div>
+        tabb.io
+      </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse"><i class="navbar-icon fa fa-bars"></i></button>
+    </div>
+    <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+      <div>
+        <div class="right clearfix">
+          <ul class="nav navbar-nav pull-right right-navbar-nav">
+            <li>
+              <form class="navbar-form pull-left">
+                <input type="text" class="form-control" placeholder="Search">
+              </form>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle user-menu" data-toggle="dropdown">
+                <img src="/images/people/frank.png">
+                <span>Frank Fumarola</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="dropdown-icon fa fa-envelope"></i>&nbsp;&nbsp;Messages</a></li>
+                <li><a href="#"><i class="dropdown-icon fa fa-cog"></i>&nbsp;&nbsp;Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="pages-signin.html"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+              </ul>
+            </li>
+          </ul> 
+        </div> 
+      </div>
+    </div> 
+  </div> 
+</div> 
+<div id="main-menu" class="main-menu-fixed" role="navigation">
+  <div id="main-menu-inner">
+    <div class="menu-content top" id="menu-content-demo">
+      <div>
+        <div class="text-bg"><span class="text-slim">Welcome,</span> <span class="text-semibold">Frank</span></div>
+        <img src="/images/people/frank.png" alt="" class="">
+        <div class="btn-group">
+          <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-envelope"></i></a>
+          <a href="#" class="btn btn-xs btn-primary btn-outline dark"><i class="fa fa-cog"></i></a>
+          <a href="#" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i></a>
+        </div>
+        <a href="#" class="close">&times;</a>
+      </div>
+    </div>
+    <ul class="navigation">
+      {% for link in navigation_bar %}
+      <li {% if link.url == active_page %} class="active" {% endif %}><a href={{ link.url|e }}><i class="menu-icon fa fa-{{ link.icon }}"></i><span class="mm-text">{{ link.text|e }}</span></a></li>
+      {% endfor %}
+    </ul> 
+    <div class="menu-content">
+      <a href="pages-invoice.html" class="btn btn-primary btn-block btn-outline dark">Create Invoice</a>
+    </div>
+  </div>
+</div>

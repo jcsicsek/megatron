@@ -86,5 +86,12 @@ module.exports = {
         callback(error, codeValueAddResults.subResourceId);
       });
     });
+  },
+  makeRepayment: function(loanId, amount, callback) {
+    logger.info("MIFOS WRAPPER: Making loan repayment to loan with id", loanId, "in the amount of", amount);
+    var mifosLoanId = hashids.decrypt(id);
+    mifosApi.makeRepayment(mifosLoanId, amount, function(error, response) {
+      callback(error, response);
+    });
   }
 }

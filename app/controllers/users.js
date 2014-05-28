@@ -21,7 +21,11 @@ module.exports.create = function(pgClient) {
       res.render('auth/partnerlogin.html', {});
     },
     partnerlogin: function(req, res) {
-      res.redirect(urls.merchants.overview);
+      if (req.subdomains.length > 0) {
+        res.redirect(urls.merchants.overview);
+      } else {
+        res.redirect(urls.static.root);
+      }
     },
     partnerregisterPage: function(req, res) {
       res.render('auth/partnerregister.html', {});

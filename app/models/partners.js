@@ -44,6 +44,12 @@ module.exports.create = function(pgClient) {
       pgClient.query(query, [subdomain], function(error, results) {
         callback(error, results.rows[0]);
       });
+    },
+    getLpIdFromSubdomain: function(subdomain, callback) {
+      var query = "SELECT lp_merchant_id FROM partners WHERE subdomain=$1";
+      pgClient.query(query, [subdomain], function(error, results) {
+        callback(error, results.rows[0].lp_merchant_id);
+      });
     }
   };
   return self;

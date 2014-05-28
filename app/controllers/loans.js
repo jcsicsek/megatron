@@ -10,6 +10,9 @@ var paymentDueDays = 45;
 var isAuthenticated = function(req, loan) {
   if (req.session && req.session.phone && req.session.phone == loan.phone) {
     return true;
+    //TODO:  Disabled authentication for mifos
+  } else if (process.env.LOAN_SERVICING_PLATFORM == 'mifos') {
+    return true;
   } else {
     return false;
   }
@@ -34,7 +37,9 @@ module.exports.create = function() {
       var merchant = req.subdomains.length > 0 ? req.subdomains[0] : "tabbio";
       var phone = loan.phone.replace(/\D/g,'');
       var loanId = generateId(4);
-    	loanPlatform.createLoanApp(loanId, merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
+      //TODO:  Hardcoded loan product id!
+      var loanProductId = 1;
+    	loanPlatform.createLoanApp(loanProductId, merchant, loan.firstName, loan.lastName, loan.address1 + " " + loan.address2, loan.city, loan.state, loan.zipCode, phone, loan.lastFour, loan.amount, req.ip, function(error, response) {
         if (!error) {
           var smsMessage = "Your $" + loan.amount + " purchase at " + merchant + " is approved! Check your statement at http://" + merchant + ".tabb.io/i/" + loanId + ". First payment due in " + paymentDueDays + " days.";
           twilio.sendMessage({to: phone, from: config.twilio.phone, body: smsMessage}, function(error, response) {if (error) console.log(error)});

@@ -1,8 +1,11 @@
 var passwordHash = require('password-hash');
 var urls = require('../config/routes').urls;
+var loanPlatform = require('../lib/loan_servicing_platform');
+
 
 module.exports.create = function(pgClient) {
   var usersModel = require('../models/users').create(pgClient);
+  var partnersModel = require('../models/partners').create(pgClient);
   var self = {   
     viewstatementPage: function(req, res) {
       res.render('auth/viewstatement.html', {});
@@ -18,7 +21,11 @@ module.exports.create = function(pgClient) {
       res.render('auth/partnerlogin.html', {});
     },
     partnerlogin: function(req, res) {
-      res.redirect(urls.merchants.overview);
+      if (req.subdomains.length > 0) {
+        res.redirect(urls.merchants.overview);
+      } else {
+        res.redirect(urls.static.root);
+      }
     },
     partnerregisterPage: function(req, res) {
       res.render('auth/partnerregister.html', {});
@@ -32,15 +39,17 @@ module.exports.create = function(pgClient) {
           if (emailExists) {
             res.send(409, {status: "error", message: "A user with this email address already exists."});
           } else {
-            usersModel.subdomainExists(req.body.url, function(error, subdomainExists) {
+            partnersModel.subdomainExists(req.body.url, function(error, subdomainExists) {
               if (subdomainExists) {
                 res.send(409, {status: "error", message: "This subdomain is in use by another partner."})
               } else {
-                usersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, function(error, user) {
-                  req.login(user, function(error) {
-                    res.redirect(urls.merchants.overview);          
-                  })
-                });
+                loanPlatform.addMerchant(req.body.url, function(error, lpMerchantId) {
+                  partnersModel.createPartner(req.body.email, passwordHash.generate(req.body.password), "partner", req.body.name, req.body.company, req.body.phone, "", req.body.url, lpMerchantId, function(error, user) {
+                    req.login(user, function(error) {
+                      res.redirect(urls.merchants.overview);          
+                    })
+                  });
+                })
               }
             })
           }

@@ -3,7 +3,7 @@
 {% set form_title = 'Partner Register' %}
 
 {% block content %}
-  <form method="POST" action={{urls.users.partnerregister}} data-parsley-validate data-parsley-focus="first" data-parsley-priority-enabled="false">
+  <form method="POST" action={{urls.users.partnerregister}} >
     <div class="input-group margin-bottom-20">
       <span class="input-group-addon"><i class="fa fa-user"></i></span>
       <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" data-parsley-trigger="change focusout blur" required data-parsley-required-message="Your name is required">

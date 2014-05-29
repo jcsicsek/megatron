@@ -271,5 +271,30 @@ module.exports = {
     request.post(options, function(error, results, body) {
       callback(error, body);
     });
+  },
+
+  makeRepayment: function(loanId, amount, callback) {
+    logger.info("MIFOS API: Making loan repayment to loan with id", loanId, "in the amount of", amount);
+    var options = {
+      url: config.mifos.url + 'loans/' + loanId + '/transactions',
+      json: {
+        transactionAmount: amount,
+        locale: "en",
+        transactionDate: dateFormat(new Date(), "dd mmmm yyyy"),
+        dateFormat: "dd MMMM yyyy"
+      },
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier,
+        command: "repayment"
+      }
+    }
+    request.post(options, function(error, results, body) {
+      callback(error, body);
+    });
   }
 }

@@ -3,7 +3,7 @@ var mifosApi = require('../app/lib/mifos_api');
 
 var loanProductId = 1;
 
-describe('Mifos wrapper', function() {
+xdescribe('Mifos wrapper', function() {
   this.timeout(5000);
 	it('opens a new loan application for a new client', function(done) {
 		var app = {
@@ -69,10 +69,10 @@ describe('Mifos wrapper', function() {
   });
 });
 
-xdescribe('Mifos API', function() {
+describe('Mifos API', function() {
   this.timeout(5000);
 
-  it('approves a loan', function(done) {
+  xit('approves a loan', function(done) {
     var loanId = 14;
     mifosApi.approveLoan(loanId, function(error, results) {
       console.log(error, results);
@@ -80,7 +80,7 @@ xdescribe('Mifos API', function() {
     })
   })
 
-  it('rejects a loan', function(done) {
+  xit('rejects a loan', function(done) {
     var loanId = 12;
     mifosApi.rejectLoan(loanId, function(error, results) {
       console.log(error, results);
@@ -88,9 +88,17 @@ xdescribe('Mifos API', function() {
     })
   })
 
-  it('disburses a loan', function(done) {
+  xit('disburses a loan', function(done) {
     var loanId = 14;
     mifosApi.disburseLoan(loanId, function(error, results) {
+      console.log(error, results);
+      done();
+    })
+  })
+  it('makes a repayment on a loan', function(done) {
+    var loanId = 14;
+    var repaymentAmount = 50;
+    mifosApi.makeRepayment(loanId, repaymentAmount, function(error, results) {
       console.log(error, results);
       done();
     })

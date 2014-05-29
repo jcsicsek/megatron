@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block masttitle %}Invoice {{ loan.id }} Payment{% endblock masttitle %}
+
 {% block content %}
   {% parent %}
   <h2>Make a Payment</h2>
@@ -186,7 +188,7 @@
       </div>
     </fieldset>
     <footer>
-      <button type="submit" class="btn-u btn-lg pull-right">Make Payment</button>
+      <button type="submit" class="btn btn-primary btn-lg pull-right">Make Payment</button>
     </footer>
   </form>         
 {% endblock %}

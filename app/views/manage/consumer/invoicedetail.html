@@ -1,86 +1,75 @@
 {% extends "base.html" %}
 
-{%- block styles %}
-  <link rel="stylesheet" href="/css/pages/invoice.css">
-  {% parent %}
-{%- endblock scripts %}
+{% block body_attribs %}class="theme-{% if colorTheme %}{{colorTheme}}{% else %}default{% endif %} main-menu-animated main-navbar-fixed main-menu-fixed dont-animate-mm-content-sm animate-mm-md animate mm-lg page-invoice"{% endblock body_attribs %}>
+
+{%- block masthead -%}
+  <div class="page-header">
+    <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;Invoice {{ loan.id }} Details</h1>
+    <a href="#" class="pull-right btn btn-primary" style="display: block;" target="_blank" onclick="javascript:window.print();"><i class="fa fa-print"></i>&nbsp;&nbsp;Print Invoice</a>
+  </div>
+{%- endblock masthead %}
 
 {% block content %}
-	{% parent %}
-	<div class="row invoice-info">
-		<div class="col-sm-6">
-			<div class="tag-box tag-box-v3">
-				<h2>Client Information:</h2>
-				<ul class="list-unstyled">
-					<li><strong>Name:</strong> {{ loan.name }}</li>
-					<li><strong>Phone:</strong> {{ loan.phone }}</li>
-				</ul>
-			</div>        
-		</div>
-		<div class="col-sm-6">
-			<div class="tag-box tag-box-v3">
-				<h2>Payment Details:</h2>        
-				<ul class="list-unstyled">
-					<li><strong>Merchant Name:</strong> {{ businessName }}</li>
-					<li><strong>Purchase Date:</strong> {{ loan.createdDate|date('M j, Y') }}</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="panel panel-grey margin-bottom-50">
-		<div class="panel-heading">
-			<h3 class="panel-title">What You Bought</h3>
-		</div>
-		<table class="table table-striped invoice-table">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Item</th>
-					<th class="hidden-sm">Description</th>
-					<th>Quantity</th>
-					<th>Unit Cost</th>
-					<th>Total</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Grill</td>
-					<td class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
-					<td>1</td>
-					<td>$1,847</td>
-					<td>$1,847</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>Lawn lights</td>
-					<td class="hidden-sm">Verode eoset accusamus etofficia deserunt</td>
-					<td>18</td>
-					<td>$28</td>
-					<td>$504</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="row">
-		<div class="col-sm-6">
-			<div class="tag-box tag-box-v6">
-				<h2>Fusce condimentum enim</h2>
-				<p><strong>Note:</strong> Atharum quidem rerum facexpe ditailis est et  distinctio lorem ipsum dolor sit amet consectetur adipiscing elit.</p><br>
-				<address>
-					123 Main St.<br>
-					Philadelphia, PA 19128 <br>
-					Phone: 800 123 4567 <br>
-					Email: <a href="mailto:billing@tabb.io">billing@tabb.io</a>
-				</address>                
-			</div>            
-		</div>
-		<div class="col-sm-6 text-right">
-			<ul class="list-unstyled invoice-total-info">
-				<li><strong>Grand Total:</strong> ${{ loan.loanAmount.toFixed(2) }}</li>
-			</ul>
-			<button class="btn-u btn-u-default btn-lg" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>            
-			<a href={{urls.invoices.pay(loan.id)}}><button class="btn-u btn-lg">Schedule Payment</button></a>         
-		</div>
-	</div>
+<div class="panel invoice">
+  <div class="invoice-header">
+    <h3>
+      <div class="invoice-logo demo-logo"><img src="assets/demo/logo-big.png" alt="" style="width:100%;height:100%;"></div>
+      <div>
+        <small><strong>{{ businessName }}</strong></small><br>
+        INVOICE {{ loan.id }}
+      </div>
+    </h3>
+    <address>
+      Purchase Date<br>
+      {{ loan.createdDate|date('M j, Y') }}
+    </address>
+    <div class="invoice-date">
+      <small><strong>Invoice Date</strong></small><br>
+      April 21, 2013
+    </div>
+  </div> <!-- / .invoice-header -->
+  <div class="invoice-info">
+    <div class="invoice-recipient">
+      <strong>{{ loan.name }}</strong><br>
+      {{ loan.phone }}<br>
+    </div> <!-- / .invoice-recipient -->
+    <div class="invoice-total">
+      <span>${{ loan.loanAmount.toFixed(2) }}</span>
+      TOTAL:
+    </div> <!-- / .invoice-total -->
+  </div> <!-- / .invoice-info -->
+  <hr>
+  <div class="invoice-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Item description</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Line total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            3 Burner Grill
+            <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
+          </td>
+          <td>$2,500.00</td>
+          <td>1</td>
+          <td>$2,500.00</td>
+        </tr>
+        <tr>
+          <td>
+            Lawn Lights
+            <div class="invoice-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</div>
+          </td>
+          <td> $47.95</td>
+          <td>45</td>
+          <td>$2,157.75</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> <!-- / .invoice-table -->
+</div> <!-- / .invoice -->
 {% endblock %}

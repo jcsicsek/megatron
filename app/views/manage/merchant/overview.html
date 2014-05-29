@@ -1,79 +1,280 @@
 {% extends "base.html" %}
 
+{% block masttitle %}{{ businessName }} Overview{% endblock masttitle %}
+
 {% block content %}
 <div class="row">
-	<div class="col-lg-3 col-sm-3">
-		<div class="panel mini-box">
-			<span class="box-icon">
-				<i class="fa fa-shopping-cart icon-bg-red icon-custom icon-lg rounded-x"></i>
-			</span>
-			<div class="box-info">
-				<h2>{{ totalTransactions }}</h2>
-				<p class="text-muted">Transactions</p>
+	<div class="col-md-8">
+
+<!-- TRANSACTION CHART
+ ===================================================================== -->
+		<script>
+			init.push(function () {
+				var uploads_data = [
+					{ day: '2014-04-20', v: 20 },
+					{ day: '2014-04-21', v: 10 },
+					{ day: '2014-04-22', v: 15 },
+					{ day: '2014-04-23', v: 12 },
+					{ day: '2014-04-24', v: 5  },
+					{ day: '2014-04-25', v: 5  },
+					{ day: '2014-04-26', v: 20 }
+				];
+				Morris.Line({
+					element: 'hero-graph',
+					data: uploads_data,
+					xkey: 'day',
+					ykeys: ['v'],
+					labels: ['Value'],
+					lineColors: ['#fff'],
+					lineWidth: 2,
+					pointSize: 4,
+					gridLineColor: 'rgba(255,255,255,.5)',
+					resize: true,
+          hideHover: true,
+					gridTextColor: '#fff',
+					xLabels: "day",
+					xLabelFormat: function(d) {
+						return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov', 'Dec'][d.getMonth()] + ' ' + d.getDate(); 
+					},
+				});
+			});
+		</script>
+		<div class="stat-panel">
+			<div class="stat-row">
+				<div class="stat-cell col-sm-4 padding-sm-hr bordered no-border-r valign-top">
+					<h4 class="padding-sm no-padding-t padding-xs-hr"><i class="fa fa-shopping-cart text-primary"></i>&nbsp;&nbsp;Transactions</h4>
+					<ul class="list-group no-margin">
+						<li class="list-group-item no-border-hr padding-xs-hr no-bg no-border-radius">
+							POS <span class="label label-pa-purple pull-right">34</span>
+						</li>
+						<li class="list-group-item no-border-hr padding-xs-hr no-bg">
+							Online <span class="label label-danger pull-right">128</span>
+						</li>
+						<li class="list-group-item no-border-hr no-border-b padding-xs-hr no-bg">
+							Manual <span class="label label-success pull-right">12</span>
+						</li>
+					</ul>
+				</div>
+				<div class="stat-cell col-sm-8 bg-primary padding-sm valign-middle">
+					<div id="hero-graph" class="graph" style="height: 230px;"></div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-lg-3 col-sm-3">
-		<div class="panel mini-box">
-			<span class="box-icon">
-				<i class="fa fa-rocket icon-bg-sea icon-custom icon-lg rounded-x"></i>
-			</span>
-			<div class="box-info">
-				<h2>{{ acceptancePercent }}%</h2>
-				<p class="text-muted">Acceptance</p>
+
+<!-- PIE CHARTS
+ ===================================================================== -->
+		<script>
+			init.push(function () {
+				// Easy Pie Charts
+				var easyPieChartDefaults = {
+					animate: 2000,
+					scaleColor: false,
+					lineWidth: 6,
+					lineCap: 'square',
+					size: 90,
+					trackColor: '#e5e5e5'
+				}
+				$('#pie-chart-1').easyPieChart($.extend({}, easyPieChartDefaults, {
+					barColor: PixelAdmin.settings.consts.COLORS[1]
+				}));
+				$('#pie-chart-2').easyPieChart($.extend({}, easyPieChartDefaults, {
+					barColor: PixelAdmin.settings.consts.COLORS[1]
+				}));
+				$('#pie-chart-3').easyPieChart($.extend({}, easyPieChartDefaults, {
+					barColor: PixelAdmin.settings.consts.COLORS[1]
+				}));
+			});
+		</script>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="stat-panel text-center">
+					<div class="stat-row">
+						<div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+							<i class="fa fa-tablet"></i>&nbsp;&nbsp;POS
+						</div>
+					</div>
+					<div class="stat-row">
+						<div class="stat-cell bordered no-border-t no-padding-hr">
+							<div class="pie-chart" data-percent="19.5" id="pie-chart-1">
+								<div class="pie-chart-label">20%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="stat-panel text-center">
+					<div class="stat-row">
+						<div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+							<i class="fa fa-globe"></i>&nbsp;&nbsp;Online
+						</div>
+					</div>
+					<div class="stat-row">
+						<div class="stat-cell bordered no-border-t no-padding-hr">
+							<div class="pie-chart" data-percent="73.5" id="pie-chart-2">
+								<div class="pie-chart-label">74%</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="stat-panel text-center">
+					<div class="stat-row">
+						<div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+							<i class="fa fa-pencil"></i>&nbsp;&nbsp;Manual
+						</div>
+					</div>
+					<div class="stat-row">
+						<div class="stat-cell bordered no-border-t no-padding-hr">
+							<div class="pie-chart" data-percent="6.9" id="pie-chart-3">
+								<div class="pie-chart-label">7%</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="col-lg-3 col-sm-3">
-		<div class="panel mini-box">
-			<span class="box-icon">
-				<i class="fa fa-dollar icon-bg-yellow icon-custom icon-lg rounded-x"></i>
-			</span>
-			<div class="box-info">
-				<h2>${{ totalRevenue }}</h2>
-				<p class="text-muted">Revenue</p>
+	</div> <!-- end col-md-8 for left side graphs -->
+
+  <div class="col-md-4">
+    <div class="row">
+
+<!-- TODAYS EARNINGS
+ ===================================================================== -->
+			<div class="col-sm-4 col-md-12">
+				<div class="stat-panel">
+					<div class="stat-cell bg-success valign-middle">
+						<i class="fa fa-money bg-icon"></i>
+						<span class="text-xlg"><span class="text-lg text-slim">$</span><strong>14,700</strong></span><br>
+						<span class="text-bg">Earned today</span><br>
+						<span class="text-sm">with 20 transactions</span>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col-lg-3 col-sm-3">
-		<div class="panel mini-box">
-			<span class="box-icon">
-				<i class="fa fa-users icon-bg-blue icon-custom icon-lg rounded-x"></i>
-			</span>
-			<div class="box-info">
-				<h2>{{ totalCustomers }}</h2>
-				<p class="text-muted">Consumers</p>
+
+<!-- TRANSACTION VOLUME
+ ===================================================================== -->
+			<div class="col-sm-4 col-md-12">
+				<script>
+					init.push(function () {
+						$("#stats-sparklines").pixelSparkline([13200,7800,8000,3000,6000,8000,15000,312,300], {
+							type: 'line',
+							width: '100%',
+							height: '45px',
+							fillColor: '',
+							lineColor: '#fff',
+							lineWidth: 2,
+							spotColor: '#ffffff',
+							minSpotColor: '#ffffff',
+							maxSpotColor: '#ffffff',
+							highlightSpotColor: '#ffffff',
+							highlightLineColor: '#ffffff',
+							spotRadius: 0,
+							highlightLineColor: '#ffffff'
+						});
+					});
+				</script>
+				<div class="stat-panel">
+					<div class="stat-row">
+						<div class="stat-cell bg-pa-purple padding-sm">
+							<div class="text-xs" style="margin-bottom: 5px;">TRANSACTION VOLUME ($)</div>
+							<div class="stats-sparklines" id="stats-sparklines" style="width: 100%"></div>
+						</div>
+					</div>
+					<div class="stat-row">
+						<div class="stat-counters bordered no-border-t text-center">
+							<div class="stat-cell col-xs-4 padding-sm no-padding-hr">
+								<span class="text-bg"><strong>174</strong></span><br>
+								<span class="text-xs text-muted">TRANSACTIONS</span>
+							</div>
+							<div class="stat-cell col-xs-4 padding-sm no-padding-hr">
+								<span class="text-bg"><strong>$127,890</strong></span><br>
+								<span class="text-xs text-muted">REVENUE</span>
+							</div>
+							<div class="stat-cell col-xs-4 padding-sm no-padding-hr">
+								<span class="text-bg"><strong>142</strong></span><br>
+								<span class="text-xs text-muted">CUSTOMERS</span>
+							</div>
+						</div> 
+					</div> 
+				</div> 
 			</div>
+
+<!-- UNIQUE CUSTOMERS
+ ===================================================================== -->
+			<div class="col-sm-4 col-md-12">
+				<script>
+					init.push(function () {
+						$("#stats-sparklines-2").pixelSparkline(
+							[275,490,397,487,339,403,402,312,300,294,411,367,319,416,355,416,371,479,279,361,312,269,402,327,474,422,375,283,384,372], {
+							type: 'bar',
+							height: '36px',
+							width: '100%',
+							barSpacing: 2,
+							zeroAxis: false,
+							barColor: '#ffffff'
+						});
+					});
+				</script>
+				<div class="stat-panel">
+					<div class="stat-row">
+						<div class="stat-cell bg-danger">
+							<span class="text-bg">11% more</span><br>
+							<span class="text-sm">Unique customers today</span>
+						</div>
+					</div>
+					<div class="stat-row">
+						<div class="stat-cell bg-danger padding-sm no-padding-t text-center">
+							<div id="stats-sparklines-2" class="stats-sparklines" style="width: 100%"></div>
+						</div>
+					</div> 
+				</div>
+			</div>
+
 		</div>
-	</div>
+	</div> <!-- end col-md-4 for right side graphs -->
 </div>
-<div class="row">
-	<div class="panel panel-default">
-		<div class="panel-heading"><strong><span>Most Recent Invoices</span></strong></div>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Invoice #</th>
-					<th>Amount</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Status</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for loan in loans %}
-					<tr>
-						<td>{{ timeago(loan.createdDate) }}</td>
-						<td>{{ loan.id }}</td>
-						<td>${{ loan.loanAmount.toFixed(2) }}</td>
-						<td>{{ loan.firstName }}</td>
-						<td>{{ loan.lastName }}</td>
-						<td><span class="label label-success">Approved</span></td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
+<div class="row"> 
+<!-- 10 MOST RECENT INVOICES
+ ===================================================================== -->      
+  <div class="col-sm-12">
+    <div class="table-default">
+      <div class="table-header">
+        <div class="table-caption">
+          Most Recent Invoices
+        </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Invoice #</th>
+            <th>Amount</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for loan in loans %}
+          <tr>
+            <td>{{ timeago(loan.createdDate) }}</td>
+            <td>{{ loan.id }}</td>
+            <td>${{ loan.loanAmount.toFixed(2) }}</td>
+            <td>{{ loan.firstName }}</td>
+            <td>{{ loan.lastName }}</td>
+            <td><span class="label label-success">Approved</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="table-footer clearfix">
+        <div class="pull-right">
+          <a class="btn btn-primary" href={{ urls.merchants.invoices }}>View All Invoices</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

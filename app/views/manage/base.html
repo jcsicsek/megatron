@@ -1,8 +1,53 @@
 {% extends "../base.html" %}
 
-{% set hide_top = "yes" %}
+{%- block styles %}
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/pixel-admin.min.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/widgets.min.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/pages.min.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/rtl.min.css" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/themes.min.css" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]>
+    <script src="/javascripts/ie.min.js"></script>
+  <![endif]-->
+{%- endblock styles %}
+
+{% block load_early %}
+  <script>var init = [];</script>
+  <script type="text/javascript" src="/demo/demo.js"></script> <!-- / Demo script -->
+{% endblock load_early %}
+  
+{% block body_attribs %}class="theme-{% if colorTheme %}{{colorTheme}}{% else %}default{% endif %} main-menu-animated main-navbar-fixed main-menu-fixed dont-animate-mm-content-sm animate-mm-md animate mm-lg"{% endblock body_attribs %}>
+
+  {% block wrapper_attribs %}id="main-wrapper"{% endblock wrapper_attribs %}
+          
+    {%- block navbar %}
+      {% include "../partials/manage_nav.html" %} 
+    {%- endblock navbar %}
+
+    {%- block flash_messages %}
+    {%- endblock flash_messages %}
+
+    {%- block main -%}
+    <div id="content-wrapper">
+      {%- block masthead -%}
+      <div class="page-header">
+        <h1><i class="fa fa-file-text-o page-header-icon"></i>&nbsp;&nbsp;{% block masttitle %}{% endblock masttitle %}</h1>
+      </div>
+      {%- endblock masthead %}
+      {%- block content -%}
+      {%- endblock content %}
+    </div>
+    <div id="main-menu-bg"></div>
+    {%- endblock main %}
+
+    {%- block copyright %}
+    {%- endblock copyright %}
 
 {%- block scripts %}
+  <script type="text/javascript" src="/javascripts/pixel-admin.min.js"></script>
+  <script type="text/javascript">
+    window.PixelAdmin.start(init);
+  </script>
   {% parent %}
-  <script src="/js/table.js"></script>
 {%- endblock scripts %}

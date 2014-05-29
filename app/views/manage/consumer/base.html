@@ -1,9 +1,10 @@
 {% extends "../base.html" %}
 
 {% set navigation_bar = [
-  {url: urls.invoices.summary(loan.id), text: 'Summary'},
-  {url: urls.invoices.details(loan.id), text: 'Details'},
-  {url: urls.invoices.pay(loan.id), text: 'Schedule Payment'}
+  {url: urls.invoices.summary(loan.id), text: 'Summary', icon: 'dashboard'},
+  {url: urls.invoices.details(loan.id), text: 'Details', icon: 'barcode'},
+  {url: urls.invoices.pay(loan.id), text: 'Schedule Payment', icon: 'calendar'},
+  {url: urls.invoices.pay(loan.id), text: 'Account Settings', icon: 'cogs'}
 ] %}
 
 {% block masttitle %}Invoice {{ loan.id }}{% endblock masttitle %}

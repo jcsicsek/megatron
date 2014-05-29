@@ -1,40 +1,10 @@
 {% extends "base.html" %}
+{% import '../../macros/forms.html' as forms %}
 
 {% block masttitle %}{{ businessName }} Settings{% endblock masttitle %}
 
 {% block content %}
 <script>
-  init.push(function () {
-    $("#dropzonejs-logo").dropzone({
-      url: "//dummy.html",
-      paramName: "file", // The name that will be used to transfer the file
-      maxFilesize: 0.5, // MB
-
-      addRemoveLinks : true,
-      dictResponseError: "Can't upload file!",
-      autoProcessQueue: false,
-      thumbnailWidth: 138,
-      thumbnailHeight: 120,
-
-      previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div><div class="dz-size">File size: <span data-dz-size></span></div><div class="dz-thumbnail-wrapper"><div class="dz-thumbnail"><img data-dz-thumbnail><span class="dz-nopreview">No preview</span><div class="dz-success-mark"><i class="fa fa-check-circle-o"></i></div><div class="dz-error-mark"><i class="fa fa-times-circle-o"></i></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div></div><div class="progress progress-striped active"><div class="progress-bar progress-bar-success" data-dz-uploadprogress></div></div></div>',
-
-      resize: function(file) {
-        var info = { srcX: 0, srcY: 0, srcWidth: file.width, srcHeight: file.height },
-          srcRatio = file.width / file.height;
-        if (file.height > this.options.thumbnailHeight || file.width > this.options.thumbnailWidth) {
-          info.trgHeight = this.options.thumbnailHeight;
-          info.trgWidth = info.trgHeight * srcRatio;
-          if (info.trgWidth > this.options.thumbnailWidth) {
-            info.trgWidth = this.options.thumbnailWidth;
-            info.trgHeight = info.trgWidth / srcRatio;
-          }
-        } else {
-          info.trgHeight = file.height;
-          info.trgWidth = file.width;
-        }
-        return info;
-      }
-    });
     // Setup masks
     $("#phone").mask("(999) 999-9999");
 
@@ -113,153 +83,39 @@
 </script>
 
 <form class="form-horizontal" id="merchant-settings-form">
-
   <fieldset>
-  <div class="form-group simple">
-    <label for="fname" class="col-sm-2 control-label">First Name</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control input-lg" id="fname" name="fname">
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="lname" class="col-sm-2 control-label">Last Name</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control input-lg" id="lname" name="lname">
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="company" class="col-sm-2 control-label">Company</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control input-lg" id="company" name="company">
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="url" class="col-sm-2 control-label">Company Website</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control input-lg" id="url" name="url">
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="phone" class="col-sm-2 control-label">Phone Number</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control input-lg" id="phone" name="phone">
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="email" class="col-sm-2 control-label">E-mail</label>
-    <div class="col-sm-5">
-      <input type="email" class="form-control input-lg" id="email" name="email">
-    </div>
-  </div>
+    {{ forms.input("text", "fname", "fname", "First Name", fname.value, fname.errors, "") }}
+    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, lname.errors, "") }}
+    {{ forms.input("text", "company", "company", "Company", company.value, company.errors, "") }}
+    {{ forms.input("text", "url", "url", "Company Website", url.value, url.errors, "") }}
+    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, phone.errors, "") }}
+    {{ forms.input("text", "email", "email", "E-mail", email.value, email.errors, "") }}
   </fieldset>
   <hr>
   <fieldset>
-  <div class="form-group simple">
-    <label for="email" class="col-sm-2 control-label">tabb.io URL</label>
-    <div class="col-sm-5">
-      <div class="input-group">
-        <input type="text" class="form-control input-lg" name="tabb_url" id="tabb_url">
-        <span class="input-group-addon url">.tabb.io</span>
+    {{ forms.input_addon("text", "tabb_url", "tabb_url", "tabb.io URL", tabb_url.value, tabb_url.errors, "Reserve your tabb.io name. For example, enter 'franksbikes' to reserve franksbikes.tabb.io.", "tabb.io") }}
+    {{ forms.fileUploadDZ("company_logo", "logo", "Company Logo URL", "company_logo.error", "Your logo will show in both the admin and customer portals. Upload your logo.") }}
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Theme Color</label>
+      <div class="col-sm-3">
+        {{ forms.radio_color("radio", "themeColors", "themeColors1", "Asphalt", "asphalt", themeColors.error, "3bc2a9", "333333", "4f4f4f") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors2", "Admin Flare", "adminflare", themeColors.error, "418ce4", "418ce4", "2b2b2b") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors3", "Clean", "clean", themeColors.error, "3d4a5d", "3d4a5d", "edf0f1") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors4", "Default", "default", themeColors.error, "ffffff", "ffffff", "23272d") }}
       </div>
-      <p class="help-block">Reserve your tabb.io name. For example, enter "franksbikes" to reserve franksbikes.tabb.io.</p>
-    </div>
-  </div>
-
-  <div class="form-group simple">
-    <label for="company_logo" class="col-sm-2 control-label">Company Logo URL</label>
-    <div class="col-sm-9">
-      <div id="dropzonejs-logo" class="dropzone-box">
-        <div class="dz-default dz-message">
-          <i class="fa fa-cloud-upload"></i>
-          Drop files in here<br><span class="dz-text-small">or click to pick manually</span>
-        </div>
-        <form action="//dummy.html">
-          <div class="fallback">
-            <input name="file" type="file" multiple="" />
-          </div>
-        </form>
+      <div class="col-sm-3">
+        {{ forms.radio_color("radio", "themeColors", "themeColors5", "Dust", "dust", themeColors.error, "f65d35", "ffffff", "433d3c") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors6", "Fresh", "fresh", themeColors.error, "94c53e", "94c53e", "43474b") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors7", "Frost", "frost", themeColors.error, "1aaada", "ffffff", "2a2d33") }} 
       </div>
-      <p class="help-block">Your logo will show in both the admin and customer portals. Upload your logo.</p>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Theme Color</label>
-    <div class="col-sm-3">
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors1" value="asphalt" class="px" checked="">
-          <span class="lbl">Asphalt <span class="color-box" style="background-color:#3bc2a9;"></span><span class="color-box" style="background-color:#333;"></span><span class="color-box" style="background-color:#4f4f4f;"></span></span>
-        </label>
-      </div> 
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors2" value="adminflare" class="px">
-          <span class="lbl">Admin Flare <span class="color-box" style="background-color:#418ce4 ;"></span><span class="color-box" style="background-color:#418ce4 ;"></span><span class="color-box" style="background-color:#2b2b2b;"></span></span>
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors3" value="clean" class="px">
-          <span class="lbl">Clean <span class="color-box" style="background-color:#3d4a5d ;"></span><span class="color-box" style="background-color:#3d4a5d ;"></span><span class="color-box" style="background-color:#edf0f1;"></span></span>
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors4" value="default" class="px">
-          <span class="lbl">Default <span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#23272d;"></span></span>
-        </label>
+      <div class="col-sm-3">
+        {{ forms.radio_color("radio", "themeColors", "themeColors8", "Purple Hills", "purple-hills", themeColors.error, "a48ad4", "2e313e", "3c3e49") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors9", "Silver", "silver", themeColors.error, "ebebeb", "ebebeb", "333333") }}
+        {{ forms.radio_color("radio", "themeColors", "themeColors10", "White", "white", themeColors.error, "eeeeee", "eeeeee", "ffffff") }}
       </div> 
     </div>
-    <div class="col-sm-3">
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors5" value="dust" class="px" checked="">
-          <span class="lbl">Dust <span class="color-box" style="background-color:#f65d35 ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#433d3c;"></span></span>
-        </label>
-      </div> 
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors6" value="fresh" class="px">
-          <span class="lbl">Fresh <span class="color-box" style="background-color:#94c53e  ;"></span><span class="color-box" style="background-color:#94c53e  ;"></span><span class="color-box" style="background-color:#43474b;"></span></span>
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors7" value="frost" class="px">
-          <span class="lbl">Frost <span class="color-box" style="background-color:#1aaada ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#2a2d33;"></span></span>
-        </label>
-      </div> 
-    </div>
-    <div class="col-sm-3">
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors8" value="purple-hills" class="px" checked="">
-          <span class="lbl">Purple Hills <span class="color-box" style="background-color:#a48ad4 ;"></span><span class="color-box" style="background-color:#2e313e ;"></span><span class="color-box" style="background-color:#3c3e49;"></span></span>
-        </label>
-      </div> 
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors9" value="silver" class="px">
-          <span class="lbl">Silver <span class="color-box" style="background-color:#ebebeb  ;"></span><span class="color-box" style="background-color:#ebebeb  ;"></span><span class="color-box" style="background-color:#333333;"></span></span>
-        </label>
-      </div>
-      <div class="radio">
-        <label>
-          <input type="radio" name="themeColors" id="themeColors10" value="white" class="px">
-          <span class="lbl">White <span class="color-box" style="background-color:#eeeeee ;"></span><span class="color-box" style="background-color:#eeeeee ;"></span><span class="color-box" style="background-color:#ffffff;"></span></span>
-        </label>
-      </div> 
-    </div> 
-  </div>
   </fieldset>
   <hr class="panel-wide">
-  <footer class="col-sm-11">
-    <button type="submit" name="submit" class="btn btn-primary btn-xlg pull-right">Save Company Settings</button>
-  </footer>
+  {{ forms.submit("submit", "submit", "", "Save Company Settings") }}
 </form>
 {% endblock %}

@@ -3,118 +3,263 @@
 {% block masttitle %}{{ businessName }} Settings{% endblock masttitle %}
 
 {% block content %}
-<h2>Company Settings</h2>
-<form action="" method="POST" id="merchant-settings-form" class="sky-form margin-tb-30">
+<script>
+  init.push(function () {
+    $("#dropzonejs-logo").dropzone({
+      url: "//dummy.html",
+      paramName: "file", // The name that will be used to transfer the file
+      maxFilesize: 0.5, // MB
+
+      addRemoveLinks : true,
+      dictResponseError: "Can't upload file!",
+      autoProcessQueue: false,
+      thumbnailWidth: 138,
+      thumbnailHeight: 120,
+
+      previewTemplate: '<div class="dz-preview dz-file-preview"><div class="dz-details"><div class="dz-filename"><span data-dz-name></span></div><div class="dz-size">File size: <span data-dz-size></span></div><div class="dz-thumbnail-wrapper"><div class="dz-thumbnail"><img data-dz-thumbnail><span class="dz-nopreview">No preview</span><div class="dz-success-mark"><i class="fa fa-check-circle-o"></i></div><div class="dz-error-mark"><i class="fa fa-times-circle-o"></i></div><div class="dz-error-message"><span data-dz-errormessage></span></div></div></div></div><div class="progress progress-striped active"><div class="progress-bar progress-bar-success" data-dz-uploadprogress></div></div></div>',
+
+      resize: function(file) {
+        var info = { srcX: 0, srcY: 0, srcWidth: file.width, srcHeight: file.height },
+          srcRatio = file.width / file.height;
+        if (file.height > this.options.thumbnailHeight || file.width > this.options.thumbnailWidth) {
+          info.trgHeight = this.options.thumbnailHeight;
+          info.trgWidth = info.trgHeight * srcRatio;
+          if (info.trgWidth > this.options.thumbnailWidth) {
+            info.trgWidth = this.options.thumbnailWidth;
+            info.trgHeight = info.trgWidth / srcRatio;
+          }
+        } else {
+          info.trgHeight = file.height;
+          info.trgWidth = file.width;
+        }
+        return info;
+      }
+    });
+    // Setup masks
+    $("#phone").mask("(999) 999-9999");
+
+    // Add phone validator
+    $.validator.addMethod(
+      "phone_format",
+      function(value, element) {
+        var check = false;
+        return this.optional(element) || /^\(\d{3}\)[ ]\d{3}\-\d{4}$/.test(value);
+      },
+      "Please enter a valid phone number"
+    );
+
+    // Setup validation
+    $("#merchant-settings-form").validate({
+      focusInvalid: false,
+      rules: {
+        'fname': {
+          required: true
+        },
+        'lname': {
+          required: true
+        },
+        'company': {
+          required: true
+        },
+        'url': {
+          required: true,
+          url: true
+        },
+        'phone': {
+          required: true,
+          phone_format: true
+        },
+        'email': {
+          required: true,
+          email: true
+        },
+        'tabb_url': {
+          required: true
+        },
+        'company_logo': {
+          url: true
+        }
+      },
+      messages: {
+        'fname': {
+          required: 'Please enter your first name'
+        },
+        'lname': {
+          required: 'Please enter your last name'
+        },
+        'company': {
+          required: 'Please enter your company name'
+        },
+        'url': {
+          required: 'Please enter your company\'s URL',
+          url: 'Please enter a valid URL (include http!)'
+        },
+        'phone': {
+          required: 'Please enter your phone number'
+        },
+        'email': {
+          required: 'Please enter your email address',
+          email: 'Please enter a valid email address'
+        },
+        'tabb_url':{
+          required: 'Please enter a name for your spot on tabb.io'
+        },
+        'company_logo': {
+          url: 'Please enter a valid URL (include http!)'
+        }
+      }
+    });
+  });
+</script>
+
+<form class="form-horizontal" id="merchant-settings-form">
+
   <fieldset>
-    <div class="row">
-      <section class="col col-3">
-        <label class="label">First Name</label>
-        <label class="input">
-          <i class="icon-append fa fa-user"></i>
-          <input type="text" name="fname">
-        </label>
-      </section>
-      <section class="col col-3">
-        <label class="label">Last Name</label>
-        <label class="input">
-          <i class="icon-append fa fa-user"></i>
-          <input type="text" name="lname">
-        </label>
-      </section>
+  <div class="form-group simple">
+    <label for="fname" class="col-sm-2 control-label">First Name</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control input-lg" id="fname" name="fname">
     </div>
-    <div class="row">
-      <section class="col col-5">
-        <label class="label">Company Name</label>
-        <label class="input">
-          <i class="icon-append fa fa-building-o"></i>
-          <input type="text" name="company" id="company">
-        </label>
-      </section>
+  </div>
+
+  <div class="form-group simple">
+    <label for="lname" class="col-sm-2 control-label">Last Name</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control input-lg" id="lname" name="lname">
     </div>
-    <div class="row">
-      <section class="col col-5">
-        <label class="label">Company Website</label>
-        <label class="input">
-          <i class="icon-append fa fa-globe"></i>
-          <input type="url" name="url">
-        </label>
-      </section>
+  </div>
+
+  <div class="form-group simple">
+    <label for="company" class="col-sm-2 control-label">Company</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control input-lg" id="company" name="company">
     </div>
-    <div class="row">
-      <section class="col col-3">
-        <label class="label">Phone Number</label>
-        <label class="input">
-          <i class="icon-append fa fa-phone"></i>
-          <input type="text" name="phone" id="phone">
-        </label>
-      </section>
+  </div>
+
+  <div class="form-group simple">
+    <label for="url" class="col-sm-2 control-label">Company Website</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control input-lg" id="url" name="url">
     </div>
-    <div class="row">
-      <section class="col col-4">
-        <label class="label">E-mail</label>
-        <label class="input">
-          <i class="icon-append fa fa-envelope-o"></i>
-          <input type="email" name="email">
-        </label>
-      </section>
+  </div>
+
+  <div class="form-group simple">
+    <label for="phone" class="col-sm-2 control-label">Phone Number</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control input-lg" id="phone" name="phone">
     </div>
+  </div>
+
+  <div class="form-group simple">
+    <label for="email" class="col-sm-2 control-label">E-mail</label>
+    <div class="col-sm-5">
+      <input type="email" class="form-control input-lg" id="email" name="email">
+    </div>
+  </div>
   </fieldset>
+  <hr>
   <fieldset>
-    <div class="row">
-      <section class="col col-6">
-        <label class="label">tabb.io URL</label>
-        <label class="input">
-          <i class="icon-append fa fa-globe"></i>
-          <div class="input-group">
-            <input type="text" name="tabb_url" id="tabb_url">
-            <span class="input-group-addon url">.tabb.io</span>
+  <div class="form-group simple">
+    <label for="email" class="col-sm-2 control-label">tabb.io URL</label>
+    <div class="col-sm-5">
+      <div class="input-group">
+        <input type="text" class="form-control input-lg" name="tabb_url" id="tabb_url">
+        <span class="input-group-addon url">.tabb.io</span>
+      </div>
+      <p class="help-block">Reserve your tabb.io name. For example, enter "franksbikes" to reserve franksbikes.tabb.io.</p>
+    </div>
+  </div>
+
+  <div class="form-group simple">
+    <label for="company_logo" class="col-sm-2 control-label">Company Logo URL</label>
+    <div class="col-sm-9">
+      <div id="dropzonejs-logo" class="dropzone-box">
+        <div class="dz-default dz-message">
+          <i class="fa fa-cloud-upload"></i>
+          Drop files in here<br><span class="dz-text-small">or click to pick manually</span>
+        </div>
+        <form action="//dummy.html">
+          <div class="fallback">
+            <input name="file" type="file" multiple="" />
           </div>
-        </label>
-      </section>
+        </form>
+      </div>
+      <p class="help-block">Your logo will show in both the admin and customer portals. Upload your logo.</p>
     </div>
-    <div class="row">
-      <section class="col col-6">
-        <label class="label">Company Logo URL</label>
-        <label class="input">
-          <i class="icon-append fa fa-photo"></i>
-          <input type="url" name="company_logo">
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Theme Color</label>
+    <div class="col-sm-3">
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors1" value="asphalt" class="px" checked="">
+          <span class="lbl">Asphalt <span class="color-box" style="background-color:#3bc2a9;"></span><span class="color-box" style="background-color:#333;"></span><span class="color-box" style="background-color:#4f4f4f;"></span></span>
         </label>
-      </section>
+      </div> 
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors2" value="adminflare" class="px">
+          <span class="lbl">Admin Flare <span class="color-box" style="background-color:#418ce4 ;"></span><span class="color-box" style="background-color:#418ce4 ;"></span><span class="color-box" style="background-color:#2b2b2b;"></span></span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors3" value="clean" class="px">
+          <span class="lbl">Clean <span class="color-box" style="background-color:#3d4a5d ;"></span><span class="color-box" style="background-color:#3d4a5d ;"></span><span class="color-box" style="background-color:#edf0f1;"></span></span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors4" value="default" class="px">
+          <span class="lbl">Default <span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#23272d;"></span></span>
+        </label>
+      </div> 
     </div>
-    <section>
-      <label class="label">Theme Color</label>
-      <div class="row">
-        <div class="col col-4">
-          <label class="radio"><input type="radio" name="theme" value="aqua" checked=""><i class="rounded-x"></i>Aqua <span class="color-box" style="background-color:#27d7e7;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="blue"><i class="rounded-x"></i>Blue <span class="color-box" style="background-color:#3498db;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="brown"><i class="rounded-x"></i>Brown <span class="color-box" style="background-color:#9c8061;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="dark-blue"><i class="rounded-x"></i>Dark Blue <span class="color-box" style="background-color:#4765a0;"></span></label>
-        </div>
-        <div class="col col-4">
-          <label class="radio"><input type="radio" name="theme" value="default"><i class="rounded-x"></i>Default (Green) <span class="color-box" style="background-color:#72c02c;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="light-green"><i class="rounded-x"></i>Light Green <span class="color-box" style="background-color:#79d5b3;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="light"><i class="rounded-x"></i>Grey <span class="color-box" style="background-color:#95a5a6;"></span></label>
-        </div>
-        <div class="col col-4">
-          <label class="radio"><input type="radio" name="theme" value="orange"><i class="rounded-x"></i>Orange <span class="color-box" style="background-color:#e67e22;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="purple"><i class="rounded-x"></i>Purple <span class="color-box" style="background-color:#9b6bcc;"></span></label>
-          <label class="radio"><input type="radio" name="theme" value="red"><i class="rounded-x"></i>Red <span class="color-box" style="background-color:#e74c3c;"></span></label>
-        </div>
-      </div>                      
-    </section>
+    <div class="col-sm-3">
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors5" value="dust" class="px" checked="">
+          <span class="lbl">Dust <span class="color-box" style="background-color:#f65d35 ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#433d3c;"></span></span>
+        </label>
+      </div> 
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors6" value="fresh" class="px">
+          <span class="lbl">Fresh <span class="color-box" style="background-color:#94c53e  ;"></span><span class="color-box" style="background-color:#94c53e  ;"></span><span class="color-box" style="background-color:#43474b;"></span></span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors7" value="frost" class="px">
+          <span class="lbl">Frost <span class="color-box" style="background-color:#1aaada ;"></span><span class="color-box" style="background-color:#ffffff ;"></span><span class="color-box" style="background-color:#2a2d33;"></span></span>
+        </label>
+      </div> 
+    </div>
+    <div class="col-sm-3">
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors8" value="purple-hills" class="px" checked="">
+          <span class="lbl">Purple Hills <span class="color-box" style="background-color:#a48ad4 ;"></span><span class="color-box" style="background-color:#2e313e ;"></span><span class="color-box" style="background-color:#3c3e49;"></span></span>
+        </label>
+      </div> 
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors9" value="silver" class="px">
+          <span class="lbl">Silver <span class="color-box" style="background-color:#ebebeb  ;"></span><span class="color-box" style="background-color:#ebebeb  ;"></span><span class="color-box" style="background-color:#333333;"></span></span>
+        </label>
+      </div>
+      <div class="radio">
+        <label>
+          <input type="radio" name="themeColors" id="themeColors10" value="white" class="px">
+          <span class="lbl">White <span class="color-box" style="background-color:#eeeeee ;"></span><span class="color-box" style="background-color:#eeeeee ;"></span><span class="color-box" style="background-color:#ffffff;"></span></span>
+        </label>
+      </div> 
+    </div> 
+  </div>
   </fieldset>
-  <footer>
-    <button type="submit" name="submit" class="btn btn-primary btn-lg pull-right">Save Company Settings</button>
+  <hr class="panel-wide">
+  <footer class="col-sm-11">
+    <button type="submit" name="submit" class="btn btn-primary btn-xlg pull-right">Save Company Settings</button>
   </footer>
 </form>
 {% endblock %}
-
-{%- block scripts %}
-  {% parent %}
-  <script src="/js/merchant-settings.js"></script>
-  <script type="text/javascript">
-    jQuery(document).ready(function() {
-        MerchantSettingsForm.initMerchantSettingsForm();
-    });
-  </script>
-{%- endblock scripts %}

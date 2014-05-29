@@ -1991,3 +1991,6 @@ html body.page-signup {
     display: none;
   }
 }
+.collapse.payment-card {
+  display: block;
+}

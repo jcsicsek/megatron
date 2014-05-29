@@ -12,12 +12,12 @@
   <![endif]-->
 {%- endblock styles %}
 
-{% block body_attribs %}class="theme-default main-menu-animated page-invoice main-navbar-fixed main-menu-fixed dont-animate-mm-content-sm animate-mm-md animate mm-lg"{% endblock body_attribs %}>
+{% block load_early %}
+  <script>var init = [];</script>
+  <script type="text/javascript" src="/demo/demo.js"></script> <!-- / Demo script -->
+{% endblock load_early %}
   
-  {% block load_early %}
-    <script>var init = [];</script>
-    <script type="text/javascript" src="/demo/demo.js"></script> <!-- / Demo script -->
-  {% endblock load_early %}
+{% block body_attribs %}class="theme-{% if colorTheme %}{{colorTheme}}{% else %}default{% endif %} main-menu-animated main-navbar-fixed main-menu-fixed dont-animate-mm-content-sm animate-mm-md animate mm-lg"{% endblock body_attribs %}>
 
   {% block wrapper_attribs %}id="main-wrapper"{% endblock wrapper_attribs %}
           
@@ -45,17 +45,7 @@
     {%- endblock copyright %}
 
 {%- block scripts %}
-  <!-- Get jQuery from Google CDN -->
-  <!--[if !IE]> -->
-    <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js">'+"<"+"/script>"); </script>
-  <!-- <![endif]-->
-  <!--[if lte IE 9]>
-    <script type="text/javascript"> window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">'+"<"+"/script>"); </script>
-  <![endif]-->
-
-  <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
   <script type="text/javascript" src="/javascripts/pixel-admin.min.js"></script>
-
   <script type="text/javascript">
     window.PixelAdmin.start(init);
   </script>

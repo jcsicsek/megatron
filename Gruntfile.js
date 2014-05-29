@@ -1,10 +1,10 @@
 var paths = {
   html_dir: 'app/',
 
-  js_src:   'javascripts/',
+  js_src:   'build_files/javascripts/',
   js_dest:  'app/public/javascripts/',
 
-  css_src:  'styles/',
+  css_src:  'build_files/styles/',
   css_dest: 'app/public/stylesheets/'
 }
 

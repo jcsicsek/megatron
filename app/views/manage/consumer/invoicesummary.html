@@ -27,7 +27,7 @@
       <div class="stat-row">
         <div class="stat-cell no-padding-hr">
           <div class="pie-chart" data-percent="79.4" id="pie-chart-1">
-            <div class="pie-chart-label"><h2>Amount Due</h2>$7,943.23</div>
+            <div class="pie-chart-label"><h2>Amount Due</h2>{{numeral(loan.outstandingBalance).format('$0,0.00')}}</div>
           </div>
         </div>
       </div>
@@ -44,19 +44,19 @@
           <div class="stat-row">
             <a href="#" class="stat-cell bg-warning padding-lg valign-middle">
               Original Balance
-              <span class="pull-right">${{ loan.loanAmount.toFixed(2) }}</span>
+              <span class="pull-right">{{ numeral(loan.loanAmount).format('$0,0.00') }}</span>
             </a>
           </div>
           <div class="stat-row">
             <a href="#" class="stat-cell bg-warning darken padding-lg valign-middle">
               Current Balance
-              <span class="pull-right">${{ loan.loanAmount.toFixed(2) }}</span>
+              <span class="pull-right">{{ numeral(loan.outstandingBalance).format('$0,0.00') }}</span>
             </a>
           </div>
           <div class="stat-row">
             <a href="#" class="stat-cell bg-warning darker padding-lg valign-middle">
               Payment Due
-              <span class="pull-right">${{ loan.paymentAmount.toFixed(2) }}</span>
+              <span class="pull-right">{{ numeral(loan.paymentAmount).format('$0,0.00') }}</span>
             </a>
           </div>
         </div> 

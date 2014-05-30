@@ -71,7 +71,8 @@ module.exports = {
         phone: "4105555555",
         name: loan.clientName,
         //TODO:  Merchant Info
-        merchant: "tabbio"
+        merchant: loan.loanPurposeName,
+        outstandingBalance: loan.summary.principalOutstanding
       });
     })
   },
@@ -90,7 +91,8 @@ module.exports = {
           //TODO:  Need better way of handling first vs last name
           firstName: loan.clientName.split(" ")[0],
           lastName: loan.clientName.split(" ")[1],
-          merchant: loan.oanPurposeName
+          merchant: loan.loanPurposeName,
+          outstandingBalance: loan.summary.principalOutstanding
         }}));
       });
     });

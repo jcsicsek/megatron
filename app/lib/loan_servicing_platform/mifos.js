@@ -55,6 +55,10 @@ module.exports = {
   queryById: function(id, callback) {
     logger.info("MIFOS: querying summary for loan with id", id);
     var mifosLoanId = hashids.decrypt(id);
+    console.log("mifosLoanId", mifosLoanId);
+    if (mifosLoanId.length == 0) {
+      return callback("Invalid loan ID", null);
+    }
     mifosApi.getLoan(mifosLoanId, function(error, loan) {
       callback(null, {
         id: id,

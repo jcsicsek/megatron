@@ -13,7 +13,7 @@
   init.push(function () {
     $("#{{ id }}").select2({
       allowClear: true,
-      placeholder: "Select a State"
+      placeholder: "Select a {{ label }}"
     });
   });
 </script>
@@ -28,6 +28,32 @@
   </div>
 </div>
 {%- endmacro %}
+
+{% macro textarea(type, name, id, label, value, size, rows, error, help) %}
+<script>
+  init.push(function () {
+    $("#{{ id }}").autosize();
+  });
+</script>
+<div class="form-group simple">
+  <label for="{{ name }}" class="col-sm-2 control-label">{{ label }}</label>
+  <label class="textarea textarea-expandable textarea-resizable col-sm-{{ size |default("5") }}">
+    <textarea rows="{{ rows }}" name="{{ name }}" class="form-control" id="{{ id }}" value="{{ value }}"></textarea>
+  </label>
+    {% if help %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
+</div>
+{% endmacro %}
+
+
+<div class="row">
+Add a comment to this line
+-        <section class="col col-9">
+-          <label class="label">Additional Info / Notes</label>
+-          <label class="textarea textarea-expandable textarea-resizable">
+-            <textarea rows="3" name="info"></textarea>
+-          </label>
+-        </section>
+-      </div>
 
 {% macro input_vertical(type, name, id, label, value, size, error, help) %}
 <div class="row">

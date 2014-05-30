@@ -4,85 +4,6 @@
 {% block masttitle %}{{ businessName }} Settings{% endblock masttitle %}
 
 {% block content %}
-<script>
-  init.push(function () {
-    // Setup masks
-    $("#phone").mask("(999) 999-9999");
-
-    // Add phone validator
-    $.validator.addMethod(
-      "phone_format",
-      function(value, element) {
-        var check = false;
-        return this.optional(element) || /^\(\d{3}\)[ ]\d{3}\-\d{4}$/.test(value);
-      },
-      "Please enter a valid phone number"
-    );
-
-    // Setup validation
-    $("#merchant-settings-form").validate({
-      focusInvalid: false,
-      rules: {
-        'fname': {
-          required: true
-        },
-        'lname': {
-          required: true
-        },
-        'company': {
-          required: true
-        },
-        'url': {
-          required: true,
-          url: true
-        },
-        'phone': {
-          required: true,
-          phone_format: true
-        },
-        'email': {
-          required: true,
-          email: true
-        },
-        'tabb_url': {
-          required: true
-        },
-        'company_logo': {
-          url: true
-        }
-      },
-      messages: {
-        'fname': {
-          required: 'Please enter your first name'
-        },
-        'lname': {
-          required: 'Please enter your last name'
-        },
-        'company': {
-          required: 'Please enter your company name'
-        },
-        'url': {
-          required: 'Please enter your company\'s URL',
-          url: 'Please enter a valid URL (include http!)'
-        },
-        'phone': {
-          required: 'Please enter your phone number'
-        },
-        'email': {
-          required: 'Please enter your email address',
-          email: 'Please enter a valid email address'
-        },
-        'tabb_url':{
-          required: 'Please enter a name for your spot on tabb.io'
-        },
-        'company_logo': {
-          url: 'Please enter a valid URL (include http!)'
-        }
-      }
-    });
-  });
-</script>
-
 <form action="" class="form-horizontal" id="merchant-settings-form">
   <fieldset>
     {{ forms.input("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
@@ -119,4 +40,14 @@
   <hr class="panel-wide">
   {{ forms.submit("", "", "", "Save Company Settings") }}
 </form>
+{% endblock %}
+
+{% block scripts %}
+{% parent %}
+<script type="text/javascript" src="/js/forms/merchant-settings.js"></script>  
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    SettingsForm.initSettingsForm();
+  });
+</script>  
 {% endblock %}

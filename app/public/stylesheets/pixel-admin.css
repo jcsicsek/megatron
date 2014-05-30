@@ -6711,6 +6711,9 @@ legend {
 label {
   font-weight: 600;
 }
+label textarea {
+  font-weight: 400;
+}
 optgroup {
   font-weight: 600;
 }
@@ -9772,6 +9775,9 @@ body:not(.right-to-left) .no-border-l {
 }
 .form-group-margin {
   margin-bottom: 15px !important;
+}
+.margin-tb-40 {
+  margin: 40px 0;
 }
 .panel-padding {
   padding: 20px !important;

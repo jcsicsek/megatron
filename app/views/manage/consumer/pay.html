@@ -17,18 +17,18 @@
     {{ forms.select("select", "state", "state", "State", state.value, "", state.errors, "", ["Alabama","Maryland"]) }}
     {{ forms.input("text", "zip_code", "zip_code", "Zip Code", zip_code.value, "", zip_code.errors, "") }}
     {{ forms.select("select", "country", "country", "Country", country.value, "", country.errors, "", ["United States","Canada"]) }}
-    <!-- NEED TO MAKE MACRO FOR TEXT AREA INPUTS, INFO -->
-    {{ forms.input("text", "info", "info", "Additional Info / Notes", info.value, "9", info.errors, "") }}
+    {{ forms.textarea("textarea", "info", "info", "Additional Info / Notes", info.value, "9", "3", info.errors, "") }}
   </fieldset>
+  <hr class="panel-wide">
   <fieldset>
     <section>
       <div class="inline-group">
-        <label class="radio"><input type="radio" name="radio-inline" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i><img src="/images/payment-cards.jpg"></label>
-        <label class="radio"><input type="radio" class="bank-transfer" value="bank-transfer" name="radio-inline"><i class="rounded-x"></i><img src="/images/bank-transfer.png"></label>
-        <label class="radio"><input type="radio" name="radio-inline" class="paypal" value="paypal"><i class="rounded-x"></i><img src="/images/paypal.jpg"></label>
+        <label class="radio radio-inline"><input type="radio" name="payment-method" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i><img src="/images/payment-cards.jpg"></label>
+        <label class="radio radio-inline"><input type="radio" class="bank-transfer" value="bank-transfer" name="payment-method"><i class="rounded-x"></i><img src="/images/bank-transfer.png"></label>
+        <label class="radio radio-inline"><input type="radio" name="payment-method" class="paypal" value="paypal"><i class="rounded-x"></i><img src="/images/paypal.jpg"></label>
       </div>
     </section>
-    <div class="collapse payment-card margin-tb-30">                  
+    <div class="collapse payment-card margin-tb-40">                  
       {{ forms.input("text", "name", "name", "Billing Name", name.value, "", name.errors, "") }}
       {{ forms.input("text", "card", "card", "Credit Card Number", card.value, "", card.errors, "") }}
       {{ forms.input("text", "cvv", "cvv", "CVV", cvv.value, "", cvv.errors, "") }}
@@ -36,23 +36,23 @@
       {{ forms.select("select", "month", "month", "Expiration Month", month.value, "", month.errors, "", ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]) }}
       {{ forms.select("select", "year", "year", "Expiration Year", year.value, "", year.errors, "", ["2014","2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]) }}
     </div>
-    <div class="collapse bank-transfer margin-tb-30">
+    <div class="collapse bank-transfer margin-tb-40">
       {{ forms.input("text", "account", "account", "Bank Account Number", account.value, "", account.errors, "") }}
       {{ forms.input("text", "routing", "routing", "Routing Number", routing.value, "", routing.errors, "") }}
       {{ forms.select("select", "type", "type", "Account Type", type.value, "", type.errors, "", ["Checking","Savings"]) }}
     </div>
-    <div class="collapse paypal margin-tb-80">
+    <div class="collapse paypal margin-tb-40">
       <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
     </div>
   </fieldset>
   <hr class="panel-wide">
-  {{ forms.submit("submit", "submit", "", "Make Payment") }}
+  {{ forms.submit("", "", "", "Make Payment") }}
 </form>    
 {% endblock %}
 
 {% block scripts %}
 {% parent %}
-<script type="text/javascript" src="/js/payment-form.js"></script>  
+<script type="text/javascript" src="/js/forms/payment.js"></script>  
 <script type="text/javascript">
   jQuery(document).ready(function() {
     PaymentForm.initPaymentForm();

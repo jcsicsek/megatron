@@ -55,6 +55,10 @@ module.exports = {
   queryById: function(id, callback) {
     logger.info("MIFOS: querying summary for loan with id", id);
     var mifosLoanId = hashids.decrypt(id);
+    console.log("mifosLoanId", mifosLoanId);
+    if (mifosLoanId.length == 0) {
+      return callback("Invalid loan ID", null);
+    }
     mifosApi.getLoan(mifosLoanId, function(error, loan) {
       callback(null, {
         id: id,
@@ -67,7 +71,8 @@ module.exports = {
         phone: "4105555555",
         name: loan.clientName,
         //TODO:  Merchant Info
-        merchant: "tabbio"
+        merchant: loan.loanPurposeName,
+        outstandingBalance: loan.summary.principalOutstanding
       });
     })
   },
@@ -86,7 +91,8 @@ module.exports = {
           //TODO:  Need better way of handling first vs last name
           firstName: loan.clientName.split(" ")[0],
           lastName: loan.clientName.split(" ")[1],
-          merchant: loan.oanPurposeName
+          merchant: loan.loanPurposeName,
+          outstandingBalance: loan.summary.principalOutstanding
         }}));
       });
     });

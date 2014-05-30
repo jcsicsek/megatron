@@ -34,7 +34,7 @@
       {{ loan.phone }}<br>
     </div> <!-- / .invoice-recipient -->
     <div class="invoice-total">
-      <span>${{ loan.loanAmount.toFixed(2) }}</span>
+      <span>{{ numeral(loan.loanAmount).format('$0,0.00') }}</span>
       TOTAL:
     </div> <!-- / .invoice-total -->
   </div> <!-- / .invoice-info -->

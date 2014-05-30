@@ -1,10 +1,75 @@
-{% macro input(type, name, id, label, value, error, help) %}
+{% macro input(type, name, id, label, value, size, error, help) %}
 <div class="form-group simple">
   <label for="{{ name }}" class="col-sm-2 control-label">{{ label }}</label>
-  <div class="col-sm-5">
+  <div class="col-sm-{{ size |default("5") }}">
     <input type="{{ type }}" name="{{ name }}" class="form-control input-lg" id="{{ id }}" value="{{ value }}">
     {% if help %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
   </div>
+</div>
+{% endmacro %}
+
+{% macro select(type, name, id, label, value, size, error, help, options) -%}
+ <script>
+  init.push(function () {
+    $("#{{ id }}").select2({
+      allowClear: true,
+      placeholder: "Select a State"
+    });
+  });
+</script>
+<div class="form-group simple">
+  <label for="{{ name }}" class="col-sm-2 control-label">{{ label }}</label>
+  <div class="col-sm-{{ size |default("5") }}">
+    <select type="{{ type }}" name="{{ name }}" class="select2-container form-control input-lg" id="{{ id }}" value="{{ value }}">v
+      {% for option in options %}
+        <option value="{{ option }}">{{ option }}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+{%- endmacro %}
+
+{% macro input_vertical(type, name, id, label, value, size, error, help) %}
+<div class="row">
+<div class="col-sm-{{ size |default("5") }}">
+  <div class="form-group simple no-margin-hr">
+    <label for="{{ name }}" class="control-label">{{ label }}</label>
+    <input type="{{ type }}" name="{{ name }}" class="form-control input-lg" id="{{ id }}" value="{{ value }}">
+    {% if help %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
+  </div>
+</div>
+</div>
+{% endmacro %}
+
+{% macro input_side_by_side(type, name, id, label, value, size, error, help, type2, name2, id2, label2, value2, size2, error2, help2, type3, name3, id3, label3, value3, size3, error3, help3) %}
+<div class="row">
+  {% if type %}
+  <div class="col-sm-{{ size |default("4") }}">
+    <div class="form-group simple no-margin-hr">
+      <label for="{{ name }}" class="control-label">{{ label }}</label>
+      <input type="{{ type }}" name="{{ name }}" class="form-control input-lg" id="{{ id }}" value="{{ value }}">
+      {% if help %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
+    </div>
+  </div>
+  {% else %}  {% endif %}
+  {% if type2 %}
+  <div class="col-sm-{{ size2 |default("4") }}">
+    <div class="form-group simple no-margin-hr">
+      <label for="{{ name2 }}" class="control-label">{{ label2 }}</label>
+      <input type="{{ type2 }}" name="{{ name2 }}" class="form-control input-lg" id="{{ id2 }}" value="{{ value2 }}">
+      {% if help2 %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
+    </div>
+  </div>
+  {% else %}  {% endif %}
+  {% if type3 %}
+  <div class="col-sm-{{ size3 |default("4") }}">
+    <div class="form-group simple no-margin-hr">
+      <label for="{{ name3 }}" class="control-label">{{ label3 }}</label>
+      <input type="{{ type3 }}" name="{{ name3 }}" class="form-control input-lg" id="{{ id3 }}" value="{{ value3 }}">
+      {% if help3 %}<p class="help-block">{{ help }}</p>{% else %}  {% endif %}
+    </div>
+  </div>
+  {% else %}  {% endif %}
 </div>
 {% endmacro %}
 
@@ -86,6 +151,6 @@
 
 {% macro submit(type, name, classes, text) %}
 <footer class="col-sm-11">
-  <button type="{{ type }}" name="{{ name }}" class="btn btn-primary btn-lg pull-right {{ classes }}">{{ text }}</button>
+  <button type="{{ type |default("submit") }}" name="{{ name |default("submit") }}" class="btn btn-primary btn-lg pull-right {{ classes }}">{{ text |default("Submit") }}</button>
 </footer>
 {% endmacro %}

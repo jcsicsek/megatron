@@ -83,14 +83,14 @@
   });
 </script>
 
-<form class="form-horizontal" id="merchant-settings-form">
+<form action="" class="form-horizontal" id="merchant-settings-form">
   <fieldset>
-    {{ forms.input("text", "fname", "fname", "First Name", fname.value, fname.errors, "") }}
-    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, lname.errors, "") }}
-    {{ forms.input("text", "company", "company", "Company", company.value, company.errors, "") }}
-    {{ forms.input("text", "url", "url", "Company Website", url.value, url.errors, "") }}
-    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, phone.errors, "") }}
-    {{ forms.input("text", "email", "email", "E-mail", email.value, email.errors, "") }}
+    {{ forms.input("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
+    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
+    {{ forms.input("text", "company", "company", "Company", company.value, "", company.errors, "") }}
+    {{ forms.input("text", "url", "url", "Company Website", url.value, "", url.errors, "") }}
+    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
+    {{ forms.input("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
   </fieldset>
   <hr>
   <fieldset>
@@ -117,6 +117,6 @@
     </div>
   </fieldset>
   <hr class="panel-wide">
-  {{ forms.submit("submit", "submit", "", "Save Company Settings") }}
+  {{ forms.submit("", "", "", "Save Company Settings") }}
 </form>
 {% endblock %}

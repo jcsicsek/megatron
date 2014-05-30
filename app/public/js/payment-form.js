@@ -1,164 +1,186 @@
+$( document ).ready(function() {
+  $('input[type=radio]').on('change', function () {
+    if (!this.checked) return
+    $('.collapse').not($('div.' + $(this).attr('class'))).hide();
+    $('.collapse.' + $(this).attr('class')).show();
+  });
+});
 var PaymentForm = function () {
   return {
-    //Contact Form
+    //Payment Form
     initPaymentForm: function () {
+      // Setup masks
+      $("#phone").mask("(999) 999-9999");
+      $('#cvv').mask('999', {placeholder:'x'});
+      $('#card').mask('9999-9999-9999-9999', {placeholder:'x'});
+      $('#year').mask('2099', {placeholder:'x'});
+
+      // Add phone validator
+      $.validator.addMethod(
+        "phone_format",
+        function(value, element) {
+          var check = false;
+          return this.optional(element) || /^\(\d{3}\)[ ]\d{3}\-\d{4}$/.test(value);
+        },
+        "Please enter a valid phone number"
+        );
+
       // Validation
       $("#payment-form").validate({
         // Rules for form validation
         rules:
         {
-          fname:
+          'fname':
           {
             required: true
           },
-          lname:
+          'lname':
           {
             required: true
           },
-          phone:
+          'phone':
           {
             required: true
           },
-          email:
+          'email':
           {
             required: true,
             email: true
           },
-          city:
+          'city':
           {
             required: true
           },
-          state:
+          'state':
           {
             required: true
           },
-          zip_code:
+          'zip_code':
           {
             required: true,
             digits: true
           },
-          address:
+          'address':
           {
             required: true
           },
-          country:
+          'country':
           {
             required: true
           },
-          name:
+          'name':
           {
             required: true
           },
-          card:
+          'card':
           {
             required: true,
             creditcard: true
           },
-          cvv:
+          'cvv':
           {
             required: true,
             digits: true
           },
-          month:
+          'month':
           {
             required: true
           },
-          year:
+          'year':
           {
             required: true,
             digits: true
           },
-          account:
+          'account':
           {
             required: true,
             digits: true
           },
-          routing:
+          'routing':
           {
             required: true,
             digits: true
           },
-          type:
+          'type':
           {
             required: true
           }
-
         },
 
         // Messages for form validation
         messages:
         {
-          fname:
+          'fname':
           {
            required: 'Please enter your first name'
          },
-         lname:
+         'lname':
          {
            required: 'Please enter your last name'
          },
-         phone:
+         'phone':
          {
            required: 'Please enter your phone number'
          },
-         email:
+         'email':
          {
            required: 'Please enter your email address',
            email: 'Please enter a valid email address'
          },
-         city:
+         'city':
          {
            required: 'Please enter your billing city'
          },
-         state:
+         'state':
          {
            required: 'Please enter your billing state'
          },
-         zip_code:
+         'zip_code':
          {
            required: 'Please enter your billing zip code',
            digits: 'Please enter a valid billing zip code'
          },
-         address:
+         'address':
          {
            required: 'Please enter your billing street address'
          },
-         country:
+         'country':
          {
            required: 'Please enter your billing country'
          },
-         name:
+         'name':
          {
            required: 'Please enter your billing name'
          },
-         card:
+         'card':
          {
            required: 'Please enter your card number'
          },
-         cvv:
+         'cvv':
          {
            required: 'Please enter your CVV',
            digits: 'Please enter a valid CVV'
          },
-         month:
+         'month':
          {
            required: 'Please choose your expiration month'
          },
-         year:
+         'year':
          {
            required: 'Please enter your expiration year',
            digits: 'Please enter a valid year'
          },
-         account:
+         'account':
          {
            required: 'Please enter an account number',
            digits: 'Please enter a valid account number'
          },
-         routing:
+         'routing':
          {
            required: 'Please enter a routing number',
            digits: 'Please enter a valid routing number'
          },
-         type:
+         'type':
          {
            required: 'Please indicate the type of bank account'
          }
@@ -175,17 +197,12 @@ var PaymentForm = function () {
             },
             success: function()
             {
-              $("#payment-form").addClass('submited');
+              $("#payment-form").addClass('submitted');
             }
           });
         },
-        
-        // Do not change code below
-        errorPlacement: function(error, element)
-        {
-          error.insertAfter(element.parent());
-        }
       });
     }
   };
 }();
+

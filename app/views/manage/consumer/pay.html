@@ -1,205 +1,61 @@
 {% extends "base.html" %}
+{% import '../../macros/forms.html' as forms %}
 
 {% block masttitle %}Invoice {{ loan.id }} Payment{% endblock masttitle %}
 
 {% block content %}
-  {% parent %}
-  <h2>Make a Payment</h2>
-  <form action="" id="payment-form" class="sky-form margin-tb-30">
-    <fieldset>                  
-      <div class="row">
-        <section class="col col-3">
-          <label class="label">First Name</label>
-          <label class="input">
-            <i class="icon-append fa fa-user"></i>
-            <input type="text" name="fname">
-          </label>
-        </section>
-        <section class="col col-3">
-          <label class="label">Last Name</label>
-          <label class="input">
-            <i class="icon-append fa fa-user"></i>
-            <input type="text" name="lname">
-          </label>
-        </section>
+<form action="" class="form-horizontal" id="payment-form">
+  <fieldset>  
+    {{ forms.input("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
+    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
+    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
+    {{ forms.input("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
+  </fieldset>
+  <fieldset>
+    {{ forms.input("text", "address", "address", "Street Address", address.value, "", address.errors, "") }}
+    {{ forms.input("text", "city", "city", "City", city.value, "", city.errors, "") }}
+    {{ forms.select("select", "state", "state", "State", state.value, "", state.errors, "", ["Alabama","Maryland"]) }}
+    {{ forms.input("text", "zip_code", "zip_code", "Zip Code", zip_code.value, "", zip_code.errors, "") }}
+    {{ forms.select("select", "country", "country", "Country", country.value, "", country.errors, "", ["United States","Canada"]) }}
+    <!-- NEED TO MAKE MACRO FOR TEXT AREA INPUTS, INFO -->
+    {{ forms.input("text", "info", "info", "Additional Info / Notes", info.value, "9", info.errors, "") }}
+  </fieldset>
+  <fieldset>
+    <section>
+      <div class="inline-group">
+        <label class="radio"><input type="radio" name="radio-inline" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i><img src="/images/payment-cards.jpg"></label>
+        <label class="radio"><input type="radio" class="bank-transfer" value="bank-transfer" name="radio-inline"><i class="rounded-x"></i><img src="/images/bank-transfer.png"></label>
+        <label class="radio"><input type="radio" name="radio-inline" class="paypal" value="paypal"><i class="rounded-x"></i><img src="/images/paypal.jpg"></label>
       </div>
-      <div class="row">
-        <section class="col col-3">
-          <label class="label">Phone Number</label>
-          <label class="input">
-            <i class="icon-append fa fa-phone"></i>
-            <input type="text" name="phone" id="phone">
-          </label>
-        </section>
-      </div>
-      <div class="row">
-        <section class="col col-4">
-          <label class="label">E-mail</label>
-          <label class="input">
-            <i class="icon-append fa fa-envelope-o"></i>
-            <input type="email" name="email">
-          </label>
-        </section>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="row">
-        <section class="col col-4">
-          <label class="label">City</label>
-          <label class="input">
-            <input type="text" name="city">
-          </label>
-        </section>
-        <section class="col col-3">
-          <label class="label">State</label>
-          <label class="input">
-            <input type="text" name="state">
-          </label>
-        </section>
-        <section class="col col-2">
-          <label class="label">Zip Code</label>
-          <label class="input">
-            <input type="text" name="zip_code">
-          </label>
-        </section>
-      </div>
-      <div class="row">
-        <section class="col col-6">
-          <label class="label">Street Address</label>
-          <label for="file" class="input">
-            <input type="text" name="address">
-          </label>
-        </section>
-        <section class="col col-3">
-          <label class="label">Country</label>
-          <label class="select">
-            <select name="country">
-              <option value="0" selected="" disabled="">Country</option>
-              <option value="1">United States</option>
-              <option value="2">Canada</option>
-            </select>
-            <i></i>
-          </label>
-        </section>
-      </div>
-      <div class="row">
-        <section class="col col-9">
-          <label class="label">Additional Info / Notes</label>
-          <label class="textarea textarea-expandable textarea-resizable">
-            <textarea rows="3" name="info"></textarea>
-          </label>
-        </section>
-      </div>
-    </fieldset>
-    <fieldset>
-      <section>
-        <div class="inline-group">
-          <label class="radio"><input type="radio" name="radio-inline" class="payment-card" value="payment-card" checked=""><i class="rounded-x"></i><img src="/images/payment-cards.jpg"></label>
-          <label class="radio"><input type="radio" class="bank-transfer" value="bank-transfer" name="radio-inline"><i class="rounded-x"></i><img src="/images/bank-transfer.png"></label>
-          <label class="radio"><input type="radio" name="radio-inline" class="paypal" value="paypal"><i class="rounded-x"></i><img src="/images/paypal.jpg"></label>
-        </div>
-      </section>
-      <div class="collapse payment-card margin-tb-30">                  
-        <div class="row">
-          <section class="col col-6">
-            <label class="label">Billing Name</label>
-            <label class="input">
-              <input type="text" name="name">
-            </label>
-          </section>
-        </div>
-        <div class="row">
-          <section class="col col-4">
-            <label class="label">Credit Card Number</label>
-            <label class="input">
-              <input type="text" name="card" id="card">
-            </label>
-          </section>
-          <section class="col col-2">
-            <label class="label">CVV</label>
-            <label class="input">
-              <input type="text" name="cvv" id="cvv">
-            </label>
-          </section>
-        </div>
-        <div class="row">
-          <label class="label col col-2">Expiration date</label>
-          <section class="col col-2">
-            <label class="select">
-              <select name="month">
-                <option value="0" selected="" disabled="">Month</option>
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <i></i>
-            </label>
-          </section>
-          <section class="col col-2">
-            <label class="input">
-              <input type="text" name="year" id="year" placeholder="Year">
-            </label>
-          </section>
-        </div>
-      </div>
-      <div class="collapse bank-transfer margin-tb-30">
-        <div class="row">
-          <section class="col col-6">
-            <label class="label">Bank Account Number</label>
-            <label class="input">
-              <input type="text" name="account" id="account">
-            </label>
-          </section>
-        </div>
-        <div class="row">
-          <section class="col col-6">
-            <label class="label">Routing Number</label>
-            <label class="input">
-              <input type="text" name="routing" id="routing">
-            </label>
-          </section>
-        </div>
-        <div class="row">
-          <section class="col col-4">
-            <label class="label">Account Type</label>
-            <label class="select">
-              <select name="type">
-                <option value="0" selected="" disabled="">Account Type</option>
-                <option value="1">Checking</option>
-                <option value="2">Savings</option>
-              </select>
-              <i></i>
-            </label>
-          </section>
-        </div>
-      </div>
-      <div class="collapse paypal margin-tb-80">
-        <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
-      </div>
-    </fieldset>
-    <footer>
-      <button type="submit" class="btn btn-primary btn-lg pull-right">Make Payment</button>
-    </footer>
-  </form>         
+    </section>
+    <div class="collapse payment-card margin-tb-30">                  
+      {{ forms.input("text", "name", "name", "Billing Name", name.value, "", name.errors, "") }}
+      {{ forms.input("text", "card", "card", "Credit Card Number", card.value, "", card.errors, "") }}
+      {{ forms.input("text", "cvv", "cvv", "CVV", cvv.value, "", cvv.errors, "") }}
+      
+      {{ forms.select("select", "month", "month", "Expiration Month", month.value, "", month.errors, "", ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]) }}
+      {{ forms.select("select", "year", "year", "Expiration Year", year.value, "", year.errors, "", ["2014","2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]) }}
+    </div>
+    <div class="collapse bank-transfer margin-tb-30">
+      {{ forms.input("text", "account", "account", "Bank Account Number", account.value, "", account.errors, "") }}
+      {{ forms.input("text", "routing", "routing", "Routing Number", routing.value, "", routing.errors, "") }}
+      {{ forms.select("select", "type", "type", "Account Type", type.value, "", type.errors, "", ["Checking","Savings"]) }}
+    </div>
+    <div class="collapse paypal margin-tb-80">
+      <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">
+    </div>
+  </fieldset>
+  <hr class="panel-wide">
+  {{ forms.submit("submit", "submit", "", "Make Payment") }}
+</form>    
 {% endblock %}
 
-{%- block scripts %}
-  {% parent %}
-  <script src="/js/payment-form.js"></script>
-  <script src="/js/payment-type.js"></script>
-  <script type="text/javascript">
-    jQuery(document).ready(function() {
-        PaymentForm.initPaymentForm();
-    });
-  </script>
-{%- endblock scripts %}
+{% block scripts %}
+{% parent %}
+<script type="text/javascript" src="/js/payment-form.js"></script>  
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    PaymentForm.initPaymentForm();
+  });
+</script>  
+{% endblock %}

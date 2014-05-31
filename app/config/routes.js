@@ -83,6 +83,7 @@ module.exports = {
     app.get(urls.invoices.details(':invoiceid'), middleware.setMerchantContext, loansController.invoiceDetails);
     app.get(urls.invoices.pay(':invoiceid'), middleware.setMerchantContext, loansController.invoicePayPage);
     app.post(urls.invoices.portal, loansController.invoicePortal);
+    app.post(urls.invoices.pay(':invoiceid'), loansController.pay);
 
     //merchant routes
     app.get(urls.merchants.overview, middleware.setMerchantContext, merchantsController.overview);

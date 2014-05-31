@@ -5,7 +5,7 @@ var loanProductId = 1;
 
 xdescribe('Mifos wrapper', function() {
   this.timeout(5000);
-	it('opens a new loan application for a new client', function(done) {
+	xit('opens a new loan application for a new client', function(done) {
 		var app = {
 			firstName: "Dutch",
 			lastName: "Ruppersberger",
@@ -25,7 +25,7 @@ xdescribe('Mifos wrapper', function() {
 		});
 	});
 
-  it('opens a new loan application for an existing client', function(done) {
+  xit('opens a new loan application for an existing client', function(done) {
     var app = {
       firstName: "Dutch",
       lastName: "Ruppersberger",
@@ -46,21 +46,21 @@ xdescribe('Mifos wrapper', function() {
   });
 
   it('queries a single loan application by id', function(done) {
-    var id = 'jkqg';
+    var id = 'jDwa';
     mifos.queryById(id, function(error, results) {
       console.log(error, results);
       done();
     });
   });
 
-  it('adds a new merchant into the system', function(done) {
+  xit('adds a new merchant into the system', function(done) {
     mifos.addMerchant("test-merchant-" + Math.floor(Math.random() * 10000000000), function(error, merchantId) {
       console.log(error, merchantId);
       done();
     });
   });
 
-  it('queries loans by merchant', function(done) {
+  xit('queries loans by merchant', function(done) {
     var merchantId = 26;
     mifos.queryByMerchant(merchantId, function(error, results) {
       console.log(error, results);
@@ -95,7 +95,7 @@ describe('Mifos API', function() {
       done();
     })
   })
-  it('makes a repayment on a loan', function(done) {
+  xit('makes a repayment on a loan', function(done) {
     var loanId = 14;
     var repaymentAmount = 50;
     mifosApi.makeRepayment(loanId, repaymentAmount, function(error, results) {
@@ -103,4 +103,12 @@ describe('Mifos API', function() {
       done();
     })
   })
+  it('looks up client by id', function(done) {
+    var clientId = 48;
+    mifosApi.getClient(clientId, function(error, client) {
+      console.log(error, client);
+      done();
+    });
+  });
 });
+

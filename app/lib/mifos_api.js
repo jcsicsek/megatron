@@ -33,6 +33,24 @@ module.exports = {
     })
   },
 
+  getClient: function(clientId, callback) {
+    logger.info("MIFOS API: Looking up client with id", clientId);
+    var options = {
+      url: config.mifos.url + 'clients/' + clientId,
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier
+      }
+    }
+    request.get(options, function(error, response, body) {
+      callback(error, JSON.parse(body));
+    });
+  },
+
   createClient: function(firstName, lastName, phone, callback) {
     logger.info("MIFOS API: Creating client with phone number", phone);
     var client = {

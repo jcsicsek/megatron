@@ -60,21 +60,23 @@ module.exports = {
       return callback("Invalid loan ID", null);
     }
     mifosApi.getLoan(mifosLoanId, function(error, loan) {
-      callback(null, {
-        id: id,
-        loanAmount: loan.principal,
-        createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
-        //TODO:  Identify the next period
-        paymentAmount: loan.repaymentSchedule.periods[1].totalDueForPeriod,
-        paymentDueDate: new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2]),
-        //TODO:  Pull in client detail to get phone number
-        phone: "4105555555",
-        name: loan.clientName,
-        //TODO:  Merchant Info
-        merchant: loan.loanPurposeName,
-        outstandingBalance: loan.summary.principalOutstanding
+      mifosApi.getClient(loan.clientId, function(error, client) {
+        callback(null, {
+          id: id,
+          loanAmount: loan.principal,
+          createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
+          //TODO:  Identify the next period
+          paymentAmount: loan.repaymentSchedule.periods[1].totalDueForPeriod,
+          paymentDueDate: new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2]),
+          //TODO:  Pull in client detail to get phone number
+          phone: client.mobileNo,
+          name: loan.clientName,
+          //TODO:  Merchant Info
+          merchant: loan.loanPurposeName,
+          outstandingBalance: loan.summary.principalOutstanding
+        });
       });
-    })
+    });
   },
 
   queryByMerchant: function(merchantSlug, callback) {

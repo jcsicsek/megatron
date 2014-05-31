@@ -86,10 +86,10 @@ module.exports = {
     app.post(urls.invoices.pay(':invoiceid'), loansController.pay);
 
     //merchant routes
-    app.get(urls.merchants.overview, middleware.setMerchantContext, merchantsController.overview);
-    app.get(urls.merchants.invoices, middleware.setMerchantContext, merchantsController.invoices);
-    app.get(urls.merchants.settings, middleware.setMerchantContext, merchantsController.settings);
-    app.get(urls.merchants.loans, middleware.setMerchantContext, loansController.merchantLoans);
+    app.get(urls.merchants.overview, middleware.setMerchantContext, middleware.ensureSubdomain, merchantsController.overview);
+    app.get(urls.merchants.invoices, middleware.setMerchantContext, middleware.ensureSubdomain, merchantsController.invoices);
+    app.get(urls.merchants.settings, middleware.setMerchantContext, middleware.ensureSubdomain, merchantsController.settings);
+    app.get(urls.merchants.loans, middleware.setMerchantContext, middleware.ensureSubdomain, loansController.merchantLoans);
   },
   urls: urls
 }

@@ -28,6 +28,14 @@ module.exports.create = function(pgClient) {
         res.locals.logoUrl = "/images/tabbio-small.png";
         next();
       }
+    },
+
+    ensureSubdomain: function(req, res, next) {
+      if (req.subdomains.length != 1) {
+        res.send(404, {status: "error", nessage: "No merchant subdomain specified"});
+      } else {
+        next();
+      }
     }
   }
   return self;

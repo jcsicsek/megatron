@@ -96,6 +96,11 @@ module.exports.create = function() {
       loanPlatform.queryByMerchant(req.subdomains[0], function(error, loans) {
         res.send(loans);
       });
+    },
+    pay: function(req, res) {
+      loanPlatform.makeRepayment(req.params.invoiceid, req.body.amount, function(error, results) {
+        res.send(results);
+      });
     }
   };
   return self;

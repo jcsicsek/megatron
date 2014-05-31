@@ -5,7 +5,7 @@ describe('Loan API', function() {
 
   this.timeout(10000);
 
-	it('opens a new simple loan application', function(done) {
+	xit('opens a new simple loan application', function(done) {
 		var loanApplication = {
 			firstName: "Dutch",
 			lastName: "Ruppersberger",
@@ -66,4 +66,19 @@ describe('Loan API', function() {
         done();
       });
   });
-});
+
+  it('makes a payment on a loan', function(done) {
+    var loanId = 'jDwa';
+    var body = {
+      amount: 300
+    }
+    request(app)
+      .post('/i/' + loanId + '/pay')
+      .send(body)
+      .expect(200)
+      .end(function(error, res) {
+        console.log(error, res.body);
+        done();
+      });
+  });
+});;

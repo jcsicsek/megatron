@@ -10,15 +10,7 @@
  ===================================================================== -->
 		<script>
 			init.push(function () {
-				var uploads_data = [
-					{ day: '2014-04-20', v: 20 },
-					{ day: '2014-04-21', v: 10 },
-					{ day: '2014-04-22', v: 15 },
-					{ day: '2014-04-23', v: 12 },
-					{ day: '2014-04-24', v: 5  },
-					{ day: '2014-04-25', v: 5  },
-					{ day: '2014-04-26', v: 20 }
-				];
+				var uploads_data = JSON.parse("{{ loanCountPerDay|json }}".replace(/&quot;/g,"\""));
 				Morris.Line({
 					element: 'hero-graph',
 					data: uploads_data,

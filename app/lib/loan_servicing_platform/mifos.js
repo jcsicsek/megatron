@@ -64,10 +64,10 @@ module.exports = {
         callback(null, {
           id: id,
           loanAmount: loan.principal,
-          createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
+          createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1] - 1, loan.timeline.submittedOnDate[2]),
           //TODO:  Identify the next period
           paymentAmount: loan.repaymentSchedule.periods[1].totalDueForPeriod,
-          paymentDueDate: new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2]),
+          paymentDueDate: new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1] - 1, loan.repaymentSchedule.periods[1].dueDate[2]),
           //TODO:  Pull in client detail to get phone number
           phone: client.mobileNo,
           name: loan.clientName,
@@ -86,9 +86,9 @@ module.exports = {
         callback(error, _.map(loans.pageItems, function(loan){return {
           id: hashids.encrypt(loan.id),
           loanAmount: loan.principal,
-          createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1], loan.timeline.submittedOnDate[2]),
+          createdDate: new Date(loan.timeline.submittedOnDate[0], loan.timeline.submittedOnDate[1] - 1, loan.timeline.submittedOnDate[2]),
           paymentAmount: loan.repaymentSchedule ? loan.repaymentSchedule.periods[1].totalDueForPeriod : 0,
-          paymentDueDate: loan.repaymentSchedule ? (new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1], loan.repaymentSchedule.periods[1].dueDate[2])) : new Date(),
+          paymentDueDate: loan.repaymentSchedule ? (new Date(loan.repaymentSchedule.periods[1].dueDate[0], loan.repaymentSchedule.periods[1].dueDate[1] - 1, loan.repaymentSchedule.periods[1].dueDate[2])) : new Date(),
           phone: "4105555555",
           //TODO:  Need better way of handling first vs last name
           firstName: loan.clientName.split(" ")[0],

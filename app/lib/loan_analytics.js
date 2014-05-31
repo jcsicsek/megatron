@@ -39,5 +39,16 @@ module.exports = {
       day: dateFormat(day.date, "yyyy-mm-dd"),
       v: _.reduce(day.loans, function(memo, loan) {return loan.loanAmount + memo}, 0)
     }});
+  },
+  cumulativeStats: function(loans, daysBack) {
+    var minDate = new Date();
+    minDate.setHours(0, 0, 0, 0);
+    minDate.setDate(minDate.getDate() - daysBack);
+    var loansInPeriod = _.filter(loans, function(loan) { return loan.createdDate > minDate });
+    return {
+      totalDollarAmount: _.reduce(loansInPeriod, function(memo, loan) {return loan.loanAmount + memo}, 0),
+      totalLoansCount: loansInPeriod.length,
+      uniqueCustomers: _.uniq(loansInPeriod, false, function(loan) {return loan.name}).length
+    }
   }
 }

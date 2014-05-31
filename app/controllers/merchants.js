@@ -14,7 +14,10 @@ module.exports.create = function() {
           totalTransactions: loans.length,
           acceptancePercent: (_.where(loans, {status: "Approved"}).length / loans.length * 100).toFixed(0),
           totalCustomers: _.uniq(loans, function(loan) {return loan.phone}).length,
-          loanCountPerDay: loanAnalytics.loansPerDay(loans, 7)
+          loanCountPerDay: loanAnalytics.loansPerDay(loans, 7),
+          loanValuePerDay: _.map(loanAnalytics.loansValuePerDay(loans, 7), function(day) { return day.v }).reverse(),
+          todaySummary: loanAnalytics.todaySummary(loans),
+          cumulativeStats: loanAnalytics.cumulativeStats(loans, 7)
         });
       });
     },

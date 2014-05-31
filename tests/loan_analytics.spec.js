@@ -37,4 +37,10 @@ describe('Mifos API', function() {
     console.log(loanValuePerDay);
     done();
   });
+
+  it('calculates cumulative stats', function(done) {
+    var stats = loanAnalytics.cumulativeStats(loans, 20);
+    console.log(stats);
+    done();
+  });
 });

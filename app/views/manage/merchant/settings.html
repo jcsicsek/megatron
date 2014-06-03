@@ -6,17 +6,17 @@
 {% block content %}
 <form action="" class="form-horizontal" id="merchant-settings-form">
   <fieldset>
-    {{ forms.input("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
-    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
-    {{ forms.input("text", "company", "company", "Company", company.value, "", company.errors, "") }}
-    {{ forms.input("text", "url", "url", "Company Website", url.value, "", url.errors, "") }}
-    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
-    {{ forms.input("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
+    {{ forms.form_field("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
+    {{ forms.form_field("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
+    {{ forms.form_field("text", "company", "company", "Company", company.value, "", company.errors, "") }}
+    {{ forms.form_field("text", "url", "url", "Company Website", url.value, "", url.errors, "") }}
+    {{ forms.form_field("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
+    {{ forms.form_field("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
   </fieldset>
   <hr>
   <fieldset>
-    {{ forms.input_addon("text", "tabb_url", "tabb_url", "tabb.io URL", tabb_url.value, tabb_url.errors, "Reserve your tabb.io name. For example, enter 'franksbikes' to reserve franksbikes.tabb.io.", "tabb.io") }}
-    {{ forms.fileUploadDZ("company_logo", "logo", "Company Logo URL", "company_logo.error", "Your logo will show in both the admin and customer portals. Upload your logo.") }}
+    {{ forms.form_field("text", "tabb_url", "tabb_url", "tabb.io URL", tabb_url.value, "", tabb_url.error, "Reserve your tabb.io name. For example, enter 'franksbikes' to reserve franksbikes.tabb.io.", "", "tabb.io") }}
+    {{ forms.form_field("file", "company_logo", "logo", "Company Logo URL", company_logo.value, "9", company_logo.error, "Your logo will show in both the admin and customer portals. Upload your logo.", "", "") }}
     <div class="form-group">
       <label class="col-sm-2 control-label">Theme Color</label>
       <div class="col-sm-3">

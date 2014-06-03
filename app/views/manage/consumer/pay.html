@@ -6,19 +6,19 @@
 {% block content %}
 <form method='post' action={{ urls.invoices.pay(loan.id) }} class="form-horizontal" id="payment-form">
   <fieldset>  
-    {{ forms.input("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
-    {{ forms.input("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
-    {{ forms.input("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
-    {{ forms.input("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
+    {{ forms.form_field("text", "fname", "fname", "First Name", fname.value, "", fname.errors, "") }}
+    {{ forms.form_field("text", "lname", "lname", "Last Name", lname.value, "", lname.errors, "") }}
+    {{ forms.form_field("text", "phone", "phone", "Phone Number", phone.value, "", phone.errors, "") }}
+    {{ forms.form_field("text", "email", "email", "E-mail", email.value, "", email.errors, "") }}
   </fieldset>
   <fieldset>
-    {{ forms.input("text", "address", "address", "Street Address", address.value, "", address.errors, "") }}
-    {{ forms.input("text", "city", "city", "City", city.value, "", city.errors, "") }}
-    {{ forms.select("select", "state", "state", "State", state.value, "", state.errors, "", ["Alabama","Maryland"]) }}
-    {{ forms.input("text", "zip_code", "zip_code", "Zip Code", zip_code.value, "", zip_code.errors, "") }}
-    {{ forms.select("select", "country", "country", "Country", country.value, "", country.errors, "", ["United States","Canada"]) }}
-    {{ forms.textarea("textarea", "info", "info", "Additional Info / Notes", info.value, "9", "3", info.errors, "") }}
-    {{ forms.input("text", "amount", "amount", "Payment Amount", amount.value, "", amount.errors, "") }}
+    {{ forms.form_field("text", "address", "address", "Street Address", address.value, "", address.errors, "") }}
+    {{ forms.form_field("text", "city", "city", "City", city.value, "", city.errors, "") }}
+    {{ forms.form_field("select", "state", "state", "State", state.value, "", state.errors, "", ["Alabama","Maryland"]) }}
+    {{ forms.form_field("text", "zip_code", "zip_code", "Zip Code", zip_code.value, "", zip_code.errors, "") }}
+    {{ forms.form_field("select", "country", "country", "Country", country.value, "", country.errors, "", ["United States","Canada"]) }}
+    {{ forms.form_field("textarea", "info", "info", "Additional Info / Notes", info.value, "9", "3", info.errors, "") }}
+    {{ forms.form_field("text", "amount", "amount", "Payment Amount", amount.value, "", amount.errors, "") }}
   </fieldset>
   <hr class="panel-wide">
   <fieldset>
@@ -30,17 +30,17 @@
       </div>
     </section>
     <div class="collapse payment-card margin-tb-40">                  
-      {{ forms.input("text", "name", "name", "Billing Name", name.value, "", name.errors, "") }}
-      {{ forms.input("text", "card", "card", "Credit Card Number", card.value, "", card.errors, "") }}
-      {{ forms.input("text", "cvv", "cvv", "CVV", cvv.value, "", cvv.errors, "") }}
+      {{ forms.form_field("text", "name", "name", "Billing Name", name.value, "", name.errors, "") }}
+      {{ forms.form_field("text", "card", "card", "Credit Card Number", card.value, "", card.errors, "") }}
+      {{ forms.form_field("text", "cvv", "cvv", "CVV", cvv.value, "", cvv.errors, "") }}
       
-      {{ forms.select("select", "month", "month", "Expiration Month", month.value, "", month.errors, "", ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]) }}
-      {{ forms.select("select", "year", "year", "Expiration Year", year.value, "", year.errors, "", ["2014","2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]) }}
+      {{ forms.form_field("select", "month", "month", "Expiration Month", month.value, "", month.errors, "", ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]) }}
+      {{ forms.form_field("select", "year", "year", "Expiration Year", year.value, "", year.errors, "", ["2014","2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"]) }}
     </div>
     <div class="collapse bank-transfer margin-tb-40">
-      {{ forms.input("text", "account", "account", "Bank Account Number", account.value, "", account.errors, "") }}
-      {{ forms.input("text", "routing", "routing", "Routing Number", routing.value, "", routing.errors, "") }}
-      {{ forms.select("select", "type", "type", "Account Type", type.value, "", type.errors, "", ["Checking","Savings"]) }}
+      {{ forms.form_field("text", "account", "account", "Bank Account Number", account.value, "", account.errors, "") }}
+      {{ forms.form_field("text", "routing", "routing", "Routing Number", routing.value, "", routing.errors, "") }}
+      {{ forms.form_field("select", "type", "type", "Account Type", type.value, "", type.errors, "", ["Checking","Savings"]) }}
     </div>
     <div class="collapse paypal margin-tb-40">
       <img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" align="left" style="margin-right:7px;">

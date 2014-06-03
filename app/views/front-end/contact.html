@@ -62,12 +62,12 @@
   </div><!--/row-->  
 {% endblock %}
 
-{%- block scripts %}
-  {% parent %}
-  <script src="/js/contact.js"></script>
-  <script type="text/javascript">
-    jQuery(document).ready(function() {
-        ContactForm.initContactForm();
-    });
-  </script>
-{%- endblock scripts %}
+{% block scripts %}
+{% parent %}
+<script type="text/javascript" src="/js/forms/contact.js"></script>  
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    ContactForm.initContactForm();
+  });
+</script>  
+{% endblock %}

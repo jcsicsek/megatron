@@ -6,7 +6,7 @@ var paths = {
 
   css_src:  'build_files/styles/',
   css_dest: 'app/public/stylesheets/'
-}
+};
 
 module.exports = function(grunt) {
 

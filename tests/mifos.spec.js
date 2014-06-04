@@ -3,7 +3,7 @@ var mifosApi = require('../app/lib/mifos_api');
 
 var loanProductId = 1;
 
-describe('Mifos wrapper', function() {
+xdescribe('Mifos wrapper', function() {
   this.timeout(5000);
 	it('opens a new loan application for a new client', function(done) {
 		var app = {
@@ -69,7 +69,7 @@ describe('Mifos wrapper', function() {
   });
 });
 
-xdescribe('Mifos API', function() {
+describe('Mifos API', function() {
   this.timeout(5000);
 
   xit('approves a loan', function(done) {
@@ -103,10 +103,24 @@ xdescribe('Mifos API', function() {
       done();
     })
   })
-  it('looks up client by id', function(done) {
+  xit('looks up client by id', function(done) {
     var clientId = 48;
     mifosApi.getClient(clientId, function(error, client) {
       console.log(error, client);
+      done();
+    });
+  });
+  it('unapproves a loan application', function(done) {
+    var loanId = 6;
+    mifosApi.undoLoanApproval(loanId, function(error, results) {
+      console.log(error, results);
+      done();
+    });
+  });
+  it('withdraws a loan application', function(done) {
+    var loanId = 6;
+    mifosApi.withdrawLoan(loanId, function(error, results) {
+      console.log(error, results);
       done();
     });
   });

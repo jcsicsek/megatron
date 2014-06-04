@@ -104,6 +104,31 @@ module.exports = {
     })
   },
 
+
+  withdrawLoan: function(loanId, callback) {
+    logger.info("MIFOS API: Withdrawing loan application with id", loanId);
+    var options = {
+      url: config.mifos.url + 'loans/' + loanId,
+      json: {
+        withdrawnOnDate: dateFormat(new Date(), "dd mmmm yyyy"),
+        dateFormat: "dd MMMM yyyy",
+        locale: "en"
+      },
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier,
+        command: "withdrawnByApplicant"
+      }
+    }
+    request.post(options, function(error, response, body) {
+      callback(error, body);
+    })
+  },
+
   rejectLoan: function(loanId, callback) {
     logger.info("MIFOS API: Rejecting loan with id", loanId);
     var options = {
@@ -121,6 +146,28 @@ module.exports = {
       qs: {
         tenantIdentifier: config.mifos.tenantIdentifier,
         command: "reject"
+      }
+    }
+    request.post(options, function(error, response, body) {
+      callback(error, body);
+    })
+  },
+
+  undoLoanApproval: function(loanId, callback) {
+    logger.info("MIFOS API: Unapproving loan with id", loanId);
+    var options = {
+      url: config.mifos.url + 'loans/' + loanId,
+      json: {
+        note: "unapproving due to client withdraw"
+      },
+      auth: {
+        user: config.mifos.username,
+        pass: config.mifos.password,
+        sendImmediately: true
+      },
+      qs: {
+        tenantIdentifier: config.mifos.tenantIdentifier,
+        command: "undoApproval"
       }
     }
     request.post(options, function(error, response, body) {

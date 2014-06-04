@@ -52,6 +52,24 @@ module.exports = {
     })
   },
 
+  customerAcceptLoan: function(loanId, callback) {
+    logger.info("MIFOS: customer accepted and disbursing funds for loan with id", id);
+    var mifosLoanId = hashids.decrypt(id);
+    mifosApi.disburseLoan(mifosLoanId, function(error, response) {
+      callback(error, response);
+    });
+  },
+
+  customerWithdrawLoan: function(loanId, callback) {
+    logger.info("MIFOS: customer rejecting loan with id", id, "withdrawing application");
+    var mifosLoanId = hashids.decrypt(id);
+    mifosApi.undoLoanApproval(mifosLoanId, function(error, response) {
+      mifosApi.withdrawLoan(mifosLoanId, function(error, response) {
+        callback(error, response);
+      });
+    });
+  },
+
   queryById: function(id, callback) {
     logger.info("MIFOS: querying summary for loan with id", id);
     var mifosLoanId = hashids.decrypt(id);
